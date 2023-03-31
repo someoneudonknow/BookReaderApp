@@ -36,7 +36,7 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton1" alignment="1" max="32767" attributes="0"/>
+                          <Component id="registerBtn" alignment="1" max="32767" attributes="0"/>
                           <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
@@ -53,7 +53,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="120" max="32767" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="44" max="-2" attributes="0"/>
+              <Component id="registerBtn" min="-2" pref="44" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -69,7 +69,7 @@
         <Property name="text" type="java.lang.String" value="Sign up"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="registerBtn">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="0" red="cc" type="rgb"/>
@@ -82,9 +82,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Register"/>
       </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
-      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
 
@@ -109,7 +106,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel3" min="-2" pref="60" max="-2" attributes="0"/>
+                                      <Component id="loginLink" min="-2" pref="60" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="passwordConfirmInput" alignment="0" max="32767" attributes="0"/>
                                   <Component id="userNameInput" alignment="0" max="32767" attributes="0"/>
@@ -203,7 +200,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="loginLink" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
@@ -226,7 +223,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="loginLink">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -239,9 +236,6 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel3MouseClicked"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="genderErrorMessage">
           <Properties>
@@ -263,9 +257,6 @@
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="phoneNumberInputActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="userNameInput">
           <Properties>
@@ -297,9 +288,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Male"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="maleRadioBtnActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="passwordErrorMessage">
           <Properties>
@@ -314,9 +302,6 @@
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passwordConfirmInputActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="imageHolder">
           <Properties>
@@ -350,9 +335,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Female"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="femaleRadioBtnActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="phoneNumberErrorMessage">
           <Properties>
@@ -386,10 +368,6 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="chooseFileBtnMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chooseFileBtnActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="phoneNumber">
           <Properties>
@@ -424,17 +402,11 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Show password"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showPasswordBtnActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="showPasswordConfirmBtn">
           <Properties>
             <Property name="text" type="java.lang.String" value="Show password"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showPasswordConfirmBtnActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

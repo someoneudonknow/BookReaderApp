@@ -1,12 +1,14 @@
+package views;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package views.adminView;
+
 
 import database.DB;
 import java.sql.Connection;
-import models.DAOs.UserDAO;
+import models.DAO.UserDAO;
 /**
  *
  * @author admin

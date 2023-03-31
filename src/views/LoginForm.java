@@ -1,24 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package views.forms;
+package views;
 
-import javax.swing.JOptionPane;
-import other.Rules;
-import other.Validate;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-import views.adminView.AdminView;
 
-/**
- *
- * @author admin
- */
 public class LoginForm extends javax.swing.JFrame {
-
-    /**
-     * Creates new form LoginForm
-     */
     public LoginForm() {
         initComponents();
     }
@@ -55,11 +45,6 @@ public class LoginForm extends javax.swing.JFrame {
         userNameLabel.setText("Username");
 
         userNameInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        userNameInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameInputActionPerformed(evt);
-            }
-        });
 
         passwordLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         passwordLabel.setLabelFor(passwordInput);
@@ -69,11 +54,6 @@ public class LoginForm extends javax.swing.JFrame {
         loginBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn.setText("Login");
-        loginBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                loginBtnMouseClicked(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Do not have an account ?");
@@ -82,28 +62,12 @@ public class LoginForm extends javax.swing.JFrame {
         registerBtn.setForeground(new java.awt.Color(0, 51, 255));
         registerBtn.setText("Sign up");
         registerBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        registerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registerBtnMouseClicked(evt);
-            }
-        });
-
-        passwordInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordInputActionPerformed(evt);
-            }
-        });
 
         userNameErrorMess.setForeground(new java.awt.Color(255, 0, 51));
 
         passwordErrorMess.setForeground(new java.awt.Color(255, 0, 51));
 
         showPasswordBtn.setText("Show password");
-        showPasswordBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showPasswordBtnActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,60 +122,39 @@ public class LoginForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userNameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNameInputActionPerformed
+    public JLabel getPasswordErrorMess() {
+        return passwordErrorMess;
+    }
 
-    private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
-        String userName = userNameInput.getText();
-        String password = String.valueOf(passwordInput.getPassword());
-        Rules[] passwordRules = new Rules[]{new Rules("Please enter password!", Rules.IS_REQUIRED),
-            new Rules("Password must be greater than 6 characters", Rules.IS_MIN, 6)};
-        Rules[] userNameRules = new Rules[]{new Rules("Please enter user name!", Rules.IS_REQUIRED),
-                                            new Rules("User name can not contains white space!", Rules.IS_CONTAINS_WHITE_SPACE)};
+    public JPasswordField getPasswordInput() {
+        return passwordInput;
+    }
 
-        Validate validatePassword = new Validate(password, passwordRules);
-        Validate validateUserName = new Validate(userName, userNameRules);
+    public JCheckBox getShowPasswordBtn() {
+        return showPasswordBtn;
+    }
 
-        boolean isPasswordValid = validatePassword.isValid();
-        boolean isUserNameValid = validateUserName.isValid();
+    public JLabel getUserNameErrorMess() {
+        return userNameErrorMess;
+    }
 
-        passwordErrorMess.setText(validatePassword.getErrorMessage());
-        userNameErrorMess.setText(validateUserName.getErrorMessage());
+    public JTextField getUserNameInput() {
+        return userNameInput;
+    }
 
-        final String enteredUserName = "tutran";
-        final String enteredPassword = "123456";
-
-        if (isPasswordValid && isUserNameValid) {
-            if (userName.equals(enteredUserName) && password.equals(enteredPassword)) {
-                this.dispose();
-                AdminView adminView = new AdminView();
-                adminView.start();
-                JOptionPane.showMessageDialog(null, "Login success");
-            }else {
-                JOptionPane.showMessageDialog(null, "Wrong user name or password!");
-            }
-        }
-    }//GEN-LAST:event_loginBtnMouseClicked
-
-    private void passwordInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordInputActionPerformed
-
-    private void registerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerBtnMouseClicked
-        this.dispose();
-        RegisterForm registerForm = new RegisterForm();
-        registerForm.start();
-    }//GEN-LAST:event_registerBtnMouseClicked
-
-    private void showPasswordBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPasswordBtnActionPerformed
-        if (showPasswordBtn.isSelected()) {
-            passwordInput.setEchoChar((char) 0);
-        } else {
-            passwordInput.setEchoChar('\u2022');
-        }
-    }//GEN-LAST:event_showPasswordBtnActionPerformed
-
+    
+    public void onLogin(ActionListener action) {
+        this.loginBtn.addActionListener(action);
+    }
+    
+    public void onRegisterLinkClicked(MouseAdapter action) {
+        this.registerBtn.addMouseListener(action);
+    }
+    
+    public void onToggleShowPassword(ActionListener action) {
+        this.showPasswordBtn.addActionListener(action);
+    }
+        
     public void start() {
         java.awt.EventQueue.invokeLater(() -> {
             pack();
@@ -222,6 +165,7 @@ public class LoginForm extends javax.swing.JFrame {
             setVisible(true);
         });
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel heading;
     private javax.swing.JLabel jLabel2;

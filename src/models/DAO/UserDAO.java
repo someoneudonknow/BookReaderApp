@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package models.DAOs;
+package models.DAO;
 
 import database.DB;
 import models.interfaces.DAOInterface;
@@ -16,8 +16,6 @@ import models.User;
  * @author admin
  */
 public class UserDAO implements DAOInterface<User> {
-    private Connection connection = DB.getConnection();
-
     public void insert(User newUser) {
         
     }
