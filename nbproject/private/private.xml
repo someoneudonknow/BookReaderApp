@@ -2,17 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/F:/Java/BookReaderApp/src/models/interfaces/DAOInterface.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/SwingApp.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/LoginController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/SignUpController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/other/Validate.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/database/DB.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/models/User.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/views/forms/LoginForm.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/views/forms/RegisterForm.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/models/DAOs/UserDAO.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
