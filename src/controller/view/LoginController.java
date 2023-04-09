@@ -1,11 +1,15 @@
-package controller;
+package controller.view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
+import models.UserModels;
 import other.Rules;
 import other.Validate;
 import views.LoginForm;
+import views.MainView;
 import views.RegisterForm;
 
 public class LoginController {
@@ -16,6 +20,7 @@ public class LoginController {
         this.loginForm.onLogin(e -> {
             this.handleLogin();
         });
+    
         this.loginForm.onToggleShowPassword(e -> {
             this.handleToggleShowPassword();
         });
@@ -45,9 +50,13 @@ public class LoginController {
         if(this.isFormValid()) {
             //check if login true here
             if (true) {
-                loginForm.dispose();
-                // change to user page here here
-                JOptionPane.showMessageDialog(null, "Login success");
+                String userName = this.loginForm.getUserNameInput().getText();
+
+                    loginForm.dispose();
+                    MainView mainView = new MainView(new UserModels(0,userName, "","0123456789", null, true,1));
+                    new MainViewController(mainView);
+           
+//                JOptionPane.showMessageDialog(null, "Login success");
             }else {
                 JOptionPane.showMessageDialog(null, "Wrong user name or password!");
             }

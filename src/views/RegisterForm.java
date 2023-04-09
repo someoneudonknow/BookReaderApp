@@ -57,6 +57,11 @@ public class RegisterForm extends javax.swing.JFrame {
         registerBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         registerBtn.setForeground(new java.awt.Color(255, 255, 255));
         registerBtn.setText("Register");
+        registerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerBtnActionPerformed(evt);
+            }
+        });
 
         passwordConfirm.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         passwordConfirm.setText("Password Confirm");
@@ -258,6 +263,10 @@ public class RegisterForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registerBtnActionPerformed
 
     public JButton getChooseFileBtn() {
         return chooseFileBtn;

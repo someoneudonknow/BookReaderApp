@@ -7,11 +7,23 @@ public class User {
     private String userName;
     private String password;
     private String phoneNumber;
+    private boolean gender;
     private Blob avatar;
     private boolean isManager;
     private int managerId;
     
     private User() {}
+
+    public User(int id, String userName, String password, String phoneNumber, boolean gender, Blob avatar, boolean isManager, int managerId) {
+        this.id = id;
+        this.userName = userName;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.avatar = avatar;
+        this.isManager = isManager;
+        this.managerId = managerId;
+    }
 
     public int getId() {
         return id;
@@ -51,6 +63,14 @@ public class User {
 
     public void setAvatar(Blob avatar) {
         this.avatar = avatar;
+    }
+
+    public boolean isGender() {
+        return gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
     }
 
     public boolean isIsManager() {
