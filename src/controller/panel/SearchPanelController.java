@@ -4,14 +4,14 @@
  */
 package controller.panel;
 
-import items.BookItem;
-import items.CategoryItem;
+import views.items.BookItem;
+import views.items.CategoryItem;
 import java.util.ArrayList;
 import models.BookModels;
 import models.CategoryModels;
 import models.HaveCategoryModels;
 import other.SetDataToList;
-import panels.SearchPanel;
+import views.panels.SearchPanel;
 import views.MainView;
 
 /**

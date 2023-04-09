@@ -7,8 +7,8 @@ package controller.panel;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import other.SetDataToList;
-import panels.HistoryPanel;
-import panels.LibraryPanel;
+import views.panels.HistoryPanel;
+import views.panels.LibraryPanel;
 import views.MainView;
 
 /**

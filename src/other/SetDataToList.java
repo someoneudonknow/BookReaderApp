@@ -13,17 +13,17 @@ import java.util.ArrayList;
 import models.BookModels;
 import models.CategoryModels;
 import models.UserModels;
-import items.BookItem;
-import items.BookItemManager;
-import items.CategoryItem;
-import items.ChapterItem;
-import items.CommentItem;
-import items.UserItemManager;
+import views.items.BookItem;
+import views.items.BookItemManager;
+import views.items.CategoryItem;
+import views.items.ChapterItem;
+import views.items.CommentItem;
+import views.items.UserItemManager;
 import javax.swing.JPanel;
 import models.ChapterModels;
 import models.ReviewModels;
 import models.SaveModels;
-import panels.UserManagingPanel;
+import views.panels.UserManagingPanel;
 import views.MainView;
 
 /**

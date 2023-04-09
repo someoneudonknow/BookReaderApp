@@ -7,10 +7,10 @@ package controller.panel;
 import java.util.ArrayList;
 import models.BookModels;
 import other.SetDataToList;
-import panels.AllBookPanel;
-import panels.MainPanel;
+import views.panels.AllBookPanel;
+import views.panels.MainPanel;
 import views.MainView;
-import panels.SearchPanel;
+import views.panels.SearchPanel;
 
 /**
  *

@@ -6,8 +6,8 @@ package controller.panel;
 
 import java.awt.Dimension;
 import other.SetDataToList;
-import panels.AddBookPanel;
-import panels.BookManagingPanel;
+import views.panels.AddBookPanel;
+import views.panels.BookManagingPanel;
 import views.MainView;
 
 /**

@@ -4,10 +4,10 @@
  */
 package controller.item;
 
-import items.CommentItem;
+import views.items.CommentItem;
 import java.awt.Dimension;
 import javax.swing.JPanel;
-import panels.BookEditPanel;
+import views.panels.BookEditPanel;
 import views.MainView;
 
 /**

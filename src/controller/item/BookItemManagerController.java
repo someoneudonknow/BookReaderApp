@@ -5,11 +5,11 @@
 package controller.item;
 
 import controller.panel.BookEditController;
-import items.BookItemManager;
+import views.items.BookItemManager;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import other.SetDataToList;
-import panels.BookEditPanel;
+import views.panels.BookEditPanel;
 import views.MainView;
 
 /**

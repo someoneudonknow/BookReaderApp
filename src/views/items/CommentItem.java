@@ -2,28 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package items;
+package views.items;
 
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import models.ChapterModels;
+import models.ReviewModels;
 
 /**
  *
  * @author ADMIN
  */
-public class ChapterItem extends javax.swing.JPanel {
+public class CommentItem extends javax.swing.JPanel {
 
     /**
      * Creates new form ChapterItem
      */
-    private ChapterModels chapterModels;
-    public ChapterItem(ChapterModels chapterModels) {
+    private ReviewModels reviewModels;
+    public CommentItem(ReviewModels reviewModels) {
         initComponents();
-        this.chapterModels = chapterModels;
-        this.lbChapter.setText("Chương " + chapterModels.getSerial() + " : " + chapterModels.getTitle());
+        this.reviewModels = reviewModels;
+        this.txtComment.setText("" + reviewModels.getUser_id()+ " : " + reviewModels.getComment());
     }
 
     /**
@@ -35,37 +34,25 @@ public class ChapterItem extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbChapter = new javax.swing.JLabel();
+        txtComment = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(32767, 40));
-        setPreferredSize(new java.awt.Dimension(600, 50));
+        setPreferredSize(new java.awt.Dimension(400, 50));
         setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
-        lbChapter.setBackground(new java.awt.Color(255, 255, 255));
-        lbChapter.setText("jLabel1");
-        lbChapter.setAlignmentY(0.0F);
-        lbChapter.setPreferredSize(new java.awt.Dimension(500, 50));
-        add(lbChapter);
+        txtComment.setBackground(new java.awt.Color(255, 255, 255));
+        txtComment.setText("jLabel1");
+        txtComment.setAlignmentY(0.0F);
+        txtComment.setPreferredSize(new java.awt.Dimension(250, 50));
+        add(txtComment);
 
-        btnDelete.setBackground(new java.awt.Color(204, 0, 51));
-        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
-        btnDelete.setText("x");
-        btnDelete.setOpaque(true);
+        btnDelete.setText("X");
         btnDelete.setPreferredSize(new java.awt.Dimension(50, 48));
         add(btnDelete);
     }// </editor-fold>//GEN-END:initComponents
-    
-    public ChapterModels getChapterModels() {
-        return chapterModels;
-    }
-
-    public void setChapterModels(ChapterModels chapterModels) {
-        this.chapterModels = chapterModels;
-    }
 
     public JButton getBtnDelete() {
         return btnDelete;
@@ -78,21 +65,9 @@ public class ChapterItem extends javax.swing.JPanel {
     public void onBtnDeleteClick(ActionListener action) {
         this.btnDelete.addActionListener(action);
     }
-
-    public JLabel getLbChapter() {
-        return lbChapter;
-    }
-
-    public void setLbChapter(JLabel lbChapter) {
-        this.lbChapter = lbChapter;
-    }
-    
-    public void onLbChapterClick(MouseAdapter action) {
-        this.lbChapter.addMouseListener(action);
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
-    private javax.swing.JLabel lbChapter;
+    private javax.swing.JLabel txtComment;
     // End of variables declaration//GEN-END:variables
 }

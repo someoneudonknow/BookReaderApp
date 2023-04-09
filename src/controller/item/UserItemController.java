@@ -4,9 +4,9 @@
  */
 package controller.item;
 
-import items.UserItemManager;
+import views.items.UserItemManager;
 import models.UserModels;
-import panels.UserMInforPanel;
+import views.panels.UserMInforPanel;
 import views.MainView;
 
 /**
