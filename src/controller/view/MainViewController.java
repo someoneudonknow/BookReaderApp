@@ -13,17 +13,17 @@ import controller.panel.UserManagingController;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
-import panels.AllBookPanel;
-import panels.BookManagingPanel;
-import panels.HistoryPanel;
-import panels.InforPanel;
+import views.panels.AllBookPanel;
+import views.panels.BookManagingPanel;
+import views.panels.HistoryPanel;
+import views.panels.InforPanel;
 import views.LoginForm;
-import panels.MainPanel;
+import views.panels.MainPanel;
 import views.MainView;
-import panels.SearchPanel;
-import panels.LibraryPanel;
-import panels.ReadingPanel;
-import panels.UserManagingPanel;
+import views.panels.SearchPanel;
+import views.panels.LibraryPanel;
+import views.panels.ReadingPanel;
+import views.panels.UserManagingPanel;
 
 /**
  *

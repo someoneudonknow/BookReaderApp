@@ -5,11 +5,11 @@
 package controller.item;
 
 import controller.panel.BookInforController;
-import items.BookItem;
+import views.items.BookItem;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import panels.BookInforPanel;
-import panels.ReadingPanel;
+import views.panels.BookInforPanel;
+import views.panels.ReadingPanel;
 import views.MainView;
 
 /**

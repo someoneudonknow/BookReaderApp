@@ -6,7 +6,7 @@ package controller.panel;
 
 import java.awt.Dimension;
 import other.SetDataToList;
-import panels.UserManagingPanel;
+import views.panels.UserManagingPanel;
 import views.MainView;
 
 /**

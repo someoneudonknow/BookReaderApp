@@ -2,20 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package panels;
+package views.panels;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
  *
  * @author ADMIN
  */
-public class AddChapterPanel extends javax.swing.JPanel {
+public class LibraryPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form HistoryPanel
      */
-    public AddChapterPanel() {
+    public LibraryPanel() {
         initComponents();
     }
 
@@ -29,7 +30,9 @@ public class AddChapterPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel6 = new javax.swing.JPanel();
-        lbAddChapter = new javax.swing.JLabel();
+        lbLibrary = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listLibrary = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1013, 698));
@@ -37,25 +40,39 @@ public class AddChapterPanel extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        lbAddChapter.setBackground(new java.awt.Color(204, 0, 51));
-        lbAddChapter.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lbAddChapter.setForeground(new java.awt.Color(255, 255, 255));
-        lbAddChapter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbAddChapter.setText("THÊM CHƯƠNG");
-        lbAddChapter.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lbAddChapter.setOpaque(true);
+        lbLibrary.setBackground(new java.awt.Color(204, 0, 51));
+        lbLibrary.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbLibrary.setForeground(new java.awt.Color(255, 255, 255));
+        lbLibrary.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbLibrary.setText("THƯ VIỆN CỦA BẠN");
+        lbLibrary.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbLibrary.setOpaque(true);
+
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        listLibrary.setBackground(new java.awt.Color(255, 255, 255));
+        listLibrary.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        listLibrary.setPreferredSize(new java.awt.Dimension(999, 100));
+        listLibrary.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 25, 25));
+        jScrollPane3.setViewportView(listLibrary);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbAddChapter, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
+            .addComponent(lbLibrary, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(lbAddChapter, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(656, Short.MAX_VALUE))
+                .addComponent(lbLibrary, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -70,10 +87,19 @@ public class AddChapterPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public JPanel getListLibrary() {
+        return listLibrary;
+    }
+
+    public void setListLibrary(JPanel listHistory) {
+        this.listLibrary = listHistory;
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JLabel lbAddChapter;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lbLibrary;
+    private javax.swing.JPanel listLibrary;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,9 +7,9 @@ package controller.panel;
 import java.awt.Dimension;
 import javax.swing.JPanel;
 import other.SetDataToList;
-import panels.AddChapterPanel;
-import panels.BookEditPanel;
-import panels.BookInforPanel;
+import views.panels.AddChapterPanel;
+import views.panels.BookEditPanel;
+import views.panels.BookInforPanel;
 import views.MainView;
 
 /**

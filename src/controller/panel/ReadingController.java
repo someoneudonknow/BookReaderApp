@@ -4,7 +4,7 @@
  */
 package controller.panel;
 
-import panels.ReadingPanel;
+import views.panels.ReadingPanel;
 import views.MainView;
 
 /**

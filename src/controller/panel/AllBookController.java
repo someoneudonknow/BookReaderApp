@@ -5,7 +5,7 @@
 package controller.panel;
 
 import other.SetDataToList;
-import panels.AllBookPanel;
+import views.panels.AllBookPanel;
 import views.MainView;
 
 /**

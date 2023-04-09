@@ -4,13 +4,13 @@
  */
 package controller.item;
 
-import items.ChapterItem;
+import views.items.ChapterItem;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
-import panels.BookEditPanel;
-import panels.ReadingPanel;
+import views.panels.BookEditPanel;
+import views.panels.ReadingPanel;
 import views.MainView;
 
 /**
