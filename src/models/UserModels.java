@@ -1,30 +1,36 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package models;
 
 import java.sql.Blob;
-
-public class User {
+/**
+ *
+ * @author admin
+ */
+public class UserModels {
     private int id;
     private String userName;
     private String password;
     private String phoneNumber;
-    private boolean gender;
     private Blob avatar;
     private boolean isManager;
     private int managerId;
     
-    private User() {}
+    private UserModels() {}
 
-    public User(int id, String userName, String password, String phoneNumber, boolean gender, Blob avatar, boolean isManager, int managerId) {
+    public UserModels(int id, String userName, String password, String phoneNumber, Blob avatar, boolean isManager, int managerId) {
         this.id = id;
         this.userName = userName;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.gender = gender;
         this.avatar = avatar;
         this.isManager = isManager;
         this.managerId = managerId;
     }
 
+    
     public int getId() {
         return id;
     }
@@ -63,14 +69,6 @@ public class User {
 
     public void setAvatar(Blob avatar) {
         this.avatar = avatar;
-    }
-
-    public boolean isGender() {
-        return gender;
-    }
-
-    public void setGender(boolean gender) {
-        this.gender = gender;
     }
 
     public boolean isIsManager() {
