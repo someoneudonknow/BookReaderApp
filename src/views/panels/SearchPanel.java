@@ -16,8 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
-import models.BookModels;
-import models.CategoryModels;
+import models.BookModel;
+import models.CategoryModel;
 import other.SetDataToList;
 
 /**

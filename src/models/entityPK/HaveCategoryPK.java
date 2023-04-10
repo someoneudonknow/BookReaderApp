@@ -2,24 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package models;
+package models.entityPK;
 
 /**
  *
- * @author ADMIN
+ * @author trang
  */
-public class HaveCategoryModels {
+public class HaveCategoryPK {
     private int category_id;
     private int book_id;
 
-    public HaveCategoryModels(int category_id, int book_id) {
+    public HaveCategoryPK(int category_id, int book_id) {
         this.category_id = category_id;
         this.book_id = book_id;
     }
-
-    public HaveCategoryModels() {
-    }
-
+    
     public int getCategory_id() {
         return category_id;
     }
@@ -36,9 +33,4 @@ public class HaveCategoryModels {
         this.book_id = book_id;
     }
     
-    public boolean contains(HaveCategoryModels obj) {
-        int idb_obj = obj.getBook_id();
-        int idc_obj = obj.getCategory_id();
-        return (idb_obj == this.book_id && idc_obj == this.category_id)?true:false;
-    }
 }

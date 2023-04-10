@@ -4,53 +4,51 @@
  */
 package models.DAO;
 
-import database.DB;
-import models.interfaces.DAOInterface;
-import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
-import models.User;
-import models.UserModel;
+import models.CategoryModel;
+import models.interfaces.DAOInterface;
 
 /**
  *
- * @author admin
+ * @author trang
  */
-public class UserDAO implements DAOInterface<UserModel, Integer> {
+public class CategoryDAO implements DAOInterface<CategoryModel, Integer>   {
 
-     public static UserDAO getInstance() {
-        return new UserDAO();
+     public static CategoryDAO getInstance() {
+        return new CategoryDAO();
     }
 
     @Override
-    public void insert(UserModel data) {
+    public void insert(CategoryModel data) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public UserModel get(Integer id) {
+    public CategoryModel get(Integer pk) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<UserModel> getAll() {
+    public List<CategoryModel> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void update(Integer id) {
+    public void update(Integer pk) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Integer pk) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<UserModel> search(String keyword) {
+    public List<CategoryModel> search(String keyword) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    
     
     
 }

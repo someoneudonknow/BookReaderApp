@@ -10,9 +10,9 @@ import controller.item.ChapterItemController;
 import controller.item.CommentItemController;
 import controller.item.UserItemController;
 import java.util.ArrayList;
-import models.BookModels;
-import models.CategoryModels;
-import models.UserModels;
+import models.BookModel;
+import models.CategoryModel;
+import models.UserModel;
 import views.items.BookItem;
 import views.items.BookItemManager;
 import views.items.CategoryItem;
@@ -20,9 +20,9 @@ import views.items.ChapterItem;
 import views.items.CommentItem;
 import views.items.UserItemManager;
 import javax.swing.JPanel;
-import models.ChapterModels;
-import models.ReviewModels;
-import models.SaveModels;
+import models.ChapterModel;
+import models.ReviewModel;
+import models.SavedModel;
 import views.panels.UserManagingPanel;
 import views.MainView;
 
@@ -32,12 +32,12 @@ import views.MainView;
  */
 public class SetDataToList {
     private MainView mainView;
-    private ArrayList<BookModels> bookList;
-    private ArrayList<UserModels> userList;
-    private ArrayList<CategoryModels> categoryList;
-    private ArrayList<ChapterModels> chapterList;
-    private ArrayList<ReviewModels> reviewList;
-    private ArrayList<SaveModels> saveList;
+    private ArrayList<BookModel> bookList;
+    private ArrayList<UserModel> userList;
+    private ArrayList<CategoryModel> categoryList;
+    private ArrayList<ChapterModel> chapterList;
+    private ArrayList<ReviewModel> reviewList;
+    private ArrayList<SavedModel> saveList;
     
     public SetDataToList(MainView mainView) {
         this.mainView = mainView;
@@ -54,7 +54,7 @@ public class SetDataToList {
         ArrayList<BookItem> items = new ArrayList<>();
 
         for(int i=0;i<17;i++){
-            BookItem a = new BookItem(new BookModels(i, "a", "a", null, "a", 1));
+            BookItem a = new BookItem(new BookModel(i, "a", "a", null, "a", 1));
             new BookItemController(a,this.mainView);
             items.add(a);
             
@@ -72,7 +72,7 @@ public class SetDataToList {
         ArrayList<BookItem> items = new ArrayList<>();
 
         for(int i=0;i<5;i++){
-            BookItem a = new BookItem(new BookModels(i, "a", "a", null, "a", 1));
+            BookItem a = new BookItem(new BookModel(i, "a", "a", null, "a", 1));
             new BookItemController(a,this.mainView);
             items.add(a);
             
@@ -90,7 +90,7 @@ public class SetDataToList {
         ArrayList<BookItemManager> items = new ArrayList<>();
 
         for(int i=0;i<40;i++){
-            BookItemManager a = new BookItemManager(new BookModels(i, "a", "a", null, "a", 1));
+            BookItemManager a = new BookItemManager(new BookModel(i, "a", "a", null, "a", 1));
             new BookItemManagerController(a,this.mainView);
             items.add(a);
             
@@ -108,7 +108,7 @@ public class SetDataToList {
         ArrayList<UserItemManager> items = new ArrayList<>();
 
         for(int i=0;i<40;i++){
-            UserItemManager a = new UserItemManager(new UserModels(i, "a", "a", "123456789", null, false, 1));
+            UserItemManager a = new UserItemManager(new UserModel(i, "a", "a", "123456789", null, false, 1));
             new UserItemController(a, mainView);
             items.add(a);
             
@@ -125,7 +125,7 @@ public class SetDataToList {
         ArrayList<ChapterItem> items = new ArrayList<>();
 
         for(int i=0;i<20;i++){
-            ChapterItem a = new ChapterItem(new ChapterModels(i, "a", (i+1),"123456789", 1));
+            ChapterItem a = new ChapterItem(new ChapterModel(i, "a", (i+1),"123456789", 1));
             new ChapterItemController(parent, a, mainView);
 //            new BookItemController(a,this.mainView);
             items.add(a);
@@ -143,7 +143,7 @@ public class SetDataToList {
         ArrayList<CommentItem> items = new ArrayList<>();
 
         for(int i=0;i<20;i++){
-            CommentItem a = new CommentItem(new ReviewModels(i, book_id, "this is a comeent", 1));
+            CommentItem a = new CommentItem(new ReviewModel(i, book_id, "this is a comeent", 1));
             new CommentItemController(parent, a, mainView);
             items.add(a);
             
@@ -282,43 +282,43 @@ public class SetDataToList {
         this.mainView = mainView;
     }
 
-    public ArrayList<BookModels> getBookList() {
+    public ArrayList<BookModel> getBookList() {
         return bookList;
     }
 
-    public void setBookList(ArrayList<BookModels> bookList) {
+    public void setBookList(ArrayList<BookModel> bookList) {
         this.bookList = bookList;
     }
 
-    public ArrayList<UserModels> getUserList() {
+    public ArrayList<UserModel> getUserList() {
         return userList;
     }
 
-    public void setUserList(ArrayList<UserModels> userList) {
+    public void setUserList(ArrayList<UserModel> userList) {
         this.userList = userList;
     }
 
-    public ArrayList<CategoryModels> getCategoryList() {
+    public ArrayList<CategoryModel> getCategoryList() {
         return categoryList;
     }
 
-    public void setCategoryList(ArrayList<CategoryModels> categoryList) {
+    public void setCategoryList(ArrayList<CategoryModel> categoryList) {
         this.categoryList = categoryList;
     }
 
-    public ArrayList<ChapterModels> getChapterList() {
+    public ArrayList<ChapterModel> getChapterList() {
         return chapterList;
     }
 
-    public void setChapterList(ArrayList<ChapterModels> chapterList) {
+    public void setChapterList(ArrayList<ChapterModel> chapterList) {
         this.chapterList = chapterList;
     }
 
-    public ArrayList<ReviewModels> getReviewList() {
+    public ArrayList<ReviewModel> getReviewList() {
         return reviewList;
     }
 
-    public void setReviewList(ArrayList<ReviewModels> reviewList) {
+    public void setReviewList(ArrayList<ReviewModel> reviewList) {
         this.reviewList = reviewList;
     }
     

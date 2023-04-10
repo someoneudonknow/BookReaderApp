@@ -2,30 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< Updated upstream
-        <group/>
-=======
         <group>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/controller/item/BookItemManagerController.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/controller/item/UserItemController.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/controller/item/ChapterItemController.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/controller/panel/BookEditController.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/panels/AddChapterPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/controller/panel/BookInforController.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/controller/panel/UserManagingController.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/panels/UserManagingPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/panels/UserMInforPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/items/ChapterItem.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/controller/panel/BookManagingController.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/items/UserItemManager.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/other/SetDataToList.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/panels/AddBookPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/views/MainView.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/items/BookItemManager.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/panels/BookEditPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/controller/view/MainViewController.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/Book_Manager/BookReaderApp/src/panels/BookManagingPanel.java</file>
+            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/DAO/BookDAO.java</file>
+            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/DAO/SavedDAO.java</file>
+            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/DAO/ReadingDAO.java</file>
+            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/interfaces/DAOInterface.java</file>
+            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/entityPK/ReviewPK.java</file>
+            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/DAO/HaveCategoryDAO.java</file>
+            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/DAO/CategoryDAO.java</file>
+            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/entityPK/SavedPK.java</file>
+            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/DAO/ReviewDAO.java</file>
         </group>
->>>>>>> Stashed changes
     </open-files>
 </project-private>

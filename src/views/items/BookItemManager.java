@@ -5,7 +5,7 @@
 package views.items;
 
 import java.awt.event.ActionListener;
-import models.BookModels;
+import models.BookModel;
 
 /**
  *
@@ -16,8 +16,8 @@ public class BookItemManager extends javax.swing.JPanel{
     /**
      * Creates new form BookItemManager
      */
-    private BookModels bookItem;
-    public BookItemManager(BookModels bookItem) {
+    private BookModel bookItem;
+    public BookItemManager(BookModel bookItem) {
         initComponents();
         this.bookItem = bookItem;
         this.lbID.setText("" + this.bookItem.getId());

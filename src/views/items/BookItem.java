@@ -10,7 +10,7 @@ import java.awt.event.MouseAdapter;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
-import models.BookModels;
+import models.BookModel;
 
 /**
  *
@@ -21,9 +21,9 @@ public class BookItem extends javax.swing.JPanel {
     /**
      * Creates new form BookItem
      */
-    private BookModels bookModels;
+    private BookModel bookModels;
     
-    public BookItem(BookModels bookModels) {
+    public BookItem(BookModel bookModels) {
         initComponents();
         this.bookModels = bookModels;
         this.jLabel2.setText("" + bookModels.getId());
@@ -58,11 +58,11 @@ public class BookItem extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 220));
     }// </editor-fold>//GEN-END:initComponents
 
-    public BookModels getBookModels() {
+    public BookModel getBookModels() {
         return bookModels;
     }
 
-    public void setBookModels(BookModels bookModels) {
+    public void setBookModels(BookModel bookModels) {
         this.bookModels = bookModels;
     }
 

@@ -5,7 +5,7 @@
 package controller.item;
 
 import views.items.UserItemManager;
-import models.UserModels;
+import models.UserModel;
 import views.panels.UserMInforPanel;
 import views.MainView;
 
@@ -16,7 +16,7 @@ import views.MainView;
 public class UserItemController {
     UserItemManager userItem;
     MainView mainView;
-    UserModels userModels;
+    UserModel userModels;
 
     public UserItemController(UserItemManager userItem, MainView mainView) {
         this.userItem = userItem;

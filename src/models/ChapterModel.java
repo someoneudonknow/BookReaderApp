@@ -9,17 +9,17 @@ package models;
  *
  * @author ADMIN
  */
-public class ChapterModels {
+public class ChapterModel {
     private int id;
     private String title;
     private int serial;
     private String document;
     private int book_id;
 
-    public ChapterModels() {
+    public ChapterModel() {
     }
 
-    public ChapterModels(int id, String title, int serial, String document, int book_id) {
+    public ChapterModel(int id, String title, int serial, String document, int book_id) {
         this.id = id;
         this.title = title;
         this.serial = serial;
