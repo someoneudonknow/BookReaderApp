@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
-import models.UserModels;
+import models.UserModel;
 import other.Rules;
 import other.Validate;
 import views.LoginForm;
@@ -53,7 +53,7 @@ public class LoginController {
                 String userName = this.loginForm.getUserNameInput().getText();
 
                     loginForm.dispose();
-                    MainView mainView = new MainView(new UserModels(0,userName, "","0123456789", null, true,1));
+                    MainView mainView = new MainView(new UserModel(0,userName, "","0123456789", null, true,1));
                     new MainViewController(mainView);
            
 //                JOptionPane.showMessageDialog(null, "Login success");

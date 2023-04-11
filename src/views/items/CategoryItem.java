@@ -5,7 +5,7 @@
 package views.items;
 
 import javax.swing.JCheckBox;
-import models.CategoryModels;
+import models.CategoryModel;
 
 /**
  *
@@ -16,9 +16,9 @@ public class CategoryItem extends javax.swing.JPanel {
     /**
      * Creates new form CategoryItem
      */
-    private CategoryModels categoryModels;
+    private CategoryModel categoryModels;
     
-    public CategoryItem(CategoryModels categoryModels) {
+    public CategoryItem(CategoryModel categoryModels) {
         initComponents();
         this.categoryModels = categoryModels;
         this.jCheckBox1.setText(categoryModels.getName());
@@ -51,11 +51,11 @@ public class CategoryItem extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     
-    public CategoryModels getCategoryModels() {
+    public CategoryModel getCategoryModels() {
         return categoryModels;
     }
 
-    public void setCategoryModels(CategoryModels categoryModels) {
+    public void setCategoryModels(CategoryModel categoryModels) {
         this.categoryModels = categoryModels;
     }
 

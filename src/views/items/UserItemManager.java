@@ -5,8 +5,8 @@
 package views.items;
 
 import java.awt.event.ActionListener;
-import models.BookModels;
-import models.UserModels;
+import models.BookModel;
+import models.UserModel;
 
 /**
  *
@@ -17,8 +17,8 @@ public class UserItemManager extends javax.swing.JPanel{
     /**
      * Creates new form BookItemManager
      */
-    private UserModels userItem;
-    public UserItemManager(UserModels userItem) {
+    private UserModel userItem;
+    public UserItemManager(UserModel userItem) {
         initComponents();
         this.userItem = userItem;
         this.lbID.setText("" + this.userItem.getId());

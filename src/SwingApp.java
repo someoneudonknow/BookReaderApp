@@ -1,7 +1,8 @@
 import views.LoginForm;
 import controller.view.LoginController;
 import java.util.ArrayList;
-import models.HaveCategoryModels;
+import models.HaveCategoryModel;
+import models.ReviewModel;
 import views.LoginForm;
 
 public class SwingApp {
@@ -9,6 +10,7 @@ public class SwingApp {
     public static void main(String[] args) {
         LoginForm login = new LoginForm();
         LoginController loginController = new LoginController(login);
+        ReviewModel myrv = new ReviewModel(1, 1, "hehe", 4);
 //        ArrayList<HaveCategoryModels> models = new ArrayList<>();
 //        models.add(new HaveCategoryModels(1,1));
 //        HaveCategoryModels a = new HaveCategoryModels(1,1);

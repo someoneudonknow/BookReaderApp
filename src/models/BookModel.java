@@ -10,7 +10,7 @@ import com.mysql.cj.jdbc.Blob;
  *
  * @author ADMIN
  */
-public class BookModels {
+public class BookModel {
     private int id;
     private String name;
     private String author;
@@ -18,7 +18,7 @@ public class BookModels {
     private String description;
     private int manager_id;
 
-    public BookModels(int id, String name, String author, Blob cover, String description, int manager_id) {
+    public BookModel(int id, String name, String author, Blob cover, String description, int manager_id) {
         this.id = id;
         this.name = name;
         this.author = author;
@@ -27,7 +27,7 @@ public class BookModels {
         this.manager_id = manager_id;
     }
 
-    public BookModels() {
+    public BookModel() {
     }
 
     public int getId() {

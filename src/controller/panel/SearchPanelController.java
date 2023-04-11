@@ -7,9 +7,9 @@ package controller.panel;
 import views.items.BookItem;
 import views.items.CategoryItem;
 import java.util.ArrayList;
-import models.BookModels;
-import models.CategoryModels;
-import models.HaveCategoryModels;
+import models.BookModel;
+import models.CategoryModel;
+import models.HaveCategoryModel;
 import other.SetDataToList;
 import views.panels.SearchPanel;
 import views.MainView;
@@ -21,9 +21,9 @@ import views.MainView;
 public class SearchPanelController {
     SearchPanel searchPanel;
     MainView mainView;
-    ArrayList<CategoryModels> categoryList;
-    ArrayList<HaveCategoryModels> haveCategoryList;
-    ArrayList<BookModels> bookList;
+    ArrayList<CategoryModel> categoryList;
+    ArrayList<HaveCategoryModel> haveCategoryList;
+    ArrayList<BookModel> bookList;
 
     public SearchPanelController(SearchPanel searchPanel, MainView mainView) {
         this.searchPanel = searchPanel;
@@ -34,7 +34,7 @@ public class SearchPanelController {
         });
     }
 
-    public SearchPanelController(SearchPanel searchPanel, MainView mainView, ArrayList<CategoryModels> categoryList, ArrayList<HaveCategoryModels> haveCategoryList, ArrayList<BookModels> bookList) {
+    public SearchPanelController(SearchPanel searchPanel, MainView mainView, ArrayList<CategoryModel> categoryList, ArrayList<HaveCategoryModel> haveCategoryList, ArrayList<BookModel> bookList) {
         this.searchPanel = searchPanel;
         this.mainView = mainView;
         this.categoryList = categoryList;
@@ -48,14 +48,14 @@ public class SearchPanelController {
     public void searchResult() {
         String keyword = this.searchPanel.getTxtKeyword().getText();
         int type = this.searchPanel.getBoxType().getSelectedIndex();
-        ArrayList<CategoryModels> categoryList = new ArrayList<>();
+        ArrayList<CategoryModel> categoryList = new ArrayList<>();
         for (int i = 0; i < this.searchPanel.getListCategory().getComponentCount(); i++) {
             CategoryItem item = (CategoryItem) this.searchPanel.getListCategory().getComponent(i);
             if (item.getjCheckBox1().isSelected())
                 categoryList.add(item.getCategoryModels());
         }
         System.out.println(keyword + "\t" + type);
-        for (CategoryModels i:categoryList)
+        for (CategoryModel i:categoryList)
             System.out.println(i.getName());
         getBookItemListResult(keyword, type, categoryList);
     }
@@ -68,38 +68,38 @@ public class SearchPanelController {
 //        }
 
         //đống này xóa
-        model.add(new CategoryItem(new CategoryModels(0, "Trinh thám")));
-        model.add(new CategoryItem(new CategoryModels(1, "Lãng mạn")));
-        model.add(new CategoryItem(new CategoryModels(2, "Hài hước")));
-        model.add(new CategoryItem(new CategoryModels(3, "Học đường")));
-        model.add(new CategoryItem(new CategoryModels(4, "Tiểu thuyết")));
-        model.add(new CategoryItem(new CategoryModels(5, "Viễn tưởng")));
-        model.add(new CategoryItem(new CategoryModels(6, "Cổ tích")));
-        model.add(new CategoryItem(new CategoryModels(7, "Sử thi")));
-        model.add(new CategoryItem(new CategoryModels(8, "Hành động")));
-        model.add(new CategoryItem(new CategoryModels(9, "Đời thường")));
-        model.add(new CategoryItem(new CategoryModels(10, "Truck-kun")));
-        model.add(new CategoryItem(new CategoryModels(0, "Trinh thám")));
-        model.add(new CategoryItem(new CategoryModels(1, "Lãng mạn")));
-        model.add(new CategoryItem(new CategoryModels(2, "Hài hước")));
-        model.add(new CategoryItem(new CategoryModels(3, "Học đường")));
-        model.add(new CategoryItem(new CategoryModels(4, "Tiểu thuyết")));
-        model.add(new CategoryItem(new CategoryModels(5, "Viễn tưởng")));
-        model.add(new CategoryItem(new CategoryModels(6, "Cổ tích")));
-        model.add(new CategoryItem(new CategoryModels(7, "Sử thi")));
-        model.add(new CategoryItem(new CategoryModels(8, "Hành động")));
-        model.add(new CategoryItem(new CategoryModels(9, "Đời thường")));
-        model.add(new CategoryItem(new CategoryModels(10, "Truck-kun")));
+        model.add(new CategoryItem(new CategoryModel(0, "Trinh thám")));
+        model.add(new CategoryItem(new CategoryModel(1, "Lãng mạn")));
+        model.add(new CategoryItem(new CategoryModel(2, "Hài hước")));
+        model.add(new CategoryItem(new CategoryModel(3, "Học đường")));
+        model.add(new CategoryItem(new CategoryModel(4, "Tiểu thuyết")));
+        model.add(new CategoryItem(new CategoryModel(5, "Viễn tưởng")));
+        model.add(new CategoryItem(new CategoryModel(6, "Cổ tích")));
+        model.add(new CategoryItem(new CategoryModel(7, "Sử thi")));
+        model.add(new CategoryItem(new CategoryModel(8, "Hành động")));
+        model.add(new CategoryItem(new CategoryModel(9, "Đời thường")));
+        model.add(new CategoryItem(new CategoryModel(10, "Truck-kun")));
+        model.add(new CategoryItem(new CategoryModel(0, "Trinh thám")));
+        model.add(new CategoryItem(new CategoryModel(1, "Lãng mạn")));
+        model.add(new CategoryItem(new CategoryModel(2, "Hài hước")));
+        model.add(new CategoryItem(new CategoryModel(3, "Học đường")));
+        model.add(new CategoryItem(new CategoryModel(4, "Tiểu thuyết")));
+        model.add(new CategoryItem(new CategoryModel(5, "Viễn tưởng")));
+        model.add(new CategoryItem(new CategoryModel(6, "Cổ tích")));
+        model.add(new CategoryItem(new CategoryModel(7, "Sử thi")));
+        model.add(new CategoryItem(new CategoryModel(8, "Hành động")));
+        model.add(new CategoryItem(new CategoryModel(9, "Đời thường")));
+        model.add(new CategoryItem(new CategoryModel(10, "Truck-kun")));
 
         //set dữ liệu
         this.searchPanel.setListCategory(model);
     }
     
-    public void getBookItemListResult(String keyword, int type, ArrayList<CategoryModels> categoryList) {
+    public void getBookItemListResult(String keyword, int type, ArrayList<CategoryModel> categoryList) {
         ArrayList<BookItem> listResult = new ArrayList<>();
         
         try {
-            for (BookModels i:bookList) {
+            for (BookModel i:bookList) {
             if (checkKeyword(keyword, type)){
                 if (checkCategory(i.getId(), categoryList))
                     listResult.add(new BookItem(i));
@@ -116,13 +116,13 @@ public class SearchPanelController {
         try {
             switch (type) {
             case 0:
-                for (BookModels i:bookList) {
+                for (BookModel i:bookList) {
                     if (i.getName().contains(keyword))
                         return true;
                 }
                 break;
             case 1:
-                for (BookModels i:bookList) {
+                for (BookModel i:bookList) {
                     if (i.getAuthor().contains(keyword))
                         return true;
                 }
@@ -134,10 +134,10 @@ public class SearchPanelController {
         return false;
     }
     
-    public boolean checkCategory(int id, ArrayList<CategoryModels> list) {
+    public boolean checkCategory(int id, ArrayList<CategoryModel> list) {
         int total = list.size();
-        for (CategoryModels i:list) {
-            for (HaveCategoryModels j:haveCategoryList) {
+        for (CategoryModel i:list) {
+            for (HaveCategoryModel j:haveCategoryList) {
                 if (id == j.getBook_id() && i.getId() == j.getCategory_id())
                     total--;
             }

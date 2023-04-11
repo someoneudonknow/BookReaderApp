@@ -4,53 +4,49 @@
  */
 package models.DAO;
 
-import database.DB;
-import models.interfaces.DAOInterface;
-import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
-import models.User;
-import models.UserModel;
+import models.SavedModel;
+import models.entityPK.SavedPK;
+import models.interfaces.DAOInterface;
 
 /**
  *
- * @author admin
+ * @author trang
  */
-public class UserDAO implements DAOInterface<UserModel, Integer> {
+public class SavedDAO implements DAOInterface<SavedModel, SavedPK> {
 
-     public static UserDAO getInstance() {
-        return new UserDAO();
+    public static SavedDAO getInstance() {
+        return new SavedDAO();
     }
 
     @Override
-    public void insert(UserModel data) {
+    public void insert(SavedModel data) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public UserModel get(Integer id) {
+    public SavedModel get(SavedPK pk) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<UserModel> getAll() {
+    public List<SavedModel> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void update(Integer id) {
+    public void update(SavedPK pk) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(SavedPK pk) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<UserModel> search(String keyword) {
+    public List<SavedModel> search(String keyword) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-    
+
 }

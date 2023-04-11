@@ -2,11 +2,17 @@ package models.interfaces;
 
 import java.util.List;
 
-public interface DAOInterface <T>{
-    void insert(T data);
-    T get(int id);
-    List<T> getAll();
-    void update(int id);
-    void delete(int id);
-    List<T> search(String keyword);
+public interface DAOInterface<T, PK> {
+
+    public void insert(T data);
+
+    public T get(PK pk);
+
+    public List<T> getAll();
+
+    public void update(PK pk);
+
+    public void delete(PK pk);
+
+    public List<T> search(String keyword);
 }

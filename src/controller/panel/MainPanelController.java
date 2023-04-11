@@ -5,7 +5,7 @@
 package controller.panel;
 
 import java.util.ArrayList;
-import models.BookModels;
+import models.BookModel;
 import other.SetDataToList;
 import views.panels.AllBookPanel;
 import views.panels.MainPanel;
@@ -19,7 +19,7 @@ import views.panels.SearchPanel;
 public class MainPanelController {
     private MainPanel mainPanel;
     private MainView mainView;
-    private ArrayList<BookModels> bookModels;
+    private ArrayList<BookModel> bookModels;
 
     public MainPanelController(MainPanel mainPanel, MainView mainView) {
         this.mainPanel = mainPanel;

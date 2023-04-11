@@ -14,7 +14,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import models.BookModels;
+import models.BookModel;
 import views.MainView;
 
 /**

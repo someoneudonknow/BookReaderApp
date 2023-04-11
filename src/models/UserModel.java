@@ -9,7 +9,7 @@ import java.sql.Blob;
  *
  * @author admin
  */
-public class UserModels {
+public class UserModel {
     private int id;
     private String userName;
     private String password;
@@ -18,9 +18,9 @@ public class UserModels {
     private boolean isManager;
     private int managerId;
     
-    private UserModels() {}
+    private UserModel() {}
 
-    public UserModels(int id, String userName, String password, String phoneNumber, Blob avatar, boolean isManager, int managerId) {
+    public UserModel(int id, String userName, String password, String phoneNumber, Blob avatar, boolean isManager, int managerId) {
         this.id = id;
         this.userName = userName;
         this.password = password;

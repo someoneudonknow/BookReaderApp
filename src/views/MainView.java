@@ -10,7 +10,7 @@ import javax.accessibility.AccessibleContext;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import models.UserModels;
+import models.UserModel;
 
 /**
  *
@@ -21,8 +21,8 @@ public class MainView extends javax.swing.JFrame {
     /**
      * Creates new form MainView
      */
-    UserModels userModels;
-    public MainView(UserModels userModels) {
+    UserModel userModels;
+    public MainView(UserModel userModels) {
         initComponents();
         this.userModels = userModels;
     }
@@ -227,7 +227,7 @@ public class MainView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public UserModels getUserModels() {
+    public UserModel getUserModels() {
         return userModels;
     }
 

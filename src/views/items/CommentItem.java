@@ -7,7 +7,7 @@ package views.items;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import models.ReviewModels;
+import models.ReviewModel;
 
 /**
  *
@@ -18,8 +18,8 @@ public class CommentItem extends javax.swing.JPanel {
     /**
      * Creates new form ChapterItem
      */
-    private ReviewModels reviewModels;
-    public CommentItem(ReviewModels reviewModels) {
+    private ReviewModel reviewModels;
+    public CommentItem(ReviewModel reviewModels) {
         initComponents();
         this.reviewModels = reviewModels;
         this.txtComment.setText("" + reviewModels.getUser_id()+ " : " + reviewModels.getComment());

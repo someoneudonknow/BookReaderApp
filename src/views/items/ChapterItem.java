@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import models.ChapterModels;
+import models.ChapterModel;
 
 /**
  *
@@ -19,8 +19,8 @@ public class ChapterItem extends javax.swing.JPanel {
     /**
      * Creates new form ChapterItem
      */
-    private ChapterModels chapterModels;
-    public ChapterItem(ChapterModels chapterModels) {
+    private ChapterModel chapterModels;
+    public ChapterItem(ChapterModel chapterModels) {
         initComponents();
         this.chapterModels = chapterModels;
         this.lbChapter.setText("Chương " + chapterModels.getSerial() + " : " + chapterModels.getTitle());
@@ -59,11 +59,11 @@ public class ChapterItem extends javax.swing.JPanel {
         add(btnDelete);
     }// </editor-fold>//GEN-END:initComponents
     
-    public ChapterModels getChapterModels() {
+    public ChapterModel getChapterModels() {
         return chapterModels;
     }
 
-    public void setChapterModels(ChapterModels chapterModels) {
+    public void setChapterModels(ChapterModel chapterModels) {
         this.chapterModels = chapterModels;
     }
 
