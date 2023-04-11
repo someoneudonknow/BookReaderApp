@@ -14,6 +14,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import models.UserModel;
+import other.Converter;
 import views.panels.AllBookPanel;
 import views.panels.BookManagingPanel;
 import views.panels.HistoryPanel;
@@ -102,7 +104,7 @@ public class MainViewController {
                 new LoginController(loginForm);
             }
         });
-
+        this.initUI();
         this.mainView.start();
     }
 
@@ -111,6 +113,9 @@ public class MainViewController {
     }
 
     private void initUI() {
-
+        UserModel currentUser = this.mainView.getUserModels();
+        
+        this.mainView.getLbAvatar().setIcon(Converter.convertBlobToImageIcon(currentUser.getAvatar()));
+        this.mainView.getLbUsername().setText(currentUser.getUserName());
     }
 }

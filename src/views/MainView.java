@@ -17,11 +17,8 @@ import models.UserModel;
  * @author ADMIN
  */
 public class MainView extends javax.swing.JFrame {
-
-    /**
-     * Creates new form MainView
-     */
     UserModel userModels;
+    
     public MainView(UserModel userModels) {
         initComponents();
         this.userModels = userModels;

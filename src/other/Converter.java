@@ -19,10 +19,10 @@ public final class Converter {
         Graphics graphics = bufferedImage.createGraphics();
         imageIcon.paintIcon(null, graphics, 0, 0);
         graphics.dispose();
-        
+
         Blob blob = null;
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        
+
         try {
             ImageIO.write(bufferedImage, "jpg", byteArrayOutputStream);
             byte[] imageBytes = byteArrayOutputStream.toByteArray();
@@ -34,5 +34,18 @@ public final class Converter {
         }
 
         return blob;
+    }
+
+    public static ImageIcon convertBlobToImageIcon(Blob blob) {
+        byte[] imageBytes;
+        ImageIcon imageIcon = null;
+        try {
+            imageBytes = blob.getBytes(1L, (int) blob.length());
+            imageIcon = new ImageIcon(imageBytes);
+        } catch (SQLException ex) {
+            Logger.getLogger(Converter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return imageIcon;
     }
 }
