@@ -359,7 +359,7 @@ public class BookInforPanel extends javax.swing.JPanel {
         String[] rating = (book.getAverageRating(currentID)).split(" ");
         txtRate.setText("" + rating[0] + " sao" + " " + "(" + rating[1] + ")");
          
-        Blob coverBlob  = book.getCover();
+        Blob coverBlob  = (Blob) book.getCover();
         byte[] coverData = coverBlob.getBytes(1, (int) coverBlob.length());
         InputStream in = new ByteArrayInputStream(coverData); 
         BufferedImage image = ImageIO.read(in); 

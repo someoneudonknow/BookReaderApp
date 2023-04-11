@@ -1,5 +1,6 @@
 package controller.view;
 
+import java.sql.Blob;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -8,9 +9,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import models.DAO.UserDAO;
+import models.UserModel;
+import other.Converter;
 import other.Rules;
 import other.Validate;
 import views.LoginForm;
+import views.MainView;
 import views.RegisterForm;
 
 public class SignUpController {
@@ -82,7 +87,22 @@ public class SignUpController {
 
     private void handleSignUp() {
         if (isFormValid()) {
-            System.out.println("insert user here");
+            String userName = this.rgsForm.getUserNameInput().getText();
+            String phoneNumber = this.rgsForm.getPhoneNumberInput().getText();
+            String password = String.valueOf(this.rgsForm.getPasswordInput().getPassword());
+            Blob avatar = Converter.convertImageToBlob((ImageIcon) this.rgsForm.getImageHolder().getIcon());
+            
+            UserDAO userDAO = new UserDAO();
+            UserModel signUpUser = new UserModel(0, userName, password, phoneNumber, avatar, false, 1);
+               
+            if(!userDAO.insertNewUser(signUpUser)) {
+                JOptionPane.showMessageDialog(rgsForm, "Tài khoản đã tồn tại, có thể bạn muốn đăng nhập ?");
+                this.resetForm();
+            }else {
+                JOptionPane.showMessageDialog(rgsForm, "Thêm thành công");
+                UserModel regiterUser = userDAO.login(userName, password);
+                new MainViewController(new MainView(regiterUser));
+            }
         }
     }
 
@@ -101,7 +121,7 @@ public class SignUpController {
                 Image resizedImage = userImage.getImage().getScaledInstance(this.rgsForm.getImageHolder().getWidth(), this.rgsForm.getImageHolder().getHeight(), Image.SCALE_SMOOTH);
                 this.rgsForm.getImageHolder().setIcon(new ImageIcon(resizedImage));
             } else {
-                JOptionPane.showMessageDialog(this.rgsForm, "Wrong image format!");
+                JOptionPane.showMessageDialog(this.rgsForm, "Sai định dạng ảnh!");
             }
         }
     }
@@ -120,5 +140,13 @@ public class SignUpController {
         } else {
             this.rgsForm.getPasswordConfirmInput().setEchoChar('\u2022');
         }
+    }
+    
+    private void resetForm() {
+        this.rgsForm.getUserNameInput().setText("");
+        this.rgsForm.getPhoneNumberInput().setText("");
+        this.rgsForm.getPasswordInput().setText("");
+        this.rgsForm.getPasswordConfirmInput().setText("");
+        this.rgsForm.getImageHolder().setIcon(null);
     }
 }

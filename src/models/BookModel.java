@@ -4,7 +4,7 @@
  */
 package models;
 
-import com.mysql.cj.jdbc.Blob;
+import java.sql.Blob;
 import models.DAO.BookDAO;
 
 /**
@@ -86,8 +86,4 @@ public class BookModel {
     public String toString() {
         return super.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
-    
-    
-    
-    
 }
