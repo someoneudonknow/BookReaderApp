@@ -4,6 +4,7 @@
  */
 package models.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 import models.ChapterModel;
 import models.interfaces.DAOInterface;
@@ -29,7 +30,7 @@ public class ChapterDAO implements DAOInterface<ChapterModel, Integer>   {
     }
 
     @Override
-    public List<ChapterModel> getAll() {
+    public ArrayList<ChapterModel> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -44,7 +45,7 @@ public class ChapterDAO implements DAOInterface<ChapterModel, Integer>   {
     }
 
     @Override
-    public List<ChapterModel> search(String keyword) {
+    public ArrayList<ChapterModel> search(String keyword) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

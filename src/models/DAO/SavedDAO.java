@@ -4,6 +4,7 @@
  */
 package models.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 import models.SavedModel;
 import models.entityPK.SavedPK;
@@ -30,7 +31,7 @@ public class SavedDAO implements DAOInterface<SavedModel, SavedPK> {
     }
 
     @Override
-    public List<SavedModel> getAll() {
+    public ArrayList<SavedModel> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -45,7 +46,7 @@ public class SavedDAO implements DAOInterface<SavedModel, SavedPK> {
     }
 
     @Override
-    public List<SavedModel> search(String keyword) {
+    public ArrayList<SavedModel> search(String keyword) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

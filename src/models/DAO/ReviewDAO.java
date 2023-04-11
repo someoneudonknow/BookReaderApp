@@ -4,6 +4,7 @@
  */
 package models.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 import models.ReviewModel;
 import models.entityPK.ReviewPK;
@@ -30,7 +31,7 @@ public class ReviewDAO implements DAOInterface<ReviewModel, ReviewPK> {
     }
 
     @Override
-    public List<ReviewModel> getAll() {
+    public ArrayList<ReviewModel> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -45,7 +46,7 @@ public class ReviewDAO implements DAOInterface<ReviewModel, ReviewPK> {
     }
 
     @Override
-    public List<ReviewModel> search(String keyword) {
+    public ArrayList<ReviewModel> search(String keyword) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

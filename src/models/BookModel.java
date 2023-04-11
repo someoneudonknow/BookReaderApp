@@ -5,6 +5,7 @@
 package models;
 
 import com.mysql.cj.jdbc.Blob;
+import models.DAO.BookDAO;
 
 /**
  *
@@ -37,7 +38,7 @@ public class BookModel {
     public void setId(int id) {
         this.id = id;
     }
-
+  
     public String getName() {
         return name;
     }
@@ -77,6 +78,15 @@ public class BookModel {
     public void setManager_id(int manager_id) {
         this.manager_id = manager_id;
     }
+    public String getAverageRating(int id) {
+        return  BookDAO.getInstance().getRatingAverage(id);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+    
     
     
     
