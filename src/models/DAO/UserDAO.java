@@ -33,7 +33,7 @@ public class UserDAO implements DAOInterface<UserModel, Integer> {
     }
 
     @Override
-    public List<UserModel> getAll() {
+    public ArrayList<UserModel> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -48,7 +48,7 @@ public class UserDAO implements DAOInterface<UserModel, Integer> {
     }
 
     @Override
-    public List<UserModel> search(String keyword) {
+    public ArrayList<UserModel> search(String keyword) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

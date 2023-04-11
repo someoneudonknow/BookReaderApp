@@ -26,14 +26,16 @@ public class MainPanelController {
         this.mainView = mainView;
         //this.bookModels = bookModels;
         SetDataToList setData = new SetDataToList(this.mainView);
-        setData.setMainViewItemList(this.mainPanel.getListTopView());
-        setData.setMainViewItemList(this.mainPanel.getListNewUpdate());
+        // Xác định thêm vào panel nào
+        setData.setTop5View(this.mainPanel.getListTopView());
+//        setData.setMainViewItemList(this.mainPanel.getListNewUpdate());
         
         this.mainPanel.onBtnMore(e -> {
             changeMorePanel();
         });
+        
     }
-    
+    // Xem thêm button
     public void changeMorePanel(){
         this.mainView.remove(this.mainPanel);
         AllBookPanel allBookPanel = new AllBookPanel();

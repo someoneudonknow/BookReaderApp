@@ -4,6 +4,7 @@
  */
 package models.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 import models.CategoryModel;
 import models.interfaces.DAOInterface;
@@ -29,7 +30,7 @@ public class CategoryDAO implements DAOInterface<CategoryModel, Integer>   {
     }
 
     @Override
-    public List<CategoryModel> getAll() {
+    public ArrayList<CategoryModel> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -44,7 +45,7 @@ public class CategoryDAO implements DAOInterface<CategoryModel, Integer>   {
     }
 
     @Override
-    public List<CategoryModel> search(String keyword) {
+    public ArrayList<CategoryModel> search(String keyword) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

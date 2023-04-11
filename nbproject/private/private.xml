@@ -3,15 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/views/panels/AddBookPanel.java</file>
             <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/DAO/BookDAO.java</file>
-            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/DAO/SavedDAO.java</file>
-            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/DAO/ReadingDAO.java</file>
-            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/interfaces/DAOInterface.java</file>
-            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/entityPK/ReviewPK.java</file>
-            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/DAO/HaveCategoryDAO.java</file>
-            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/DAO/CategoryDAO.java</file>
-            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/entityPK/SavedPK.java</file>
-            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/models/DAO/ReviewDAO.java</file>
+            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/controller/item/BookItemController.java</file>
+            <file>file:/C:/Users/trang/Dropbox/code/BookReaderApp/src/views/panels/BookInforPanel.java</file>
         </group>
     </open-files>
 </project-private>

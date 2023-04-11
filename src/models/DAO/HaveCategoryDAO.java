@@ -4,6 +4,7 @@
  */
 package models.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 import models.HaveCategoryModel;
 import models.entityPK.HaveCategoryPK;
@@ -30,7 +31,7 @@ public class HaveCategoryDAO implements DAOInterface<HaveCategoryModel, HaveCate
     }
 
     @Override
-    public List<HaveCategoryModel> getAll() {
+    public ArrayList<HaveCategoryModel> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -45,7 +46,7 @@ public class HaveCategoryDAO implements DAOInterface<HaveCategoryModel, HaveCate
     }
 
     @Override
-    public List<HaveCategoryModel> search(String keyword) {
+    public ArrayList<HaveCategoryModel> search(String keyword) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

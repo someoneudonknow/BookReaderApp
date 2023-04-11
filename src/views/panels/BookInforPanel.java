@@ -4,10 +4,21 @@
  */
 package views.panels;
 
+import com.mysql.cj.jdbc.Blob;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import models.BookModel;
+import models.DAO.BookDAO;
 
 /**
  *
@@ -331,6 +342,33 @@ public class BookInforPanel extends javax.swing.JPanel {
         return btnLast;
     }
 
+    public void setTxtName(String title) {
+        txtName.setText(title);
+    }
+
+    public void setBook(BookModel book) throws IOException, SQLException {
+        int currentID = book.getId();
+        txtName.setText(book.getName());
+        txtAuthor.setText(book.getAuthor());
+        txtDiscription.setText(book.getDescription());
+        ArrayList<String> categoryList = BookDAO.getInstance().getCategoryList(currentID);
+        txtCategorys.setText("");
+        for (String category : categoryList) {
+            txtCategorys.setText(txtCategorys.getText() + category + " ");
+        }
+        String[] rating = (book.getAverageRating(currentID)).split(" ");
+        txtRate.setText("" + rating[0] + " sao" + " " + "(" + rating[1] + ")");
+         
+        Blob coverBlob  = book.getCover();
+        byte[] coverData = coverBlob.getBytes(1, (int) coverBlob.length());
+        InputStream in = new ByteArrayInputStream(coverData); 
+        BufferedImage image = ImageIO.read(in); 
+        ImageIcon icon = new ImageIcon(image); 
+        
+        this.imgCover.setIcon(icon);
+        in.close();
+    }
+
     public JButton getBtnSave() {
         return btnSave;
     }
@@ -374,11 +412,11 @@ public class BookInforPanel extends javax.swing.JPanel {
     public void setImgCover(JLabel imgCover) {
         this.imgCover = imgCover;
     }
-    
+
     public void onBtnFirst(ActionListener action) {
         this.btnFirst.addActionListener(action);
     }
-    
+
     public void onBtnLast(ActionListener action) {
         this.btnLast.addActionListener(action);
     }

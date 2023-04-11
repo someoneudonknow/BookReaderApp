@@ -8,6 +8,7 @@ import controller.panel.BookInforController;
 import views.items.BookItem;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import models.BookModel;
 import views.panels.BookInforPanel;
 import views.panels.ReadingPanel;
 import views.MainView;
@@ -27,7 +28,9 @@ public class BookItemController {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
+                    BookModel book = bookItem.getBookModels();
                     BookInforPanel bookInforPanel = new BookInforPanel();
+                    bookInforPanel.setBook(book);
                     new BookInforController(bookInforPanel, mainView);
                     getMainView().setMainPanel(bookInforPanel);
                 } catch (Exception es) {
