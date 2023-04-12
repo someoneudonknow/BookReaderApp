@@ -56,7 +56,7 @@ public class BookInforController {
         });
     }
 
-    public void changeToChapter(ChapterModel changedChapter) {
+    public void changeToChapter(ChapterModel changedChapter) throws SQLException {
 
        ReadingPanel newReadingPanel = new ReadingPanel();
        newReadingPanel.setChapterDetails(changedChapter);
