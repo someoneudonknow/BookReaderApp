@@ -4,6 +4,7 @@
  */
 package models;
 
+
 import com.mysql.cj.jdbc.Blob;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -14,6 +15,7 @@ import java.io.InputStream;
 import java.sql.SQLException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+
 import models.DAO.BookDAO;
 import java.sql.ResultSet;
 import static javax.swing.Spring.height;

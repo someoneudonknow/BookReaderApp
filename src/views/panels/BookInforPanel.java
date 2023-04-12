@@ -365,7 +365,7 @@ public class BookInforPanel extends javax.swing.JPanel {
         }
         String[] rating = (book.getAverageRating(currentID)).split(" ");
         txtRate.setText("" + rating[0] + " sao" + " " + "(" + rating[1] + ")");
-        this.imgCover.setIcon(book.getImageFromBlob(currentID));
+
         
 //        this.listChapter = null;
     }
