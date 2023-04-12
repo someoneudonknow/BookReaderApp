@@ -66,23 +66,6 @@ public class InfoPanelController {
         this.infoPanel.getPhoneNumberInput().setText(currentUser.getPhoneNumber());
         this.infoPanel.getPasswordInput().setText(currentUser.getPassword());
         this.infoPanel.getImageHolder().setIcon(Converter.convertBlobToImageIcon(currentUser.getAvatar()));
-
-        this.infoPanel.getPasswordInput().getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-        });
     }
 
     private void handleChooseFileBtnCLicked() {
@@ -139,6 +122,13 @@ public class InfoPanelController {
             Blob avatar = Converter.convertImageToBlob((ImageIcon) this.infoPanel.getImageHolder().getIcon());
             UserDAO userDAO = new UserDAO();
 
+            boolean isPhoneNumChanged = !phoneNumber.equals(this.currentUser.getPhoneNumber());
+            boolean isUserNameChanged = !userName.equals(this.currentUser.getUserName());
+            boolean isPasswordChanged = !password.equals(this.currentUser.getPassword());
+
+            System.out.println("isPhoneNumChanged: " + isPhoneNumChanged);
+            System.out.println("isUserNameChanged: " + isUserNameChanged);
+            System.out.println("isPasswordChanged: " + isPasswordChanged);
             UserModel editedUser = new UserModel(this.currentUser.getId(),
                     userName,
                     password,
@@ -147,23 +137,17 @@ public class InfoPanelController {
                     this.currentUser.isIsManager(),
                     this.currentUser.getManagerId());
 
-            if (userDAO.updateUser(this.currentUser.getId(), editedUser)) {
+            if (userDAO.updateUser(this.currentUser.getId(), editedUser, isPhoneNumChanged, isUserNameChanged)) {
                 JOptionPane.showMessageDialog(infoPanel, "Sửa thông tin thành công");
+                this.currentUser = editedUser;
                 this.updateMainViewUI(editedUser);
                 this.setUnEditable();
             } else {
                 JOptionPane.showMessageDialog(infoPanel, "Số điện thoại hoặc tên đăng nhập đã tồn tại!");
             }
-
         }
     }
 
-    private List<String> formDataChanged() {
-        List<String> changedFields = new ArrayList<>();
-        
-        return changedFields;
-    }
-    
     private void updateMainViewUI(UserModel user) {
         this.mainView.setUserModel(user);
         this.mainView.getLbAvatar().setIcon(Converter.convertBlobToImageIcon(user.getAvatar()));
@@ -186,6 +170,16 @@ public class InfoPanelController {
         this.infoPanel.getShowPasswordBtn().setEnabled(false);
         this.infoPanel.getShowPasswordConfirmBtn().setEnabled(false);
         this.infoPanel.getBtnEdit().setEnabled(true);
+
+        if (this.infoPanel.getShowPasswordBtn().isSelected()) {
+            this.infoPanel.getShowPasswordBtn().setSelected(false);
+            this.infoPanel.getPasswordInput().setEchoChar('\u2022');
+        }
+
+        if (this.infoPanel.getShowPasswordConfirmBtn().isSelected()) {
+            this.infoPanel.getShowPasswordConfirmBtn().setSelected(false);
+            this.infoPanel.getPasswordConfirmInput().setEchoChar('\u2022');
+        }
     }
 
     private void setEditable() {

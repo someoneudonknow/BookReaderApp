@@ -128,12 +128,15 @@ public class UserDAO implements DAOInterface<UserModel, Integer> {
         }
     }
     
-    public boolean updateUser(int id, UserModel data) {
-        if(!isPhoneNumberExists(data.getPhoneNumber()) && !isUserNameExists(data.getUserName())) {
-            this.update(id, data);
-            return true;
+    public boolean updateUser(int id, UserModel data, boolean isPhoneNumChanged, boolean isUserNameChanged) {
+        if(isPhoneNumChanged && isPhoneNumberExists(data.getPhoneNumber())) {
+            return false;
         }
-        return false;
+        if(isUserNameChanged && isUserNameExists(data.getUserName())) {
+            return false;
+        }
+        this.update(id, data);
+        return true;
     }
     
     public boolean isPhoneNumberExists(String phoneNumber) {
