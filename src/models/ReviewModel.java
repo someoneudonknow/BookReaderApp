@@ -4,6 +4,8 @@
  */
 package models;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import models.entityPK.ReviewPK;
 
 /**
@@ -14,13 +16,16 @@ public class ReviewModel extends ReviewPK {
 
     private String comment;
     private int rating;
-
-    public ReviewModel(int user_id, int book_id, String comment, int rating) {
+    
+    public ReviewModel() {
+        
+    }
+    public ReviewModel(String comment, int rating, int user_id, int book_id) {
         super(user_id, book_id);
         this.comment = comment;
         this.rating = rating;
     }
-
+    
     public String getComment() {
         return comment;
     }
@@ -29,12 +34,18 @@ public class ReviewModel extends ReviewPK {
         this.comment = comment;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+    public static void populateChapterModel(ResultSet rs, ReviewModel review) throws SQLException {
+        review.setUser_id(rs.getInt("user_id"));
+        review.setBook_id(rs.getInt("book_id"));
+        review.setComment(rs.getString("user_comment"));
+        review.setRating(rs.getInt("user_rating"));
     }
 
 }

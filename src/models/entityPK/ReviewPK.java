@@ -12,7 +12,10 @@ public class ReviewPK {
 
     private int user_id;
     private int book_id;
-
+    
+    public ReviewPK() {
+        
+    }
     public ReviewPK(int user_id, int book_id) {
         this.user_id = user_id;
         this.book_id = book_id;

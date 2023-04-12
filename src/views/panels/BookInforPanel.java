@@ -26,6 +26,8 @@ import models.DAO.BookDAO;
  */
 public class BookInforPanel extends javax.swing.JPanel {
 
+    private int currentID;
+
     /**
      * Creates new form BookInforPanel
      */
@@ -345,9 +347,14 @@ public class BookInforPanel extends javax.swing.JPanel {
     public void setTxtName(String title) {
         txtName.setText(title);
     }
-
+    public void setID(BookModel book) {
+        this.currentID = book.getId();
+    }
+    public int getID() {
+        return this.currentID;
+    }
     public void setBook(BookModel book) throws IOException, SQLException {
-        int currentID = book.getId();
+        this.setID(book);
         txtName.setText(book.getName());
         txtAuthor.setText(book.getAuthor());
         txtDiscription.setText(book.getDescription());
@@ -358,17 +365,11 @@ public class BookInforPanel extends javax.swing.JPanel {
         }
         String[] rating = (book.getAverageRating(currentID)).split(" ");
         txtRate.setText("" + rating[0] + " sao" + " " + "(" + rating[1] + ")");
-         
-        Blob coverBlob  = (Blob) book.getCover();
-        byte[] coverData = coverBlob.getBytes(1, (int) coverBlob.length());
-        InputStream in = new ByteArrayInputStream(coverData); 
-        BufferedImage image = ImageIO.read(in); 
-        ImageIcon icon = new ImageIcon(image); 
-        
-        this.imgCover.setIcon(icon);
-        in.close();
-    }
 
+        
+//        this.listChapter = null;
+    }
+    
     public JButton getBtnSave() {
         return btnSave;
     }
@@ -415,6 +416,7 @@ public class BookInforPanel extends javax.swing.JPanel {
 
     public void onBtnFirst(ActionListener action) {
         this.btnFirst.addActionListener(action);
+//        System.out.println("first button");
     }
 
     public void onBtnLast(ActionListener action) {

@@ -4,12 +4,17 @@
  */
 package models;
 
+import com.mysql.cj.jdbc.Blob;
+import com.mysql.cj.protocol.Resultset;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
  * @author ADMIN
  */
 public class ChapterModel {
+
     private int id;
     private String title;
     private int serial;
@@ -66,6 +71,13 @@ public class ChapterModel {
     public void setBook_id(int book_id) {
         this.book_id = book_id;
     }
-    
-    
+
+    public static void populateChapterModel(ResultSet rs, ChapterModel chapter) throws SQLException {
+        chapter.setId(rs.getInt("chapter_id"));
+        chapter.setTitle(rs.getString("chapter_title"));
+        chapter.setSerial(rs.getInt("chapter_serial"));
+        chapter.setDocument(rs.getString("chapter_document"));
+        chapter.setBook_id(rs.getInt("book_id"));
+    }
+
 }
