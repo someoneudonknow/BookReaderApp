@@ -51,14 +51,14 @@ public class SignUpController {
         String password = String.valueOf(this.rgsForm.getPasswordInput().getPassword());
         String passwordConfirm = String.valueOf(this.rgsForm.getPasswordConfirmInput().getPassword());
 
-        Rules[] userNameRules = new Rules[]{new Rules("Please enter user name!", Rules.IS_REQUIRED),
-            new Rules("User name can not contains white space!", Rules.IS_CONTAINS_WHITE_SPACE)};
-        Rules[] phoneNumberRules = new Rules[]{new Rules("Please enter phone number!", Rules.IS_REQUIRED),
-            new Rules("Wrong phone number format!", Rules.IS_PHONE_NUMBER)};
-        Rules[] passwordRules = new Rules[]{new Rules("Please enter password!", Rules.IS_REQUIRED),
-            new Rules("Password must be greater than 6 characters!", Rules.IS_MIN, 6)};
-        Rules[] passwordConfirmRules = new Rules[]{new Rules("Please enter password confirm!", Rules.IS_REQUIRED),
-            new Rules("Wrong password confirm!", Rules.IS_PASSWORD_CONFIRM, password)};
+        Rules[] userNameRules = new Rules[]{new Rules("Vui lòng nhập tên đăng nhập!", Rules.IS_REQUIRED),
+            new Rules("Tên đăng nhập không được có khoảng trống!", Rules.IS_CONTAINS_WHITE_SPACE)};
+        Rules[] phoneNumberRules = new Rules[]{new Rules("Vui lòng nhập số điện thoại!", Rules.IS_REQUIRED),
+            new Rules("Định dạng số điện thoại không hợp lệ!", Rules.IS_PHONE_NUMBER)};
+        Rules[] passwordRules = new Rules[]{new Rules("Vui lòng nhập mật khẩu!", Rules.IS_REQUIRED),
+            new Rules("Mật khẩu phải lớn hơn 6 kí tự!", Rules.IS_MIN, 6)};
+        Rules[] passwordConfirmRules = new Rules[]{new Rules("Vui lòng xác nhận mật khẩu!", Rules.IS_REQUIRED),
+            new Rules("Xác nhận mật khẩu sai!", Rules.IS_PASSWORD_CONFIRM, password)};
 
         Validate userNameValidate = new Validate(userName, userNameRules);
         Validate phoneNumberValidate = new Validate(phoneNumber, phoneNumberRules);

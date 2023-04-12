@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 public final class Converter {
 
     public static Blob convertImageToBlob(ImageIcon imageIcon) {
+        if(imageIcon == null) return null;
         BufferedImage bufferedImage = new BufferedImage(imageIcon.getIconWidth(), imageIcon.getIconHeight(), BufferedImage.TYPE_INT_RGB);
         Graphics graphics = bufferedImage.createGraphics();
         imageIcon.paintIcon(null, graphics, 0, 0);
@@ -37,6 +38,7 @@ public final class Converter {
     }
 
     public static ImageIcon convertBlobToImageIcon(Blob blob) {
+        if(blob == null) return null;
         byte[] imageBytes;
         ImageIcon imageIcon = null;
         try {

@@ -35,7 +35,7 @@ public class ChapterDAO implements DAOInterface<ChapterModel, Integer>   {
     }
 
     @Override
-    public void update(Integer pk) {
+    public void update(Integer pk, ChapterModel data) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

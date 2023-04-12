@@ -11,7 +11,7 @@ public interface DAOInterface<T, PK> {
 
     public ArrayList<T> getAll();
 
-    public void update(PK pk);
+    public void update(PK pk, T data);
 
     public void delete(PK pk);
 

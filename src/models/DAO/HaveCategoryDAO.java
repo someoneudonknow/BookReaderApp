@@ -36,7 +36,7 @@ public class HaveCategoryDAO implements DAOInterface<HaveCategoryModel, HaveCate
     }
 
     @Override
-    public void update(HaveCategoryPK pk) {
+    public void update(HaveCategoryPK pk, HaveCategoryModel data) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

@@ -223,7 +223,10 @@ public class MainView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public void setUserModel(UserModel user) {
+        this.userModels = user;
+    }
+    
     public UserModel getUserModels() {
         return userModels;
     }

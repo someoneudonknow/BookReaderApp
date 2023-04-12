@@ -36,7 +36,7 @@ public class SavedDAO implements DAOInterface<SavedModel, SavedPK> {
     }
 
     @Override
-    public void update(SavedPK pk) {
+    public void update(SavedPK pk, SavedModel data) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

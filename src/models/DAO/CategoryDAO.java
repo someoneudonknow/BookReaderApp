@@ -35,7 +35,7 @@ public class CategoryDAO implements DAOInterface<CategoryModel, Integer>   {
     }
 
     @Override
-    public void update(Integer pk) {
+    public void update(Integer pk, CategoryModel data) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

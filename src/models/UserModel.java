@@ -18,7 +18,7 @@ public class UserModel {
     private boolean isManager;
     private int managerId;
     
-    private UserModel() {}
+    private UserModel(int id1, String userName1, String phoneNumber1, String password1, Blob avatar1) {}
 
     public UserModel(int id, String userName, String password, String phoneNumber, Blob avatar, boolean isManager, int managerId) {
         this.id = id;
@@ -30,6 +30,14 @@ public class UserModel {
         this.managerId = managerId;
     }
 
+    public UserModel(String userName, String password, String phoneNumber, Blob avatar, int managerId) {
+        this.userName = userName;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.avatar = avatar;
+        this.isManager = false;
+        this.managerId = managerId;
+    }
     
     public int getId() {
         return id;
@@ -85,5 +93,10 @@ public class UserModel {
 
     public void setManagerId(int managerId) {
         this.managerId = managerId;
+    }
+
+    @Override
+    public String toString() {
+        return "UserModel{" + "id=" + id + ", userName=" + userName + ", password=" + password + ", phoneNumber=" + phoneNumber + ", avatar=" + avatar + ", isManager=" + isManager + ", managerId=" + managerId + '}';
     }
 }

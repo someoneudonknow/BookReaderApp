@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller.view;
 
 import controller.panel.BookManagingController;
 import controller.panel.MainPanelController;
 import controller.panel.SearchPanelController;
 import controller.panel.HistoryController;
+import controller.panel.InfoPanelController;
 import controller.panel.LibraryController;
 import controller.panel.UserManagingController;
 import java.awt.event.MouseAdapter;
@@ -56,8 +53,9 @@ public class MainViewController {
         }
 
         this.mainView.onBtnInfor(e -> {
-            //changePanel(new InforPanel());
-            this.mainView.setMainPanel(new InforPanel());
+            InforPanel currentUserInfo = new InforPanel();
+            new InfoPanelController(currentUserInfo, this.mainView.getUserModels(), this.mainView);
+            changePanel(currentUserInfo);
         });
 
         this.mainView.onBtnMain(e -> {
@@ -114,7 +112,7 @@ public class MainViewController {
 
     private void initUI() {
         UserModel currentUser = this.mainView.getUserModels();
-        
+
         this.mainView.getLbAvatar().setIcon(Converter.convertBlobToImageIcon(currentUser.getAvatar()));
         this.mainView.getLbUsername().setText(currentUser.getUserName());
     }

@@ -65,10 +65,10 @@ public class LoginController {
     private boolean isFormValid() {
         String userName = this.loginForm.getUserNameInput().getText();
         String password = String.valueOf(this.loginForm.getPasswordInput().getPassword());
-        Rules[] passwordRules = new Rules[]{new Rules("Please enter password!", Rules.IS_REQUIRED),
-            new Rules("Password must be greater than 6 characters", Rules.IS_MIN, 6)};
-        Rules[] userNameRules = new Rules[]{new Rules("Please enter user name!", Rules.IS_REQUIRED),
-            new Rules("User name can not contains white space!", Rules.IS_CONTAINS_WHITE_SPACE)};
+        Rules[] passwordRules = new Rules[]{new Rules("Vui lòng nhâp mật khẩu!", Rules.IS_REQUIRED),
+            new Rules("Mật khẩu phải lớn hơn 6 kí tự!", Rules.IS_MIN, 6)};
+        Rules[] userNameRules = new Rules[]{new Rules("Vui lòng nhập tên đăng nhập!", Rules.IS_REQUIRED),
+            new Rules("Tên đăng nhập không được có khoảng trống!", Rules.IS_CONTAINS_WHITE_SPACE)};
 
         Validate validatePassword = new Validate(password, passwordRules);
         Validate validateUserName = new Validate(userName, userNameRules);

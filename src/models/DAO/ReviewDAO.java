@@ -36,7 +36,7 @@ public class ReviewDAO implements DAOInterface<ReviewModel, ReviewPK> {
     }
 
     @Override
-    public void update(ReviewPK pk) {
+    public void update(ReviewPK pk, ReviewModel data) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

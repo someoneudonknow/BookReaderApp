@@ -36,7 +36,7 @@ public class ReadingDAO implements DAOInterface<ReadingModel, ReadingPK> {
     }
 
     @Override
-    public void update(ReadingPK pk) {
+    public void update(ReadingPK pk, ReadingModel data) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
