@@ -19,8 +19,8 @@ CREATE TABLE IF NOT EXISTS categoryList(
 CREATE TABLE IF NOT EXISTS bookInfo(
 	book_id INT(10) PRIMARY KEY AUTO_INCREMENT,
     book_name VARCHAR(100) UNIQUE NOT NULL,
-    author VARCHAR(50) NOT NULL,
-    cover MEDIUMBLOB,
+    book_author VARCHAR(50) NOT NULL,
+    book_cover MEDIUMBLOB,
     book_description TEXT NOT NULL,
     manager_id INT(10) NOT NULL DEFAULT 1,
     FOREIGN KEY (manager_id) REFERENCES userInfo(manager_id)
@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS bookChapter(
     chapter_title VARCHAR(200) NOT NULL,
     chapter_serial INT(10) NOT NULL,
     chapter_document TEXT ,
+    chapter_update DATETIME NOT NULL,
     book_id INT(10) NOT NULL,
     FOREIGN KEY (book_id) REFERENCES bookInfo(book_id)
     ON DELETE CASCADE

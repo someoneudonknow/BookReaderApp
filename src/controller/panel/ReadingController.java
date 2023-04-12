@@ -18,6 +18,7 @@ public class ReadingController {
     public ReadingController(ReadingPanel readingPanel, MainView mainView) {
         this.readingPanel = readingPanel;
         this.mainView = mainView;
+        
     }
     
     

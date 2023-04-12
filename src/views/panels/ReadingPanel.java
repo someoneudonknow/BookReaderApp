@@ -4,17 +4,70 @@
  */
 package views.panels;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import models.ChapterModel;
+import models.DAO.ChapterDAO;
+import views.MainView;
+
 /**
  *
  * @author ADMIN
  */
 public class ReadingPanel extends javax.swing.JPanel {
 
+    private ChapterModel currentChapter;
+
     /**
      * Creates new form ReadingPanel
      */
     public ReadingPanel() {
         initComponents();
+        this.handleClicked();
+    }
+
+    public ReadingPanel(MainView view) {
+        initComponents();
+        
+    }
+
+    public void handleClicked() {
+        btnPrevious.addActionListener(e -> {
+            try {
+                this.setChapterDetails(ChapterDAO.getInstance().getPreivousNextChapter(currentChapter, "previous"));
+            } catch (SQLException ex) {
+                Logger.getLogger(ReadingPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+        btnNext.addActionListener(e -> {
+            try {
+                this.setChapterDetails(ChapterDAO.getInstance().getPreivousNextChapter(currentChapter, "next"));
+            } catch (SQLException ex) {
+                Logger.getLogger(ReadingPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }
+//    public void handleClicked(MainView view) {
+//        btnPrevious.addActionListener(e -> {
+//            System.out.println("previous chapter");
+//
+//        });
+//        btnNext.addActionListener(e -> {
+//            System.out.println("next chapter");
+//        });
+//    }
+
+   
+
+    public void setChapterDetails(ChapterModel chapter) {
+        this.currentChapter = chapter;
+        jTextArea1.setText(chapter.getDocument());
+    }
+
+    public ChapterModel getChapterModel() {
+        return this.currentChapter;
     }
 
     /**

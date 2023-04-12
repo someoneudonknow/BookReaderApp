@@ -9,6 +9,7 @@ import controller.item.BookItemManagerController;
 import controller.item.ChapterItemController;
 import controller.item.CommentItemController;
 import controller.item.UserItemController;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import models.BookModel;
@@ -23,6 +24,8 @@ import views.items.UserItemManager;
 import javax.swing.JPanel;
 import models.ChapterModel;
 import models.DAO.BookDAO;
+import models.DAO.ChapterDAO;
+import models.DAO.ReviewDAO;
 import models.ReviewModel;
 import models.SavedModel;
 import views.panels.UserManagingPanel;
@@ -55,9 +58,9 @@ public class SetDataToList {
     public void setBookItemList(JPanel panel) {
         ArrayList<BookItem> items = new ArrayList<>();
         ArrayList<BookModel> books = BookDAO.getInstance().getAll();
-        
-        for(BookModel book: books) {
-            BookItem a  = new BookItem(book);
+
+        for (BookModel book : books) {
+            BookItem a = new BookItem(book);
             new BookItemController(a, this.mainView);
             items.add(a);
         }
@@ -121,15 +124,14 @@ public class SetDataToList {
     }
 
     //
-    public void setChapterList(JPanel parent, JPanel panel, int book_id) {
+    public void setChapterList(JPanel parent, JPanel panel, int book_id) throws SQLException {
         ArrayList<ChapterItem> items = new ArrayList<>();
-
-        for (int i = 0; i < 20; i++) {
-            ChapterItem a = new ChapterItem(new ChapterModel(i, "a", (i + 1), "123456789", 1));
+        ArrayList<ChapterModel> chapterList = new ArrayList<>();
+        chapterList = ChapterDAO.getInstance().getAllChapterFromBook(book_id);
+        for (ChapterModel chapter : chapterList) {
+            ChapterItem a = new ChapterItem(chapter);
             new ChapterItemController(parent, a, mainView);
-//            new BookItemController(a,this.mainView);
             items.add(a);
-
         }
 
         for (ChapterItem i : items) {
@@ -139,16 +141,15 @@ public class SetDataToList {
         panel.repaint();
     }
 
-    public void setCommentList(JPanel parent, JPanel panel, int book_id) {
+    public void setCommentList(JPanel parent, JPanel panel, int book_id) throws SQLException {
         ArrayList<CommentItem> items = new ArrayList<>();
+        ArrayList<ReviewModel> reviewList = ReviewDAO.getInstance().getAllReviewFromBook(book_id);
 
-        for (int i = 0; i < 20; i++) {
-            CommentItem a = new CommentItem(new ReviewModel(i, book_id, "this is a comeent", 1));
+        for (ReviewModel review : reviewList) {
+            CommentItem a = new CommentItem(review);
             new CommentItemController(parent, a, mainView);
             items.add(a);
-
         }
-
         for (CommentItem i : items) {
             panel.add(i);
         }
