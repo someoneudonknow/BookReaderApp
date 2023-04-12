@@ -120,15 +120,10 @@ public class InfoPanelController {
             String phoneNumber = this.infoPanel.getPhoneNumberInput().getText();
             String password = String.valueOf(this.infoPanel.getPasswordInput().getPassword());
             Blob avatar = Converter.convertImageToBlob((ImageIcon) this.infoPanel.getImageHolder().getIcon());
-            UserDAO userDAO = new UserDAO();
-
             boolean isPhoneNumChanged = !phoneNumber.equals(this.currentUser.getPhoneNumber());
             boolean isUserNameChanged = !userName.equals(this.currentUser.getUserName());
             boolean isPasswordChanged = !password.equals(this.currentUser.getPassword());
-
-            System.out.println("isPhoneNumChanged: " + isPhoneNumChanged);
-            System.out.println("isUserNameChanged: " + isUserNameChanged);
-            System.out.println("isPasswordChanged: " + isPasswordChanged);
+            UserDAO userDAO = new UserDAO();
             UserModel editedUser = new UserModel(this.currentUser.getId(),
                     userName,
                     password,

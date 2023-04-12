@@ -35,7 +35,6 @@ public class MainViewController {
         new MainPanelController(panel, this.mainView);
         if (this.mainView.getUserModels().getUserName().equals("admin")) {
             this.mainView.getBtnHistory().setVisible(false);
-            this.mainView.getBtnInFor().setVisible(false);
             this.mainView.getBtnLibrary().setVisible(false);
             this.mainView.getBtnMain().setVisible(false);
             this.mainView.getBtnSearch().setVisible(false);
