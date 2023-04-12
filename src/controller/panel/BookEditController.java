@@ -5,6 +5,7 @@
 package controller.panel;
 
 import java.awt.Dimension;
+import java.sql.SQLException;
 import javax.swing.JPanel;
 import other.SetDataToList;
 import views.panels.AddChapterPanel;
@@ -20,7 +21,7 @@ public class BookEditController {
     private BookEditPanel bookEditPanel;
     private MainView mainView;
 
-    public BookEditController(BookEditPanel bookEditPanel, MainView mainView) {
+    public BookEditController(BookEditPanel bookEditPanel, MainView mainView) throws SQLException {
         this.bookEditPanel = bookEditPanel;
         this.mainView = mainView;
         SetDataToList setData = new SetDataToList(mainView);

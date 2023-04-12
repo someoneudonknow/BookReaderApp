@@ -25,7 +25,7 @@ public class ChapterItemController {
         this.chapterItem = chapterItem;
         this.mainView = mainView;
         this.chapterItem.setPreferredSize(this.chapterItem.getPreferredSize());
-
+        
         if (!(parent instanceof BookEditPanel)) {
             this.chapterItem.getBtnDelete().setVisible(false);
         }
@@ -37,7 +37,10 @@ public class ChapterItemController {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    getMainView().setMainPanel(new ReadingPanel());
+                    ReadingPanel  chapterDetails = new ReadingPanel();
+                    chapterDetails.setChapterDetails(chapterItem.getChapterModels());
+                    getMainView().setMainPanel(chapterDetails);
+                    
                 } catch (Exception es) {
                     System.out.println("Khong co mainView");
                 }
