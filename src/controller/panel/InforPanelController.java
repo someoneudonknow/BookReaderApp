@@ -20,13 +20,13 @@ import other.Validate;
 import views.MainView;
 import views.panels.InforPanel;
 
-public class InfoPanelController {
+public class InforPanelController {
 
     private InforPanel infoPanel;
     private UserModel currentUser;
     private MainView mainView;
 
-    public InfoPanelController(InforPanel panel, UserModel currentUser, MainView mainView) {
+    public InforPanelController(InforPanel panel, UserModel currentUser, MainView mainView) {
         this.infoPanel = panel;
         this.currentUser = currentUser;
         this.mainView = mainView;

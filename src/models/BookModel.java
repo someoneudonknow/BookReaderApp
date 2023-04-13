@@ -42,6 +42,12 @@ public class BookModel {
     }
 
     public BookModel() {
+        this.id = 0;
+        this.name = "";
+        this.author = "";
+        this.cover = null;
+        this.description = "";
+        this.manager_id = 0;
     }
 
     public int getId() {
