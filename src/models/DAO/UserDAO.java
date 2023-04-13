@@ -4,6 +4,7 @@
  */
 package models.DAO;
 
+import com.mysql.cj.jdbc.Blob;
 import java.sql.ResultSet;
 import database.DB;
 import models.interfaces.DAOInterface;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.UserModel;
-import other.Validate;
+import java.sql.Statement;
 
 public class UserDAO implements DAOInterface<UserModel, Integer> {
 
@@ -47,10 +48,10 @@ public class UserDAO implements DAOInterface<UserModel, Integer> {
     }
 
     public boolean insertNewUser(UserModel data) {
-        if(this.isPhoneNumberExists(data.getPhoneNumber()) || this.isUserNameExists(data.getUserName())) {
+        if (this.isPhoneNumberExists(data.getPhoneNumber()) || this.isUserNameExists(data.getUserName())) {
             return false;
         }
-        
+
         this.insert(data);
         return true;
     }
@@ -101,6 +102,37 @@ public class UserDAO implements DAOInterface<UserModel, Integer> {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public UserModel getManagerInfo() {
+        String query = "SELECT * FROM userinfo WHERE userinfo.is_manager = 1 LIMIT 1";
+
+        DB db = new DB();
+        Connection con = db.getConnection();
+        Statement statement = null;
+
+        try {
+            statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+
+            while (rs.next()) {
+                int id = rs.getInt("user_id");
+                String username = rs.getString("user_name");
+                String userPass = rs.getString("user_password");
+                String userPhoneNumber = rs.getString("user_phoneNumber");
+                Blob userAvatar = (Blob) rs.getBlob("user_avatar");
+                boolean isManager = rs.getBoolean("is_manager");
+                Integer managerId = rs.getInt("manager_id");
+                
+                return new UserModel(id, username, userPass, userPhoneNumber, userAvatar, isManager, managerId);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.closeConnection(con);
+        }
+
+        return null;
+    }
+
     @Override
     public void update(Integer id, UserModel data) {
         String query = "UPDATE userinfo SET user_name = ?, "
@@ -127,18 +159,18 @@ public class UserDAO implements DAOInterface<UserModel, Integer> {
             db.closeConnection(con);
         }
     }
-    
+
     public boolean updateUser(int id, UserModel data, boolean isPhoneNumChanged, boolean isUserNameChanged) {
-        if(isPhoneNumChanged && isPhoneNumberExists(data.getPhoneNumber())) {
+        if (isPhoneNumChanged && isPhoneNumberExists(data.getPhoneNumber())) {
             return false;
         }
-        if(isUserNameChanged && isUserNameExists(data.getUserName())) {
+        if (isUserNameChanged && isUserNameExists(data.getUserName())) {
             return false;
         }
         this.update(id, data);
         return true;
     }
-    
+
     public boolean isPhoneNumberExists(String phoneNumber) {
         String phoneNumberQuery = "SELECT userinfo.* FROM userinfo WHERE userinfo.user_phoneNumber LIKE" + "\"" + phoneNumber + "\"";
         DB db = new DB();
@@ -177,7 +209,7 @@ public class UserDAO implements DAOInterface<UserModel, Integer> {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         db.closeConnection(con);
-        
+
         return false;
     }
 

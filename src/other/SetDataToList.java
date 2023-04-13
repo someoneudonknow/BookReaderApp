@@ -128,10 +128,13 @@ public class SetDataToList {
         ArrayList<ChapterItem> items = new ArrayList<>();
         ArrayList<ChapterModel> chapterList = new ArrayList<>();
         chapterList = ChapterDAO.getInstance().getAllChapterFromBook(book_id);
+        System.out.println(1);
+
         for (ChapterModel chapter : chapterList) {
             ChapterItem a = new ChapterItem(chapter);
             new ChapterItemController(parent, a, mainView);
             items.add(a);
+
         }
 
         for (ChapterItem i : items) {

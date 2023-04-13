@@ -66,6 +66,7 @@ public class InfoPanelController {
         this.infoPanel.getPhoneNumberInput().setText(currentUser.getPhoneNumber());
         this.infoPanel.getPasswordInput().setText(currentUser.getPassword());
         this.infoPanel.getImageHolder().setIcon(Converter.convertBlobToImageIcon(currentUser.getAvatar()));
+        this.infoPanel.getPasswordConfirmWrapper().setVisible(false);
     }
 
     private void handleChooseFileBtnCLicked() {
@@ -81,7 +82,7 @@ public class InfoPanelController {
             if (imagePath.endsWith("png") || imagePath.endsWith("jpg") || imagePath.endsWith("ipeg")) {
                 ImageIcon userImage = new ImageIcon(imagePath);
                 Image resizedImage = userImage.getImage().getScaledInstance(this.infoPanel.getImageHolder().getWidth(), this.infoPanel.getImageHolder().getHeight(), Image.SCALE_SMOOTH);
-                this.infoPanel.getImageHolder().setIcon(new ImageIcon(resizedImage));
+                this.infoPanel.getImageHolder().setIcon(userImage);
             } else {
                 JOptionPane.showMessageDialog(this.infoPanel, "Sai định dạng ảnh!");
             }
@@ -123,6 +124,11 @@ public class InfoPanelController {
             boolean isPhoneNumChanged = !phoneNumber.equals(this.currentUser.getPhoneNumber());
             boolean isUserNameChanged = !userName.equals(this.currentUser.getUserName());
             boolean isPasswordChanged = !password.equals(this.currentUser.getPassword());
+            
+            if(isPasswordChanged) {
+                this.infoPanel.getPasswordConfirmWrapper().setVisible(isPasswordChanged);
+            }
+            
             UserDAO userDAO = new UserDAO();
             UserModel editedUser = new UserModel(this.currentUser.getId(),
                     userName,

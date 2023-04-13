@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS bookChapter(
     chapter_title VARCHAR(200) NOT NULL,
     chapter_serial INT(10) NOT NULL,
     chapter_document TEXT ,
-    chapter_update DATETIME NOT NULL,
+    chapter_update DATETIME NOT NULL DEFAULT NOW(),
     book_id INT(10) NOT NULL,
     FOREIGN KEY (book_id) REFERENCES bookInfo(book_id)
     ON DELETE CASCADE
