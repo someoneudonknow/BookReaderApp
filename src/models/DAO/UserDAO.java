@@ -135,6 +135,7 @@ public class UserDAO implements DAOInterface<UserModel, Integer> {
 
     @Override
     public void update(Integer id, UserModel data) {
+        boolean isInsertOk = false;
         String query = "UPDATE userinfo SET user_name = ?, "
                 + "user_password = ?, "
                 + "user_avatar = ?, "
@@ -153,10 +154,16 @@ public class UserDAO implements DAOInterface<UserModel, Integer> {
             pst.setInt(5, data.getId());
 
             pst.executeUpdate();
+            isInsertOk = true;
         } catch (SQLException ex) {
+            isInsertOk = false;
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             db.closeConnection(con);
+        }
+        
+        if (!isInsertOk) {
+            throw new UnsupportedOperationException("deo them dc");
         }
     }
 

@@ -24,6 +24,7 @@ import views.panels.AddChapterPanel;
  * @author admin
  */
 public class AddBookController {
+
     private AddBookPanel bookPanel;
     private MainView mainView;
 
@@ -31,10 +32,10 @@ public class AddBookController {
         this.bookPanel = bookPanel;
         this.mainView = mainView;
         this.setCategoryItemList();
-        
+
         this.bookPanel.onBtnNext(e -> {
             categoryResult();
-            
+
 //            BookModel result = getResult();
             BookModel result = new BookModel();
             AddChapterPanel addChapterPanel = new AddChapterPanel();
@@ -44,14 +45,14 @@ public class AddBookController {
 //            } catch (SQLException ex) {
 //                Logger.getLogger(AddBookController.class.getName()).log(Level.SEVERE, null, ex);
 //            }
-new AddChapterController(addChapterPanel, mainView, result);
+                new AddChapterController(addChapterPanel, mainView, result);
             } catch (SQLException ex) {
                 Logger.getLogger(AddBookController.class.getName()).log(Level.SEVERE, null, ex);
             }
             this.mainView.setMainPanel(addChapterPanel);
         });
     }
-    
+
     public void setCategoryItemList() {
         ArrayList<CategoryItem> model = new ArrayList<>();
 //        cái này để lấy dữ liệu
@@ -86,25 +87,27 @@ new AddChapterController(addChapterPanel, mainView, result);
         //set dữ liệu
         this.bookPanel.setListCategory(model);
     }
-    
+
     public void categoryResult() {
         ArrayList<CategoryModel> categoryList = new ArrayList<>();
         for (int i = 0; i < this.bookPanel.getListCategory().getComponentCount(); i++) {
             CategoryItem item = (CategoryItem) this.bookPanel.getListCategory().getComponent(i);
-            if (item.getjCheckBox1().isSelected())
+            if (item.getjCheckBox1().isSelected()) {
                 categoryList.add(item.getCategoryModels());
+            }
         }
-        for (CategoryModel i:categoryList)
+        for (CategoryModel i : categoryList) {
             System.out.println(i.getName());
+        }
     }
-    
+
     public BookModel getResult() {
         String name = this.bookPanel.getTxtName().getText();
         String author = this.bookPanel.getTxtAuthor().getText();
         String description = this.bookPanel.getTxtDescription().getText();
-        Blob cover = Converter.convertImageToBlob((ImageIcon)this.bookPanel.getImageHolder().getIcon());
+        Blob cover = Converter.convertImageToBlob((ImageIcon) this.bookPanel.getImageHolder().getIcon());
         BookModel result = new BookModel(0, name, author, cover, description, 0);
-        
+
         return result;
     }
 }

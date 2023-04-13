@@ -11,6 +11,7 @@ import controller.item.CommentItemController;
 import controller.item.UserItemController;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JLabel;
 import models.BookModel;
 import models.CategoryModel;
@@ -91,15 +92,16 @@ public class SetDataToList {
 //    }
     public void setBookManagerList(JPanel panel) {
         ArrayList<BookItemManager> items = new ArrayList<>();
-
-        for (int i = 0; i < 40; i++) {
-            BookItemManager a = new BookItemManager(new BookModel(i, "a", "a", null, "a", 1));
+        List<BookItemManager> itemManager = new ArrayList<>();
+        List<BookModel> books = BookDAO.getInstance().getAll();
+        
+        for(BookModel b: books) {
+            BookItemManager a = new BookItemManager(b);
             new BookItemManagerController(a, this.mainView);
-            items.add(a);
-
+            itemManager.add(a);
         }
-
-        for (BookItemManager i : items) {
+        
+        for (BookItemManager i : itemManager) {
             panel.add(i);
         }
         panel.revalidate();

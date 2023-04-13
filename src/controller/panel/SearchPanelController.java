@@ -14,10 +14,6 @@ import other.SetDataToList;
 import views.panels.SearchPanel;
 import views.MainView;
 
-/**
- *
- * @author ADMIN
- */
 public class SearchPanelController {
     SearchPanel searchPanel;
     MainView mainView;

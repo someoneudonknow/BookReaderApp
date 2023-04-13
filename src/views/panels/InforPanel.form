@@ -29,9 +29,9 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jLabel1" alignment="0" pref="1011" max="32767" attributes="0"/>
+          <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="93" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -43,7 +43,7 @@
               <Component id="jLabel1" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="172" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="184" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,7 +76,6 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnUndo" min="-2" max="-2" attributes="0"/>
@@ -84,18 +83,13 @@
                   <Component id="btnSave" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="showPasswordBtn" alignment="0" max="32767" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="userNameInput" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="userName" alignment="0" pref="524" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="passwordInput" alignment="0" min="-2" pref="522" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="userNameInput" alignment="0" max="32767" attributes="0"/>
+                          <Component id="userName" alignment="0" pref="524" max="32767" attributes="0"/>
                       </Group>
+                      <Component id="passwordInput" alignment="0" min="-2" pref="522" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                           <Component id="phoneNumberInput" alignment="0" max="32767" attributes="0"/>
                           <Component id="phoneNumber" alignment="0" pref="522" max="32767" attributes="0"/>
@@ -105,6 +99,7 @@
                       <Component id="password" alignment="0" min="-2" pref="522" max="-2" attributes="0"/>
                       <Component id="passwordErrorMessage" alignment="0" min="-2" pref="524" max="-2" attributes="0"/>
                       <Component id="passwordConfirmWrapper" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="showPasswordBtn" alignment="0" min="-2" pref="522" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="128" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -160,14 +155,14 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="passwordErrorMessage" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="passwordConfirmWrapper" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="passwordConfirmWrapper" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnUndo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -295,15 +290,13 @@
             <Property name="text" type="java.lang.String" value="Hi&#xea;&#x309;n thi&#x323; m&#xe2;&#x323;t kh&#xe2;&#x309;u"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnEdit">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ch&#x1ec9;nh s&#x1eed;a"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="btnUndo">
           <Properties>
             <Property name="text" type="java.lang.String" value="H&#x1ee7;y"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUndoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnSave">
           <Properties>
@@ -321,16 +314,13 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="passwordConfirm" alignment="0" min="-2" pref="524" max="-2" attributes="0"/>
-                          <Component id="passwordConfirmInput" min="-2" pref="524" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="passwordConfirmErrorMessage" min="-2" pref="524" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="showPasswordConfirmBtn" min="-2" pref="524" max="-2" attributes="0"/>
+                          <Component id="passwordConfirm" alignment="0" max="32767" attributes="0"/>
+                          <Component id="passwordConfirmInput" alignment="0" max="32767" attributes="0"/>
+                          <Component id="passwordConfirmErrorMessage" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="12" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -342,9 +332,9 @@
                       <Component id="passwordConfirmInput" min="-2" pref="42" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="showPasswordConfirmBtn" min="-2" pref="20" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="passwordConfirmErrorMessage" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="passwordConfirmErrorMessage" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -391,6 +381,11 @@
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnEdit">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ch&#x1ec9;nh s&#x1eed;a"/>
           </Properties>
         </Component>
       </SubComponents>

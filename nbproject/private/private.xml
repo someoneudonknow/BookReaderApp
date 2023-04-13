@@ -4,19 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/F:/Java/BookReaderApp/src/other/SetDataToList.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/views/items/ChapterItem.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/panel/BookManagingController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/views/panels/ReadingPanel.java</file>
+            <file>file:/F:/Java/BookReaderApp/src/controller/panel/InfoPanelController.java</file>
+            <file>file:/F:/Java/BookReaderApp/src/models/DAO/UserDAO.java</file>
             <file>file:/F:/Java/BookReaderApp/src/controller/panel/AddBookController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/item/ChapterItemController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/views/panels/AddChapterPanel.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/views/panels/SearchPanel.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/panel/AddChapterController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/views/AddInfoChapter.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/panel/BookInforController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/views/panels/BookManagingPanel.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/panel/SearchPanelController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/models/DAO/ChapterDAO.java</file>
+            <file>file:/F:/Java/BookReaderApp/src/views/items/BookItemManager.java</file>
+            <file>file:/F:/Java/BookReaderApp/src/views/panels/InforPanel.java</file>
         </group>
     </open-files>
 </project-private>

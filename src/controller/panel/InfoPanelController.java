@@ -4,8 +4,12 @@ package controller.panel;
 import java.sql.Blob;
 import java.awt.Image;
 import java.io.File;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -26,12 +30,15 @@ public class InfoPanelController {
     private UserModel currentUser;
     private MainView mainView;
 
+    private boolean isPasswordValueChanged;
+    private boolean isAvatarChanged = false;
+
     public InfoPanelController(InforPanel panel, UserModel currentUser, MainView mainView) {
         this.infoPanel = panel;
         this.currentUser = currentUser;
         this.mainView = mainView;
-
         this.initUI();
+        this.isPasswordValueChanged = !this.currentUser.getPassword().equals(String.valueOf(infoPanel.getPasswordInput().getPassword()));
 
         this.infoPanel.onChooseFile(e -> {
             handleChooseFileBtnCLicked();
@@ -57,6 +64,23 @@ public class InfoPanelController {
             this.handleCancelBtnClicked();
         });
 
+        this.infoPanel.getPasswordInput().getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                handleTogglePasswordConfirmField();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                handleTogglePasswordConfirmField();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                handleTogglePasswordConfirmField();
+            }
+        });
+
         this.setUnEditable();
     }
 
@@ -66,7 +90,6 @@ public class InfoPanelController {
         this.infoPanel.getPhoneNumberInput().setText(currentUser.getPhoneNumber());
         this.infoPanel.getPasswordInput().setText(currentUser.getPassword());
         this.infoPanel.getImageHolder().setIcon(Converter.convertBlobToImageIcon(currentUser.getAvatar()));
-        this.infoPanel.getPasswordConfirmWrapper().setVisible(false);
     }
 
     private void handleChooseFileBtnCLicked() {
@@ -79,15 +102,15 @@ public class InfoPanelController {
         if (x == JFileChooser.APPROVE_OPTION) {
             File selectedImage = fileChooser.getSelectedFile();
             String imagePath = selectedImage.getAbsolutePath();
+            this.isAvatarChanged = true;
             if (imagePath.endsWith("png") || imagePath.endsWith("jpg") || imagePath.endsWith("ipeg")) {
                 ImageIcon userImage = new ImageIcon(imagePath);
                 Image resizedImage = userImage.getImage().getScaledInstance(this.infoPanel.getImageHolder().getWidth(), this.infoPanel.getImageHolder().getHeight(), Image.SCALE_SMOOTH);
-                this.infoPanel.getImageHolder().setIcon(userImage);
+                this.infoPanel.getImageHolder().setIcon(new ImageIcon(resizedImage));
             } else {
                 JOptionPane.showMessageDialog(this.infoPanel, "Sai định dạng ảnh!");
             }
         }
-
     }
 
     private void handleShowPaswwordBtnClicked() {
@@ -115,20 +138,22 @@ public class InfoPanelController {
         }
     }
 
+    private void handleTogglePasswordConfirmField() {
+        this.isPasswordValueChanged = !currentUser.getPassword().equals(String.valueOf(infoPanel.getPasswordInput().getPassword()));
+        this.infoPanel.getPasswordConfirmWrapper().setVisible(this.isPasswordValueChanged);
+    }
+
     private void handleSaveBtnClicked() {
         if (isFormValid()) {
             String userName = this.infoPanel.getUserNameInput().getText();
             String phoneNumber = this.infoPanel.getPhoneNumberInput().getText();
             String password = String.valueOf(this.infoPanel.getPasswordInput().getPassword());
             Blob avatar = Converter.convertImageToBlob((ImageIcon) this.infoPanel.getImageHolder().getIcon());
+
             boolean isPhoneNumChanged = !phoneNumber.equals(this.currentUser.getPhoneNumber());
             boolean isUserNameChanged = !userName.equals(this.currentUser.getUserName());
-            boolean isPasswordChanged = !password.equals(this.currentUser.getPassword());
-            
-            if(isPasswordChanged) {
-                this.infoPanel.getPasswordConfirmWrapper().setVisible(isPasswordChanged);
-            }
-            
+            boolean formHasChanged = isPhoneNumChanged || isUserNameChanged || this.isPasswordValueChanged || this.isAvatarChanged;
+
             UserDAO userDAO = new UserDAO();
             UserModel editedUser = new UserModel(this.currentUser.getId(),
                     userName,
@@ -138,13 +163,21 @@ public class InfoPanelController {
                     this.currentUser.isIsManager(),
                     this.currentUser.getManagerId());
 
-            if (userDAO.updateUser(this.currentUser.getId(), editedUser, isPhoneNumChanged, isUserNameChanged)) {
-                JOptionPane.showMessageDialog(infoPanel, "Sửa thông tin thành công");
-                this.currentUser = editedUser;
-                this.updateMainViewUI(editedUser);
-                this.setUnEditable();
+            if (formHasChanged) {
+                if (userDAO.updateUser(this.currentUser.getId(), editedUser, isPhoneNumChanged, isUserNameChanged)) {
+                    JOptionPane.showMessageDialog(infoPanel, "Lưu thành công");
+                    this.currentUser = editedUser;
+                    this.updateMainViewUI(editedUser);
+                    this.setUnEditable();
+                } else {
+                    JOptionPane.showMessageDialog(infoPanel, "Số điện thoại hoặc tên đăng nhập đã tồn tại!");
+                }
             } else {
-                JOptionPane.showMessageDialog(infoPanel, "Số điện thoại hoặc tên đăng nhập đã tồn tại!");
+                int x = JOptionPane.showConfirmDialog(infoPanel, "Thông tin chưa được thay đổi, bạn vẫn muốn lưu chứ?");
+                if (x == 0) {
+                    JOptionPane.showMessageDialog(infoPanel, "Lưu thành công");
+                    this.setUnEditable();
+                }
             }
         }
     }
@@ -171,7 +204,7 @@ public class InfoPanelController {
         this.infoPanel.getShowPasswordBtn().setEnabled(false);
         this.infoPanel.getShowPasswordConfirmBtn().setEnabled(false);
         this.infoPanel.getBtnEdit().setEnabled(true);
-
+        this.infoPanel.getPasswordConfirmWrapper().setVisible(false);
         if (this.infoPanel.getShowPasswordBtn().isSelected()) {
             this.infoPanel.getShowPasswordBtn().setSelected(false);
             this.infoPanel.getPasswordInput().setEchoChar('\u2022');
@@ -215,13 +248,18 @@ public class InfoPanelController {
         boolean isUserNameValid = userNameValidate.isValid();
         boolean isPhoneNumberValid = phoneNumberValidate.isValid();
         boolean isPasswordValid = passwordValidate.isValid();
-        boolean isPasswordConfirmValid = passwordConfirmValidate.isValid();
+        boolean isPasswordConfirmValid = true;
+
+        if (this.infoPanel.getPasswordConfirmWrapper().isVisible() == true) {
+            isPasswordConfirmValid = passwordConfirmValidate.isValid();
+            this.infoPanel.getPasswordConfirmErrorMessage().setText(passwordConfirmValidate.getErrorMessage());
+        } else {
+            this.infoPanel.getPasswordConfirmErrorMessage().setText("");
+        }
 
         this.infoPanel.getUserNameErrorMessage().setText(userNameValidate.getErrorMessage());
         this.infoPanel.getPasswordErrorMessage().setText(passwordValidate.getErrorMessage());
-        this.infoPanel.getPasswordConfirmErrorMessage().setText(passwordConfirmValidate.getErrorMessage());
         this.infoPanel.getPhoneNumberErrorMessage().setText(phoneNumberValidate.getErrorMessage());
-//        this.infoPanel.getPhotoErrorMessage().setText(isPhotoValid ? "" : "Vui longf cho");
 
         if (isUserNameValid && isPhoneNumberValid && isPasswordValid && isPasswordConfirmValid) {
             return true;
