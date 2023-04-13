@@ -18,8 +18,6 @@ import javax.swing.ImageIcon;
 
 import models.DAO.BookDAO;
 import java.sql.ResultSet;
-import static javax.swing.Spring.height;
-import static javax.swing.Spring.width;
 
 /**
  *
@@ -104,28 +102,23 @@ public class BookModel {
         return BookDAO.getInstance().getRatingAverage(id);
     }
 
-    public ImageIcon getImageFromBlob(int id) throws SQLException, IOException {
+//    public ImageIcon getImageFromBlob(int id) throws SQLException, IOException {
+//
 //        Blob coverBlob = this.getCover();
 //        byte[] coverData = coverBlob.getBytes(1, (int) coverBlob.length());
 //        InputStream in = new ByteArrayInputStream(coverData);
-//        BufferedImage image = ImageIO.read(in);
+//        BufferedImage originalImage = ImageIO.read(in);
 //        in.close();
-
-        Blob coverBlob = this.getCover();
-        byte[] coverData = coverBlob.getBytes(1, (int) coverBlob.length());
-        InputStream in = new ByteArrayInputStream(coverData);
-        BufferedImage originalImage = ImageIO.read(in);
-        in.close();
-
-        Image scaledImage = originalImage.getScaledInstance(210, 230, Image.SCALE_SMOOTH);
-        BufferedImage scaledBufferedImage = new BufferedImage(210, 230, BufferedImage.TYPE_INT_RGB);
-        Graphics2D g = scaledBufferedImage.createGraphics();
-        g.drawImage(scaledImage, 0, 0, null);
-        g.dispose();
-
-        return new ImageIcon(scaledBufferedImage);
-
-    }
+//
+//        Image scaledImage = originalImage.getScaledInstance(210, 230, Image.SCALE_SMOOTH);
+//        BufferedImage scaledBufferedImage = new BufferedImage(210, 230, BufferedImage.TYPE_INT_RGB);
+//        Graphics2D g = scaledBufferedImage.createGraphics();
+//        g.drawImage(scaledImage, 0, 0, null);
+//        g.dispose();
+//
+//        return new ImageIcon(scaledBufferedImage);
+//
+//    }
 
     public static void populateBookModel(ResultSet rs, BookModel book) throws SQLException {
         book.setId(rs.getInt("book_id"));
@@ -139,11 +132,6 @@ public class BookModel {
             book.setCover(null);
         }
         book.setManager_id(rs.getInt("manager_id"));
-    }
-
-    @Override
-    public String toString() {
-        return super.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
 }

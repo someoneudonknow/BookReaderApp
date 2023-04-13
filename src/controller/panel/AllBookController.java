@@ -4,6 +4,7 @@
  */
 package controller.panel;
 
+import java.sql.SQLException;
 import other.SetDataToList;
 import views.panels.AllBookPanel;
 import views.MainView;
@@ -16,11 +17,11 @@ public class AllBookController {
     AllBookPanel allBookPanel;
     MainView mainView;
 
-    public AllBookController(AllBookPanel allBookPanel, MainView mainView) {
+    public AllBookController(AllBookPanel allBookPanel, MainView mainView) throws SQLException {
         this.allBookPanel = allBookPanel;
         this.mainView = mainView;
         SetDataToList setData = new SetDataToList(this.mainView);
-        setData.setBookItemList(allBookPanel.getListAllBook());
+        setData.setBookItemList(allBookPanel.getListAllBook(), "full");
     }
     
     

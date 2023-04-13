@@ -4,13 +4,9 @@
  */
 package views.panels;
 
-import views.items.BookItem;
-import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import models.BookModel;
 
 /**
  *
@@ -126,7 +122,6 @@ public class AllBookPanel extends javax.swing.JPanel {
         this.listAllBook = listAllBook;
     }
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel6;

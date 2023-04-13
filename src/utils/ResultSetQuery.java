@@ -23,28 +23,39 @@ public class ResultSetQuery {
         mydb = new DB();
     }
 
-    public ResultSet executeQuery(String query, ArrayList<Object> queryField) {
+    public PreparedStatement preparedStatement(String query, ArrayList<Object> queryField) throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        try {
-            conn = mydb.getConnection();
-            stmt = conn.prepareStatement(query);
-            if (queryField.size() != 0) {
-                int i = 1;
-                for (Object o : queryField) {
-                    if (o instanceof String) {
-                        stmt.setString(i, (String) o);
-                    } else if (o instanceof Integer) {
-                        stmt.setInt(i, (Integer) o);
-                    }
-                    i++;
+        conn = mydb.getConnection();
+        stmt = conn.prepareStatement(query);
+        if (queryField.size() != 0) {
+            int i = 1;
+            for (Object o : queryField) {
+                if (o instanceof String) {
+                    stmt.setString(i, (String) o);
+                } else if (o instanceof Integer) {
+                    stmt.setInt(i, (Integer) o);
                 }
+                i++;
             }
-            rs = stmt.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
+        return stmt;
+    }
+
+    public ResultSet executeQuery(String query, ArrayList<Object> queryField) throws SQLException {
+        Connection conn = null;
+        PreparedStatement stmt = this.preparedStatement(query, queryField);
+        ResultSet rs = null;
+        rs = stmt.executeQuery();
+
         return rs;
+    }
+
+    public void executeNonQuery(String query, ArrayList<Object> queryField) throws SQLException {
+        Connection conn = null;
+        PreparedStatement stmt = this.preparedStatement(query, queryField);
+        stmt.executeUpdate();
+
     }
 }

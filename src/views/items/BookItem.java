@@ -26,7 +26,6 @@ public class BookItem extends javax.swing.JPanel {
     public BookItem(BookModel bookModels) {
         initComponents();
         this.bookModels = bookModels;
-        this.jLabel2.setText("" + bookModels.getId());
     }
 
     /**

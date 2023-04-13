@@ -4,6 +4,8 @@
  */
 package models;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import models.entityPK.SavedPK;
 
 /**
@@ -12,11 +14,14 @@ import models.entityPK.SavedPK;
  */
 public class SavedModel extends SavedPK {
 
-    private int user_id;
-    private int book_id;
-
     public SavedModel(int user_id, int book_id) {
         super(user_id, book_id);
     }
 
+    public SavedModel() {
+    }
+    public static void populateChapterModel(ResultSet rs, SavedModel saved) throws SQLException {
+        saved.setUser_id(rs.getInt("user_id"));
+        saved.setBook_id(rs.getInt("book_id"));
+    }
 }
