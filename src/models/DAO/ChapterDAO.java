@@ -27,6 +27,21 @@ public class ChapterDAO extends ResultSetQuery implements DAOInterface<ChapterMo
         return new ChapterDAO();
     }
 
+    public ChapterModel getSelectedChapter(int bookID, int selectedItem) throws SQLException {
+        ChapterModel selectedChapter = new ChapterModel();
+        ResultSet rs = null;
+        String query = "SELECT * FROM project1.bookchapter WHERE book_id = ? AND chapter_serial = ?";
+        ArrayList<Object> queryField = new ArrayList<>();
+        queryField.add(bookID);
+        queryField.add(selectedItem);
+        rs = this.executeQuery(query, queryField);
+        while(rs.next()) {
+            ChapterModel.populateChapterModel(rs, selectedChapter);
+        }
+        return selectedChapter;
+
+    }
+
     public ChapterModel getPreivousNextChapter(ChapterModel currentChapter, String option) throws SQLException {
         ChapterModel preivousNextChapter = new ChapterModel();
         ResultSet rs = null;
