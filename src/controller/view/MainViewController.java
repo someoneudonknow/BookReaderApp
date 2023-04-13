@@ -4,7 +4,7 @@ import controller.panel.BookManagingController;
 import controller.panel.MainPanelController;
 import controller.panel.SearchPanelController;
 import controller.panel.HistoryController;
-import controller.panel.InfoPanelController;
+import controller.panel.InforPanelController;
 import controller.panel.LibraryController;
 import controller.panel.UserManagingController;
 import java.awt.event.MouseAdapter;
@@ -53,7 +53,7 @@ public class MainViewController {
 
         this.mainView.onBtnInfor(e -> {
             InforPanel currentUserInfo = new InforPanel();
-            new InfoPanelController(currentUserInfo, this.mainView.getUserModels(), this.mainView);
+            new InforPanelController(currentUserInfo, this.mainView.getUserModels(), this.mainView);
             changePanel(currentUserInfo);
         });
 

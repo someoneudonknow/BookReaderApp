@@ -4,12 +4,13 @@
  */
 package controller.panel;
 
+import controller.view.AddInforChapterController;
 import java.awt.Dimension;
 import java.sql.SQLException;
 import javax.swing.JPanel;
 import models.BookModel;
 import other.SetDataToList;
-import views.AddInfoChapter;
+import views.AddInforChapter;
 import views.MainView;
 import views.panels.AddChapterPanel;
 
@@ -41,6 +42,7 @@ public class AddChapterController {
     }
     
     public void startAddFrame() {
-        new AddInfoChapter();
+        AddInforChapter inforChapter = new AddInforChapter();
+        new AddInforChapterController(inforChapter, this.bookModel.getId());
     }
 }
