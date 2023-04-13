@@ -5,11 +5,7 @@
 package views.panels;
 
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 /**
  *
@@ -282,15 +278,15 @@ public class BookEditPanel extends javax.swing.JPanel {
     public JPanel getListComment() {
         return listComment;
     }
-    
-    public void onBtnSave (ActionListener action) {
+
+    public void onBtnSave(ActionListener action) {
         this.btnSave.addActionListener(action);
     }
-    
-    public void onBtnAddChapter (ActionListener action) {
+
+    public void onBtnAddChapter(ActionListener action) {
         this.btnAddChapter.addActionListener(action);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddChapter;
     private javax.swing.JButton btnChangeCover;

@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/other/SetDataToList.java</file>
-            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/models/ChapterModel.java</file>
+            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/models/interfaces/DAOInterface.java</file>
+            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/utils/ResultSetQuery.java</file>
+            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/models/DAO/BookDAO.java</file>
             <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/controller/panel/BookInforController.java</file>
-            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/views/panels/ReadingPanel.java</file>
-            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/models/DAO/ChapterDAO.java</file>
+            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/models/DAO/SavedDAO.java</file>
+            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/models/entityPK/SavedPK.java</file>
+            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/controller/panel/MainPanelController.java</file>
+            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/models/SavedModel.java</file>
         </group>
     </open-files>
 </project-private>

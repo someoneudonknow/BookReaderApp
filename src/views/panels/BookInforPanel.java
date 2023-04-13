@@ -4,21 +4,10 @@
  */
 package views.panels;
 
-import com.mysql.cj.jdbc.Blob;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import models.BookModel;
-import models.DAO.BookDAO;
 
 /**
  *
@@ -347,29 +336,7 @@ public class BookInforPanel extends javax.swing.JPanel {
     public void setTxtName(String title) {
         txtName.setText(title);
     }
-    public void setID(BookModel book) {
-        this.currentID = book.getId();
-    }
-    public int getID() {
-        return this.currentID;
-    }
-    public void setBook(BookModel book) throws IOException, SQLException {
-        this.setID(book);
-        txtName.setText(book.getName());
-        txtAuthor.setText(book.getAuthor());
-        txtDiscription.setText(book.getDescription());
-        ArrayList<String> categoryList = BookDAO.getInstance().getCategoryList(currentID);
-        txtCategorys.setText("");
-        for (String category : categoryList) {
-            txtCategorys.setText(txtCategorys.getText() + category + " ");
-        }
-        String[] rating = (book.getAverageRating(currentID)).split(" ");
-        txtRate.setText("" + rating[0] + " sao" + " " + "(" + rating[1] + ")");
 
-        
-//        this.listChapter = null;
-    }
-    
     public JButton getBtnSave() {
         return btnSave;
     }
@@ -416,11 +383,12 @@ public class BookInforPanel extends javax.swing.JPanel {
 
     public void onBtnFirst(ActionListener action) {
         this.btnFirst.addActionListener(action);
-//        System.out.println("first button");
     }
-
     public void onBtnLast(ActionListener action) {
         this.btnLast.addActionListener(action);
+    }
+    public void onBtnSave(ActionListener action) {
+        this.btnSave.addActionListener(action);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

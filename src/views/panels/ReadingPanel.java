@@ -4,15 +4,7 @@
  */
 package views.panels;
 
-import java.awt.Component;
-import java.awt.Font;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import models.ChapterModel;
-import models.DAO.ChapterDAO;
-import views.MainView;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -20,69 +12,31 @@ import views.MainView;
  */
 public class ReadingPanel extends javax.swing.JPanel {
 
-    private ChapterModel currentChapter;
-    private int currentBookID;
-
     /**
      * Creates new form ReadingPanel
      */
     public ReadingPanel() {
         initComponents();
-        this.handleClicked();
     }
 
-    public ReadingPanel(MainView view) {
-        initComponents();
-
+    public javax.swing.JComboBox<String> getBoxChapter() {
+        return this.boxChapter;
     }
 
-    public void handleClicked() {
-        btnPrevious.addActionListener(e -> {
-            try {
-                this.setChapterDetails(ChapterDAO.getInstance().getPreivousNextChapter(currentChapter, "previous"));
-            } catch (SQLException ex) {
-                Logger.getLogger(ReadingPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        });
-        btnNext.addActionListener(e -> {
-            try {
-                this.setChapterDetails(ChapterDAO.getInstance().getPreivousNextChapter(currentChapter, "next"));
-            } catch (SQLException ex) {
-                Logger.getLogger(ReadingPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-        boxChapter.addActionListener(e -> {
-            int selectedItem = boxChapter.getSelectedIndex();
-            String selectedString = (String) boxChapter.getSelectedItem();
-            try {
-                ChapterModel selectedChapter = ChapterDAO.getInstance().getSelectedChapter(currentBookID, selectedItem + 1);
-                this.setChapterDetails(selectedChapter);
-                boxChapter.setSelectedItem(selectedString);
-                boxChapter.repaint();
-
-            } catch (SQLException ex) {
-                Logger.getLogger(ReadingPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-
+    public javax.swing.JTextArea getJtextArea1() {
+        return this.jTextArea1;
     }
 
-    public void setChapterDetails(ChapterModel chapter) throws SQLException {
-        this.currentChapter = chapter;
-        this.currentBookID = chapter.getBook_id();
-        jTextArea1.setText(chapter.getDocument());
-        ArrayList<ChapterModel> listChapter = ChapterDAO.getInstance().getAllChapterFromBook(currentBookID);
-        ArrayList<String> listChapterName = new ArrayList<>();
-        for (ChapterModel c : listChapter) {
-            listChapterName.add("Chương " + c.getSerial() + ": " + c.getTitle());
-        }
-        boxChapter.setModel(new javax.swing.DefaultComboBoxModel<>(listChapterName.toArray(new String[0])));
-
+    public void onBtnPrevious(ActionListener action) {
+        this.btnPrevious.addActionListener(action);
     }
 
-    public ChapterModel getChapterModel() {
-        return this.currentChapter;
+    public void onBtnNext(ActionListener action) {
+        this.btnNext.addActionListener(action);
+    }
+
+    public void onBoxChapter(ActionListener action) {
+        this.boxChapter.addActionListener(action);
     }
 
     /**

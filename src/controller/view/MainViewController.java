@@ -9,6 +9,9 @@ import controller.panel.LibraryController;
 import controller.panel.UserManagingController;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import models.UserModel;
@@ -31,8 +34,7 @@ public class MainViewController {
 
     public MainViewController(MainView mainView) {
         this.mainView = mainView;
-        MainPanel panel = new MainPanel();
-        new MainPanelController(panel, this.mainView);
+        
         if (this.mainView.getUserModels().getUserName().equals("admin")) {
             this.mainView.getBtnHistory().setVisible(false);
             this.mainView.getBtnLibrary().setVisible(false);
@@ -65,13 +67,21 @@ public class MainViewController {
 
         this.mainView.onBtnLibrary(e -> {
             LibraryPanel libraryPanel = new LibraryPanel();
-            new LibraryController(libraryPanel, mainView);
+            try {
+                new LibraryController(libraryPanel, mainView);
+            } catch (SQLException ex) {
+                Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             changePanel(libraryPanel);
         });
 
         this.mainView.onBtnHistory(e -> {
             HistoryPanel historyPanel = new HistoryPanel();
-            new HistoryController(historyPanel, mainView);
+            try {
+                new HistoryController(historyPanel, mainView);
+            } catch (SQLException ex) {
+                Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             changePanel(historyPanel);
         });
 

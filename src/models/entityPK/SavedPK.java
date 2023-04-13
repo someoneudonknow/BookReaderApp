@@ -13,6 +13,9 @@ public class SavedPK {
     private int user_id;
     private int book_id;
 
+    public SavedPK() {
+    }
+
     public SavedPK(int user_id, int book_id) {
         this.user_id = user_id;
         this.book_id = book_id;
