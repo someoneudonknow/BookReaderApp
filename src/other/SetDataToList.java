@@ -56,9 +56,14 @@ public class SetDataToList {
 //        this.categoryList = categoryList;
 //    }
     //tạo ví dụ để nhìn, làm xong xóa đống bùi nhùi này
-    public void setBookItemList(JPanel panel) {
+    public void setBookItemList(JPanel panel, String option) throws SQLException {
         ArrayList<BookItem> items = new ArrayList<>();
-        ArrayList<BookModel> books = BookDAO.getInstance().getAll();
+        ArrayList<BookModel> books = new ArrayList<>();
+        if (option.equals("full")) {
+            books = BookDAO.getInstance().getOption(option);
+        } else if (option.equals("savedBook")) {
+            books = BookDAO.getInstance().getSavedBook(this.mainView.getUserModels().getId());
+        }
 
         for (BookModel book : books) {
             BookItem a = new BookItem(book);
@@ -182,11 +187,11 @@ public class SetDataToList {
 //    }
 //    
     //tạo list book cho mainView (truyền vào max 5 cuốn)
-    public void setTop5View(JPanel panel) {
+    public void setTop5View(JPanel panel, String option) {
         try {
             ArrayList<BookItem> items = new ArrayList<>();
             ArrayList<BookModel> books = new ArrayList<>();
-            books = BookDAO.getInstance().getTop5();
+            books = BookDAO.getInstance().getOption(option);
             for (BookModel i : books) {
                 BookItem item = new BookItem(i);
                 new BookItemController(item, mainView);

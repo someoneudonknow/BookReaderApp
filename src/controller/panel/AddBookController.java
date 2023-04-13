@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import models.BookModel;
 import models.CategoryModel;
 import models.UserModel;
@@ -34,22 +35,21 @@ public class AddBookController {
         this.setCategoryItemList();
 
         this.bookPanel.onBtnNext(e -> {
-            categoryResult();
-
-//            BookModel result = getResult();
-            BookModel result = new BookModel();
-            AddChapterPanel addChapterPanel = new AddChapterPanel();
-            try {
-                //            try {
-//                new AddChapterController(addChapterPanel, mainView, result);
-//            } catch (SQLException ex) {
-//                Logger.getLogger(AddBookController.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-                new AddChapterController(addChapterPanel, mainView, result);
-            } catch (SQLException ex) {
-                Logger.getLogger(AddBookController.class.getName()).log(Level.SEVERE, null, ex);
+            if (categoryResult().isEmpty()){
+                JOptionPane.showMessageDialog(null, "Chưa chọn thể loại");
             }
-            this.mainView.setMainPanel(addChapterPanel);
+            else {
+                //BookModel result = getResult();
+                BookModel result = new BookModel();
+                AddChapterPanel addChapterPanel = new AddChapterPanel();
+                try {
+                    new AddChapterController(addChapterPanel, mainView, result);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddBookController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                this.mainView.setMainPanel(addChapterPanel);
+            }
+
         });
     }
 
@@ -87,18 +87,21 @@ public class AddBookController {
         //set dữ liệu
         this.bookPanel.setListCategory(model);
     }
-
-    public void categoryResult() {
+    
+    public ArrayList<CategoryModel> categoryResult() {
         ArrayList<CategoryModel> categoryList = new ArrayList<>();
+        
         for (int i = 0; i < this.bookPanel.getListCategory().getComponentCount(); i++) {
             CategoryItem item = (CategoryItem) this.bookPanel.getListCategory().getComponent(i);
             if (item.getjCheckBox1().isSelected()) {
                 categoryList.add(item.getCategoryModels());
             }
         }
-        for (CategoryModel i : categoryList) {
+        
+        for (CategoryModel i:categoryList)
             System.out.println(i.getName());
-        }
+        
+        return categoryList;
     }
 
     public BookModel getResult() {

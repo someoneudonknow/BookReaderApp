@@ -4,11 +4,14 @@ import controller.panel.BookManagingController;
 import controller.panel.MainPanelController;
 import controller.panel.SearchPanelController;
 import controller.panel.HistoryController;
-import controller.panel.InfoPanelController;
+import controller.panel.InforPanelController;
 import controller.panel.LibraryController;
 import controller.panel.UserManagingController;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import models.UserModel;
@@ -53,7 +56,7 @@ public class MainViewController {
 
         this.mainView.onBtnInfor(e -> {
             InforPanel currentUserInfo = new InforPanel();
-            new InfoPanelController(currentUserInfo, this.mainView.getUserModels(), this.mainView);
+            new InforPanelController(currentUserInfo, this.mainView.getUserModels(), this.mainView);
             changePanel(currentUserInfo);
         });
 
@@ -65,13 +68,21 @@ public class MainViewController {
 
         this.mainView.onBtnLibrary(e -> {
             LibraryPanel libraryPanel = new LibraryPanel();
-            new LibraryController(libraryPanel, mainView);
+            try {
+                new LibraryController(libraryPanel, mainView);
+            } catch (SQLException ex) {
+                Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             changePanel(libraryPanel);
         });
 
         this.mainView.onBtnHistory(e -> {
             HistoryPanel historyPanel = new HistoryPanel();
-            new HistoryController(historyPanel, mainView);
+            try {
+                new HistoryController(historyPanel, mainView);
+            } catch (SQLException ex) {
+                Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
+            }
             changePanel(historyPanel);
         });
 

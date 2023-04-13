@@ -4,8 +4,7 @@
  */
 package models;
 
-import com.mysql.cj.jdbc.Blob;
-import com.mysql.cj.protocol.Resultset;
+import java.sql.Timestamp;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -20,16 +19,20 @@ public class ChapterModel {
     private int serial;
     private String document;
     private int book_id;
+    private Timestamp updateTime;
 
     public ChapterModel() {
     }
 
-    public ChapterModel(int id, String title, int serial, String document, int book_id) {
+   
+
+    public ChapterModel(int id, String title, int serial, String document, int book_id, Timestamp updateTime) {
         this.id = id;
         this.title = title;
         this.serial = serial;
         this.document = document;
         this.book_id = book_id;
+        this.updateTime = updateTime;
     }
 
     public int getId() {
@@ -71,6 +74,12 @@ public class ChapterModel {
     public void setBook_id(int book_id) {
         this.book_id = book_id;
     }
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
+    public Timestamp getUpdateTime() {
+        return this.updateTime;
+    }
 
     public static void populateChapterModel(ResultSet rs, ChapterModel chapter) throws SQLException {
         chapter.setId(rs.getInt("chapter_id"));
@@ -78,6 +87,7 @@ public class ChapterModel {
         chapter.setSerial(rs.getInt("chapter_serial"));
         chapter.setDocument(rs.getString("chapter_document"));
         chapter.setBook_id(rs.getInt("book_id"));
+        chapter.setUpdateTime(rs.getTimestamp("chapter_update"));
     }
 
 }

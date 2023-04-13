@@ -5,6 +5,7 @@
 package controller.panel;
 
 import java.awt.Dimension;
+import java.sql.SQLException;
 import javax.swing.JPanel;
 import other.SetDataToList;
 import views.panels.HistoryPanel;
@@ -19,11 +20,11 @@ public class LibraryController {
     LibraryPanel libraryPanel;
     MainView mainView;
 
-    public LibraryController(LibraryPanel libraryPanel, MainView mainView) {
+    public LibraryController(LibraryPanel libraryPanel, MainView mainView) throws SQLException {
         this.libraryPanel = libraryPanel;
         this.mainView = mainView;
         SetDataToList setData = new SetDataToList(this.mainView);
-        setData.setBookItemList(libraryPanel.getListLibrary());
+        setData.setBookItemList(libraryPanel.getListLibrary(), "savedBook");
         this.libraryPanel.getListLibrary().setPreferredSize(new Dimension(0,setHeightPreferrer()));
         this.libraryPanel.getListLibrary().repaint();
     }

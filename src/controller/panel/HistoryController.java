@@ -5,6 +5,7 @@
 package controller.panel;
 
 import java.awt.Dimension;
+import java.sql.SQLException;
 import other.SetDataToList;
 import views.panels.HistoryPanel;
 import views.MainView;
@@ -17,11 +18,11 @@ public class HistoryController {
     HistoryPanel historyPanel;
     MainView mainView;
 
-    public HistoryController(HistoryPanel historyPanel, MainView mainView) {
+    public HistoryController(HistoryPanel historyPanel, MainView mainView) throws SQLException {
         this.historyPanel = historyPanel;
         this.mainView = mainView;
         SetDataToList setData = new SetDataToList(this.mainView);
-        setData.setBookItemList(historyPanel.getListHistory());
+//        setData.setBookItemList(historyPanel.getListHistory(), null);
         setHeightPreferrer();
     }
     

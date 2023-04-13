@@ -4,9 +4,12 @@
  */
 package controller.panel;
 
+import java.sql.SQLException;
 import views.items.BookItem;
 import views.items.CategoryItem;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.BookModel;
 import models.CategoryModel;
 import models.HaveCategoryModel;
@@ -26,7 +29,11 @@ public class SearchPanelController {
         this.mainView = mainView;
         this.setCategoryItemList();
         this.searchPanel.onBtnSearch(e ->{
-            searchResult();
+            try {
+                searchResult();
+            } catch (SQLException ex) {
+                Logger.getLogger(SearchPanelController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
     }
 
@@ -37,11 +44,15 @@ public class SearchPanelController {
         this.haveCategoryList = haveCategoryList;
         this.bookList = bookList;
         this.searchPanel.onBtnSearch(e ->{
-            searchResult();
+            try {
+                searchResult();
+            } catch (SQLException ex) {
+                Logger.getLogger(SearchPanelController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
     }
     
-    public void searchResult() {
+    public void searchResult() throws SQLException {
         String keyword = this.searchPanel.getTxtKeyword().getText();
         int type = this.searchPanel.getBoxType().getSelectedIndex();
         ArrayList<CategoryModel> categoryList = new ArrayList<>();
@@ -91,7 +102,7 @@ public class SearchPanelController {
         this.searchPanel.setListCategory(model);
     }
     
-    public void getBookItemListResult(String keyword, int type, ArrayList<CategoryModel> categoryList) {
+    public void getBookItemListResult(String keyword, int type, ArrayList<CategoryModel> categoryList) throws SQLException {
         ArrayList<BookItem> listResult = new ArrayList<>();
         
         try {
@@ -105,7 +116,7 @@ public class SearchPanelController {
             System.out.println("Danh sach trong");
         }
         SetDataToList setData = new SetDataToList(this.mainView);
-        setData.setBookItemList(searchPanel);
+        setData.setBookItemList(searchPanel, null);
     }
     
     public boolean checkKeyword(String keyword, int type) {
