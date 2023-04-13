@@ -4,7 +4,8 @@
  */
 package models;
 
-import com.mysql.cj.jdbc.Blob;
+
+import java.sql.Blob;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;

@@ -32,6 +32,8 @@ public class BookManagingController {
     }
     
     public void AddBook() {
-        this.mainView.setMainPanel(new AddBookPanel());
+        AddBookPanel addBookPanel = new AddBookPanel();
+        new AddBookController(addBookPanel, mainView);
+        this.mainView.setMainPanel(addBookPanel);
     }
 }

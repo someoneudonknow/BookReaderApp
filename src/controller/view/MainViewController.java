@@ -34,8 +34,9 @@ public class MainViewController {
 
     public MainViewController(MainView mainView) {
         this.mainView = mainView;
-        
-        if (this.mainView.getUserModels().getUserName().equals("admin")) {
+        MainPanel panel = new MainPanel();
+        new MainPanelController(panel, this.mainView);
+        if (this.mainView.getUserModels().isIsManager() == true) {
             this.mainView.getBtnHistory().setVisible(false);
             this.mainView.getBtnLibrary().setVisible(false);
             this.mainView.getBtnMain().setVisible(false);
@@ -122,7 +123,10 @@ public class MainViewController {
     private void initUI() {
         UserModel currentUser = this.mainView.getUserModels();
 
-        this.mainView.getLbAvatar().setIcon(Converter.convertBlobToImageIcon(currentUser.getAvatar()));
+        if(currentUser.getAvatar() != null) {
+            this.mainView.getLbAvatar().setIcon(Converter.convertBlobToImageIcon(currentUser.getAvatar()));
+        }
+        
         this.mainView.getLbUsername().setText(currentUser.getUserName());
     }
 }

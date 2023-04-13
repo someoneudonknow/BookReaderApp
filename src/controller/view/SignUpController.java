@@ -70,16 +70,14 @@ public class SignUpController {
         boolean isPasswordValid = passwordValidate.isValid();
         boolean isPasswordConfirmValid = passwordConfirmValidate.isValid();
         boolean isGenderValid = (this.rgsForm.getGenderGroup().getSelection() != null);
-        boolean isPhotoValid = (this.rgsForm.getImageHolder().getIcon() != null);
 
         this.rgsForm.getUserNameErrorMessage().setText(userNameValidate.getErrorMessage());
         this.rgsForm.getPasswordErrorMessage().setText(passwordValidate.getErrorMessage());
         this.rgsForm.getPasswordConfirmErrorMessage().setText(passwordConfirmValidate.getErrorMessage());
         this.rgsForm.getPhoneNumberErrorMessage().setText(phoneNumberValidate.getErrorMessage());
         this.rgsForm.getGenderErrorMessage().setText(isGenderValid ? "" : "Please choose your gender!");
-        this.rgsForm.getPhotoErrorMessage().setText(isPhotoValid ? "" : "Please insert your avatar!");
 
-        if (isUserNameValid && isPhoneNumberValid && isPasswordValid && isPasswordConfirmValid && isGenderValid && isPhotoValid) {
+        if (isUserNameValid && isPhoneNumberValid && isPasswordValid && isPasswordConfirmValid && isGenderValid ) {
             return true;
         }
         return false;
@@ -99,7 +97,7 @@ public class SignUpController {
                 JOptionPane.showMessageDialog(rgsForm, "Tài khoản đã tồn tại, có thể bạn muốn đăng nhập ?");
                 this.resetForm();
             }else {
-                JOptionPane.showMessageDialog(rgsForm, "Thêm thành công");
+                this.rgsForm.dispose();
                 UserModel regiterUser = userDAO.login(userName, password);
                 new MainViewController(new MainView(regiterUser));
             }
