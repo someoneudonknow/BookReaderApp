@@ -1,6 +1,5 @@
 CREATE DATABASE IF NOT EXISTS project1;
 USE project1;
--- DROP database project1;
 CREATE TABLE IF NOT EXISTS userInfo(
 	user_id INT(10) PRIMARY KEY AUTO_INCREMENT,
     user_name VARCHAR(50) UNIQUE NOT NULL,
@@ -19,7 +18,7 @@ CREATE TABLE IF NOT EXISTS categoryList(
 
 CREATE TABLE IF NOT EXISTS bookInfo(
 	book_id INT(10) PRIMARY KEY AUTO_INCREMENT,
-    book_name VARCHAR(100) NOT NULL,
+    book_name VARCHAR(100) UNIQUE NOT NULL,
     book_author VARCHAR(50) NOT NULL,
     book_cover MEDIUMBLOB,
     book_description TEXT NOT NULL,
@@ -69,13 +68,13 @@ CREATE TABLE IF NOT EXISTS bookSaved(
 	FOREIGN KEY (user_id) REFERENCES userInfo(user_id),
     FOREIGN KEY (book_id) REFERENCES bookInfo(book_id)
 );
--- DROP TABLE userInfo;
--- DROP TABLE bookInfo;
--- DROP TABLE categoryList;
--- DROP TABLE haveCategory;
--- DROP TABLE bookChapter;
--- DROP TABLE bookReview;
--- DROP TABLE bookReading;
+DROP TABLE userInfo;
+DROP TABLE bookInfo;
+DROP TABLE categoryList;
+DROP TABLE haveCategory;
+DROP TABLE bookChapter;
+DROP TABLE bookReview;
+DROP TABLE bookReading;
 
 
 

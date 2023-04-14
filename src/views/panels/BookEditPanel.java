@@ -5,10 +5,7 @@
 package views.panels;
 
 import java.awt.event.ActionListener;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 /**
  *
@@ -83,7 +80,6 @@ public class BookEditPanel extends javax.swing.JPanel {
         txtDiscription.setColumns(20);
         txtDiscription.setRows(5);
         txtDiscription.setText("discription");
-        txtDiscription.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(txtDiscription);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -99,7 +95,7 @@ public class BookEditPanel extends javax.swing.JPanel {
         btnChangeCover.setPreferredSize(new java.awt.Dimension(160, 37));
 
         txtName.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        txtName.setText("bookname");
+        txtName.setText("jTextField1");
 
         txtAuthor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtAuthor.setText("author");
@@ -275,30 +271,6 @@ public class BookEditPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public JLabel getImgCover() {
-        return imgCover;
-    }
-
-    public JTextField getTxtAuthor() {
-        return txtAuthor;
-    }
-
-    public JLabel getTxtCategorys() {
-        return txtCategorys;
-    }
-
-    public JTextArea getTxtDiscription() {
-        return txtDiscription;
-    }
-
-    public JTextField getTxtName() {
-        return txtName;
-    }
-
-    public JLabel getTxtRate() {
-        return txtRate;
-    }
-    
     public JPanel getListChapter() {
         return listChapter;
     }

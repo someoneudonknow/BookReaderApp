@@ -27,7 +27,6 @@ import models.ChapterModel;
 import models.DAO.BookDAO;
 import models.DAO.ChapterDAO;
 import models.DAO.ReviewDAO;
-import models.DAO.UserDAO;
 import models.ReviewModel;
 import models.SavedModel;
 import views.panels.UserManagingPanel;
@@ -96,12 +95,14 @@ public class SetDataToList {
 //        panel.revalidate();
 //        panel.repaint();
 //    }
-    public void setBookManagerList(JPanel panel, ArrayList<BookModel> books) {
+    public void setBookManagerList(JPanel panel) {
+        ArrayList<BookItemManager> items = new ArrayList<>();
         List<BookItemManager> itemManager = new ArrayList<>();
+        List<BookModel> books = BookDAO.getInstance().getAll();
         
         for(BookModel b: books) {
             BookItemManager a = new BookItemManager(b);
-            new BookItemManagerController(a, this.mainView, b);
+            new BookItemManagerController(a, this.mainView);
             itemManager.add(a);
         }
         
@@ -112,13 +113,14 @@ public class SetDataToList {
         panel.repaint();
     }
 
-    public void setUserItemList(JPanel panel, List<UserModel> users) {
+    public void setUserItemList(JPanel panel) {
         ArrayList<UserItemManager> items = new ArrayList<>();
-        
-        for(UserModel curr: users) {
-            UserItemManager a = new UserItemManager(curr);
-            new UserItemController(a, mainView, curr);
+
+        for (int i = 0; i < 40; i++) {
+            UserItemManager a = new UserItemManager(new UserModel(i, "a", "a", "123456789", null, false, 1));
+            new UserItemController(a, mainView);
             items.add(a);
+
         }
 
         for (UserItemManager i : items) {
@@ -155,7 +157,7 @@ public class SetDataToList {
 
         for (ReviewModel review : reviewList) {
             CommentItem a = new CommentItem(review);
-            new CommentItemController(parent, a, mainView, review);
+            new CommentItemController(parent, a, mainView);
             items.add(a);
         }
         for (CommentItem i : items) {

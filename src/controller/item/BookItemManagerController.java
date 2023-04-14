@@ -8,7 +8,6 @@ import controller.panel.BookEditController;
 import views.items.BookItemManager;
 import java.awt.Dimension;
 import javax.swing.JPanel;
-import models.BookModel;
 import other.SetDataToList;
 import views.panels.BookEditPanel;
 import views.MainView;
@@ -20,12 +19,10 @@ import views.MainView;
 public class BookItemManagerController {
     private BookItemManager bookItem;
     private MainView mainView;
-    private BookModel currentBook;
-    
-    public BookItemManagerController(BookItemManager bookItem, MainView mainView, BookModel book) {
+
+    public BookItemManagerController(BookItemManager bookItem, MainView mainView) {
         this.bookItem = bookItem;
         this.mainView = mainView;
-        this.currentBook = book;
         
         SetDataToList setData = new SetDataToList(mainView);
         this.bookItem.onBtnEdit(e -> {
@@ -40,7 +37,7 @@ public class BookItemManagerController {
     public void changeInforPanel(){
         try {
             BookEditPanel bookEditPanel = new BookEditPanel();
-            new BookEditController(bookEditPanel, mainView, this.currentBook);
+            new BookEditController(bookEditPanel, mainView);
             getMainView().setMainPanel(bookEditPanel);
         } catch (Exception es) {
             System.out.println("Khong co mainView");

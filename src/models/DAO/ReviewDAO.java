@@ -4,8 +4,6 @@
  */
 package models.DAO;
 
-import java.sql.Connection;
-import database.DB;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,10 +12,11 @@ import models.ReviewModel;
 import models.entityPK.ReviewPK;
 import models.interfaces.DAOInterface;
 import utils.ResultSetQuery;
-import java.sql.PreparedStatement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
+/**
+ *
+ * @author trang
+ */
 public class ReviewDAO extends ResultSetQuery implements DAOInterface<ReviewModel, ReviewPK> {
 
     public static ReviewDAO getInstance() {
@@ -31,12 +30,12 @@ public class ReviewDAO extends ResultSetQuery implements DAOInterface<ReviewMode
         ArrayList<Object> queryField = new ArrayList<>();
         queryField.add(book_id);
         rs = this.executeQuery(query, queryField);
-        while (rs.next()) {
+        while(rs.next()) {
             ReviewModel review = new ReviewModel();
             ReviewModel.populateChapterModel(rs, review);
             reviewList.add(review);
         }
-        if (rs != null) {
+        if(rs != null) {
             rs.close();
         }
         return reviewList;
@@ -64,21 +63,7 @@ public class ReviewDAO extends ResultSetQuery implements DAOInterface<ReviewMode
 
     @Override
     public void delete(ReviewPK pk) {
-        String query = "DELETE FROM project1.bookreview br WHERE br.book_id = ? AND br.user_id = ?";
-        DB db = new DB();
-        Connection con = db.getConnection();
-
-        try {
-            PreparedStatement pts = con.prepareStatement(query);
-            pts.setInt(1, pk.getBook_id());
-            pts.setInt(2, pk.getUser_id());
-
-            pts.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(ReviewDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.closeConnection(con);
-        }
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
