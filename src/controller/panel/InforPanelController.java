@@ -149,12 +149,27 @@ public class InforPanelController {
             String phoneNumber = this.infoPanel.getPhoneNumberInput().getText();
             String password = String.valueOf(this.infoPanel.getPasswordInput().getPassword());
             Blob avatar = Converter.convertImageToBlob((ImageIcon) this.infoPanel.getImageHolder().getIcon());
+            List<String> changedField = new ArrayList<>();
 
             boolean isPhoneNumChanged = !phoneNumber.equals(this.currentUser.getPhoneNumber());
             boolean isUserNameChanged = !userName.equals(this.currentUser.getUserName());
             boolean formHasChanged = isPhoneNumChanged || isUserNameChanged || this.isPasswordValueChanged || this.isAvatarChanged;
 
+            if (isUserNameChanged) {
+                changedField.add("user_name");
+            }
+            if (this.isPasswordValueChanged) {
+                changedField.add("user_password");
+            }
+            if (this.isAvatarChanged) {
+                changedField.add("user_avatar");
+            }
+            if (isPhoneNumChanged) {
+                changedField.add("user_phoneNumber");
+            }
+
             UserDAO userDAO = new UserDAO();
+
             UserModel editedUser = new UserModel(this.currentUser.getId(),
                     userName,
                     password,
@@ -162,21 +177,23 @@ public class InforPanelController {
                     avatar,
                     this.currentUser.isIsManager(),
                     this.currentUser.getManagerId());
-
-            if (formHasChanged) {
-                if (userDAO.updateUser(this.currentUser.getId(), editedUser, isPhoneNumChanged, isUserNameChanged)) {
-                    JOptionPane.showMessageDialog(infoPanel, "Lưu thành công");
-                    this.currentUser = editedUser;
-                    this.updateMainViewUI(editedUser);
-                    this.setUnEditable();
-                } else {
-                    JOptionPane.showMessageDialog(infoPanel, "Số điện thoại hoặc tên đăng nhập đã tồn tại!");
-                }
-            } else {
-                int x = JOptionPane.showConfirmDialog(infoPanel, "Thông tin chưa được thay đổi, bạn vẫn muốn lưu chứ?");
-                if (x == 0) {
-                    JOptionPane.showMessageDialog(infoPanel, "Lưu thành công");
-                    this.setUnEditable();
+            try {
+                userDAO.update(this.currentUser.getId(), editedUser, changedField);
+                JOptionPane.showMessageDialog(infoPanel, "Lưu thành công");
+                this.currentUser = editedUser;
+                this.updateMainViewUI(editedUser);
+                this.setUnEditable();
+            } catch (Exception ex) {
+                if (ex.getMessage().equals("data_unchanged")) {
+                    int x = JOptionPane.showConfirmDialog(infoPanel, "Thông tin chưa được thay đổi, bạn vẫn muốn lưu chứ?");
+                    if (x == 0) {
+                        JOptionPane.showMessageDialog(infoPanel, "Lưu thành công");
+                        this.setUnEditable();
+                    }
+                } else if (ex.getMessage().equals("user_name_exists")) {
+                    JOptionPane.showMessageDialog(infoPanel, "Tên đăng nhập đã tồn tại!");
+                } else if (ex.getMessage().equals("user_phoneNumber_exists")) {
+                    JOptionPane.showMessageDialog(infoPanel, "Số điện thoại  đã tồn tại!");
                 }
             }
         }
@@ -205,6 +222,7 @@ public class InforPanelController {
         this.infoPanel.getShowPasswordConfirmBtn().setEnabled(false);
         this.infoPanel.getBtnEdit().setEnabled(true);
         this.infoPanel.getPasswordConfirmWrapper().setVisible(false);
+        this.infoPanel.getPasswordConfirmInput().setText("");
         if (this.infoPanel.getShowPasswordBtn().isSelected()) {
             this.infoPanel.getShowPasswordBtn().setSelected(false);
             this.infoPanel.getPasswordInput().setEchoChar('\u2022');

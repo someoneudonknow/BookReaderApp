@@ -35,26 +35,16 @@ public class UserMInforPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        genderGroup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        passwordConfirmErrorMessage = new javax.swing.JLabel();
-        genderErrorMessage = new javax.swing.JLabel();
         passwordInput = new javax.swing.JPasswordField();
         phoneNumberInput = new javax.swing.JTextField();
         userNameInput = new javax.swing.JTextField();
         photo = new javax.swing.JLabel();
-        maleRadioBtn = new javax.swing.JRadioButton();
-        passwordErrorMessage = new javax.swing.JLabel();
         imageHolder = new javax.swing.JLabel();
         password = new javax.swing.JLabel();
-        femaleRadioBtn = new javax.swing.JRadioButton();
-        phoneNumberErrorMessage = new javax.swing.JLabel();
-        genders = new javax.swing.JLabel();
-        userNameErrorMessage = new javax.swing.JLabel();
         phoneNumber = new javax.swing.JLabel();
         userName = new javax.swing.JLabel();
-        photoErrorMessage = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51)));
@@ -68,10 +58,6 @@ public class UserMInforPanel extends javax.swing.JPanel {
         jLabel1.setOpaque(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        passwordConfirmErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
-
-        genderErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
 
         passwordInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         passwordInput.setForeground(new java.awt.Color(255, 255, 255));
@@ -87,21 +73,10 @@ public class UserMInforPanel extends javax.swing.JPanel {
         userNameInput.setText("username");
         userNameInput.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         userNameInput.setEnabled(false);
-        userNameInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameInputActionPerformed(evt);
-            }
-        });
 
         photo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         photo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         photo.setText("Avatar");
-
-        genderGroup.add(maleRadioBtn);
-        maleRadioBtn.setText("Male");
-        maleRadioBtn.setEnabled(false);
-
-        passwordErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
 
         imageHolder.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         imageHolder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -111,30 +86,12 @@ public class UserMInforPanel extends javax.swing.JPanel {
         password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         password.setText("Password");
 
-        genderGroup.add(femaleRadioBtn);
-        femaleRadioBtn.setText("Female");
-        femaleRadioBtn.setEnabled(false);
-        femaleRadioBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                femaleRadioBtnActionPerformed(evt);
-            }
-        });
-
-        phoneNumberErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
-
-        genders.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        genders.setText("Gender");
-
-        userNameErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
-
         phoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         phoneNumber.setText("Phone number");
 
         userName.setBackground(new java.awt.Color(204, 0, 51));
         userName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         userName.setText("User name");
-
-        photoErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,33 +101,18 @@ public class UserMInforPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(passwordErrorMessage, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(passwordConfirmErrorMessage, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(maleRadioBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(femaleRadioBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(userNameInput, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
                         .addComponent(userName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(phoneNumberInput, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(phoneNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
-                        .addComponent(userNameErrorMessage, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(genders, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
-                        .addComponent(phoneNumberErrorMessage, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(password, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
-                        .addComponent(genderErrorMessage, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(phoneNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(photoErrorMessage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(photo, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(imageHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(83, 83, 83))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(photo, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imageHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,37 +123,18 @@ public class UserMInforPanel extends javax.swing.JPanel {
                     .addComponent(photo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(imageHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
-                        .addComponent(photoErrorMessage))
+                    .addComponent(imageHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(userNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(userNameErrorMessage)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)
                         .addComponent(phoneNumber)
                         .addGap(4, 4, 4)
                         .addComponent(phoneNumberInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(phoneNumberErrorMessage)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(genders)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(femaleRadioBtn)
-                            .addComponent(maleRadioBtn))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(genderErrorMessage)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(password)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(52, 52, 52)
-                .addComponent(passwordErrorMessage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(passwordConfirmErrorMessage)
-                .addGap(41, 41, 41))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -230,40 +153,37 @@ public class UserMInforPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 142, Short.MAX_VALUE))
+                .addGap(0, 107, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userNameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNameInputActionPerformed
+    public JLabel getImageHolder() {
+        return imageHolder;
+    }
 
-    private void femaleRadioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleRadioBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_femaleRadioBtnActionPerformed
+    public JPasswordField getPasswordInput() {
+        return passwordInput;
+    }
 
+    public JTextField getPhoneNumberInput() {
+        return phoneNumberInput;
+    }
+
+    public JTextField getUserNameInput() {
+        return userNameInput;
+    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton femaleRadioBtn;
-    private javax.swing.JLabel genderErrorMessage;
-    private javax.swing.ButtonGroup genderGroup;
-    private javax.swing.JLabel genders;
     private javax.swing.JLabel imageHolder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton maleRadioBtn;
     private javax.swing.JLabel password;
-    private javax.swing.JLabel passwordConfirmErrorMessage;
-    private javax.swing.JLabel passwordErrorMessage;
     private javax.swing.JPasswordField passwordInput;
     private javax.swing.JLabel phoneNumber;
-    private javax.swing.JLabel phoneNumberErrorMessage;
     private javax.swing.JTextField phoneNumberInput;
     private javax.swing.JLabel photo;
-    private javax.swing.JLabel photoErrorMessage;
     private javax.swing.JLabel userName;
-    private javax.swing.JLabel userNameErrorMessage;
     private javax.swing.JTextField userNameInput;
     // End of variables declaration//GEN-END:variables
 }

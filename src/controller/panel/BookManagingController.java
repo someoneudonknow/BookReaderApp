@@ -5,6 +5,10 @@
 package controller.panel;
 
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
+import models.BookModel;
+import models.DAO.BookDAO;
 import other.SetDataToList;
 import views.panels.AddBookPanel;
 import views.panels.BookManagingPanel;
@@ -15,22 +19,27 @@ import views.MainView;
  * @author ADMIN
  */
 public class BookManagingController {
+
     private BookManagingPanel bookPanel;
     private MainView mainView;
 
     public BookManagingController(BookManagingPanel bookPanel, MainView mainView) {
         this.bookPanel = bookPanel;
         this.mainView = mainView;
-        SetDataToList setData = new SetDataToList(mainView);
-        setData.setBookManagerList(bookPanel.getListBook());
-        
-        this.bookPanel.getListBook().setPreferredSize(new Dimension(0,this.bookPanel.getListBook().getComponentCount()*78));
-        
+        initUI();
         this.bookPanel.onBtnAddBook(e -> {
             AddBook();
         });
     }
-    
+
+    private void initUI() {
+        SetDataToList setData = new SetDataToList(mainView);
+        ArrayList<BookModel> books = BookDAO.getInstance().getAll();
+        setData.setBookManagerList(bookPanel.getListBook(), books);
+
+        this.bookPanel.getListBook().setPreferredSize(new Dimension(0, this.bookPanel.getListBook().getComponentCount() * 78));
+    }
+
     public void AddBook() {
         AddBookPanel addBookPanel = new AddBookPanel();
         new AddBookController(addBookPanel, mainView);
