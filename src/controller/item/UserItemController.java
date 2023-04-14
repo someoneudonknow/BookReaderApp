@@ -4,23 +4,21 @@
  */
 package controller.item;
 
+import controller.panel.UserInformationController;
 import views.items.UserItemManager;
 import models.UserModel;
 import views.panels.UserMInforPanel;
 import views.MainView;
 
-/**
- *
- * @author ADMIN
- */
 public class UserItemController {
-    UserItemManager userItem;
-    MainView mainView;
-    UserModel userModels;
+    private UserItemManager userItem;
+    private MainView mainView;
+    private UserModel userModels;
 
-    public UserItemController(UserItemManager userItem, MainView mainView) {
+    public UserItemController(UserItemManager userItem, MainView mainView, UserModel currentUser) {
         this.userItem = userItem;
         this.mainView = mainView;
+        this.userModels = currentUser;
         
         this.userItem.onBtnInfor(e -> {
             changeInforPanel();
@@ -30,11 +28,10 @@ public class UserItemController {
     public void changeInforPanel(){
         try {
             UserMInforPanel userInfor = new UserMInforPanel();
-            //new BookInforController(bookInforPanel, mainView);
+            new UserInformationController(userInfor, this.userModels);
             this.mainView.setMainPanel(userInfor);
         } catch (Exception es) {
             System.out.println("Khong co mainView");
         }
     }
-
 }
