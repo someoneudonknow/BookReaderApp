@@ -4,7 +4,7 @@
  */
 package models.DAO;
 
-import com.mysql.cj.jdbc.Blob;
+import java.sql.Blob;
 import java.sql.ResultSet;
 import database.DB;
 import models.interfaces.DAOInterface;
@@ -12,7 +12,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.UserModel;

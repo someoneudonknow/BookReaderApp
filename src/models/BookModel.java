@@ -6,16 +6,7 @@ package models;
 
 
 import java.sql.Blob;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.SQLException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-
 import models.DAO.BookDAO;
 import java.sql.ResultSet;
 
@@ -98,28 +89,13 @@ public class BookModel {
         this.manager_id = manager_id;
     }
 
-    public String getAverageRating(int id) throws SQLException {
+    public String getRatingAverage(int id) throws SQLException {
         return BookDAO.getInstance().getRatingAverage(id);
     }
-
-//    public ImageIcon getImageFromBlob(int id) throws SQLException, IOException {
-//
-//        Blob coverBlob = this.getCover();
-//        byte[] coverData = coverBlob.getBytes(1, (int) coverBlob.length());
-//        InputStream in = new ByteArrayInputStream(coverData);
-//        BufferedImage originalImage = ImageIO.read(in);
-//        in.close();
-//
-//        Image scaledImage = originalImage.getScaledInstance(210, 230, Image.SCALE_SMOOTH);
-//        BufferedImage scaledBufferedImage = new BufferedImage(210, 230, BufferedImage.TYPE_INT_RGB);
-//        Graphics2D g = scaledBufferedImage.createGraphics();
-//        g.drawImage(scaledImage, 0, 0, null);
-//        g.dispose();
-//
-//        return new ImageIcon(scaledBufferedImage);
-//
-//    }
-
+    public int getView(int id) throws SQLException {
+        return BookDAO.getInstance().getView(id);
+    }
+    
     public static void populateBookModel(ResultSet rs, BookModel book) throws SQLException {
         book.setId(rs.getInt("book_id"));
         book.setName(rs.getString("book_name"));

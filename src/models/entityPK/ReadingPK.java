@@ -9,8 +9,12 @@ package models.entityPK;
  * @author trang
  */
 public class ReadingPK {
+
     private int user_id;
     private int chapter_id;
+
+    public ReadingPK() {
+    }
 
     public ReadingPK(int user_id, int chapter_id) {
         this.user_id = user_id;
@@ -32,5 +36,5 @@ public class ReadingPK {
     public void setChapter_id(int chapter_id) {
         this.chapter_id = chapter_id;
     }
-    
+
 }

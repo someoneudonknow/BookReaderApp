@@ -41,7 +41,7 @@ public class ReviewModel extends ReviewPK {
     public void setRating(int rating) {
         this.rating = rating;
     }
-    public static void populateChapterModel(ResultSet rs, ReviewModel review) throws SQLException {
+    public static void populateReviewModel(ResultSet rs, ReviewModel review) throws SQLException {
         review.setUser_id(rs.getInt("user_id"));
         review.setBook_id(rs.getInt("book_id"));
         review.setComment(rs.getString("user_comment"));

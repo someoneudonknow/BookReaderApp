@@ -10,6 +10,10 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
+import models.ChapterModel;
+import models.DAO.ChapterDAO;
+import models.DAO.ReadingDAO;
+import models.entityPK.ReadingPK;
 import views.panels.BookEditPanel;
 import views.panels.ReadingPanel;
 import views.MainView;
@@ -40,8 +44,10 @@ public class ChapterItemController {
             public void mouseClicked(MouseEvent e) {
                 try {
                     ReadingPanel chapterDetails = new ReadingPanel();
-                    ReadingController reading = new ReadingController(chapterDetails, mainView, chapterItem.getChapterModels());
-                    reading.setChapterDetails(chapterItem.getChapterModels());
+                    ChapterModel currentChapter  = chapterItem.getChapterModels();
+                    ReadingController reading = new ReadingController(chapterDetails, mainView, currentChapter);
+                    reading.setChapterDetails(currentChapter);
+                    ReadingDAO.getInstance().readingEvent(new ReadingPK(mainView.getUserModels().getId(), currentChapter.getId()));
                     getMainView().setMainPanel(chapterDetails);
 
                 } catch (Exception es) {

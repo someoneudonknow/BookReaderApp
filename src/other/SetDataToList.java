@@ -51,12 +51,6 @@ public class SetDataToList {
         this.mainView = mainView;
     }
 
-//    public SetDataToList(ArrayList<BookModels> bookList, ArrayList<UserModels> userList, ArrayList<CategoryModels> categoryList) {
-//        this.bookList = bookList;
-//        this.userList = userList;
-//        this.categoryList = categoryList;
-//    }
-    //tạo ví dụ để nhìn, làm xong xóa đống bùi nhùi này
     public void setBookItemList(JPanel panel, String option) throws SQLException {
         ArrayList<BookItem> items = new ArrayList<>();
         ArrayList<BookModel> books = new ArrayList<>();
@@ -64,6 +58,8 @@ public class SetDataToList {
             books = BookDAO.getInstance().getOption(option);
         } else if (option.equals("savedBook")) {
             books = BookDAO.getInstance().getSavedBook(this.mainView.getUserModels().getId());
+        } else if (option.equals("history")) {
+            books = BookDAO.getInstance().getHistory(this.mainView.getUserModels().getId());
         }
 
         for (BookModel book : books) {
@@ -98,13 +94,14 @@ public class SetDataToList {
 //    }
     public void setBookManagerList(JPanel panel, ArrayList<BookModel> books) {
         List<BookItemManager> itemManager = new ArrayList<>();
-        
-        for(BookModel b: books) {
+        List<BookModel> books = BookDAO.getInstance().getAll();
+
+        for (BookModel b : books) {
             BookItemManager a = new BookItemManager(b);
             new BookItemManagerController(a, this.mainView, b);
             itemManager.add(a);
         }
-        
+
         for (BookItemManager i : itemManager) {
             panel.add(i);
         }
@@ -133,13 +130,11 @@ public class SetDataToList {
         ArrayList<ChapterItem> items = new ArrayList<>();
         ArrayList<ChapterModel> chapterList = new ArrayList<>();
         chapterList = ChapterDAO.getInstance().getAllChapterFromBook(book_id);
-        System.out.println(1);
 
         for (ChapterModel chapter : chapterList) {
             ChapterItem a = new ChapterItem(chapter);
             new ChapterItemController(parent, a, mainView);
             items.add(a);
-
         }
 
         for (ChapterItem i : items) {
@@ -164,26 +159,6 @@ public class SetDataToList {
         panel.revalidate();
         panel.repaint();
     }
-
-//    //Tạo list book cho người đọc
-//    public void setBookItemList(JPanel panel) {
-//        try {
-//            ArrayList<BookItem> items = new ArrayList<>();
-//            for (BookModels i:this.bookList) {
-//                BookItem item = new BookItem(i);
-//                new BookItemController(item, mainView);
-//                items.add(item);
-//            }
-//            for (BookItem i:items) {
-//                panel.add(i);
-//            }
-//        } catch (Exception e) {
-//            panel.add(new JLabel("Danh sach trong"));
-//        }
-//        panel.revalidate();
-//        panel.repaint();
-//    }
-//    
     //tạo list book cho mainView (truyền vào max 5 cuốn)
     public void setTop5View(JPanel panel, String option) {
         try {

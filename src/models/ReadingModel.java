@@ -4,6 +4,7 @@
  */
 package models;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import models.entityPK.ReadingPK;
@@ -14,30 +15,24 @@ import models.entityPK.ReadingPK;
  */
 public class ReadingModel extends ReadingPK {
 
-    private int user_id;
-    private int chapter_id;
-    private String time_reading;
-    private SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+    private Timestamp lastRead;
 
-    public ReadingModel(int user_id, int chapter_id) {
+
+    public ReadingModel() {
+    }
+
+    public ReadingModel(int user_id, int chapter_id, Timestamp lastRead) {
         super(user_id, chapter_id);
-        this.time_reading = time.format(new Date());
+        this.lastRead = lastRead;
     }
 
-    public String getTime_reading() {
-        return time_reading;
+    public void setUpdateTime(Timestamp updateTime) {
+        this.lastRead = lastRead;
     }
 
-    public void setTime_reading(String time_reading) {
-        this.time_reading = time_reading;
+    public Timestamp getUpdateTime() {
+        return lastRead;
     }
-
-    public SimpleDateFormat getTime() {
-        return time;
-    }
-
-    public void setTime(SimpleDateFormat time) {
-        this.time = time;
-    }
+   
 
 }
