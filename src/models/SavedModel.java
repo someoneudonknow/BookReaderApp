@@ -6,6 +6,7 @@ package models;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import models.entityPK.SavedPK;
 
 /**
@@ -13,15 +14,26 @@ import models.entityPK.SavedPK;
  * @author ADMIN
  */
 public class SavedModel extends SavedPK {
-
+    private Timestamp savedTime;
     public SavedModel(int user_id, int book_id) {
         super(user_id, book_id);
     }
 
     public SavedModel() {
     }
-    public static void populateChapterModel(ResultSet rs, SavedModel saved) throws SQLException {
+
+    public void setSavedTime(Timestamp savedTime) {
+        this.savedTime = savedTime;
+    }
+
+    public Timestamp getSavedTime() {
+        return savedTime;
+    }
+    
+    public static void populateSavedModel(ResultSet rs, SavedModel saved) throws SQLException {
         saved.setUser_id(rs.getInt("user_id"));
         saved.setBook_id(rs.getInt("book_id"));
+        saved.setSavedTime(rs.getTimestamp("saved_date"));
+        System.out.println(saved.getSavedTime());
     }
 }

@@ -31,7 +31,7 @@ public class MainPanelController {
         SetDataToList setData = new SetDataToList(this.mainView);
         
         // Xác định thêm vào panel nào
-        setData.setTop5View(this.mainPanel.getListTopView(), "saved");
+        setData.setTop5View(this.mainPanel.getListTopView(), "view");
         setData.setTop5View(this.mainPanel.getListNewUpdate(), "recently");
         
         this.mainPanel.onBtnMore(e -> {

@@ -20,19 +20,19 @@ public class ChapterModel {
     private String document;
     private int book_id;
     private Timestamp updateTime;
+    private int chapter_view;
 
     public ChapterModel() {
     }
 
-   
-
-    public ChapterModel(int id, String title, int serial, String document, int book_id, Timestamp updateTime) {
+    public ChapterModel(int id, String title, int serial, String document, int book_id, Timestamp updateTime, int chapter_view) {
         this.id = id;
         this.title = title;
         this.serial = serial;
         this.document = document;
         this.book_id = book_id;
         this.updateTime = updateTime;
+        this.chapter_view = chapter_view;
     }
 
     public int getId() {
@@ -81,6 +81,15 @@ public class ChapterModel {
         return this.updateTime;
     }
 
+    public int getChapter_view() {
+        return chapter_view;
+    }
+
+    public void setChapter_view(int chapter_view) {
+        this.chapter_view = chapter_view;
+    }
+    
+
     public static void populateChapterModel(ResultSet rs, ChapterModel chapter) throws SQLException {
         chapter.setId(rs.getInt("chapter_id"));
         chapter.setTitle(rs.getString("chapter_title"));
@@ -88,6 +97,7 @@ public class ChapterModel {
         chapter.setDocument(rs.getString("chapter_document"));
         chapter.setBook_id(rs.getInt("book_id"));
         chapter.setUpdateTime(rs.getTimestamp("chapter_update"));
+        chapter.setChapter_view(rs.getInt("chapter_view"));
     }
 
 }

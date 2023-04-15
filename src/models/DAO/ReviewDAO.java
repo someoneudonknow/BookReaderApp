@@ -32,7 +32,7 @@ public class ReviewDAO extends ResultSetQuery implements DAOInterface<ReviewMode
         rs = this.executeQuery(query, queryField);
         while(rs.next()) {
             ReviewModel review = new ReviewModel();
-            ReviewModel.populateChapterModel(rs, review);
+            ReviewModel.populateReviewModel(rs, review);
             reviewList.add(review);
         }
         if(rs != null) {

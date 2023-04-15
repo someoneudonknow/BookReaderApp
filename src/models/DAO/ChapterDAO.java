@@ -35,7 +35,7 @@ public class ChapterDAO extends ResultSetQuery implements DAOInterface<ChapterMo
         queryField.add(bookID);
         queryField.add(selectedItem);
         rs = this.executeQuery(query, queryField);
-        while(rs.next()) {
+        while (rs.next()) {
             ChapterModel.populateChapterModel(rs, selectedChapter);
         }
         return selectedChapter;
@@ -70,6 +70,19 @@ public class ChapterDAO extends ResultSetQuery implements DAOInterface<ChapterMo
         }
 
         return preivousNextChapter;
+    }
+
+    public void increaseView(ChapterModel data) {
+        ResultSet rs = null;
+        ArrayList<Object> queryField = new ArrayList<>();
+        String query = "UPDATE project1.bookchapter SET chapter_view = ? WHERE chapter_id = ?";
+        queryField.add(data.getChapter_view() + 1);
+        queryField.add(data.getId());
+        try {
+            this.executeNonQuery(query, queryField);
+        } catch (SQLException ex) {
+            Logger.getLogger(SavedDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public ArrayList<ChapterModel> getAllChapterFromBook(Integer pk) throws SQLException {

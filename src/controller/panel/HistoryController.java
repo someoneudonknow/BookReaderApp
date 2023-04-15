@@ -22,7 +22,7 @@ public class HistoryController {
         this.historyPanel = historyPanel;
         this.mainView = mainView;
         SetDataToList setData = new SetDataToList(this.mainView);
-//        setData.setBookItemList(historyPanel.getListHistory(), null);
+        setData.setBookItemList(historyPanel.getListHistory(), "history");
         setHeightPreferrer();
     }
     

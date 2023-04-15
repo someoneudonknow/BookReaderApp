@@ -71,7 +71,7 @@ public class BookInforController {
         });
         this.bookInforPanel.onBtnSave(e -> {
             SavedModel saved = new SavedModel(mainView.getUserModels().getId(), currentBook.getId());
-            SavedDAO.getInstance().addOrDeleteSaved(saved);
+            SavedDAO.getInstance().savedEvent(saved);
             if (this.bookInforPanel.getBtnSave().getText().equals("Xóa khỏi thư viện")) {
                 this.bookInforPanel.getBtnSave().setText("Thêm vào thư viện");
             } else {
@@ -102,7 +102,8 @@ public class BookInforController {
             currentCategoryList += category + " ";
         }
         this.bookInforPanel.getTxtCategorys().setText(currentCategoryList);
-        String[] rating = (book.getAverageRating(book.getId())).split(" ");
+        this.bookInforPanel.getTxtView().setText(""+BookDAO.getInstance().getView(book.getId()));
+        String[] rating = (book.getRatingAverage(book.getId())).split(" ");
         this.bookInforPanel.getTxtRate().setText("" + rating[0] + " sao" + " " + "(" + rating[1] + ")");
         this.bookInforPanel.getImgCover().setIcon(Converter.convertBlobToImageIcon(currentBook.getCover()));
     }

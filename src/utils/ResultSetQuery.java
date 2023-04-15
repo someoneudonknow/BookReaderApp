@@ -48,7 +48,6 @@ public class ResultSetQuery {
         PreparedStatement stmt = this.preparedStatement(query, queryField);
         ResultSet rs = null;
         rs = stmt.executeQuery();
-
         return rs;
     }
 

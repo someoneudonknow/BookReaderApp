@@ -64,6 +64,7 @@ public class ReadingController {
 
     public void setChapterDetails(ChapterModel chapter) throws SQLException {
         int currentBookID = chapter.getBook_id();
+       
         this.readingPanel.getJtextArea1().setText(chapter.getDocument());
         ArrayList<ChapterModel> listChapter = ChapterDAO.getInstance().getAllChapterFromBook(currentBookID);
         ArrayList<String> listChapterName = new ArrayList<>();
@@ -73,6 +74,7 @@ public class ReadingController {
         this.readingPanel.getBoxChapter().setModel(new javax.swing.DefaultComboBoxModel<>(listChapterName.toArray(new String[0])));
         String currentChapterName = listChapterName.get(chapter.getSerial() - 1);
         this.readingPanel.getBoxChapter().setSelectedItem(currentChapterName);
+        ChapterDAO.getInstance().increaseView(chapter);
         this.readingPanel.getBoxChapter().repaint();
 
     }
