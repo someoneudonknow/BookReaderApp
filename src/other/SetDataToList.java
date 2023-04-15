@@ -94,7 +94,7 @@ public class SetDataToList {
 //    }
     public void setBookManagerList(JPanel panel, ArrayList<BookModel> books) {
         List<BookItemManager> itemManager = new ArrayList<>();
-        List<BookModel> books = BookDAO.getInstance().getAll();
+        books = BookDAO.getInstance().getAll();
 
         for (BookModel b : books) {
             BookItemManager a = new BookItemManager(b);

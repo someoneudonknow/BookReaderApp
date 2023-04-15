@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.UserModel;
 import java.sql.Statement;
+import java.util.List;
 
 public class UserDAO implements DAOInterface<UserModel, Integer> {
 
