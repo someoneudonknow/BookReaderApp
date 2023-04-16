@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.BookModel;
@@ -64,6 +65,43 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
             books.add(book);
         }
         return books;
+    }
+
+    public String getReadRecently(int book_id, int user_id) throws SQLException {
+        ResultSet rs = null;
+        ArrayList<BookModel> books = new ArrayList<>();
+        ArrayList<Object> queryField = new ArrayList<>();
+        String query = "SELECT MAX(bc.chapter_serial) AS read_recently FROM project1.bookreading AS br \n"
+                + "JOIN project1.bookchapter AS bc ON br.chapter_id = bc.chapter_id\n"
+                + "GROUP BY book_id,user_id\n"
+                + "HAVING bc.book_id = ? AND br.user_id = ?";
+        queryField.add(book_id);
+        queryField.add(user_id);
+        rs = this.executeQuery(query, queryField);
+        String recentlyChapter = "";
+        while (rs.next()) {
+            recentlyChapter = rs.getString("read_recently");
+        }
+        
+        return recentlyChapter;
+    }
+
+    public String getUpdateDate(int book_id) throws SQLException {
+        ResultSet rs = null;
+        ArrayList<BookModel> books = new ArrayList<>();
+        ArrayList<Object> queryField = new ArrayList<>();
+        String query = "SELECT *,MAX(bc.chapter_update) as book_update FROM project1.bookinfo AS bi\n"
+                + "JOIN project1.bookchapter AS bc ON bi.book_id = bc.book_id\n"
+                + "GROUP BY bi.book_id\n"
+                + "HAVING bi.book_id = ?";
+        queryField.add(book_id);
+        rs = this.executeQuery(query, queryField);
+        String currentDateTime = "";
+        while (rs.next()) {
+            currentDateTime = "" + rs.getTimestamp("book_update");
+        }
+        String[] result = currentDateTime.split(" ");
+        return result[0];
     }
 
     public ArrayList<BookModel> getSavedBook(int currentUserID) throws SQLException {

@@ -10,6 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.ChapterModel;
 import models.DAO.ChapterDAO;
+import models.DAO.ReadingDAO;
+import models.entityPK.ReadingPK;
 import views.panels.ReadingPanel;
 import views.MainView;
 
@@ -64,7 +66,7 @@ public class ReadingController {
 
     public void setChapterDetails(ChapterModel chapter) throws SQLException {
         int currentBookID = chapter.getBook_id();
-       
+
         this.readingPanel.getJtextArea1().setText(chapter.getDocument());
         ArrayList<ChapterModel> listChapter = ChapterDAO.getInstance().getAllChapterFromBook(currentBookID);
         ArrayList<String> listChapterName = new ArrayList<>();
@@ -75,6 +77,7 @@ public class ReadingController {
         String currentChapterName = listChapterName.get(chapter.getSerial() - 1);
         this.readingPanel.getBoxChapter().setSelectedItem(currentChapterName);
         ChapterDAO.getInstance().increaseView(chapter);
+        ReadingDAO.getInstance().readingEvent(new ReadingPK(mainView.getUserModels().getId(), currentChapter.getId()));
         this.readingPanel.getBoxChapter().repaint();
 
     }

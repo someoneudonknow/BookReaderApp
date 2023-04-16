@@ -46,7 +46,6 @@ public class BookItem extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnDelete.setBackground(null);
         btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 51, 51));
         btnDelete.setText("X");

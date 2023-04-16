@@ -7,6 +7,7 @@ package controller.panel;
 import controller.view.ChangeCategoryController;
 import java.awt.Dimension;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -31,7 +32,7 @@ public class BookEditController {
     private MainView mainView;
     private BookModel currentBook;
 
-    public BookEditController(BookEditPanel bookEditPanel, MainView mainView, BookModel book) throws SQLException {
+    public BookEditController(BookEditPanel bookEditPanel, MainView mainView, BookModel book) throws SQLException, ParseException {
         this.bookEditPanel = bookEditPanel;
         this.mainView = mainView;
         this.currentBook = book;
@@ -51,7 +52,7 @@ public class BookEditController {
         });
     }
 
-    private void initUI() {
+    private void initUI() throws ParseException {
         BookDAO bookDAO = new BookDAO();
         List<String> categories = null;
         SetDataToList setData = new SetDataToList(mainView);
