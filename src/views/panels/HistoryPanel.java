@@ -4,6 +4,7 @@
  */
 package views.panels;
 
+import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -33,6 +34,7 @@ public class HistoryPanel extends javax.swing.JPanel {
         lbHistory = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         listHistory = new javax.swing.JPanel();
+        btnDelete = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1013, 698));
@@ -56,6 +58,8 @@ public class HistoryPanel extends javax.swing.JPanel {
         listHistory.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 25, 25));
         jScrollPane3.setViewportView(listHistory);
 
+        btnDelete.setText("Delete All");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -65,14 +69,20 @@ public class HistoryPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDelete)
+                .addGap(74, 74, 74))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(lbHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnDelete)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -95,8 +105,13 @@ public class HistoryPanel extends javax.swing.JPanel {
         this.listHistory = listHistory;
     }
     
+    public void onBtnDelete(ActionListener action) {
+        this.btnDelete.addActionListener(action);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDelete;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lbHistory;

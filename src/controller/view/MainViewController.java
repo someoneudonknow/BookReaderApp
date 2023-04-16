@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import models.UserModel;
@@ -34,6 +35,7 @@ public class MainViewController {
 
     public MainViewController(MainView mainView) {
         this.mainView = mainView;
+        this.mainView.setExtendedState(JFrame.MAXIMIZED_BOTH);
         MainPanel panel = new MainPanel();
         new MainPanelController(panel, this.mainView);
         if (this.mainView.getUserModels().isIsManager() == true) {
