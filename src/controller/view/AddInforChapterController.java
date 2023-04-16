@@ -18,10 +18,12 @@ public class AddInforChapterController {
         
         this.inforChapter.onBtnConfirm(e -> {
             createChapter();
+            this.inforChapter.setVisible(false);
             this.inforChapter.dispose();
         });
         
         this.inforChapter.onBtnCancel(e -> {
+            this.inforChapter.setVisible(false);
             this.inforChapter.dispose();
         });
         

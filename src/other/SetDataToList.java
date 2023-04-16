@@ -64,7 +64,7 @@ public class SetDataToList {
 
         for (BookModel book : books) {
             BookItem a = new BookItem(book);
-            new BookItemController(a, this.mainView);
+            new BookItemController(a, this.mainView,option);
             items.add(a);
         }
 
@@ -167,7 +167,7 @@ public class SetDataToList {
             books = BookDAO.getInstance().getOption(option);
             for (BookModel i : books) {
                 BookItem item = new BookItem(i);
-                new BookItemController(item, mainView);
+                new BookItemController(item, mainView, option);
                 items.add(item);
             }
             for (BookItem i : items) {

@@ -41,20 +41,19 @@ public class ChapterItem extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(32767, 40));
-        setPreferredSize(new java.awt.Dimension(600, 50));
+        setPreferredSize(new java.awt.Dimension(980, 50));
         setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
         lbChapter.setBackground(new java.awt.Color(255, 255, 255));
         lbChapter.setText("jLabel1");
         lbChapter.setAlignmentY(0.0F);
-        lbChapter.setPreferredSize(new java.awt.Dimension(500, 50));
+        lbChapter.setPreferredSize(new java.awt.Dimension(900, 50));
         add(lbChapter);
 
         btnDelete.setBackground(new java.awt.Color(204, 0, 51));
         btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("x");
-        btnDelete.setOpaque(true);
         btnDelete.setPreferredSize(new java.awt.Dimension(50, 48));
         add(btnDelete);
     }// </editor-fold>//GEN-END:initComponents

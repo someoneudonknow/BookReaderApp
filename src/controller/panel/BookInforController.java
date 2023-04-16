@@ -52,6 +52,9 @@ public class BookInforController {
         //Set lại size cho panel chứa list
         JPanel panel = this.bookInforPanel.getListChapter();
         panel.setPreferredSize(new Dimension(0, panel.getComponentCount() * 40));
+        
+        JPanel panel1 = this.bookInforPanel.getListComment();
+        panel1.setPreferredSize(new Dimension(0, panel1.getComponentCount() * 40));
 
         this.bookInforPanel.onBtnFirst(e -> {
             try {

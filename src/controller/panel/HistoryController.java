@@ -24,6 +24,9 @@ public class HistoryController {
         SetDataToList setData = new SetDataToList(this.mainView);
         setData.setBookItemList(historyPanel.getListHistory(), "history");
         setHeightPreferrer();
+        this.historyPanel.onBtnDelete(e -> {
+            DeleteAll();
+        });
     }
     
     public void setHeightPreferrer() {
@@ -32,6 +35,12 @@ public class HistoryController {
             height /= 5;
         else height = height/5 + 1;
         this.historyPanel.getListHistory().setPreferredSize(new Dimension(0,height * 255));
+        this.historyPanel.getListHistory().repaint();
+    }
+    
+    public void DeleteAll() {
+        this.historyPanel.getListHistory().removeAll();
+        this.historyPanel.getListHistory().revalidate();
         this.historyPanel.getListHistory().repaint();
     }
 }

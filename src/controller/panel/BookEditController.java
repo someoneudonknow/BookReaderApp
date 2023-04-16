@@ -4,6 +4,7 @@
  */
 package controller.panel;
 
+import controller.view.ChangeCategoryController;
 import java.awt.Dimension;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import javax.swing.JPanel;
 import models.BookModel;
 import models.DAO.BookDAO;
 import other.SetDataToList;
+import views.ChangeCategory;
 import views.panels.AddChapterPanel;
 import views.panels.BookEditPanel;
 import views.panels.BookInforPanel;
@@ -42,6 +44,10 @@ public class BookEditController {
 
         this.bookEditPanel.onBtnSave(e -> {
             Save();
+        });
+        
+        this.bookEditPanel.onBtnChangeCategory(e -> {
+            ChangeCategory();
         });
     }
 
@@ -74,6 +80,14 @@ public class BookEditController {
         
         JPanel panel = this.bookEditPanel.getListChapter();
         panel.setPreferredSize(new Dimension(0, panel.getComponentCount() * 40));
+        
+        JPanel panel1 = this.bookEditPanel.getListComment();
+        panel1.setPreferredSize(new Dimension(0, panel1.getComponentCount() * 40));
+        
+        this.bookEditPanel.onBtnChangeCategory(e -> {
+            ChangeCategory();
+        });
+        
     }
 
     public void AddChapter() {
@@ -83,5 +97,10 @@ public class BookEditController {
 
     public void Save() {
 
+    }
+    
+    public void ChangeCategory() {
+        ChangeCategory changeCategory = new ChangeCategory();
+        new ChangeCategoryController(changeCategory, mainView, currentBook);
     }
 }

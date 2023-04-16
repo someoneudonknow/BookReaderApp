@@ -23,6 +23,7 @@ public class CommentItem extends javax.swing.JPanel {
         initComponents();
         this.reviewModels = reviewModels;
         this.txtComment.setText("" + reviewModels.getUser_id()+ " : " + reviewModels.getComment());
+        this.txtRate.setText("Rating: " + reviewModels.getRating() + "/" + 5);
     }
 
     /**
@@ -35,19 +36,24 @@ public class CommentItem extends javax.swing.JPanel {
     private void initComponents() {
 
         txtComment = new javax.swing.JLabel();
+        txtRate = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(32767, 40));
-        setPreferredSize(new java.awt.Dimension(400, 50));
+        setPreferredSize(new java.awt.Dimension(980, 50));
         setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
         txtComment.setBackground(new java.awt.Color(255, 255, 255));
         txtComment.setText("jLabel1");
         txtComment.setAlignmentY(0.0F);
-        txtComment.setPreferredSize(new java.awt.Dimension(250, 50));
+        txtComment.setPreferredSize(new java.awt.Dimension(700, 50));
         add(txtComment);
+
+        txtRate.setText("jLabel1");
+        txtRate.setPreferredSize(new java.awt.Dimension(200, 50));
+        add(txtRate);
 
         btnDelete.setText("X");
         btnDelete.setPreferredSize(new java.awt.Dimension(50, 48));
@@ -69,5 +75,6 @@ public class CommentItem extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
     private javax.swing.JLabel txtComment;
+    private javax.swing.JLabel txtRate;
     // End of variables declaration//GEN-END:variables
 }
