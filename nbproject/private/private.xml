@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/models/DAO/BookDAO.java</file>
-            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/controller/panel/HistoryController.java</file>
-            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/models/DAO/ReadingDAO.java</file>
-            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/views/items/UserItemManager.java</file>
-            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/views/panels/BookInforPanel.java</file>
-            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/views/panels/HistoryPanel.java</file>
-            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/controller/item/BookItemController.java</file>
+            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/controller/panel/ReadingController.java</file>
+            <file>file:/C:/Users/trang/Dropbox/project_java/BookReaderApp/src/views/panels/ReadingPanel.java</file>
         </group>
     </open-files>
 </project-private>

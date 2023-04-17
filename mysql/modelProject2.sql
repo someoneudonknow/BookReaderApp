@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS userInfo(
     user_password VARCHAR(100) NOT NULL,
     user_phoneNumber VARCHAR(20) UNIQUE NOT NULL,
     is_manager BOOLEAN NOT NULL DEFAULT FALSE,
-    manager_id  INT(10) DEFAULT 1 UNIQUE,
+    manager_id  INT(10) DEFAULT 1,
     FOREIGN KEY (manager_id) REFERENCES userInfo(user_id)
 );
 
