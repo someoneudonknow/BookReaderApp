@@ -10,6 +10,7 @@ import controller.item.ChapterItemController;
 import controller.item.CommentItemController;
 import controller.item.UserItemController;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JLabel;
@@ -144,7 +145,8 @@ public class SetDataToList {
         panel.repaint();
     }
 
-    public void setCommentList(JPanel parent, JPanel panel, int book_id) throws SQLException {
+    public void setCommentList(JPanel parent, JPanel panel, int book_id) throws SQLException, ParseException {
+        panel.removeAll();
         ArrayList<CommentItem> items = new ArrayList<>();
         ArrayList<ReviewModel> reviewList = ReviewDAO.getInstance().getAllReviewFromBook(book_id);
 

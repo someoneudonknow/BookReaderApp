@@ -61,7 +61,6 @@ public class ReviewModel extends ReviewPK {
         review.setComment(rs.getString("user_comment"));
         review.setRating(rs.getInt("user_rating"));
         review.setReviewDate(rs.getDate("review_date"));
-        System.out.println(rs.getDate("review_date"));
     }
 
 }

@@ -5,9 +5,15 @@
 package views.items;
 
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import models.DAO.ReviewDAO;
 import models.ReviewModel;
+import models.entityPK.ReviewPK;
+import static utils.formatDate.formatDate;
 
 /**
  *
@@ -19,11 +25,17 @@ public class CommentItem extends javax.swing.JPanel {
      * Creates new form ChapterItem
      */
     private ReviewModel reviewModels;
-    public CommentItem(ReviewModel reviewModels) {
+
+    public CommentItem(ReviewModel reviewModels) throws SQLException, ParseException {
         initComponents();
         this.reviewModels = reviewModels;
-        this.txtComment.setText("" + reviewModels.getUser_id()+ " : " + reviewModels.getComment());
-        this.txtRate.setText("Rating: " + reviewModels.getRating() + "/" + 5);
+        this.txtComment.setText("" + ReviewDAO.getInstance().getUserNameFromReviewPK(new ReviewPK( reviewModels.getUser_id(), reviewModels.getBook_id()))
+                + " : " + reviewModels.getComment());
+         DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        String rating = decimalFormat.format(reviewModels.getRating());
+        this.txtRate.setText("Rating: " + rating + "/" + 5);
+        String formatDate = formatDate("" + reviewModels.getReviewDate());
+        this.txtDate.setText(formatDate);
     }
 
     /**
@@ -36,6 +48,7 @@ public class CommentItem extends javax.swing.JPanel {
     private void initComponents() {
 
         txtComment = new javax.swing.JLabel();
+        txtDate = new javax.swing.JLabel();
         txtRate = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
 
@@ -50,6 +63,9 @@ public class CommentItem extends javax.swing.JPanel {
         txtComment.setAlignmentY(0.0F);
         txtComment.setPreferredSize(new java.awt.Dimension(700, 50));
         add(txtComment);
+
+        txtDate.setText("date");
+        add(txtDate);
 
         txtRate.setText("jLabel1");
         txtRate.setPreferredSize(new java.awt.Dimension(200, 50));
@@ -71,10 +87,11 @@ public class CommentItem extends javax.swing.JPanel {
     public void onBtnDeleteClick(ActionListener action) {
         this.btnDelete.addActionListener(action);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
     private javax.swing.JLabel txtComment;
+    private javax.swing.JLabel txtDate;
     private javax.swing.JLabel txtRate;
     // End of variables declaration//GEN-END:variables
 }

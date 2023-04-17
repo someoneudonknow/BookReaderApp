@@ -24,6 +24,40 @@ public class ReadingDAO extends ResultSetQuery implements DAOInterface<ReadingMo
         return new ReadingDAO();
     }
 
+    public void deleteReadHistory(int book_id, int user_id) throws SQLException {
+        ArrayList<Integer> chapterReadByUser = this.getReadChapterOfBook(book_id, user_id);
+        System.out.println(chapterReadByUser);
+        for (int chapter : chapterReadByUser) {
+            this.delete(new ReadingPK(user_id, chapter));
+        }
+    }
+    public void deleteAllByUserID(int user_id) {
+        ResultSet rs = null;
+        ArrayList<Object> queryField = new ArrayList<>();
+        String query = "DELETE FROM project1.bookreading WHERE user_id = ?";
+        queryField.add(user_id);
+        try {
+            this.executeNonQuery(query, queryField);
+        } catch (SQLException ex) {
+            Logger.getLogger(SavedDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public ArrayList<Integer> getReadChapterOfBook(int book_id, int user_id) throws SQLException {
+        ResultSet rs = null;
+        ArrayList<Integer> chapterReadByUser = new ArrayList<>();
+        String query = "SELECT br.chapter_id FROM project1.bookreading as br\n"
+                + "JOIN project1.bookchapter AS bc ON br.chapter_id = bc.chapter_id\n"
+                + "WHERE br.user_id = ? AND bc.book_id = ?";
+        ArrayList<Object> queryField = new ArrayList<>();
+        queryField.add(user_id);
+        queryField.add(book_id);
+        rs = this.executeQuery(query, queryField);
+        while (rs.next()) {
+            chapterReadByUser.add(rs.getInt("chapter_id"));
+        }
+        return chapterReadByUser;
+    }
+
     public void readingEvent(ReadingPK pk) {
         try {
             ResultSet checkRs = this.checkPK(pk);
@@ -97,7 +131,7 @@ public class ReadingDAO extends ResultSetQuery implements DAOInterface<ReadingMo
     public void delete(ReadingPK pk) {
         ResultSet rs = null;
         ArrayList<Object> queryField = new ArrayList<>();
-        String query = "DELETE FROM project1.booksaved WHERE user_id = ? AND chapter_id = ?";
+        String query = "DELETE FROM project1.bookreading WHERE user_id = ? AND chapter_id = ?";
         queryField.add(pk.getUser_id());
         queryField.add(pk.getChapter_id());
         try {

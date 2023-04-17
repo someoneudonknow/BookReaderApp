@@ -47,7 +47,6 @@ public class ChapterItemController {
                     ChapterModel currentChapter  = chapterItem.getChapterModels();
                     ReadingController reading = new ReadingController(chapterDetails, mainView, currentChapter);
                     reading.setChapterDetails(currentChapter);
-                    ReadingDAO.getInstance().readingEvent(new ReadingPK(mainView.getUserModels().getId(), currentChapter.getId()));
                     getMainView().setMainPanel(chapterDetails);
 
                 } catch (Exception es) {

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import models.ChapterModel;
 import models.interfaces.DAOInterface;
 import utils.ResultSetQuery;
@@ -51,7 +52,7 @@ public class ChapterDAO extends ResultSetQuery implements DAOInterface<ChapterMo
         queryField.add(currentChapter.getBook_id());
         if (option.equals("previous")) {
             if (currentSerial == 1) {
-                System.out.println("This is already the first chapter");
+                JOptionPane.showMessageDialog(null, "This is already the first chapter");
                 return currentChapter;
             } else {
                 queryField.add(currentSerial - 1);
@@ -59,7 +60,7 @@ public class ChapterDAO extends ResultSetQuery implements DAOInterface<ChapterMo
         } else if (option.equals("next")) {
             if (currentSerial
                     == BookDAO.getInstance().getFirstLastChapter(currentChapter.getBook_id(), "last").getSerial()) {
-                System.out.println("This is already the last chapter");
+                JOptionPane.showMessageDialog(null, "This is already the last chapter");
                 return currentChapter;
             }
             queryField.add(currentSerial + 1);

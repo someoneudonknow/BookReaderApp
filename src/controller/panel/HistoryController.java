@@ -6,6 +6,7 @@ package controller.panel;
 
 import java.awt.Dimension;
 import java.sql.SQLException;
+import models.DAO.ReadingDAO;
 import other.SetDataToList;
 import views.panels.HistoryPanel;
 import views.MainView;
@@ -39,6 +40,7 @@ public class HistoryController {
     }
     
     public void DeleteAll() {
+        ReadingDAO.getInstance().deleteAllByUserID(this.mainView.getUserModels().getId());
         this.historyPanel.getListHistory().removeAll();
         this.historyPanel.getListHistory().revalidate();
         this.historyPanel.getListHistory().repaint();

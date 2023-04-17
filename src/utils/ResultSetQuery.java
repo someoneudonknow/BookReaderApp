@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -36,6 +37,8 @@ public class ResultSetQuery {
                     stmt.setString(i, (String) o);
                 } else if (o instanceof Integer) {
                     stmt.setInt(i, (Integer) o);
+                } else if (o instanceof Float) {
+                    stmt.setFloat(i, (Float) o);
                 }
                 i++;
             }

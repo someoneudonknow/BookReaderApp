@@ -47,6 +47,11 @@
         </Property>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="txtDate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="date"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JLabel" name="txtRate">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel1"/>

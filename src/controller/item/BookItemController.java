@@ -8,8 +8,12 @@ import controller.panel.BookInforController;
 import views.items.BookItem;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import models.BookModel;
+import models.DAO.ReadingDAO;
 import other.Converter;
 import views.panels.BookInforPanel;
 import views.panels.ReadingPanel;
@@ -21,12 +25,14 @@ import views.panels.HistoryPanel;
  * @author ADMIN
  */
 public class BookItemController {
+
     private BookItem bookItem;
     private MainView mainView;
+
     public BookItemController(BookItem bookItem, MainView mainView, String option) {
         this.bookItem = bookItem;
         this.mainView = mainView;
-        
+
         BookModel currentBook = bookItem.getBookModels();
         bookItem.getjLabel2().setText(currentBook.getName());
         bookItem.getjLabel1().setIcon(Converter.convertBlobToImageIcon(currentBook.getCover()));
@@ -46,11 +52,11 @@ public class BookItemController {
                     //System.out.println("Khong co mainView");
                 }
             }
-            
+
         });
-        
+
         this.bookItem.onBtnDelete(e -> {
-            DeleteThisItem();
+            deleteThisItem();
         });
     }
 
@@ -69,12 +75,18 @@ public class BookItemController {
     public void setMainView(MainView mainView) {
         this.mainView = mainView;
     }
-    
-    public void DeleteThisItem() {
+
+    public void deleteThisItem() {
         JPanel parent = (JPanel) this.bookItem.getParent();
+        try {
+            ReadingDAO.getInstance().deleteReadHistory(bookItem.getBookModels().getId(), this.mainView.getUserModels().getId());
+
+        } catch (SQLException ex) {
+            Logger.getLogger(BookItemController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         parent.remove(this.bookItem);
         parent.revalidate();
         parent.repaint();
     }
-    
+
 }

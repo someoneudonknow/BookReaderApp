@@ -58,7 +58,12 @@ public class HistoryPanel extends javax.swing.JPanel {
         listHistory.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 25, 25));
         jScrollPane3.setViewportView(listHistory);
 
-        btnDelete.setText("Delete All");
+        btnDelete.setText("Xóa tất cả");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -96,6 +101,10 @@ public class HistoryPanel extends javax.swing.JPanel {
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     public JPanel getListHistory() {
         return listHistory;
