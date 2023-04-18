@@ -40,22 +40,12 @@ public class ChapterItemController {
             public void mouseClicked(MouseEvent e) {
                 DeleteThisChapter();
             }
-            
-        });
 
+        });
         this.chapterItem.onLbChapterClick(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                try {
-                    ReadingPanel chapterDetails = new ReadingPanel();
-                    ChapterModel currentChapter  = chapterItem.getChapterModels();
-                    ReadingController reading = new ReadingController(chapterDetails, mainView, currentChapter, parent);
-                    reading.setChapterDetails(currentChapter);
-                    getMainView().setMainPanel(chapterDetails);
-
-                } catch (Exception es) {
-                    System.out.println("Khong co mainView");
-                }
+                changeToReadingPanel(parent);
             }
 
         });
@@ -85,4 +75,16 @@ public class ChapterItemController {
         this.mainView = mainView;
     }
 
+    public void changeToReadingPanel(JPanel parent) {
+        try {
+            ReadingPanel chapterDetails = new ReadingPanel();
+            ChapterModel currentChapter = chapterItem.getChapterModels();
+            ReadingController reading = new ReadingController(chapterDetails, mainView, currentChapter, parent);
+            reading.setChapterDetails(currentChapter);
+            getMainView().setMainPanel(chapterDetails);
+
+        } catch (Exception es) {
+//            System.out.println("Khong co mainView");
+        }
+    }
 }

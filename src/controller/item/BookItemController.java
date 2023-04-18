@@ -35,24 +35,11 @@ public class BookItemController {
         this.mainView = mainView;
         this.parentPanel = parentPanel;
 
-        BookModel currentBook = bookItem.getBookModels();
-        bookItem.getjLabel2().setText(currentBook.getName());
-        bookItem.getjLabel1().setIcon(Converter.convertBlobToImageIcon(currentBook.getCover()));
-        if (!(option.equals("history"))) {
-            this.bookItem.getBtnDelete().setVisible(false);
-        }
+        setDefaultView(option);
         this.bookItem.onItemClick(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                try {
-                    BookModel book = bookItem.getBookModels();
-                    BookInforPanel bookInforPanel = new BookInforPanel();
-                    new BookInforController(bookInforPanel, mainView, book, parentPanel);
-                    getMainView().setMainPanel(bookInforPanel);
-                } catch (Exception es) {
-                    es.printStackTrace();
-                    //System.out.println("Khong co mainView");
-                }
+                changeToBookInfoPanel();
             }
 
         });
@@ -66,7 +53,7 @@ public class BookItemController {
                     es.printStackTrace();
                 }
             }
-            
+
         });
     }
 
@@ -86,6 +73,15 @@ public class BookItemController {
         this.mainView = mainView;
     }
 
+    public void setDefaultView(String option) {
+        BookModel currentBook = bookItem.getBookModels();
+        bookItem.getjLabel2().setText(currentBook.getName());
+        bookItem.getjLabel1().setIcon(Converter.convertBlobToImageIcon(currentBook.getCover()));
+        if (!(option.equals("history"))) {
+            this.bookItem.getBtnDelete().setVisible(false);
+        }
+    }
+
     public void deleteThisItem() {
         JPanel parent = (JPanel) this.bookItem.getParent();
         try {
@@ -99,4 +95,14 @@ public class BookItemController {
         parent.repaint();
     }
 
+    public void changeToBookInfoPanel() {
+        try {
+            BookModel book = bookItem.getBookModels();
+            BookInforPanel bookInforPanel = new BookInforPanel();
+            new BookInforController(bookInforPanel, mainView, book, parentPanel);
+            getMainView().setMainPanel(bookInforPanel);
+        } catch (Exception es) {
+            es.printStackTrace();
+        }
+    }
 }
