@@ -4,11 +4,11 @@
  */
 package views.items;
 
-import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseListener;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import models.DAO.ReviewDAO;
 import models.ReviewModel;
@@ -50,7 +50,7 @@ public class CommentItem extends javax.swing.JPanel {
         txtComment = new javax.swing.JLabel();
         txtDate = new javax.swing.JLabel();
         txtRate = new javax.swing.JLabel();
-        btnDelete = new javax.swing.JButton();
+        btnDelete = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -68,28 +68,29 @@ public class CommentItem extends javax.swing.JPanel {
         add(txtDate);
 
         txtRate.setText("jLabel1");
-        txtRate.setPreferredSize(new java.awt.Dimension(200, 50));
+        txtRate.setPreferredSize(new java.awt.Dimension(150, 50));
         add(txtRate);
 
-        btnDelete.setText("X");
+        btnDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete_icon.png"))); // NOI18N
         btnDelete.setPreferredSize(new java.awt.Dimension(50, 48));
         add(btnDelete);
     }// </editor-fold>//GEN-END:initComponents
 
-    public JButton getBtnDelete() {
+    public JLabel getBtnDelete() {
         return btnDelete;
     }
 
-    public void setBtnDelete(JButton btnDelete) {
+    public void setBtnDelete(JLabel btnDelete) {
         this.btnDelete = btnDelete;
     }
 
-    public void onBtnDeleteClick(ActionListener action) {
-        this.btnDelete.addActionListener(action);
+    public void onBtnDeleteClick(MouseAdapter action) {
+        this.btnDelete.addMouseListener(action);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDelete;
+    private javax.swing.JLabel btnDelete;
     private javax.swing.JLabel txtComment;
     private javax.swing.JLabel txtDate;
     private javax.swing.JLabel txtRate;

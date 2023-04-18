@@ -7,6 +7,7 @@ package views.panels;
 import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JTextField;
@@ -72,6 +73,10 @@ public class ReadingPanel extends javax.swing.JPanel {
     public void setjComboBox1(JComboBox<String> jComboBox1) {
         this.jComboBox1 = jComboBox1;
     }
+    
+    public void onBtnBack(MouseAdapter action) {
+        this.btnBack.addMouseListener(action);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,6 +91,7 @@ public class ReadingPanel extends javax.swing.JPanel {
         btnPrevious = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         boxChapter = new javax.swing.JComboBox<>();
+        btnBack = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jEditorPane1 = new javax.swing.JEditorPane();
@@ -101,18 +107,21 @@ public class ReadingPanel extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnPrevious.setBackground(new java.awt.Color(204, 0, 51));
+        btnPrevious.setBackground(new java.awt.Color(0, 204, 102));
         btnPrevious.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPrevious.setForeground(new java.awt.Color(255, 255, 255));
-        btnPrevious.setText("Chương trước");
+        btnPrevious.setText("Previous");
 
-        btnNext.setBackground(new java.awt.Color(204, 0, 51));
+        btnNext.setBackground(new java.awt.Color(0, 204, 102));
         btnNext.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext.setText("Chương tiếp");
+        btnNext.setText("Next");
 
         boxChapter.setMaximumRowCount(5);
         boxChapter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8" }));
+
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBack.setText("Back");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -121,7 +130,9 @@ public class ReadingPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnPrevious)
-                .addGap(330, 330, 330)
+                .addGap(303, 303, 303)
+                .addComponent(btnBack)
+                .addGap(18, 18, 18)
                 .addComponent(boxChapter, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnNext)
@@ -135,7 +146,8 @@ public class ReadingPanel extends javax.swing.JPanel {
                     .addComponent(btnNext)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnPrevious)
-                        .addComponent(boxChapter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(boxChapter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBack)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -247,6 +259,7 @@ public class ReadingPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxChapter;
+    private javax.swing.JLabel btnBack;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrevious;
     private javax.swing.JButton jButton1;

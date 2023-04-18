@@ -90,7 +90,7 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
         ResultSet rs = null;
         ArrayList<BookModel> books = new ArrayList<>();
         ArrayList<Object> queryField = new ArrayList<>();
-        String query = "SELECT *,MAX(bc.chapter_update) as book_update FROM project1.bookinfo AS bi\n"
+        String query = "SELECT MAX(bc.chapter_update) as book_update FROM project1.bookinfo AS bi\n"
                 + "JOIN project1.bookchapter AS bc ON bi.book_id = bc.book_id\n"
                 + "GROUP BY bi.book_id\n"
                 + "HAVING bi.book_id = ?";

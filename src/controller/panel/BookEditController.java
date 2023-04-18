@@ -6,6 +6,8 @@ package controller.panel;
 
 import controller.view.ChangeCategoryController;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ import views.panels.AddChapterPanel;
 import views.panels.BookEditPanel;
 import views.panels.BookInforPanel;
 import views.MainView;
+import views.panels.BookManagingPanel;
 
 /**
  *
@@ -49,6 +52,14 @@ public class BookEditController {
         
         this.bookEditPanel.onBtnChangeCategory(e -> {
             ChangeCategory();
+        });
+        
+        this.bookEditPanel.onBtnBack(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                backToPrevious();
+            }
+            
         });
     }
 
@@ -103,5 +114,10 @@ public class BookEditController {
     public void ChangeCategory() {
         ChangeCategory changeCategory = new ChangeCategory();
         new ChangeCategoryController(changeCategory, mainView, currentBook);
+    }
+    public void backToPrevious() {
+        BookManagingPanel previousPanel = new BookManagingPanel();
+        new BookManagingController(previousPanel, mainView);
+        this.mainView.setMainPanel(previousPanel);
     }
 }

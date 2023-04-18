@@ -62,7 +62,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="0" red="cc" type="rgb"/>
+          <Color blue="66" green="cc" red="0" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="18" style="1"/>
@@ -71,7 +71,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="T&#xcc;M KI&#x1ebe;M N&#xc2;NG CAO"/>
+        <Property name="text" type="java.lang.String" value="ADVANCED SEARCH"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
@@ -122,15 +122,15 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m theo"/>
+            <Property name="text" type="java.lang.String" value="Search by"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="boxType">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
-                <StringItem index="0" value="T&#xea;n t&#xe1;c ph&#x1ea9;m"/>
-                <StringItem index="1" value="T&#xea;n t&#xe1;c gi&#x1ea3;"/>
+                <StringItem index="0" value="Title"/>
+                <StringItem index="1" value="Author"/>
               </StringArray>
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
@@ -144,7 +144,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nh&#x1ead;p t&#x1eeb; kh&#xf3;a"/>
+            <Property name="text" type="java.lang.String" value="Enter keywords"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtKeyword">
@@ -216,7 +216,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Th&#x1ec3; lo&#x1ea1;i"/>
+            <Property name="text" type="java.lang.String" value="Categories"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
@@ -276,7 +276,7 @@
     <Component class="javax.swing.JButton" name="btnSearch">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="0" red="cc" type="rgb"/>
+          <Color blue="66" green="cc" red="0" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="12" style="1"/>
@@ -284,7 +284,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
+        <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchActionPerformed"/>

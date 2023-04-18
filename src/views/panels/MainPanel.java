@@ -64,7 +64,7 @@ public class MainPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Thanh tìm kiếm");
+        jLabel1.setText("Search bar");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +72,7 @@ public class MainPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Tìm kiếm");
+        jButton1.setText("Search");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,7 +85,7 @@ public class MainPanel extends javax.swing.JPanel {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,6 +101,7 @@ public class MainPanel extends javax.swing.JPanel {
         add(jPanel1);
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -109,11 +110,11 @@ public class MainPanel extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        lbTopView.setBackground(new java.awt.Color(204, 0, 51));
+        lbTopView.setBackground(new java.awt.Color(0, 204, 102));
         lbTopView.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbTopView.setForeground(new java.awt.Color(255, 255, 255));
         lbTopView.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbTopView.setText("Top thịnh hành");
+        lbTopView.setText("Top views");
         lbTopView.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbTopView.setOpaque(true);
 
@@ -147,7 +148,7 @@ public class MainPanel extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        lbNewUpdate.setBackground(new java.awt.Color(204, 0, 51));
+        lbNewUpdate.setBackground(new java.awt.Color(0, 204, 102));
         lbNewUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbNewUpdate.setForeground(new java.awt.Color(255, 255, 255));
         lbNewUpdate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

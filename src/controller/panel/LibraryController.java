@@ -24,7 +24,7 @@ public class LibraryController {
         this.libraryPanel = libraryPanel;
         this.mainView = mainView;
         SetDataToList setData = new SetDataToList(this.mainView);
-        setData.setBookItemList(libraryPanel.getListLibrary(), "savedBook");
+        setData.setBookItemList(libraryPanel.getListLibrary(), "savedBook", this.libraryPanel);
         this.libraryPanel.getListLibrary().setPreferredSize(new Dimension(0,setHeightPreferrer()));
         this.libraryPanel.getListLibrary().repaint();
     }

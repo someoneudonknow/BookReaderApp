@@ -19,6 +19,7 @@ public class HistoryPanel extends javax.swing.JPanel {
      */
     public HistoryPanel() {
         initComponents();
+        jScrollPane3.getVerticalScrollBar().setUnitIncrement(16);
     }
 
     /**
@@ -42,15 +43,16 @@ public class HistoryPanel extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        lbHistory.setBackground(new java.awt.Color(204, 0, 51));
+        lbHistory.setBackground(new java.awt.Color(0, 204, 102));
         lbHistory.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbHistory.setForeground(new java.awt.Color(255, 255, 255));
         lbHistory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbHistory.setText("LỊCH SỬ ĐỌC");
+        lbHistory.setText("HISTORY");
         lbHistory.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbHistory.setOpaque(true);
 
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         listHistory.setBackground(new java.awt.Color(255, 255, 255));
         listHistory.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));

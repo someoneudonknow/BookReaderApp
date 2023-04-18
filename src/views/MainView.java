@@ -5,9 +5,13 @@
 package views;
 
 import controller.panel.MainPanelController;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import models.UserModel;
@@ -21,6 +25,15 @@ public class MainView extends javax.swing.JFrame {
     
     public MainView(UserModel userModels) {
         initComponents();
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/icon_app.jpg"));  
+        this.setIconImage(icon);
+        Dimension DimMax = Toolkit.getDefaultToolkit().getScreenSize();
+        System.out.println(DimMax.getHeight());
+        setPreferredSize(new Dimension(DimMax.width, DimMax.height - 40));
+//
+//setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);     
+        setResizable(false);
         this.userModels = userModels;
     }
 
@@ -48,167 +61,103 @@ public class MainView extends javax.swing.JFrame {
         btnUserManager = new javax.swing.JButton();
         btnLogOut = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
-        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 255, 255));
-        setResizable(false);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(157, 718));
+        jPanel1.setPreferredSize(new java.awt.Dimension(300, 800));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.setPreferredSize(new java.awt.Dimension(157, 158));
+        jPanel2.setPreferredSize(new java.awt.Dimension(200, 200));
 
         lbAvatar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbAvatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/avatar_default.jpg"))); // NOI18N
         lbAvatar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lbAvatar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbAvatar.setPreferredSize(new java.awt.Dimension(157, 157));
+        jPanel2.add(lbAvatar);
 
         lbUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbUsername.setText("username");
+        jPanel2.add(lbUsername);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbUsername, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(lbAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(lbAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel1.add(jPanel2);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setPreferredSize(new java.awt.Dimension(143, 389));
+        jPanel4.setPreferredSize(new java.awt.Dimension(280, 389));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
 
-        btnMain.setBackground(new java.awt.Color(204, 0, 51));
-        btnMain.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnMain.setBackground(new java.awt.Color(0, 204, 102));
+        btnMain.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnMain.setForeground(new java.awt.Color(255, 255, 255));
-        btnMain.setText("Màn hình chính");
-        btnMain.setPreferredSize(new java.awt.Dimension(143, 43));
+        btnMain.setText("HOME");
+        btnMain.setPreferredSize(new java.awt.Dimension(200, 43));
         jPanel4.add(btnMain);
 
-        btnInFor.setBackground(new java.awt.Color(204, 0, 51));
-        btnInFor.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnInFor.setBackground(new java.awt.Color(0, 204, 102));
+        btnInFor.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnInFor.setForeground(new java.awt.Color(255, 255, 255));
-        btnInFor.setText("Thông tin tài khoản");
-        btnInFor.setPreferredSize(new java.awt.Dimension(143, 43));
+        btnInFor.setText("INFORMATION");
+        btnInFor.setPreferredSize(new java.awt.Dimension(200, 43));
         jPanel4.add(btnInFor);
 
-        btnLibrary.setBackground(new java.awt.Color(204, 0, 51));
-        btnLibrary.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnLibrary.setBackground(new java.awt.Color(0, 204, 102));
+        btnLibrary.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnLibrary.setForeground(new java.awt.Color(255, 255, 255));
-        btnLibrary.setText("Thư viện của bạn");
-        btnLibrary.setPreferredSize(new java.awt.Dimension(143, 43));
+        btnLibrary.setText("LIBRARY");
+        btnLibrary.setPreferredSize(new java.awt.Dimension(200, 43));
         jPanel4.add(btnLibrary);
 
-        btnHistory.setBackground(new java.awt.Color(204, 0, 51));
-        btnHistory.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnHistory.setBackground(new java.awt.Color(0, 204, 102));
+        btnHistory.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnHistory.setForeground(new java.awt.Color(255, 255, 255));
-        btnHistory.setText("Lịch sử đọc");
-        btnHistory.setPreferredSize(new java.awt.Dimension(143, 43));
+        btnHistory.setText("HISTORY");
+        btnHistory.setPreferredSize(new java.awt.Dimension(200, 43));
         jPanel4.add(btnHistory);
 
-        btnSearch.setBackground(new java.awt.Color(204, 0, 51));
-        btnSearch.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnSearch.setBackground(new java.awt.Color(0, 204, 102));
+        btnSearch.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSearch.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearch.setText("Tìm kiếm nâng cao");
-        btnSearch.setPreferredSize(new java.awt.Dimension(143, 43));
+        btnSearch.setText("ADVANCED SEARCH");
+        btnSearch.setPreferredSize(new java.awt.Dimension(200, 43));
         jPanel4.add(btnSearch);
 
-        btnBookManager.setBackground(new java.awt.Color(204, 0, 51));
-        btnBookManager.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnBookManager.setBackground(new java.awt.Color(0, 204, 102));
+        btnBookManager.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnBookManager.setForeground(new java.awt.Color(255, 255, 255));
-        btnBookManager.setText("Quản lý sách");
-        btnBookManager.setPreferredSize(new java.awt.Dimension(143, 43));
+        btnBookManager.setText("BOOKS");
+        btnBookManager.setPreferredSize(new java.awt.Dimension(200, 43));
         jPanel4.add(btnBookManager);
 
-        btnUserManager.setBackground(new java.awt.Color(204, 0, 51));
-        btnUserManager.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
+        btnUserManager.setBackground(new java.awt.Color(0, 204, 102));
+        btnUserManager.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnUserManager.setForeground(new java.awt.Color(255, 255, 255));
-        btnUserManager.setText("Quản lý người dùng");
-        btnUserManager.setPreferredSize(new java.awt.Dimension(143, 43));
+        btnUserManager.setText("ACCOUNTS");
+        btnUserManager.setPreferredSize(new java.awt.Dimension(200, 43));
         jPanel4.add(btnUserManager);
 
+        jPanel1.add(jPanel4);
+
+        btnLogOut.setBackground(new java.awt.Color(204, 0, 51));
         btnLogOut.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnLogOut.setForeground(new java.awt.Color(204, 0, 51));
-        btnLogOut.setText("Đăng xuất");
+        btnLogOut.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogOut.setText("LOG OUT");
         btnLogOut.setBorder(null);
         btnLogOut.setBorderPainted(false);
         btnLogOut.setOpaque(true);
         btnLogOut.setPreferredSize(new java.awt.Dimension(143, 43));
-        jPanel4.add(btnLogOut);
+        jPanel1.add(btnLogOut);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel7.add(jPanel1);
 
         mainPanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        btnBack.setText("Quay lại");
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(147, Short.MAX_VALUE))))
-        );
+        mainPanel.setPreferredSize(new java.awt.Dimension(1200, 800));
+        jPanel7.add(mainPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,7 +167,7 @@ public class MainView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 819, Short.MAX_VALUE)
         );
 
         pack();
@@ -290,7 +239,7 @@ public class MainView extends javax.swing.JFrame {
             pack();
             setLocationRelativeTo(null);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
-            setTitle("Main view");
+            setTitle("Wibu Forever (hay gì gì đó)");
             setVisible(true);
         });
     }
@@ -329,7 +278,6 @@ public class MainView extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnBookManager;
     private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnInFor;

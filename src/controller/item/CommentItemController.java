@@ -6,6 +6,8 @@ package controller.item;
 
 import views.items.CommentItem;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import models.BookModel;
@@ -32,8 +34,12 @@ public class CommentItemController {
             this.commentItem.getBtnDelete().setVisible(false);
         }
 
-        this.commentItem.onBtnDeleteClick(e -> {
-            DeleteThisComment();
+        this.commentItem.onBtnDeleteClick(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                DeleteThisComment();
+            }
+            
         });
     }
 

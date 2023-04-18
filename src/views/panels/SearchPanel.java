@@ -31,6 +31,8 @@ public class SearchPanel extends javax.swing.JPanel {
      */
     public SearchPanel() {
         initComponents();
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
     }
 
     /**
@@ -60,23 +62,23 @@ public class SearchPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1013, 698));
 
-        jLabel1.setBackground(new java.awt.Color(204, 0, 51));
+        jLabel1.setBackground(new java.awt.Color(0, 204, 102));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("TÌM KIẾM NÂNG CAO");
+        jLabel1.setText("ADVANCED SEARCH");
         jLabel1.setOpaque(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setText("Tìm kiếm theo");
+        jLabel2.setText("Search by");
 
-        boxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên tác phẩm", "Tên tác giả" }));
+        boxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Title", "Author" }));
         boxType.setOpaque(true);
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel3.setText("Nhập từ khóa");
+        jLabel3.setText("Enter keywords");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,7 +120,7 @@ public class SearchPanel extends javax.swing.JPanel {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setText("Thể loại");
+        jLabel4.setText("Categories");
         jLabel4.setOpaque(true);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -163,10 +165,10 @@ public class SearchPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        btnSearch.setBackground(new java.awt.Color(204, 0, 51));
+        btnSearch.setBackground(new java.awt.Color(0, 204, 102));
         btnSearch.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnSearch.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearch.setText("Tìm kiếm");
+        btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSearchActionPerformed(evt);

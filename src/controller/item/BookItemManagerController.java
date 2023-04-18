@@ -7,6 +7,8 @@ package controller.item;
 import controller.panel.BookEditController;
 import views.items.BookItemManager;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import models.BookModel;
 import other.SetDataToList;
@@ -28,12 +30,20 @@ public class BookItemManagerController {
         this.currentBook = book;
         
         SetDataToList setData = new SetDataToList(mainView);
-        this.bookItem.onBtnEdit(e -> {
-            changeInforPanel();
+        this.bookItem.onBtnEdit(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                changeInforPanel();
+            }
+            
         });
         
-        this.bookItem.onBtnDelete(e -> {
-            deleteThisItem();
+        this.bookItem.onBtnDelete(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                deleteThisItem();
+            }
+            
         });
     }
     
@@ -50,7 +60,7 @@ public class BookItemManagerController {
     public void deleteThisItem(){
         JPanel parent = (JPanel) this.bookItem.getParent();
         parent.remove(this.bookItem);
-        parent.setPreferredSize(new Dimension(0,parent.getComponentCount()*78));
+        parent.setPreferredSize(new Dimension(0,parent.getComponentCount()*66));
         parent.revalidate();
         parent.repaint();
     }

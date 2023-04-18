@@ -4,6 +4,8 @@
  */
 package controller.panel;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ import views.MainView;
 import views.items.CategoryItem;
 import views.panels.AddBookPanel;
 import views.panels.AddChapterPanel;
+import views.panels.BookManagingPanel;
 
 /**
  *
@@ -28,8 +31,9 @@ public class AddBookController {
 
     private AddBookPanel bookPanel;
     private MainView mainView;
+    private BookManagingPanel previousPanel;
 
-    public AddBookController(AddBookPanel bookPanel, MainView mainView) {
+    public AddBookController(AddBookPanel bookPanel, MainView mainView, BookManagingPanel previousPanel) {
         this.bookPanel = bookPanel;
         this.mainView = mainView;
         this.setCategoryItemList();
@@ -43,13 +47,21 @@ public class AddBookController {
                 BookModel result = new BookModel();
                 AddChapterPanel addChapterPanel = new AddChapterPanel();
                 try {
-                    new AddChapterController(addChapterPanel, mainView, result);
+                    new AddChapterController(addChapterPanel, mainView, result, this.bookPanel);
                 } catch (SQLException ex) {
                     Logger.getLogger(AddBookController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 this.mainView.setMainPanel(addChapterPanel);
             }
 
+        });
+        
+        this.bookPanel.onBtnBack(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                backToPrevious();
+            }
+            
         });
     }
 
@@ -112,5 +124,9 @@ public class AddBookController {
         BookModel result = new BookModel(0, name, author, cover, description, 0);
 
         return result;
+    }
+    
+    public void backToPrevious(){
+        this.mainView.setMainPanel(this.previousPanel);
     }
 }

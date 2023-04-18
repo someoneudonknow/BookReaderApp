@@ -33,6 +33,6 @@ public class UserManagingController {
         SetDataToList setData = new SetDataToList(mainView);
         setData.setUserItemList(userPanel.getListUser(), userList);
 
-        this.userPanel.getListUser().setPreferredSize(new Dimension(0, this.userPanel.getListUser().getComponentCount() * 78));
+        this.userPanel.getListUser().setPreferredSize(new Dimension(0, this.userPanel.getListUser().getComponentCount() * 66));
     }
 }

@@ -36,7 +36,7 @@ public class ChapterItem extends javax.swing.JPanel {
     private void initComponents() {
 
         lbChapter = new javax.swing.JLabel();
-        btnDelete = new javax.swing.JButton();
+        btnDelete = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -47,13 +47,12 @@ public class ChapterItem extends javax.swing.JPanel {
         lbChapter.setBackground(new java.awt.Color(255, 255, 255));
         lbChapter.setText("jLabel1");
         lbChapter.setAlignmentY(0.0F);
-        lbChapter.setPreferredSize(new java.awt.Dimension(900, 50));
+        lbChapter.setPreferredSize(new java.awt.Dimension(920, 50));
         add(lbChapter);
 
-        btnDelete.setBackground(new java.awt.Color(204, 0, 51));
-        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
-        btnDelete.setText("x");
+        btnDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete_icon.png"))); // NOI18N
+        btnDelete.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         btnDelete.setPreferredSize(new java.awt.Dimension(50, 48));
         add(btnDelete);
     }// </editor-fold>//GEN-END:initComponents
@@ -66,16 +65,16 @@ public class ChapterItem extends javax.swing.JPanel {
         this.chapterModels = chapterModels;
     }
 
-    public JButton getBtnDelete() {
+    public JLabel getBtnDelete() {
         return btnDelete;
     }
 
-    public void setBtnDelete(JButton btnDelete) {
+    public void setBtnDelete(JLabel btnDelete) {
         this.btnDelete = btnDelete;
     }
 
-    public void onBtnDeleteClick(ActionListener action) {
-        this.btnDelete.addActionListener(action);
+    public void onBtnDeleteClick(MouseAdapter action) {
+        this.btnDelete.addMouseListener(action);
     }
 
     public JLabel getLbChapter() {
@@ -91,7 +90,7 @@ public class ChapterItem extends javax.swing.JPanel {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDelete;
+    private javax.swing.JLabel btnDelete;
     private javax.swing.JLabel lbChapter;
     // End of variables declaration//GEN-END:variables
 }

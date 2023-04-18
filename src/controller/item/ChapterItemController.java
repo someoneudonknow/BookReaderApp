@@ -35,8 +35,12 @@ public class ChapterItemController {
         if (!(parent instanceof BookEditPanel)) {
             this.chapterItem.getBtnDelete().setVisible(false);
         }
-        this.chapterItem.onBtnDeleteClick(e -> {
-            DeleteThisChapter();
+        this.chapterItem.onBtnDeleteClick(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                DeleteThisChapter();
+            }
+            
         });
 
         this.chapterItem.onLbChapterClick(new MouseAdapter() {
@@ -45,7 +49,7 @@ public class ChapterItemController {
                 try {
                     ReadingPanel chapterDetails = new ReadingPanel();
                     ChapterModel currentChapter  = chapterItem.getChapterModels();
-                    ReadingController reading = new ReadingController(chapterDetails, mainView, currentChapter);
+                    ReadingController reading = new ReadingController(chapterDetails, mainView, currentChapter, parent);
                     reading.setChapterDetails(currentChapter);
                     getMainView().setMainPanel(chapterDetails);
 

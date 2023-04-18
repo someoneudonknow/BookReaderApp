@@ -116,7 +116,7 @@ public class SearchPanelController {
             System.out.println("Danh sach trong");
         }
         SetDataToList setData = new SetDataToList(this.mainView);
-        setData.setBookItemList(searchPanel, null);
+        setData.setBookItemList(searchPanel.getListResult(), null, searchPanel);
     }
     
     public boolean checkKeyword(String keyword, int type) {
