@@ -4,12 +4,12 @@
 
 
 insert into userInfo (user_name, user_avatar, user_password, user_phoneNumber,is_manager, manager_id)
-values ('admin', null, '159357789','0123456789', true, null);
+values ('admin', null, '111111','0123456789', true, null);
 -- User
 insert into userInfo (user_name, user_avatar, user_password, user_phoneNumber)
 values ('talahy1',LOAD_FILE('E:\\wallpaper\\4.jpg'), 'talahy1','0123456788');
 insert into userInfo (user_name, user_avatar, user_password, user_phoneNumber)
-values ('talahy2', null, '159357789','0123456787');
+values ('tu', null, '111111','0123456787');
 insert into userInfo (user_name, user_avatar, user_password, user_phoneNumber)
 values ('talahy3', null, '123456789','0123456786');
 insert into userInfo (user_name, user_avatar, user_password, user_phoneNumber)
