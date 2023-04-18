@@ -4,13 +4,14 @@
  */
 package views.panels;
 
-import java.awt.Font;
+
 import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JTextField;
+import javax.swing.text.html.HTMLDocument;
 import other.CustomScrollBar;
 
 /**
@@ -30,8 +31,10 @@ public class ReadingPanel extends javax.swing.JPanel {
         jTextField2.setText("15");
         jTextField3.setText("20");
         Insets insets = new Insets(0, 20, 0, 20);
-        jEditorPane1.setMargin(insets);
+        jEditorPane1.setMargin(insets); 
         jEditorPane1.setEditable(false);
+        HTMLDocument doc = new HTMLDocument();
+        
     }
 
     public javax.swing.JComboBox<String> getBoxChapter() {

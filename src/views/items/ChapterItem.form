@@ -47,6 +47,11 @@
         </Property>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="txtDate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JLabel" name="btnDelete">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>

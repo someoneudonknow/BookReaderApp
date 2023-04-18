@@ -6,6 +6,7 @@ package controller.panel;
 
 import java.awt.Dimension;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import models.DAO.ReadingDAO;
 import other.SetDataToList;
 import views.panels.HistoryPanel;
@@ -44,5 +45,6 @@ public class HistoryController {
         this.historyPanel.getListHistory().removeAll();
         this.historyPanel.getListHistory().revalidate();
         this.historyPanel.getListHistory().repaint();
+        JOptionPane.showMessageDialog(null, "The history is clear");
     }
 }

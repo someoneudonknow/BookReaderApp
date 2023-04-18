@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JEditorPane;
 import javax.swing.JPanel;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.MutableAttributeSet;
@@ -41,86 +42,27 @@ public class ReadingController {
         this.mainView = mainView;
         this.currentChapter = currentChapter;
         this.previousPanel = previousPanel;
-        
-        this.readingPanel.getjComboBox1().setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Arial", "Times New Roman"}));
+
         this.readingPanel.onBtnPrevious(e -> {
-            try {
-                ChapterModel previousChapter = new ChapterModel();
-                previousChapter = ChapterDAO.getInstance().getPreivousNextChapter(this.currentChapter, "previous");
-                this.setChapterDetails(previousChapter);
-                this.currentChapter = previousChapter;
-            } catch (SQLException ex) {
-                Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (BadLocationException ex) {
-                Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            this.onBtnLeftRight("previous");
 
         });
         this.readingPanel.onBtnNext(e -> {
-            try {
-                ChapterModel nextChapter = new ChapterModel();
-                nextChapter = ChapterDAO.getInstance().getPreivousNextChapter(this.currentChapter, "next");
-                this.setChapterDetails(nextChapter);
-                this.currentChapter = nextChapter;
-            } catch (SQLException ex) {
-                Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (BadLocationException ex) {
-                Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
+            this.onBtnLeftRight("next");
         });
         this.readingPanel.onBoxChapter(e -> {
-            int selectedItem = this.readingPanel.getBoxChapter().getSelectedIndex();
-            try {
-                ChapterModel selectedChapter = ChapterDAO.getInstance().getSelectedChapter(this.currentChapter.getBook_id(), selectedItem + 1);
-                this.setChapterDetails(selectedChapter);
-
-            } catch (SQLException ex) {
-                Logger.getLogger(ReadingPanel.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (BadLocationException ex) {
-                Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            this.onSelectedBox();
         });
         this.readingPanel.onApply(e -> {
-            System.out.println("clicked");
-            int paddingNum = 0;
-            try {
-                String input = this.readingPanel.getjTextField3().getText();
-                paddingNum = Integer.parseInt(input);
-            } catch (NumberFormatException e1) {
-                paddingNum = 20;
-            }
-            int sizeNum = 0;
-            try {
-                String input = this.readingPanel.getjTextField2().getText();
-                sizeNum = Integer.parseInt(input);
-            } catch (NumberFormatException e1) {
-                sizeNum = 16;
-            }
-            Insets insets = new Insets(0, paddingNum, 0, paddingNum);
-            this.readingPanel.getjEditorPane1().setMargin(insets);
-            this.readingPanel.getjTextField2().setText("" + sizeNum);
-            this.readingPanel.getjTextField3().setText("" + paddingNum);
-
-            String fontStyle = (String) this.readingPanel.getjComboBox1().getSelectedItem();
-            this.readingPanel.getjEditorPane1().setFont(new Font(fontStyle, Font.PLAIN, sizeNum));
-            System.out.println(this.readingPanel.getjEditorPane1());
-
-            try {
-                this.setChapterDetails(this.currentChapter);
-            } catch (SQLException ex) {
-                Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (BadLocationException ex) {
-                Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            this.setReadingDoc(this.currentChapter);
         });
-        
+
         this.readingPanel.onBtnBack(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 backToPrevious();
             }
-            
+
         });
     }
 
@@ -134,9 +76,6 @@ public class ReadingController {
         } catch (BadLocationException ex) {
             ex.printStackTrace();
         }
-        MutableAttributeSet set = new SimpleAttributeSet();
-        StyleConstants.setAlignment(set, StyleConstants.ALIGN_JUSTIFIED);
-        doc.setParagraphAttributes(0, doc.getLength(), set, false);
 
         ArrayList<ChapterModel> listChapter = ChapterDAO.getInstance().getAllChapterFromBook(currentBookID);
         ArrayList<String> listChapterName = new ArrayList<>();
@@ -148,7 +87,8 @@ public class ReadingController {
         this.readingPanel.getBoxChapter().setSelectedItem(currentChapterName);
         ChapterDAO.getInstance().increaseView(chapter);
         ReadingDAO.getInstance().readingEvent(new ReadingPK(mainView.getUserModels().getId(), currentChapter.getId()));
-        
+
+        doc = this.setDefaultView(doc);
         this.readingPanel.getjEditorPane1().setDocument(doc);
         this.readingPanel.repaint();
 
@@ -156,8 +96,79 @@ public class ReadingController {
         this.readingPanel.getBoxChapter().repaint();
 
     }
-    
+
+    public void onBtnLeftRight(String option) {
+
+        try {
+            ChapterModel chapter = new ChapterModel();
+            if (option.equals("previous")) {
+                chapter = ChapterDAO.getInstance().getPreivousNextChapter(this.currentChapter, option);
+
+            } else if (option.equals("next")) {
+                chapter = ChapterDAO.getInstance().getPreivousNextChapter(this.currentChapter, option);
+            } else {
+                System.out.println("Option isn't available");
+            }
+            this.setChapterDetails(chapter);
+            this.currentChapter = chapter;
+        } catch (SQLException ex) {
+            Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BadLocationException ex) {
+            Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void onSelectedBox() {
+        int selectedItem = this.readingPanel.getBoxChapter().getSelectedIndex();
+        try {
+            ChapterModel selectedChapter = ChapterDAO.getInstance().getSelectedChapter(this.currentChapter.getBook_id(), selectedItem + 1);
+            this.setChapterDetails(selectedChapter);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ReadingPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (BadLocationException ex) {
+            Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void setReadingDoc(ChapterModel chapter) {
+        this.readingPanel.getjEditorPane1().putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
+        int paddingNum = 0;
+        try {
+            String input = this.readingPanel.getjTextField3().getText();
+            paddingNum = Integer.parseInt(input);
+        } catch (NumberFormatException e1) {
+            paddingNum = 20;
+        }
+        int sizeNum = 0;
+        try {
+            String input = this.readingPanel.getjTextField2().getText();
+            sizeNum = Integer.parseInt(input);
+        } catch (NumberFormatException e1) {
+            sizeNum = 16;
+        }
+        Insets insets = new Insets(0, paddingNum, 0, paddingNum);
+        this.readingPanel.getjEditorPane1().setMargin(insets);
+        this.readingPanel.getjTextField2().setText("" + sizeNum);
+        this.readingPanel.getjTextField3().setText("" + paddingNum);
+
+        String fontStyle = (String) this.readingPanel.getjComboBox1().getSelectedItem();
+        this.readingPanel.getjEditorPane1().setFont(new Font(fontStyle, Font.PLAIN, sizeNum));
+        HTMLDocument doc = (HTMLDocument) this.readingPanel.getjEditorPane1().getDocument();
+        doc = this.setDefaultView(doc);
+        this.readingPanel.getjEditorPane1().setDocument(doc);
+    }
+
+    public HTMLDocument setDefaultView(HTMLDocument doc) {
+        MutableAttributeSet set = new SimpleAttributeSet();
+        StyleConstants.setAlignment(set, StyleConstants.ALIGN_JUSTIFIED);
+        doc.setParagraphAttributes(0, doc.getLength(), set, false);
+        return doc;
+    }
+
     public void backToPrevious() {
+        previousPanel.repaint();
         this.mainView.setMainPanel(previousPanel);
     }
 }

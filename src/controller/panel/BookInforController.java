@@ -51,90 +51,40 @@ public class BookInforController {
         this.currentBook = currentBook;
         this.previousPanel = previousPanel;
 
-        this.setBook(currentBook);
-        ResultSet checkSaved = SavedDAO.getInstance().checkPK(new SavedPK(this.mainView.getUserModels().getId(), this.currentBook.getId()));
-        if (checkSaved.next()) {
-            this.bookInforPanel.getBtnSave().setText("Xóa khỏi thư viện");
-        }
-        SetDataToList setData = new SetDataToList(mainView);
-        int currentID = this.currentBook.getId();
-        setData.setChapterList(this.bookInforPanel, bookInforPanel.getListChapter(), currentID);
-        setData.setCommentList(this.bookInforPanel, this.bookInforPanel.getListComment(), currentID);
-
-        boolean havingReview = this.checkReview(new ReviewPK(this.mainView.getUserModels().getId(), currentBook.getId()));
-        this.havingReview = havingReview;
-        //Set lại size cho panel chứa list
-        JPanel panel = this.bookInforPanel.getListChapter();
-        panel.setPreferredSize(new Dimension(0, panel.getComponentCount() * 40));
-
-        JPanel panel1 = this.bookInforPanel.getListComment();
-        panel1.setPreferredSize(new Dimension(0, panel1.getComponentCount() * 40));
-
+        this.setBookDetails();
         this.bookInforPanel.onBtnFirst(e -> {
             try {
-                changeToChapter(BookDAO.getInstance().getFirstLastChapter(currentID, "first"));
+                this.setFirstLastChapterBtn("first");
             } catch (SQLException ex) {
                 Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (BadLocationException ex) {
                 Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
             }
-
         });
 
         this.bookInforPanel.onBtnLast(e -> {
             try {
-                changeToChapter(BookDAO.getInstance().getFirstLastChapter(currentID, "last"));
+                this.setFirstLastChapterBtn("last");
             } catch (SQLException ex) {
                 Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (BadLocationException ex) {
                 Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         });
         this.bookInforPanel.onBtnSave(e -> {
-            SavedModel saved = new SavedModel(mainView.getUserModels().getId(), currentBook.getId());
-            SavedDAO.getInstance().savedEvent(saved);
-            if (this.bookInforPanel.getBtnSave().getText().equals("Xóa khỏi thư viện")) {
-                this.bookInforPanel.getBtnSave().setText("Thêm vào thư viện");
-            } else {
-                this.bookInforPanel.getBtnSave().setText("Xóa khỏi thư viện");
-
-            }
-            this.mainView.repaint();
+            this.handleSavedBook();
         });
         this.bookInforPanel.onBtnAddComment(e -> {
-            ReviewModel newReview = new ReviewModel();
-            if (this.havingReview) {
-                try {
-                    this.addOrUpdateNewReview(newReview, "update");
-                } catch (ParseException ex) {
-                    Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                try {
-                    this.addOrUpdateNewReview(newReview, "insert");
-                } catch (ParseException ex) {
-                    Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    this.havingReview = checkReview(new ReviewPK(newReview.getUser_id(), newReview.getBook_id()));
-                } catch (SQLException ex) {
-                    Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            try {
-                this.checkReview(new ReviewPK(this.mainView.getUserModels().getId(), currentBook.getId()));
-            } catch (SQLException ex) {
-                Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
+            this.handleComment();
         });
-        
+
         this.bookInforPanel.onBtnBack(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 backToPrevious();
             }
-            
+
         });
     }
 
@@ -213,7 +163,77 @@ public class BookInforController {
 
         }
     }
-    
+
+    public void setBookDetails() throws IOException, SQLException, ParseException {
+        this.bookInforPanel.repaint();
+        this.setBook(this.currentBook);
+        ResultSet checkSaved = SavedDAO.getInstance().checkPK(new SavedPK(this.mainView.getUserModels().getId(), this.currentBook.getId()));
+        if (checkSaved.next()) {
+            this.bookInforPanel.getBtnSave().setText("Xóa khỏi thư viện");
+        }
+        SetDataToList setData = new SetDataToList(mainView);
+        int currentID = this.currentBook.getId();
+        setData.setChapterList(this.bookInforPanel, bookInforPanel.getListChapter(), currentID);
+        setData.setCommentList(this.bookInforPanel, this.bookInforPanel.getListComment(), currentID);
+
+        boolean havingReview = this.checkReview(new ReviewPK(this.mainView.getUserModels().getId(), currentBook.getId()));
+        this.havingReview = havingReview;
+        //Set lại size cho panel chứa list
+        JPanel panel = this.bookInforPanel.getListChapter();
+        panel.setPreferredSize(new Dimension(0, panel.getComponentCount() * 40));
+
+        JPanel panel1 = this.bookInforPanel.getListComment();
+        panel1.setPreferredSize(new Dimension(0, panel1.getComponentCount() * 40));
+    }
+
+    public void setFirstLastChapterBtn(String option) throws SQLException, BadLocationException {
+        if (option.equals("first")) {
+            changeToChapter(BookDAO.getInstance().getFirstLastChapter(this.currentBook.getId(), "first"));
+        } else if (option.equals("last")) {
+            changeToChapter(BookDAO.getInstance().getFirstLastChapter(this.currentBook.getId(), "last"));
+        }
+    }
+
+    public void handleSavedBook() {
+        SavedModel saved = new SavedModel(mainView.getUserModels().getId(), currentBook.getId());
+        SavedDAO.getInstance().savedEvent(saved);
+        if (this.bookInforPanel.getBtnSave().getText().equals("Xóa khỏi thư viện")) {
+            this.bookInforPanel.getBtnSave().setText("Thêm vào thư viện");
+        } else {
+            this.bookInforPanel.getBtnSave().setText("Xóa khỏi thư viện");
+
+        }
+        this.mainView.repaint();
+    }
+
+    public void handleComment() {
+        ReviewModel newReview = new ReviewModel();
+        if (this.havingReview) {
+            try {
+                this.addOrUpdateNewReview(newReview, "update");
+            } catch (ParseException ex) {
+                Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            try {
+                this.addOrUpdateNewReview(newReview, "insert");
+            } catch (ParseException ex) {
+                Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                this.havingReview = checkReview(new ReviewPK(newReview.getUser_id(), newReview.getBook_id()));
+            } catch (SQLException ex) {
+                Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        try {
+            this.checkReview(new ReviewPK(this.mainView.getUserModels().getId(), currentBook.getId()));
+        } catch (SQLException ex) {
+            Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
     public void backToPrevious() {
         this.mainView.setMainPanel(previousPanel);
     }

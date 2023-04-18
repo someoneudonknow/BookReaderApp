@@ -6,9 +6,11 @@ package views.items;
 
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.text.ParseException;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import models.ChapterModel;
+import static utils.formatDate.formatDate;
 
 /**
  *
@@ -20,10 +22,12 @@ public class ChapterItem extends javax.swing.JPanel {
      * Creates new form ChapterItem
      */
     private ChapterModel chapterModels;
-    public ChapterItem(ChapterModel chapterModels) {
+    public ChapterItem(ChapterModel chapterModels) throws ParseException {
         initComponents();
         this.chapterModels = chapterModels;
         this.lbChapter.setText("Chương " + chapterModels.getSerial() + " : " + chapterModels.getTitle());
+        String formatDate = formatDate("" + chapterModels.getUpdateTime());
+        this.txtDate.setText(formatDate);
     }
 
     /**
@@ -36,6 +40,7 @@ public class ChapterItem extends javax.swing.JPanel {
     private void initComponents() {
 
         lbChapter = new javax.swing.JLabel();
+        txtDate = new javax.swing.JLabel();
         btnDelete = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -49,6 +54,9 @@ public class ChapterItem extends javax.swing.JPanel {
         lbChapter.setAlignmentY(0.0F);
         lbChapter.setPreferredSize(new java.awt.Dimension(920, 50));
         add(lbChapter);
+
+        txtDate.setText("jLabel1");
+        add(txtDate);
 
         btnDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete_icon.png"))); // NOI18N
@@ -92,5 +100,6 @@ public class ChapterItem extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnDelete;
     private javax.swing.JLabel lbChapter;
+    private javax.swing.JLabel txtDate;
     // End of variables declaration//GEN-END:variables
 }

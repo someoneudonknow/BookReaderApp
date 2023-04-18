@@ -9,6 +9,7 @@ import controller.item.BookItemManagerController;
 import controller.item.ChapterItemController;
 import controller.item.CommentItemController;
 import controller.item.UserItemController;
+import java.awt.Label;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -140,6 +141,9 @@ public class SetDataToList {
 
         for (ChapterItem i : items) {
             panel.add(i);
+        }
+        if(chapterList.size() ==0) {
+            panel.add(new Label("The book hasn't had any chapter"));
         }
         panel.revalidate();
         panel.repaint();
