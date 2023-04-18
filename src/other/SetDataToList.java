@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import models.BookModel;
 import models.CategoryModel;
@@ -66,7 +68,7 @@ public class SetDataToList {
 
         for (BookModel book : books) {
             BookItem a = new BookItem(book);
-            new BookItemController(a, this.mainView,option, parent);
+            new BookItemController(a, this.mainView, option, parent);
             items.add(a);
         }
 
@@ -113,8 +115,8 @@ public class SetDataToList {
 
     public void setUserItemList(JPanel panel, List<UserModel> users) {
         ArrayList<UserItemManager> items = new ArrayList<>();
-        
-        for(UserModel curr: users) {
+
+        for (UserModel curr : users) {
             UserItemManager a = new UserItemManager(curr);
             new UserItemController(a, mainView, curr);
             items.add(a);
@@ -134,7 +136,12 @@ public class SetDataToList {
         chapterList = ChapterDAO.getInstance().getAllChapterFromBook(book_id);
 
         for (ChapterModel chapter : chapterList) {
-            ChapterItem a = new ChapterItem(chapter);
+            ChapterItem a = null;
+            try {
+                a = new ChapterItem(chapter);
+            } catch (ParseException ex) {
+                Logger.getLogger(SetDataToList.class.getName()).log(Level.SEVERE, null, ex);
+            }
             new ChapterItemController(parent, a, mainView);
             items.add(a);
         }
@@ -142,9 +149,36 @@ public class SetDataToList {
         for (ChapterItem i : items) {
             panel.add(i);
         }
-        if(chapterList.size() ==0) {
+        if (chapterList.size() == 0) {
             panel.add(new Label("The book hasn't had any chapter"));
         }
+        panel.revalidate();
+        panel.repaint();
+    }
+
+    public void setChapterList(JPanel parent, JPanel panel, int book_id, List<ChapterModel> chapters) {
+        ArrayList<ChapterItem> items = new ArrayList<>();
+        panel.removeAll();
+
+        for (ChapterModel chapter : chapters) {
+            ChapterItem a = null;
+            try {
+                a = new ChapterItem(chapter);
+            } catch (ParseException ex) {
+                Logger.getLogger(SetDataToList.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            new ChapterItemController(parent, a, mainView);
+            items.add(a);
+        }
+
+        for (ChapterItem i : items) {
+            panel.add(i);
+        }
+        
+        if (chapters.size() == 0) {
+            panel.add(new Label("The book hasn't had any chapter"));
+        }
+
         panel.revalidate();
         panel.repaint();
     }
@@ -165,6 +199,7 @@ public class SetDataToList {
         panel.revalidate();
         panel.repaint();
     }
+
     //tạo list book cho mainView (truyền vào max 5 cuốn)
     public void setTop5View(JPanel panel, String option, JPanel parent) {
         try {

@@ -35,7 +35,6 @@ public class AddChapterPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JLabel();
         lbAddChapter = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
-        btnNext = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         listChapter = new javax.swing.JPanel();
         btnAdd = new javax.swing.JButton();
@@ -63,11 +62,14 @@ public class AddChapterPanel extends javax.swing.JPanel {
         lbAddChapter.setOpaque(true);
         jPanel6.add(lbAddChapter, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, 1011, 40));
 
+        btnCancel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnCancel.setText("Cancel");
-        jPanel6.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 597, 133, 37));
-
-        btnNext.setText("Confirm");
-        jPanel6.add(btnNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 597, 133, 37));
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 620, 200, 40));
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setPreferredSize(new java.awt.Dimension(52, 2));
@@ -78,8 +80,16 @@ public class AddChapterPanel extends javax.swing.JPanel {
 
         jPanel6.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 47, 999, 544));
 
-        btnAdd.setText("Add");
-        jPanel6.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 597, 133, 37));
+        btnAdd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnAdd.setText("Add new chapter");
+        btnAdd.setMaximumSize(new java.awt.Dimension(100, 50));
+        btnAdd.setMinimumSize(new java.awt.Dimension(100, 50));
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 620, 200, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -93,31 +103,38 @@ public class AddChapterPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddActionPerformed
+
     public JButton getBtnCancel() {
         return btnCancel;
-    }
-
-    public JButton getBtnNext() {
-        return btnNext;
     }
 
     public JPanel getListChapter() {
         return listChapter;
     }
-    
+
     public void onBtnAdd(ActionListener action) {
         this.btnAdd.addActionListener(action);
     }
-    
+
     public void onBtnBack(MouseAdapter action) {
         this.btnBack.addMouseListener(action);
+    }
+
+    public void onBtnCancel(ActionListener action) {
+        this.btnCancel.addActionListener(action);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JLabel btnBack;
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnNext;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbAddChapter;

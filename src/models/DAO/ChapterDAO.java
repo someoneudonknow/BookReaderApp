@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -89,7 +90,7 @@ public class ChapterDAO extends ResultSetQuery implements DAOInterface<ChapterMo
     public ArrayList<ChapterModel> getAllChapterFromBook(Integer pk) throws SQLException {
         ResultSet rs = null;
         ArrayList<ChapterModel> chapterList = new ArrayList<>();
-        String query = "SELECT * FROM project1.bookchapter WHERE book_id = ?";
+        String query = "SELECT * FROM project1.bookchapter WHERE book_id = ? ORDER BY bookchapter.chapter_serial";
         ArrayList<Object> queryField = new ArrayList<>();
         queryField.add(pk);
         rs = this.executeQuery(query, queryField);
@@ -101,10 +102,104 @@ public class ChapterDAO extends ResultSetQuery implements DAOInterface<ChapterMo
 
         return chapterList;
     }
+@Override
+    public void insert(ChapterModel data) {
+        String query = "INSERT INTO bookChapter (chapter_title, chapter_serial, chapter_document, book_id) VALUES(?,?,?,?)";
+
+        DB db = new DB();
+        Connection con = db.getConnection();
+        try {
+            int lastestChap = this.getLastestChapterSerial(data.getBook_id());
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, data.getTitle());
+            pst.setInt(2, data.getSerial());
+            pst.setString(3, data.getDocument());
+            pst.setInt(4, data.getBook_id());
+
+            if (data.getSerial() <= lastestChap) {
+                this.updateChaperSerialWhenInsert(data.getSerial(), data.getBook_id());
+            }
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ChapterDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.closeConnection(con);
+        }
+    }
+
+    public void updateChaperSerialWhenInsert(int baseOnSerial, int bookId) {
+        String query = "UPDATE bookChapter SET bookChapter.chapter_serial = bookChapter.chapter_serial + 1 WHERE bookChapter.book_id = " + bookId + " AND bookChapter.chapter_serial >= " + baseOnSerial;
+        DB db = new DB();
+        Connection con = db.getConnection();
+
+        try {
+            Statement st = con.createStatement();
+            int rows = st.executeUpdate(query);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            db.closeConnection(con);
+        }
+    }
 
     @Override
-    public void insert(ChapterModel data) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void delete(Integer id) {
+    }
+
+    public void deleteChapterAndUpdateSerials(int chapId, int bookId, int chapSerial) {
+        String query = "DELETE FROM project1.bookchapter WHERE bookchapter.chapter_id = " + chapId + " AND bookchapter.book_id = " + bookId;
+        DB db = new DB();
+        Connection con = db.getConnection();
+
+        try {
+            this.updateChapterSerialWhenDelete(chapSerial, bookId);
+            ReadingDAO rdDAO = new ReadingDAO();
+            rdDAO.deleteByChapterId(chapId);
+            Statement st = con.createStatement();
+            st.executeUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(ChapterDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.closeConnection(con);
+        }
+    }
+
+    public void updateChapterSerialWhenDelete(int baseOnSerial, int bookId) {
+        String query = "UPDATE bookchapter SET bookchapter.chapter_serial = bookchapter.chapter_serial - 1 WHERE bookchapter.book_id = "
+                + bookId + " AND bookchapter.chapter_serial > "
+                + baseOnSerial;
+        DB db = new DB();
+        Connection con = db.getConnection();
+
+        try {
+            Statement st = con.createStatement();
+            int rows = st.executeUpdate(query);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            db.closeConnection(con);
+        }
+    }
+
+    public int getLastestChapterSerial(int bookId) {
+        String query = "SELECT MAX(chapter_serial) as lastest_chapter_serial FROM bookChapter WHERE bookChapter.book_id = " + bookId;
+        DB db = new DB();
+        Connection con = db.getConnection();
+
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            int lastesChapterSerial = -1;
+            System.out.println(query);
+            while (rs.next()) {
+                lastesChapterSerial = rs.getInt("lastest_chapter_serial");
+            }
+            return lastesChapterSerial;
+        } catch (SQLException ex) {
+            return -1;
+        } finally {
+            db.closeConnection(con);
+        }
     }
 
     @Override
@@ -123,13 +218,7 @@ public class ChapterDAO extends ResultSetQuery implements DAOInterface<ChapterMo
     }
 
     @Override
-    public void delete(Integer pk) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public ArrayList<ChapterModel> search(String keyword) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
 }

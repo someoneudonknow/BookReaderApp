@@ -7,6 +7,7 @@ package models;
 import java.sql.Timestamp;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 /**
  *
@@ -33,6 +34,15 @@ public class ChapterModel {
         this.book_id = book_id;
         this.updateTime = updateTime;
         this.chapter_view = chapter_view;
+    }
+
+    public ChapterModel(String title, int serial, String document, int book_id) {
+        this.title = title;
+        this.serial = serial;
+        this.document = document;
+        this.book_id = book_id;
+        Date date = new Date();
+        this.updateTime = new Timestamp(date.getTime());
     }
 
     public int getId() {
@@ -74,9 +84,11 @@ public class ChapterModel {
     public void setBook_id(int book_id) {
         this.book_id = book_id;
     }
+
     public void setUpdateTime(Timestamp updateTime) {
         this.updateTime = updateTime;
     }
+
     public Timestamp getUpdateTime() {
         return this.updateTime;
     }
@@ -88,7 +100,6 @@ public class ChapterModel {
     public void setChapter_view(int chapter_view) {
         this.chapter_view = chapter_view;
     }
-    
 
     public static void populateChapterModel(ResultSet rs, ChapterModel chapter) throws SQLException {
         chapter.setId(rs.getInt("chapter_id"));

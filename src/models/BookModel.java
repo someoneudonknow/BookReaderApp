@@ -4,7 +4,6 @@
  */
 package models;
 
-
 import java.sql.Blob;
 import java.sql.SQLException;
 import models.DAO.BookDAO;
@@ -25,6 +24,14 @@ public class BookModel {
 
     public BookModel(int id, String name, String author, Blob cover, String description, int manager_id) {
         this.id = id;
+        this.name = name;
+        this.author = author;
+        this.cover = cover;
+        this.description = description;
+        this.manager_id = manager_id;
+    }
+
+    public BookModel(String name, String author, Blob cover, String description, int manager_id) {
         this.name = name;
         this.author = author;
         this.cover = cover;
@@ -92,10 +99,11 @@ public class BookModel {
     public String getRatingAverage(int id) throws SQLException {
         return BookDAO.getInstance().getRatingAverage(id);
     }
+
     public int getView(int id) throws SQLException {
         return BookDAO.getInstance().getView(id);
     }
-    
+
     public static void populateBookModel(ResultSet rs, BookModel book) throws SQLException {
         book.setId(rs.getInt("book_id"));
         book.setName(rs.getString("book_name"));

@@ -9,8 +9,10 @@ import views.items.ChapterItem;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import models.ChapterModel;
+import models.DAO.ChapterDAO;
 import views.panels.BookEditPanel;
 import views.panels.ReadingPanel;
 import views.MainView;
@@ -49,11 +51,17 @@ public class ChapterItemController {
     }
 
     public void DeleteThisChapter() {
-        JPanel parent = (JPanel) this.chapterItem.getParent();
-        parent.remove(this.chapterItem);
-        parent.setPreferredSize(new Dimension(0, parent.getComponentCount() * 40));
-        parent.revalidate();
-        parent.repaint();
+        int x = JOptionPane.showConfirmDialog(mainView, "Are you sure want to delete this chapter ?");
+        if (x == 0) {
+            ChapterDAO ctDAO = new ChapterDAO();
+            ChapterModel currentChapter = this.chapterItem.getChapterModels();
+            ctDAO.deleteChapterAndUpdateSerials(currentChapter.getId(), currentChapter.getBook_id(), currentChapter.getSerial());
+            JPanel parent = (JPanel) this.chapterItem.getParent();
+            parent.remove(this.chapterItem);
+            parent.setPreferredSize(new Dimension(0, parent.getComponentCount() * 40));
+            parent.revalidate();
+            parent.repaint();
+        }
     }
 
     public ChapterItem getChapterItem() {

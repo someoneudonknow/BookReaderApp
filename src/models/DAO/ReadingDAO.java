@@ -4,9 +4,12 @@
  */
 package models.DAO;
 
+import database.DB;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.ReadingModel;
@@ -107,6 +110,21 @@ public class ReadingDAO extends ResultSetQuery implements DAOInterface<ReadingMo
         }
     }
 
+     public void deleteByChapterId(int chapterId) {
+        String query = "DELETE FROM project1.bookReading WHERE bookReading.chapter_id = " + chapterId;
+        DB db = new DB();
+        Connection con = db.getConnection();
+
+        try {
+            Statement st = con.createStatement();
+            st.executeUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(ChapterDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.closeConnection(con);
+        }
+    }
+    
     @Override
     public void insert(ReadingModel data) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

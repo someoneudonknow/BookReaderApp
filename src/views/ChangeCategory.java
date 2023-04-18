@@ -6,6 +6,7 @@ package views;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import views.items.CategoryItem;
 
 /**
@@ -112,7 +113,7 @@ public class ChangeCategory extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             pack();
             setLocationRelativeTo(null);
-            setDefaultCloseOperation(EXIT_ON_CLOSE);
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             setTitle("Add Infor Chapter");
             setVisible(true);
         });

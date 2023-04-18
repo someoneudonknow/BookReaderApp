@@ -103,8 +103,10 @@ public class BookEditPanel extends javax.swing.JPanel {
         jScrollPane1.setBorder(null);
 
         txtDiscription.setColumns(20);
+        txtDiscription.setLineWrap(true);
         txtDiscription.setRows(5);
         txtDiscription.setText("discription");
+        txtDiscription.setWrapStyleWord(true);
         txtDiscription.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(txtDiscription);
 
@@ -336,7 +338,7 @@ public class BookEditPanel extends javax.swing.JPanel {
     }
 
     public void onBtnSave(ActionListener action) {
-        this.btnChangerCate.addActionListener(action);
+        this.btnSave.addActionListener(action);
     }
 
     public void onBtnAddChapter(ActionListener action) {
@@ -349,6 +351,10 @@ public class BookEditPanel extends javax.swing.JPanel {
     
     public void onBtnBack(MouseAdapter action) {
         this.btnBack.addMouseListener(action);
+    }
+    
+    public void onBtnChangedCover(ActionListener action) {
+        this.btnChangeCover.addActionListener(action);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

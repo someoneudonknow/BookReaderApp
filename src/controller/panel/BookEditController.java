@@ -6,17 +6,27 @@ package controller.panel;
 
 import controller.view.ChangeCategoryController;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import models.BookModel;
 import models.DAO.BookDAO;
+import models.DAO.UserDAO;
+import other.Converter;
 import other.SetDataToList;
 import views.ChangeCategory;
 import views.panels.AddChapterPanel;
@@ -34,7 +44,9 @@ public class BookEditController {
     private BookEditPanel bookEditPanel;
     private MainView mainView;
     private BookModel currentBook;
-
+    
+    private boolean isCoverChanged = false;
+    
     public BookEditController(BookEditPanel bookEditPanel, MainView mainView, BookModel book) throws SQLException, ParseException {
         this.bookEditPanel = bookEditPanel;
         this.mainView = mainView;
@@ -49,9 +61,13 @@ public class BookEditController {
         this.bookEditPanel.onBtnSave(e -> {
             Save();
         });
-        
+
         this.bookEditPanel.onBtnChangeCategory(e -> {
             ChangeCategory();
+        });
+        
+        this.bookEditPanel.onBtnChangedCover(e -> {
+            handleChangedCover();
         });
         
         this.bookEditPanel.onBtnBack(new MouseAdapter() {
@@ -59,7 +75,7 @@ public class BookEditController {
             public void mouseClicked(MouseEvent e) {
                 backToPrevious();
             }
-            
+
         });
     }
 
@@ -81,40 +97,127 @@ public class BookEditController {
         for (String s : categories) {
             cateString.append(s).append(", ");
         }
-        
+        String ratingFormated = "";
+
+        if (!rating.isBlank()) {
+            ratingFormated = rating.strip().replace(" ", " ( ") + ")";
+        } else {
+            ratingFormated = "No rating yet!";
+        }
+
         cateString.setCharAt(cateString.lastIndexOf(","), ' ');
-        
+
         this.bookEditPanel.getTxtName().setText(this.currentBook.getName());
         this.bookEditPanel.getTxtAuthor().setText(this.currentBook.getAuthor());
         this.bookEditPanel.getTxtDiscription().setText(this.currentBook.getDescription());
         this.bookEditPanel.getTxtCategorys().setText(cateString.toString());
-        this.bookEditPanel.getTxtRate().setText(rating);
-        
+        this.bookEditPanel.getTxtRate().setText(ratingFormated);
+        if (this.currentBook.getCover() != null) {
+            this.bookEditPanel.getImgCover().setIcon(Converter.convertBlobToImageIcon(this.currentBook.getCover()));
+        }
+
         JPanel panel = this.bookEditPanel.getListChapter();
         panel.setPreferredSize(new Dimension(0, panel.getComponentCount() * 40));
-        
+
         JPanel panel1 = this.bookEditPanel.getListComment();
         panel1.setPreferredSize(new Dimension(0, panel1.getComponentCount() * 40));
-        
+
         this.bookEditPanel.onBtnChangeCategory(e -> {
             ChangeCategory();
         });
-        
     }
 
     public void AddChapter() {
         AddChapterPanel chapterPanel = new AddChapterPanel();
+
+        try {
+            new AddChapterController(chapterPanel, mainView, currentBook, this.bookEditPanel);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookEditController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.mainView.setMainPanel(chapterPanel);
     }
 
-    public void Save() {
+    private void Save() {
+        int managerId = UserDAO.getInstance().getManagerInfo().getId();
+        String bookName = this.bookEditPanel.getTxtName().getText();
+        String bookAuthor = this.bookEditPanel.getTxtAuthor().getText();
+        String bookDesc = this.bookEditPanel.getTxtDiscription().getText();
+        Blob bookCover = Converter.convertImageToBlob((ImageIcon) this.bookEditPanel.getImgCover().getIcon());
+        BookDAO bookDAO = new BookDAO();
+        BookModel editedBook = new BookModel(bookName, bookAuthor, bookCover, bookDesc, managerId);
 
+        try {
+            bookDAO.update(this.currentBook.getId(), editedBook, this.getChangedField());
+            JOptionPane.showMessageDialog(this.mainView, "Lưu thành công");
+        } catch (Exception ex) {
+            if (ex.getMessage().equals("data_unchanged")) {
+                int x = JOptionPane.showConfirmDialog(this.mainView, "Thông tin chưa được thay đổi, bạn vẫn muốn lưu chứ?");
+                if (x == 0) {
+                    JOptionPane.showMessageDialog(this.mainView, "Lưu thành công");
+                }
+            } else if (ex.getMessage().equals("book_name_exists")) {
+                JOptionPane.showMessageDialog(this.mainView, "Tên sách đã tồn tại!");
+            }
+        }
     }
-    
+
+    private void handleChangedCover() {
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("image", "png", "jpeg", "jpg");
+        fileChooser.setFileFilter(imageFilter);
+        fileChooser.setMultiSelectionEnabled(false);
+        int x = fileChooser.showDialog(this.bookEditPanel, "Save");
+
+        if (x == JFileChooser.APPROVE_OPTION) {
+            File selectedImage = fileChooser.getSelectedFile();
+            String imagePath = selectedImage.getAbsolutePath();
+            if (imagePath.endsWith("png") || imagePath.endsWith("jpg") || imagePath.endsWith("ipeg")) {
+                ImageIcon userImage = new ImageIcon(imagePath);
+                Image resizedImage = userImage.getImage().getScaledInstance(this.bookEditPanel.getImgCover().getWidth(), this.bookEditPanel.getImgCover().getHeight(), Image.SCALE_SMOOTH);
+                this.bookEditPanel.getImgCover().setIcon(new ImageIcon(resizedImage));
+                this.isCoverChanged = true;
+            } else {
+                JOptionPane.showMessageDialog(this.bookEditPanel, "Sai định dạng ảnh!");
+            }
+        }
+    }
+
+    private List<String> getChangedField() {
+        List<String> changedFields = new LinkedList<>();
+
+        String bookName = this.bookEditPanel.getTxtName().getText();
+        String author = this.bookEditPanel.getTxtAuthor().getText();
+        String desc = this.bookEditPanel.getTxtDiscription().getText();
+
+        boolean isBookNameChanged = !this.currentBook.getName().equals(bookName);
+        boolean isAuthorChanged = !this.currentBook.getName().equals(author);
+        boolean isDescChanged = !this.currentBook.getName().equals(desc);
+
+        if (isBookNameChanged) {
+            changedFields.add("book_name");
+        }
+
+        if (isAuthorChanged) {
+            changedFields.add("book_author");
+        }
+
+        if (isDescChanged) {
+            changedFields.add("book_description");
+        }
+
+        if (this.isCoverChanged) {
+            changedFields.add("book_cover");
+        }
+
+        return changedFields;
+    }
+
     public void ChangeCategory() {
         ChangeCategory changeCategory = new ChangeCategory();
         new ChangeCategoryController(changeCategory, mainView, currentBook);
     }
+
     public void backToPrevious() {
         BookManagingPanel previousPanel = new BookManagingPanel();
         new BookManagingController(previousPanel, mainView);

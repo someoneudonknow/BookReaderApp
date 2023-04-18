@@ -4,11 +4,16 @@
  */
 package models.DAO;
 
+import database.DB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.BookModel;
@@ -237,7 +242,98 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
         }
         return books;
     }
+    
+     public ArrayList<BookModel> getAllBook() {
+        String query = "SELECT * FROM project1.bookinfo";
+        ArrayList<BookModel> books = new ArrayList<>();
 
+        DB db = new DB();
+        Connection con = db.getConnection();
+
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                BookModel b = new BookModel();
+                BookModel.populateBookModel(rs, b);
+                books.add(b);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return books;
+    }
+     
+     public void update(int id, BookModel data, List<String> fields) throws Exception {
+        if (fields.size() == 0) {
+            throw new Exception("data_unchanged");
+        }
+        if (fields.contains("book_name")) {
+            if (this.isBookNameContains(data.getName())) {
+                throw new Exception("book_name_exists");
+            }
+        }
+
+        StringBuilder query = new StringBuilder("UPDATE bookInfo SET ");
+
+        for (int i = 0; i < fields.size(); i++) {
+            if (fields.get(i).equals("book_name")) {
+                query.append("book_name = ").append("\"").append(data.getName().strip()).append("\"");
+            } else if (fields.get(i).equals("book_author")) {
+                query.append("book_author = ").append("\"").append(data.getAuthor().strip()).append("\"");
+            } else if (fields.get(i).equals("book_cover")) {
+                query.append("book_cover = ?");
+            } else if (fields.get(i).equals("book_description")) {
+                query.append("book_description = ").append("\"").append(data.getDescription().strip()).append("\"");
+            } else {
+                continue;
+            }
+
+            if (i >= 0 && i < fields.size() - 1) {
+                query.append(" , ");
+            }
+        }
+
+        query.append(" WHERE book_id = \"" + id + "\"");
+        DB db = new DB();
+        Connection con = db.getConnection();
+
+        try {
+            PreparedStatement pst = con.prepareStatement(query.toString());
+
+            if (fields.contains("book_cover")) {
+                pst.setBlob(1, data.getCover());
+            }
+
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.closeConnection(con);
+        }
+
+        System.out.println(query.toString());
+    }
+     
+      public boolean isBookNameContains(String bookName) {
+        String query = "SELECT * FROM bookInfo WHERE bookInfo.book_name LIKE " + bookName;
+        DB db = new DB();
+        Connection con = db.getConnection();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+        }
+
+        return false;
+    }
+    
     @Override
     public void update(Integer pk, BookModel data) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
