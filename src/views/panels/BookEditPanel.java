@@ -5,6 +5,7 @@
 package views.panels;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -21,6 +22,8 @@ public class BookEditPanel extends javax.swing.JPanel {
      */
     public BookEditPanel() {
         initComponents();
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
     }
 
     /**
@@ -33,6 +36,7 @@ public class BookEditPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        btnBack = new javax.swing.JLabel();
         imgCover = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -65,23 +69,35 @@ public class BookEditPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnBack.setText("Back");
+        btnBack.setPreferredSize(new java.awt.Dimension(40, 40));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
         imgCover.setBackground(new java.awt.Color(255, 255, 255));
         imgCover.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imgCover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/book.jpg"))); // NOI18N
         imgCover.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.add(imgCover, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 51, -1, 242));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Tác giả:");
+        jLabel3.setText("Author:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 51, 81, 34));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Đánh giá:");
+        jLabel5.setText("Rating");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(554, 51, 76, 34));
 
         txtRate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtRate.setText("jLabel6");
+        jPanel1.add(txtRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(636, 51, 366, 34));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setText("Giới thiệu:");
+        jLabel7.setText("Description:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 130, 116, 33));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(null);
@@ -92,121 +108,69 @@ public class BookEditPanel extends javax.swing.JPanel {
         txtDiscription.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(txtDiscription);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 169, 778, 69));
+
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setText("Thể loại:");
+        jLabel9.setText("Categories:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 91, 81, 33));
 
         txtCategorys.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtCategorys.setText("jLabel10");
+        jPanel1.add(txtCategorys, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 91, 468, 33));
 
-        btnChangeCover.setBackground(new java.awt.Color(204, 0, 51));
+        btnChangeCover.setBackground(new java.awt.Color(0, 204, 102));
         btnChangeCover.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnChangeCover.setForeground(new java.awt.Color(255, 255, 255));
-        btnChangeCover.setText("Đổi ảnh bìa");
+        btnChangeCover.setText("Change cover");
         btnChangeCover.setPreferredSize(new java.awt.Dimension(160, 37));
+        jPanel1.add(btnChangeCover, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 256, -1, -1));
 
         txtName.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         txtName.setText("bookname");
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 6, 778, 33));
 
         txtAuthor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtAuthor.setText("author");
+        jPanel1.add(txtAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 51, 225, 34));
 
-        btnAddChapter.setBackground(new java.awt.Color(204, 0, 51));
+        btnAddChapter.setBackground(new java.awt.Color(0, 204, 102));
         btnAddChapter.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAddChapter.setForeground(new java.awt.Color(255, 255, 255));
-        btnAddChapter.setText("Thêm chương");
+        btnAddChapter.setText("Add chapter");
         btnAddChapter.setPreferredSize(new java.awt.Dimension(160, 37));
+        btnAddChapter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddChapterActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAddChapter, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 256, -1, -1));
 
-        btnChangerCate.setBackground(new java.awt.Color(204, 0, 51));
+        btnChangerCate.setBackground(new java.awt.Color(0, 204, 102));
         btnChangerCate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnChangerCate.setForeground(new java.awt.Color(255, 255, 255));
-        btnChangerCate.setText("Đổi thể loại");
+        btnChangerCate.setText("Change categories");
         btnChangerCate.setPreferredSize(new java.awt.Dimension(160, 37));
+        jPanel1.add(btnChangerCate, new org.netbeans.lib.awtextra.AbsoluteConstraints(573, 256, -1, -1));
 
-        btnSave.setBackground(new java.awt.Color(204, 0, 51));
+        btnSave.setBackground(new java.awt.Color(0, 204, 102));
         btnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
-        btnSave.setText("Lưu");
+        btnSave.setText("Save");
         btnSave.setPreferredSize(new java.awt.Dimension(160, 37));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(imgCover, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCategorys, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnChangeCover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnAddChapter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnChangerCate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtRate, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtName))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imgCover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                            .addComponent(txtRate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtAuthor))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCategorys, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnChangeCover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAddChapter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnChangerCate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
-        );
+        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(745, 256, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel12.setBackground(new java.awt.Color(204, 0, 51));
+        jLabel12.setBackground(new java.awt.Color(0, 204, 102));
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Danh sách chương");
+        jLabel12.setText("Chapter list");
         jLabel12.setOpaque(true);
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         jScrollPane2.setPreferredSize(new java.awt.Dimension(52, 2));
 
         listChapter.setBackground(new java.awt.Color(255, 255, 255));
@@ -219,6 +183,7 @@ public class BookEditPanel extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -227,20 +192,20 @@ public class BookEditPanel extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Danh sách chương", jPanel3);
+        jTabbedPane1.addTab("Chapters", jPanel3);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel11.setBackground(new java.awt.Color(204, 0, 51));
+        jLabel11.setBackground(new java.awt.Color(0, 204, 102));
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Bình luận");
+        jLabel11.setText("Comments");
         jLabel11.setOpaque(true);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -281,6 +246,9 @@ public class BookEditPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
         listComment.setBackground(new java.awt.Color(255, 255, 255));
         listComment.setPreferredSize(new java.awt.Dimension(300, 500));
         listComment.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
@@ -309,7 +277,7 @@ public class BookEditPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Bình luận", jPanel2);
+        jTabbedPane1.addTab("Comments", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -330,6 +298,10 @@ public class BookEditPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddChapterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddChapterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddChapterActionPerformed
 
     public JLabel getImgCover() {
         return imgCover;
@@ -374,10 +346,15 @@ public class BookEditPanel extends javax.swing.JPanel {
     public void onBtnChangeCategory(ActionListener action) {
         this.btnChangerCate.addActionListener(action);
     }
+    
+    public void onBtnBack(MouseAdapter action) {
+        this.btnBack.addMouseListener(action);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddChapter;
     private javax.swing.JButton btnAddComment;
+    private javax.swing.JLabel btnBack;
     private javax.swing.JButton btnChangeCover;
     private javax.swing.JButton btnChangerCate;
     private javax.swing.JButton btnSave;

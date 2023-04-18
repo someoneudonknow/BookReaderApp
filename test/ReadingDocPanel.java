@@ -171,7 +171,7 @@ public class ReadingDocPanel extends javax.swing.JFrame {
         Insets insets = new Insets(0, paddingNum, 0, paddingNum);
         jEditorPane1.setMargin(insets);
         String fontStyle = (String) jComboBox1.getSelectedItem();
-        jEditorPane1.setFont(new Font(fontStyle, Font.PLAIN, 50));
+        jEditorPane1.setFont(new Font(fontStyle, Font.PLAIN, sizeNum));
 
         String content = "dark dark heeh";
 

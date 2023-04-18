@@ -6,10 +6,13 @@ package controller.panel;
 
 import java.awt.Font;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
@@ -31,12 +34,15 @@ public class ReadingController {
     private ReadingPanel readingPanel;
     private MainView mainView;
     private ChapterModel currentChapter;
+    private JPanel previousPanel;
 
-    public ReadingController(ReadingPanel readingPanel, MainView mainView, ChapterModel currentChapter) {
+    public ReadingController(ReadingPanel readingPanel, MainView mainView, ChapterModel currentChapter, JPanel previousPanel) {
         this.readingPanel = readingPanel;
         this.mainView = mainView;
         this.currentChapter = currentChapter;
-
+        this.previousPanel = previousPanel;
+        
+        this.readingPanel.getjComboBox1().setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Arial", "Times New Roman"}));
         this.readingPanel.onBtnPrevious(e -> {
             try {
                 ChapterModel previousChapter = new ChapterModel();
@@ -98,7 +104,7 @@ public class ReadingController {
 
             String fontStyle = (String) this.readingPanel.getjComboBox1().getSelectedItem();
             this.readingPanel.getjEditorPane1().setFont(new Font(fontStyle, Font.PLAIN, sizeNum));
-            System.out.println(this.readingPanel.getjEditorPane1().getFont());
+            System.out.println(this.readingPanel.getjEditorPane1());
 
             try {
                 this.setChapterDetails(this.currentChapter);
@@ -107,6 +113,14 @@ public class ReadingController {
             } catch (BadLocationException ex) {
                 Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
             }
+        });
+        
+        this.readingPanel.onBtnBack(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                backToPrevious();
+            }
+            
         });
     }
 
@@ -142,5 +156,8 @@ public class ReadingController {
         this.readingPanel.getBoxChapter().repaint();
 
     }
-
+    
+    public void backToPrevious() {
+        this.mainView.setMainPanel(previousPanel);
+    }
 }

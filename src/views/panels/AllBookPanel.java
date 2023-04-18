@@ -4,6 +4,7 @@
  */
 package views.panels;
 
+import java.awt.event.MouseAdapter;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -19,6 +20,7 @@ public class AllBookPanel extends javax.swing.JPanel {
      */
     public AllBookPanel() {
         initComponents();
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
     }
 
     /**
@@ -31,45 +33,40 @@ public class AllBookPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel6 = new javax.swing.JPanel();
+        btnBack = new javax.swing.JLabel();
         lbNewUpdate = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listAllBook = new javax.swing.JPanel();
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbNewUpdate.setBackground(new java.awt.Color(204, 0, 51));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnBack.setText("Back");
+        btnBack.setPreferredSize(new java.awt.Dimension(40, 40));
+        jPanel6.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
+        lbNewUpdate.setBackground(new java.awt.Color(0, 204, 102));
         lbNewUpdate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbNewUpdate.setForeground(new java.awt.Color(255, 255, 255));
         lbNewUpdate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbNewUpdate.setText("MỚI CẬP NHẬT");
+        lbNewUpdate.setText("NEW UPDATE");
         lbNewUpdate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbNewUpdate.setOpaque(true);
+        jPanel6.add(lbNewUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1011, 40));
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setToolTipText("");
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         listAllBook.setBackground(new java.awt.Color(255, 255, 255));
         listAllBook.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 25, 10, 10));
         listAllBook.setLayout(new java.awt.GridLayout(-1, 5, 10, 20));
         jScrollPane1.setViewportView(listAllBook);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbNewUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(lbNewUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jPanel6.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 46, 999, 666));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -122,8 +119,12 @@ public class AllBookPanel extends javax.swing.JPanel {
         this.listAllBook = listAllBook;
     }
 
+    public void onBtnBack(MouseAdapter action) {
+        this.btnBack.addMouseListener(action);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnBack;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbNewUpdate;

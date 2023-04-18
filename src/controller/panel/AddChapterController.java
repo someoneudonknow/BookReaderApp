@@ -6,12 +6,15 @@ package controller.panel;
 
 import controller.view.AddInforChapterController;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import javax.swing.JPanel;
 import models.BookModel;
 import other.SetDataToList;
 import views.AddInforChapter;
 import views.MainView;
+import views.panels.AddBookPanel;
 import views.panels.AddChapterPanel;
 
 /**
@@ -22,11 +25,13 @@ public class AddChapterController {
     AddChapterPanel chapterPanel;
     MainView mainView;
     BookModel bookModel;
+    AddBookPanel previousPanel;
 
-    public AddChapterController(AddChapterPanel chapterPanel, MainView mainView, BookModel bookModel) throws SQLException {
+    public AddChapterController(AddChapterPanel chapterPanel, MainView mainView, BookModel bookModel, AddBookPanel previousPanel) throws SQLException {
         this.chapterPanel = chapterPanel;
         this.mainView = mainView;
         this.bookModel = bookModel;
+        this.previousPanel = previousPanel;
         
         SetDataToList setData = new SetDataToList(mainView);
         int currentID = this.bookModel.getId();
@@ -39,10 +44,22 @@ public class AddChapterController {
         this.chapterPanel.onBtnAdd(e -> {
             startAddFrame();
         });
+        
+        this.chapterPanel.onBtnBack(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                backToPrevious();
+            }
+            
+        });
     }
     
     public void startAddFrame() {
         AddInforChapter inforChapter = new AddInforChapter();
         new AddInforChapterController(inforChapter, this.bookModel.getId());
+    }
+    
+    public void backToPrevious() {
+        this.mainView.setMainPanel(previousPanel);
     }
 }

@@ -28,10 +28,12 @@ public class BookItemController {
 
     private BookItem bookItem;
     private MainView mainView;
+    private JPanel parentPanel;
 
-    public BookItemController(BookItem bookItem, MainView mainView, String option) {
+    public BookItemController(BookItem bookItem, MainView mainView, String option, JPanel parentPanel) {
         this.bookItem = bookItem;
         this.mainView = mainView;
+        this.parentPanel = parentPanel;
 
         BookModel currentBook = bookItem.getBookModels();
         bookItem.getjLabel2().setText(currentBook.getName());
@@ -45,7 +47,7 @@ public class BookItemController {
                 try {
                     BookModel book = bookItem.getBookModels();
                     BookInforPanel bookInforPanel = new BookInforPanel();
-                    new BookInforController(bookInforPanel, mainView, book);
+                    new BookInforController(bookInforPanel, mainView, book, parentPanel);
                     getMainView().setMainPanel(bookInforPanel);
                 } catch (Exception es) {
                     es.printStackTrace();
@@ -55,8 +57,16 @@ public class BookItemController {
 
         });
 
-        this.bookItem.onBtnDelete(e -> {
-            deleteThisItem();
+        this.bookItem.onBtnDelete(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    deleteThisItem();
+                } catch (Exception es) {
+                    es.printStackTrace();
+                }
+            }
+            
         });
     }
 

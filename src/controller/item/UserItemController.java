@@ -5,6 +5,8 @@
 package controller.item;
 
 import controller.panel.UserInformationController;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import views.items.UserItemManager;
 import models.UserModel;
 import views.panels.UserMInforPanel;
@@ -20,15 +22,19 @@ public class UserItemController {
         this.mainView = mainView;
         this.userModels = currentUser;
         
-        this.userItem.onBtnInfor(e -> {
-            changeInforPanel();
+        this.userItem.onBtnInfor(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                changeInforPanel();
+            }
+            
         });
     }
     
     public void changeInforPanel(){
         try {
             UserMInforPanel userInfor = new UserMInforPanel();
-            new UserInformationController(userInfor, this.userModels);
+            new UserInformationController(userInfor, this.userModels, this.mainView);
             this.mainView.setMainPanel(userInfor);
         } catch (Exception es) {
             System.out.println("Khong co mainView");

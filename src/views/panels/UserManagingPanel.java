@@ -17,6 +17,7 @@ public class UserManagingPanel extends javax.swing.JPanel {
      */
     public UserManagingPanel() {
         initComponents();
+        this.jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
     }
 
     /**
@@ -37,17 +38,18 @@ public class UserManagingPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1013, 698));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        lbBookManager.setBackground(new java.awt.Color(204, 0, 51));
+        lbBookManager.setBackground(new java.awt.Color(0, 204, 102));
         lbBookManager.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbBookManager.setForeground(new java.awt.Color(255, 255, 255));
         lbBookManager.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbBookManager.setText("QUẢN LÝ NGƯỜI DÙNG");
+        lbBookManager.setText("ACCOUNTS");
         lbBookManager.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbBookManager.setOpaque(true);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         listUser.setBackground(new java.awt.Color(255, 255, 255));
         listUser.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 20, 0, 20));

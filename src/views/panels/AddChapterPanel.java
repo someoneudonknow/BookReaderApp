@@ -5,6 +5,7 @@
 package views.panels;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -31,6 +32,7 @@ public class AddChapterPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel6 = new javax.swing.JPanel();
+        btnBack = new javax.swing.JLabel();
         lbAddChapter = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
@@ -43,18 +45,29 @@ public class AddChapterPanel extends javax.swing.JPanel {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbAddChapter.setBackground(new java.awt.Color(204, 0, 51));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnBack.setText("Back");
+        btnBack.setPreferredSize(new java.awt.Dimension(40, 40));
+        jPanel6.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+
+        lbAddChapter.setBackground(new java.awt.Color(0, 204, 102));
         lbAddChapter.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbAddChapter.setForeground(new java.awt.Color(255, 255, 255));
         lbAddChapter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbAddChapter.setText("THÊM CHƯƠNG");
+        lbAddChapter.setText("NEW CHAPTER");
         lbAddChapter.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbAddChapter.setOpaque(true);
+        jPanel6.add(lbAddChapter, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, 1011, 40));
 
         btnCancel.setText("Cancel");
+        jPanel6.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 597, 133, 37));
 
         btnNext.setText("Confirm");
+        jPanel6.add(btnNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 597, 133, 37));
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setPreferredSize(new java.awt.Dimension(52, 2));
@@ -63,39 +76,10 @@ public class AddChapterPanel extends javax.swing.JPanel {
         listChapter.setLayout(new javax.swing.BoxLayout(listChapter, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane2.setViewportView(listChapter);
 
-        btnAdd.setText("Add");
+        jPanel6.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 47, 999, 544));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbAddChapter, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(285, 285, 285)
-                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(lbAddChapter, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        btnAdd.setText("Add");
+        jPanel6.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(425, 597, 133, 37));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -124,9 +108,14 @@ public class AddChapterPanel extends javax.swing.JPanel {
     public void onBtnAdd(ActionListener action) {
         this.btnAdd.addActionListener(action);
     }
+    
+    public void onBtnBack(MouseAdapter action) {
+        this.btnBack.addMouseListener(action);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JLabel btnBack;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnNext;
     private javax.swing.JPanel jPanel6;

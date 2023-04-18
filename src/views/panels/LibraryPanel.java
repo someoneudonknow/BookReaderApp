@@ -18,6 +18,7 @@ public class LibraryPanel extends javax.swing.JPanel {
      */
     public LibraryPanel() {
         initComponents();
+        jScrollPane3.getVerticalScrollBar().setUnitIncrement(16);
     }
 
     /**
@@ -38,17 +39,18 @@ public class LibraryPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1013, 698));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        lbLibrary.setBackground(new java.awt.Color(204, 0, 51));
+        lbLibrary.setBackground(new java.awt.Color(0, 204, 102));
         lbLibrary.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbLibrary.setForeground(new java.awt.Color(255, 255, 255));
         lbLibrary.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbLibrary.setText("THƯ VIỆN CỦA BẠN");
+        lbLibrary.setText("LIBRARY");
         lbLibrary.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbLibrary.setOpaque(true);
 
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         listLibrary.setBackground(new java.awt.Color(255, 255, 255));
         listLibrary.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));

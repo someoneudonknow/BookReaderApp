@@ -31,8 +31,8 @@ public class MainPanelController {
         SetDataToList setData = new SetDataToList(this.mainView);
         
         // Xác định thêm vào panel nào
-        setData.setTop5View(this.mainPanel.getListTopView(), "view");
-        setData.setTop5View(this.mainPanel.getListNewUpdate(), "recently");
+        setData.setTop5View(this.mainPanel.getListTopView(), "view", this.mainPanel);
+        setData.setTop5View(this.mainPanel.getListNewUpdate(), "recently", this.mainPanel);
         
         this.mainPanel.onBtnMore(e -> {
             try {
@@ -47,7 +47,7 @@ public class MainPanelController {
     public void changeMorePanel() throws SQLException{
         this.mainView.remove(this.mainPanel);
         AllBookPanel allBookPanel = new AllBookPanel();
-        new AllBookController(allBookPanel, mainView);
+        new AllBookController(allBookPanel, mainView, this.mainPanel);
         this.mainView.setMainPanel(allBookPanel);
         this.mainView.revalidate();
         this.mainView.repaint();

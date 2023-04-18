@@ -37,12 +37,12 @@ public class BookManagingController {
         ArrayList<BookModel> books = BookDAO.getInstance().getAll();
         setData.setBookManagerList(bookPanel.getListBook(), books);
 
-        this.bookPanel.getListBook().setPreferredSize(new Dimension(0, this.bookPanel.getListBook().getComponentCount() * 78));
+        this.bookPanel.getListBook().setPreferredSize(new Dimension(0, this.bookPanel.getListBook().getComponentCount() * 66));
     }
 
     public void AddBook() {
         AddBookPanel addBookPanel = new AddBookPanel();
-        new AddBookController(addBookPanel, mainView);
+        new AddBookController(addBookPanel, mainView, bookPanel);
         this.mainView.setMainPanel(addBookPanel);
     }
 }

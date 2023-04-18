@@ -5,6 +5,8 @@
 package controller.panel;
 
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.text.BadLocationException;
 import models.BookModel;
 import models.ChapterModel;
 import models.DAO.BookDAO;
@@ -40,11 +43,13 @@ public class BookInforController {
     private MainView mainView;
     private BookModel currentBook;
     private boolean havingReview;
+    private JPanel previousPanel;
 
-    public BookInforController(BookInforPanel bookInforPanel, MainView mainView, BookModel currentBook) throws SQLException, IOException, ParseException {
+    public BookInforController(BookInforPanel bookInforPanel, MainView mainView, BookModel currentBook, JPanel previousPanel) throws SQLException, IOException, ParseException {
         this.bookInforPanel = bookInforPanel;
         this.mainView = mainView;
         this.currentBook = currentBook;
+        this.previousPanel = previousPanel;
 
         this.setBook(currentBook);
         ResultSet checkSaved = SavedDAO.getInstance().checkPK(new SavedPK(this.mainView.getUserModels().getId(), this.currentBook.getId()));
@@ -70,6 +75,8 @@ public class BookInforController {
                 changeToChapter(BookDAO.getInstance().getFirstLastChapter(currentID, "first"));
             } catch (SQLException ex) {
                 Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (BadLocationException ex) {
+                Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         });
@@ -78,6 +85,8 @@ public class BookInforController {
             try {
                 changeToChapter(BookDAO.getInstance().getFirstLastChapter(currentID, "last"));
             } catch (SQLException ex) {
+                Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (BadLocationException ex) {
                 Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
@@ -118,6 +127,14 @@ public class BookInforController {
                 Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
             }
 
+        });
+        
+        this.bookInforPanel.onBtnBack(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                backToPrevious();
+            }
+            
         });
     }
 
@@ -163,10 +180,10 @@ public class BookInforController {
         }
     }
 
-    public void changeToChapter(ChapterModel changedChapter) throws SQLException {
+    public void changeToChapter(ChapterModel changedChapter) throws SQLException, BadLocationException {
 
         ReadingPanel newReadingPanel = new ReadingPanel();
-        ReadingController reading = new ReadingController(newReadingPanel, mainView, changedChapter);
+        ReadingController reading = new ReadingController(newReadingPanel, mainView, changedChapter, this.bookInforPanel);
         reading.setChapterDetails(changedChapter);
         this.mainView.setMainPanel(newReadingPanel);
     }
@@ -195,5 +212,9 @@ public class BookInforController {
             this.bookInforPanel.getTxtReadRecently().setText("Chương " + recentlyRead);
 
         }
+    }
+    
+    public void backToPrevious() {
+        this.mainView.setMainPanel(previousPanel);
     }
 }

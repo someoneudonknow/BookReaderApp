@@ -38,7 +38,7 @@ public class BookItem extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnDelete = new javax.swing.JButton();
+        btnDelete = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -46,10 +46,9 @@ public class BookItem extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(255, 51, 51));
-        btnDelete.setText("X");
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, -1, -1));
+        btnDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete_icon.png"))); // NOI18N
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(0, 204, 204));
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -88,7 +87,7 @@ public class BookItem extends javax.swing.JPanel {
         this.jLabel2 = jLabel2;
     }
 
-    public JButton getBtnDelete() {
+    public JLabel getBtnDelete() {
         return btnDelete;
     }
     
@@ -98,12 +97,12 @@ public class BookItem extends javax.swing.JPanel {
         this.addMouseListener(action);
     }
     
-    public void onBtnDelete(ActionListener action) {
-        this.btnDelete.addActionListener(action);
+    public void onBtnDelete(MouseAdapter action) {
+        this.btnDelete.addMouseListener(action);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDelete;
+    private javax.swing.JLabel btnDelete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

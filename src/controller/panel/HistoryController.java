@@ -23,7 +23,7 @@ public class HistoryController {
         this.historyPanel = historyPanel;
         this.mainView = mainView;
         SetDataToList setData = new SetDataToList(this.mainView);
-        setData.setBookItemList(historyPanel.getListHistory(), "history");
+        setData.setBookItemList(historyPanel.getListHistory(), "history", this.historyPanel);
         setHeightPreferrer();
         this.historyPanel.onBtnDelete(e -> {
             DeleteAll();

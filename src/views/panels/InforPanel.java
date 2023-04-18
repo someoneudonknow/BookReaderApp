@@ -53,17 +53,16 @@ public class InforPanel extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         setPreferredSize(new java.awt.Dimension(1013, 698));
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setBackground(new java.awt.Color(0, 204, 102));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("THÔNG TIN TÀI KHOẢN");
+        jLabel1.setText("INFORMATION");
         jLabel1.setOpaque(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         passwordInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        passwordInput.setForeground(new java.awt.Color(0, 0, 0));
         passwordInput.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         phoneNumberInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -90,48 +89,47 @@ public class InforPanel extends javax.swing.JPanel {
         imageHolder.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        password.setText("Mật khẩu");
+        password.setText("Password");
 
         phoneNumberErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
 
         userNameErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
 
         phoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        phoneNumber.setText("Số điện thoại");
+        phoneNumber.setText("Phone number");
 
         userName.setBackground(new java.awt.Color(204, 0, 51));
         userName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        userName.setText("Tên đăng nhập");
+        userName.setText("Username");
 
         photoErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
 
-        showPasswordBtn.setText("Hiển thị mật khẩu");
+        showPasswordBtn.setText("Show password");
+        showPasswordBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPasswordBtnActionPerformed(evt);
+            }
+        });
 
-        btnUndo.setText("Hủy");
+        btnUndo.setText("Cancel");
         btnUndo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUndoActionPerformed(evt);
             }
         });
 
-        btnSave.setText("Lưu");
+        btnSave.setText("Save");
 
         passwordConfirmWrapper.setBackground(new java.awt.Color(255, 255, 255));
 
-        showPasswordConfirmBtn.setText("Hiển thị mật khẩu");
-        showPasswordConfirmBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showPasswordConfirmBtnActionPerformed(evt);
-            }
-        });
+        showPasswordConfirmBtn.setText("Show password");
 
         passwordConfirmErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
 
         passwordConfirm.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        passwordConfirm.setText("Xác nhận mật khẩu");
+        passwordConfirm.setText("Confirm password");
 
         passwordConfirmInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        passwordConfirmInput.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout passwordConfirmWrapperLayout = new javax.swing.GroupLayout(passwordConfirmWrapper);
         passwordConfirmWrapper.setLayout(passwordConfirmWrapperLayout);
@@ -158,10 +156,10 @@ public class InforPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18))
         );
 
-        chooseFileBtn.setText("Chọn file");
+        chooseFileBtn.setText("Choose file");
         chooseFileBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnEdit.setText("Chỉnh sửa");
+        btnEdit.setText("Edit");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -268,13 +266,13 @@ public class InforPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_userNameInputActionPerformed
 
-    private void showPasswordConfirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPasswordConfirmBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_showPasswordConfirmBtnActionPerformed
-
     private void btnUndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUndoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUndoActionPerformed
+
+    private void showPasswordBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPasswordBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showPasswordBtnActionPerformed
     
     public JButton getChooseFileBtn() {
         return chooseFileBtn;
