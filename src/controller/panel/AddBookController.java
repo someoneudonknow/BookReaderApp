@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import models.BookModel;
 import models.CategoryModel;
+import models.DAO.CategoryDAO;
 import models.UserModel;
 import other.Converter;
 import views.MainView;
@@ -39,10 +40,9 @@ public class AddBookController {
         this.setCategoryItemList();
 
         this.bookPanel.onBtnNext(e -> {
-            if (categoryResult().isEmpty()){
+            if (categoryResult().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Chưa chọn thể loại");
-            }
-            else {
+            } else {
                 //BookModel result = getResult();
                 BookModel result = new BookModel();
                 AddChapterPanel addChapterPanel = new AddChapterPanel();
@@ -55,64 +55,41 @@ public class AddBookController {
             }
 
         });
-        
+
         this.bookPanel.onBtnBack(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 backToPrevious();
             }
-            
+
         });
     }
 
     public void setCategoryItemList() {
         ArrayList<CategoryItem> model = new ArrayList<>();
-//        cái này để lấy dữ liệu
-//        for (CategoryModels i:categoryList){
-//            model.add(new CategoryItem(i));
-//        }
+        ArrayList<CategoryModel> cateList = CategoryDAO.getInstance().getAll();
 
-        //đống này xóa
-        model.add(new CategoryItem(new CategoryModel(0, "Trinh thám")));
-        model.add(new CategoryItem(new CategoryModel(1, "Lãng mạn")));
-        model.add(new CategoryItem(new CategoryModel(2, "Hài hước")));
-        model.add(new CategoryItem(new CategoryModel(3, "Học đường")));
-        model.add(new CategoryItem(new CategoryModel(4, "Tiểu thuyết")));
-        model.add(new CategoryItem(new CategoryModel(5, "Viễn tưởng")));
-        model.add(new CategoryItem(new CategoryModel(6, "Cổ tích")));
-        model.add(new CategoryItem(new CategoryModel(7, "Sử thi")));
-        model.add(new CategoryItem(new CategoryModel(8, "Hành động")));
-        model.add(new CategoryItem(new CategoryModel(9, "Đời thường")));
-        model.add(new CategoryItem(new CategoryModel(10, "Truck-kun")));
-        model.add(new CategoryItem(new CategoryModel(0, "Trinh thám")));
-        model.add(new CategoryItem(new CategoryModel(1, "Lãng mạn")));
-        model.add(new CategoryItem(new CategoryModel(2, "Hài hước")));
-        model.add(new CategoryItem(new CategoryModel(3, "Học đường")));
-        model.add(new CategoryItem(new CategoryModel(4, "Tiểu thuyết")));
-        model.add(new CategoryItem(new CategoryModel(5, "Viễn tưởng")));
-        model.add(new CategoryItem(new CategoryModel(6, "Cổ tích")));
-        model.add(new CategoryItem(new CategoryModel(7, "Sử thi")));
-        model.add(new CategoryItem(new CategoryModel(8, "Hành động")));
-        model.add(new CategoryItem(new CategoryModel(9, "Đời thường")));
-        model.add(new CategoryItem(new CategoryModel(10, "Truck-kun")));
+        for (CategoryModel a : cateList) {
+            model.add(new CategoryItem(a, false));
+        }
 
-        //set dữ liệu
         this.bookPanel.setListCategory(model);
     }
-    
+
     public ArrayList<CategoryModel> categoryResult() {
         ArrayList<CategoryModel> categoryList = new ArrayList<>();
-        
+
         for (int i = 0; i < this.bookPanel.getListCategory().getComponentCount(); i++) {
             CategoryItem item = (CategoryItem) this.bookPanel.getListCategory().getComponent(i);
             if (item.getjCheckBox1().isSelected()) {
                 categoryList.add(item.getCategoryModels());
             }
         }
-        
-        for (CategoryModel i:categoryList)
+
+        for (CategoryModel i : categoryList) {
             System.out.println(i.getName());
-        
+        }
+
         return categoryList;
     }
 
@@ -125,8 +102,8 @@ public class AddBookController {
 
         return result;
     }
-    
-    public void backToPrevious(){
+
+    public void backToPrevious() {
         this.mainView.setMainPanel(this.previousPanel);
     }
 }

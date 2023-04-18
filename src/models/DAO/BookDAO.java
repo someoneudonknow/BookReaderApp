@@ -13,10 +13,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.BookModel;
+import models.CategoryModel;
 import models.ChapterModel;
 import models.interfaces.DAOInterface;
 import utils.ResultSetQuery;
@@ -169,6 +171,29 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
             categoryList.add(rs.getString("category_name"));
         }
         return categoryList;
+    }
+    
+    public List<CategoryModel> getCurrentBookCategories(int currentBookID) {
+        String query = "SELECT cl.* FROM categorylist as cl INNER JOIN havecategory as hc ON cl.category_id = hc.category_id WHERE hc.book_id = " + currentBookID;
+        List<CategoryModel> cateListResult = new LinkedList<>();
+        DB db = new DB();
+        Connection con = db.getConnection();
+        
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()) {
+                int cateId = rs.getInt("category_id");
+                String cateName = rs.getString("category_name");
+                
+                CategoryModel currentCate = new CategoryModel(cateId, cateName);
+                cateListResult.add(currentCate);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return cateListResult;
     }
 
     public String getRatingAverage(int currentBookID) throws SQLException {

@@ -18,6 +18,15 @@ public class CategoryItem extends javax.swing.JPanel {
      */
     private CategoryModel categoryModels;
     
+    public CategoryItem(CategoryModel categoryModels, boolean isChecked) {
+        initComponents();
+        this.categoryModels = categoryModels;
+        this.jCheckBox1.setText(categoryModels.getName());
+        if(isChecked) {
+            this.jCheckBox1.setSelected(true);
+        }
+    }
+    
     public CategoryItem(CategoryModel categoryModels) {
         initComponents();
         this.categoryModels = categoryModels;

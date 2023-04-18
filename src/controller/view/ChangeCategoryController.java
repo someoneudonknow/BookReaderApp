@@ -1,78 +1,80 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller.view;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import models.BookModel;
 import models.CategoryModel;
+import models.DAO.BookDAO;
+import models.DAO.CategoryDAO;
 import models.HaveCategoryModel;
 import views.ChangeCategory;
 import views.MainView;
 import views.items.CategoryItem;
 
-/**
- *
- * @author ADMIN
- */
 public class ChangeCategoryController {
-    ChangeCategory changeCategory;
-    MainView mainView;
-    BookModel bookModel;
 
-    public ChangeCategoryController(ChangeCategory changeCategory, MainView mainView, BookModel bookModel) {
+    private ChangeCategory changeCategory;
+    private MainView mainView;
+    private BookModel bookModel;
+    private List<CategoryModel> allCategories = new LinkedList<>();
+    private List<CategoryModel> currentBookCateList = new ArrayList<>();
+
+    public ChangeCategoryController(ChangeCategory changeCategory, MainView mainView, BookModel bookModel, List<CategoryModel> currentBookCateList) {
         this.changeCategory = changeCategory;
         this.mainView = mainView;
         this.bookModel = bookModel;
+        this.currentBookCateList.addAll(currentBookCateList);
         
-        setCategoryItemList();
-        
-        this.changeCategory.onBtnConfirm(e -> {
-            this.changeCategory.setVisible(false);
-            this.changeCategory.dispose();
-        });
-        
+        this.setCategoryItemList();
+
         this.changeCategory.onBtnCancel(e -> {
             this.changeCategory.setVisible(false);
             this.changeCategory.dispose();
         });
+        System.out.println("run cate");
 
         this.changeCategory.start();
     }
-    
-    public void setCategoryItemList() {
+
+    public ArrayList<CategoryModel> resultData() {
+        ArrayList<CategoryModel> categoryList = new ArrayList<>();
+
+        for (int i = 0; i < this.changeCategory.getListCategory().getComponentCount(); i++) {
+            CategoryItem item = (CategoryItem) this.changeCategory.getListCategory().getComponent(i);
+            if (item.getjCheckBox1().isSelected()) {
+                categoryList.add(item.getCategoryModels());
+            }
+        }
+
+        for (CategoryModel i : categoryList) {
+            System.out.println(i.getName());
+        }
+
+        return categoryList;
+    }
+
+    private void renderCategories(List<CategoryModel> checkedCategoriesList) {
         ArrayList<CategoryItem> model = new ArrayList<>();
-//        cái này để lấy dữ liệu
-//        for (CategoryModels i:categoryList){
-//            model.add(new CategoryItem(i));
-//        }
 
-        //đống này xóa
-        model.add(new CategoryItem(new CategoryModel(0, "Trinh thám")));
-        model.add(new CategoryItem(new CategoryModel(1, "Lãng mạn")));
-        model.add(new CategoryItem(new CategoryModel(2, "Hài hước")));
-        model.add(new CategoryItem(new CategoryModel(3, "Học đường")));
-        model.add(new CategoryItem(new CategoryModel(4, "Tiểu thuyết")));
-        model.add(new CategoryItem(new CategoryModel(5, "Viễn tưởng")));
-        model.add(new CategoryItem(new CategoryModel(6, "Cổ tích")));
-        model.add(new CategoryItem(new CategoryModel(7, "Sử thi")));
-        model.add(new CategoryItem(new CategoryModel(8, "Hành động")));
-        model.add(new CategoryItem(new CategoryModel(9, "Đời thường")));
-        model.add(new CategoryItem(new CategoryModel(10, "Truck-kun")));
-        model.add(new CategoryItem(new CategoryModel(0, "Trinh thám")));
-        model.add(new CategoryItem(new CategoryModel(1, "Lãng mạn")));
-        model.add(new CategoryItem(new CategoryModel(2, "Hài hước")));
-        model.add(new CategoryItem(new CategoryModel(3, "Học đường")));
-        model.add(new CategoryItem(new CategoryModel(4, "Tiểu thuyết")));
-        model.add(new CategoryItem(new CategoryModel(5, "Viễn tưởng")));
-        model.add(new CategoryItem(new CategoryModel(6, "Cổ tích")));
-        model.add(new CategoryItem(new CategoryModel(7, "Sử thi")));
-        model.add(new CategoryItem(new CategoryModel(8, "Hành động")));
-        model.add(new CategoryItem(new CategoryModel(9, "Đời thường")));
-        model.add(new CategoryItem(new CategoryModel(10, "Truck-kun")));
+        for (CategoryModel a : this.allCategories) {
+            if (checkedCategoriesList.contains(a)) {
+                model.add(new CategoryItem(a, true));
+            } else {
+                model.add(new CategoryItem(a, false));
+            }
+        }
 
-        //set dữ liệu
         this.changeCategory.setListCategory(model);
+    }
+
+    private void setCategoryItemList() {
+        ArrayList<CategoryModel> cateList = CategoryDAO.getInstance().getAll();
+        this.allCategories.addAll(cateList);
+        this.renderCategories(this.currentBookCateList);
+    }
+    
+    public void setCategoryItemList(List<CategoryModel> checkedList) {
+        this.renderCategories(checkedList);
     }
 }

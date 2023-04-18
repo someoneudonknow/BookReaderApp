@@ -31,7 +31,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+          <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -46,20 +46,26 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane2" alignment="1" max="32767" attributes="0"/>
                       <Component id="jLabel4" alignment="1" pref="991" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="411" max="-2" attributes="0"/>
+                          <Component id="cateErrorMessage" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="273" max="-2" attributes="0"/>
+                          <Component id="btnCancel" min="-2" pref="140" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnConfirm" min="-2" pref="140" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="resetBtn" min="-2" pref="140" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="348" max="-2" attributes="0"/>
-                  <Component id="btnCancel" min="-2" pref="140" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnConfirm" min="-2" pref="140" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -68,13 +74,16 @@
               <Group type="102" alignment="1" attributes="0">
                   <Component id="jLabel4" min="-2" pref="27" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="116" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" pref="142" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cateErrorMessage" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnCancel" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="btnConfirm" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                      <Component id="resetBtn" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -114,7 +123,7 @@
               <Font name="Arial" size="14" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Th&#x1ec3; lo&#x1ea1;i"/>
+            <Property name="text" type="java.lang.String" value="Categories"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
@@ -122,10 +131,28 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancel"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnConfirm">
           <Properties>
             <Property name="text" type="java.lang.String" value="Confirm"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConfirmActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="cateErrorMessage">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="0" red="cc" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="resetBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Reset"/>
           </Properties>
         </Component>
       </SubComponents>

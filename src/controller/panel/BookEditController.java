@@ -24,6 +24,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import models.BookModel;
+import models.CategoryModel;
 import models.DAO.BookDAO;
 import models.DAO.UserDAO;
 import other.Converter;
@@ -44,13 +45,17 @@ public class BookEditController {
     private BookEditPanel bookEditPanel;
     private MainView mainView;
     private BookModel currentBook;
-    
+
+    private List<CategoryModel> currentBookCategories = new ArrayList<>();
     private boolean isCoverChanged = false;
-    
+    private boolean isCategoriesChanged = false;
+
     public BookEditController(BookEditPanel bookEditPanel, MainView mainView, BookModel book) throws SQLException, ParseException {
         this.bookEditPanel = bookEditPanel;
         this.mainView = mainView;
         this.currentBook = book;
+        List<CategoryModel> cateListFromCurrentBook = BookDAO.getInstance().getCurrentBookCategories(this.currentBook.getId());
+        this.currentBookCategories.addAll(cateListFromCurrentBook);
 
         initUI();
 
@@ -65,17 +70,16 @@ public class BookEditController {
         this.bookEditPanel.onBtnChangeCategory(e -> {
             ChangeCategory();
         });
-        
+
         this.bookEditPanel.onBtnChangedCover(e -> {
             handleChangedCover();
         });
-        
+
         this.bookEditPanel.onBtnBack(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 backToPrevious();
             }
-
         });
     }
 
@@ -121,10 +125,6 @@ public class BookEditController {
 
         JPanel panel1 = this.bookEditPanel.getListComment();
         panel1.setPreferredSize(new Dimension(0, panel1.getComponentCount() * 40));
-
-        this.bookEditPanel.onBtnChangeCategory(e -> {
-            ChangeCategory();
-        });
     }
 
     public void AddChapter() {
@@ -193,7 +193,8 @@ public class BookEditController {
         boolean isBookNameChanged = !this.currentBook.getName().equals(bookName);
         boolean isAuthorChanged = !this.currentBook.getName().equals(author);
         boolean isDescChanged = !this.currentBook.getName().equals(desc);
-
+//        boolean isCategoriesChanged = 
+        
         if (isBookNameChanged) {
             changedFields.add("book_name");
         }
@@ -215,7 +216,39 @@ public class BookEditController {
 
     public void ChangeCategory() {
         ChangeCategory changeCategory = new ChangeCategory();
-        new ChangeCategoryController(changeCategory, mainView, currentBook);
+        ChangeCategoryController ctController = new ChangeCategoryController(changeCategory, mainView, currentBook, this.currentBookCategories);
+
+        changeCategory.onBtnConfirm(e -> {
+            ArrayList<CategoryModel> result = ctController.resultData();
+            boolean isValid = false;
+
+            if (result.size() <= 0) {
+                changeCategory.getCateErrorMessage().setText("You have to choose at least one categories!");
+                isValid = false;
+            } else {
+                isValid = true;
+                changeCategory.getCateErrorMessage().setText("");
+                this.isCategoriesChanged = true;
+            }
+
+            if (isValid) {
+                StringBuilder cateStringUpdated = new StringBuilder();
+                for (CategoryModel i : result) {
+                    cateStringUpdated.append(i.getName()).append(",");
+                }
+                cateStringUpdated.setCharAt(cateStringUpdated.lastIndexOf(","), ' ');
+                this.bookEditPanel.getTxtCategorys().setText(cateStringUpdated.toString().strip());
+                this.currentBookCategories = result;
+                changeCategory.setVisible(false);
+                changeCategory.dispose();
+            }
+        });
+
+        changeCategory.onResetBtnClicked(e -> {
+            List<CategoryModel> cateListFromCurrentBook = BookDAO.getInstance().getCurrentBookCategories(this.currentBook.getId());
+            ctController.setCategoryItemList(cateListFromCurrentBook);
+            this.currentBookCategories = cateListFromCurrentBook;
+        });
     }
 
     public void backToPrevious() {
