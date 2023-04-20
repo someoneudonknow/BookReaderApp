@@ -5,20 +5,27 @@
 package models.DAO;
 
 import database.DB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DecimalFormat;
+import java.util.LinkedList;
 import java.util.List;
-import models.CategoryModel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import models.HaveCategoryModel;
 import models.entityPK.HaveCategoryPK;
 import models.interfaces.DAOInterface;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.sql.Statement;
+import utils.ResultSetQuery;
 
-public class HaveCategoryDAO implements DAOInterface<HaveCategoryModel, HaveCategoryPK> {
+/**
+ *
+ * @author trang
+ */
+public class HaveCategoryDAO extends ResultSetQuery implements DAOInterface<HaveCategoryModel, HaveCategoryPK> {
 
     public static HaveCategoryDAO getInstance() {
         return new HaveCategoryDAO();
@@ -60,7 +67,32 @@ public class HaveCategoryDAO implements DAOInterface<HaveCategoryModel, HaveCate
 
     @Override
     public ArrayList<HaveCategoryModel> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ResultSet rs = null;
+        ArrayList<HaveCategoryModel> listHaveCategory = new ArrayList<>();
+        String query = "SELECT * FROM project1.havecategory";
+        ArrayList<Object> queryField = new ArrayList<>();
+        try {
+            rs = this.executeQuery(query, queryField);
+        } catch (SQLException ex) {
+            Logger.getLogger(HaveCategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {   
+            while (rs.next()) {
+                HaveCategoryModel category = new HaveCategoryModel();
+                HaveCategoryModel.populateHaveCategoryModel(rs, category);
+                listHaveCategory.add(category);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return listHaveCategory;
     }
 
     // handle update categories and add book

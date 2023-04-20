@@ -34,7 +34,7 @@ public class CategoryDAO implements DAOInterface<CategoryModel, Integer>   {
 
     @Override
     public ArrayList<CategoryModel> getAll() {
-        String query = "SELECT * FROM categorylist";
+        String query = "SELECT * FROM categorylist ORDER BY category_name DESC";
         ArrayList<CategoryModel> cateList = new ArrayList<>();
         
         DB db = new DB();

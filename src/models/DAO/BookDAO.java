@@ -22,6 +22,8 @@ import models.CategoryModel;
 import models.ChapterModel;
 import models.interfaces.DAOInterface;
 import utils.ResultSetQuery;
+import views.items.BookItem;
+import views.items.CategoryItem;
 
 /**
  *
@@ -414,6 +416,47 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
     @Override
     public ArrayList<BookModel> search(String keyword) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public ArrayList<BookModel> getDataAvailable(String sort, String type, String name, ArrayList<CategoryItem> categoryItem) throws SQLException {
+        ResultSet rs = null;
+        String query = "";
+        ArrayList<BookModel> result = new ArrayList<>();
+        ArrayList<Object> queryField = new ArrayList<>();
+        if(type.equals("Title")){
+            query = "SELECT bi.* FROM project1.bookinfo AS bi INNER JOIN project1.havecategory ON bi.book_id = havecategory.book_id "
+                + "WHERE bi.book_name LIKE '%" + name + "%'";
+        }else if(type.equals("Author")){
+            query = "SELECT bi.* FROM project1.bookinfo AS bi INNER JOIN project1.havecategory ON bi.book_id = havecategory.book_id "
+                + "WHERE bi.book_author LIKE '%" + name + "%'";
+        }
+        
+        int size = categoryItem.size();
+        if(size != 0){
+            for(int i = 0;i < size;i++){
+                query = query + "AND havecategory.category_id = " + categoryItem.get(i).getCategoryModels().getId();
+            }
+        }
+        query = query + " GROUP BY bi.book_id ";
+        
+        if(sort.equals("A->Z")){
+            query = query + " ORDER BY bi.book_name ASC";
+        }else if(sort.equals("Z->A")){
+            query = query + " ORDER BY bi.book_name  DESC";
+        }
+        
+        try {
+            rs = this.executeQuery(query, queryField);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        while (rs.next()) {
+            BookModel temp = new BookModel();
+            BookModel.populateBookModel(rs, temp);
+            result.add(temp);
+        }
+
+        return result;
     }
 
 }

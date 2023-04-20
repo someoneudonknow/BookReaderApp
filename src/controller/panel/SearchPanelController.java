@@ -5,6 +5,7 @@
 package controller.panel;
 
 import java.sql.SQLException;
+import java.time.Clock;
 import views.items.BookItem;
 import views.items.CategoryItem;
 import java.util.ArrayList;
@@ -12,6 +13,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.BookModel;
 import models.CategoryModel;
+import models.DAO.BookDAO;
+import models.DAO.CategoryDAO;
+import models.DAO.HaveCategoryDAO;
 import models.HaveCategoryModel;
 import other.SetDataToList;
 import views.panels.SearchPanel;
@@ -30,7 +34,8 @@ public class SearchPanelController {
         this.setCategoryItemList();
         this.searchPanel.onBtnSearch(e ->{
             try {
-                searchResult();
+                //                searchResult();
+                getDataAndFind();
             } catch (SQLException ex) {
                 Logger.getLogger(SearchPanelController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -68,40 +73,48 @@ public class SearchPanelController {
     }
     
     public void setCategoryItemList() {
-        ArrayList<CategoryItem> model = new ArrayList<>();
-//        cái này để lấy dữ liệu
-//        for (CategoryModels i:categoryList){
-//            model.add(new CategoryItem(i));
-//        }
+        this.searchPanel.removeAll();
+        ArrayList<CategoryModel> model = CategoryDAO.getInstance().getAll();
+          ArrayList<CategoryItem> categoryList = new ArrayList<CategoryItem>() ;
+          for(int i = 0;i < model.size();i++){
+              categoryList.add(0, new CategoryItem(model.get(i)));
+          }
+          //set dữ liệu
+        this.searchPanel.setListCategory(categoryList);
+//        ArrayList<CategoryItem> model = new ArrayList<>();
 
-        //đống này xóa
-        model.add(new CategoryItem(new CategoryModel(0, "Trinh thám")));
-        model.add(new CategoryItem(new CategoryModel(1, "Lãng mạn")));
-        model.add(new CategoryItem(new CategoryModel(2, "Hài hước")));
-        model.add(new CategoryItem(new CategoryModel(3, "Học đường")));
-        model.add(new CategoryItem(new CategoryModel(4, "Tiểu thuyết")));
-        model.add(new CategoryItem(new CategoryModel(5, "Viễn tưởng")));
-        model.add(new CategoryItem(new CategoryModel(6, "Cổ tích")));
-        model.add(new CategoryItem(new CategoryModel(7, "Sử thi")));
-        model.add(new CategoryItem(new CategoryModel(8, "Hành động")));
-        model.add(new CategoryItem(new CategoryModel(9, "Đời thường")));
-        model.add(new CategoryItem(new CategoryModel(10, "Truck-kun")));
-        model.add(new CategoryItem(new CategoryModel(0, "Trinh thám")));
-        model.add(new CategoryItem(new CategoryModel(1, "Lãng mạn")));
-        model.add(new CategoryItem(new CategoryModel(2, "Hài hước")));
-        model.add(new CategoryItem(new CategoryModel(3, "Học đường")));
-        model.add(new CategoryItem(new CategoryModel(4, "Tiểu thuyết")));
-        model.add(new CategoryItem(new CategoryModel(5, "Viễn tưởng")));
-        model.add(new CategoryItem(new CategoryModel(6, "Cổ tích")));
-        model.add(new CategoryItem(new CategoryModel(7, "Sử thi")));
-        model.add(new CategoryItem(new CategoryModel(8, "Hành động")));
-        model.add(new CategoryItem(new CategoryModel(9, "Đời thường")));
-        model.add(new CategoryItem(new CategoryModel(10, "Truck-kun")));
-
-        //set dữ liệu
-        this.searchPanel.setListCategory(model);
     }
     
+    public void getDataAndFind() throws SQLException{
+        this.searchPanel.getListResult().removeAll();
+        String type = (String)this.searchPanel.getBoxType().getSelectedItem();
+        String sort = (String)this.searchPanel.getjComboBox1().getSelectedItem();
+        String name = this.searchPanel.getTxtKeyword().getText().toLowerCase();
+        ArrayList<CategoryItem> categoryList = new ArrayList<>();
+//       //get available data
+       for (int i = 0; i < this.searchPanel.getListCategory().getComponentCount(); i++) {
+            CategoryItem item = (CategoryItem) this.searchPanel.getListCategory().getComponent(i);
+            if (item.getjCheckBox1().isSelected())
+                categoryList.add(item);
+        }
+       for(CategoryItem i: categoryList)
+            System.out.println(i.getCategoryModels().getName());
+       ArrayList<BookModel> temp = BookDAO.getInstance().getDataAvailable(sort, type, name, categoryList);
+       
+       //convert from BookModel to BookItem
+       ArrayList<BookItem> result = new ArrayList<BookItem>();
+       for(int i = 0;i < temp.size(); i++){
+           result.add(i, new BookItem(temp.get(i)));
+       }
+  
+       
+       //Render data
+//       this.searchPanel.setListResult(result);
+       
+        SetDataToList setData = new SetDataToList(this.mainView);
+        //            setData.setBookItemList(searchPanel.getListResult(), "full", searchPanel);
+        setData.SetSearchDataToList(searchPanel.getListResult(), this.searchPanel, name, type, sort, categoryList);
+    }
     public void getBookItemListResult(String keyword, int type, ArrayList<CategoryModel> categoryList) throws SQLException {
         ArrayList<BookItem> listResult = new ArrayList<>();
         
@@ -115,6 +128,7 @@ public class SearchPanelController {
         } catch (Exception e) {
             System.out.println("Danh sach trong");
         }
+        
         SetDataToList setData = new SetDataToList(this.mainView);
         setData.setBookItemList(searchPanel.getListResult(), null, searchPanel);
     }
