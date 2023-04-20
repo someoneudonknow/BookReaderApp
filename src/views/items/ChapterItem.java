@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package views.items;
 
 import java.awt.event.ActionListener;
@@ -12,10 +8,6 @@ import javax.swing.JLabel;
 import models.ChapterModel;
 import static utils.formatDate.formatDate;
 
-/**
- *
- * @author ADMIN
- */
 public class ChapterItem extends javax.swing.JPanel {
 
     /**

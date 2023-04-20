@@ -43,6 +43,7 @@ public class AddChapterController {
         this.mainView = mainView;
         this.bookModel = bookModel;
         this.previousPanel = previousPanel;
+        
         initUI();
 
         this.chapterPanel.onBtnAdd(e -> {

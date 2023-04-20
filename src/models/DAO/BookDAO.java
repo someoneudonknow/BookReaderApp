@@ -89,7 +89,7 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
         while (rs.next()) {
             recentlyChapter = rs.getString("read_recently");
         }
-        
+
         return recentlyChapter;
     }
 
@@ -172,27 +172,27 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
         }
         return categoryList;
     }
-    
+
     public List<CategoryModel> getCurrentBookCategories(int currentBookID) {
         String query = "SELECT cl.* FROM categorylist as cl INNER JOIN havecategory as hc ON cl.category_id = hc.category_id WHERE hc.book_id = " + currentBookID;
         List<CategoryModel> cateListResult = new LinkedList<>();
         DB db = new DB();
         Connection con = db.getConnection();
-        
+
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
-            while(rs.next()) {
+            while (rs.next()) {
                 int cateId = rs.getInt("category_id");
                 String cateName = rs.getString("category_name");
-                
+
                 CategoryModel currentCate = new CategoryModel(cateId, cateName);
                 cateListResult.add(currentCate);
             }
         } catch (SQLException ex) {
             Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return cateListResult;
     }
 
@@ -230,7 +230,29 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
 
     @Override
     public void insert(BookModel data) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String query = "INSERT INTO bookInfo(book_name, book_author, book_cover, book_description, manager_id) VALUES (?, ?, ?, ?, ?)";
+        DB db = new DB();
+        Connection con = db.getConnection();
+        try {
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, data.getName());
+            pst.setString(2, data.getAuthor());
+            pst.setBlob(3, data.getCover());
+            pst.setBlob(4, data.getCover());
+            pst.setInt(5, data.getId());
+
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.closeConnection(con);
+        }
+    }
+
+    public void insert(BookModel data, List<CategoryModel> bookCategories, List<ChapterModel> chapters) {
+        this.insert(data);
+        HaveCategoryDAO.getInstance().insert(data.getId(), bookCategories);
+        
     }
 
     @Override
@@ -267,8 +289,8 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
         }
         return books;
     }
-    
-     public ArrayList<BookModel> getAllBook() {
+
+    public ArrayList<BookModel> getAllBook() {
         String query = "SELECT * FROM project1.bookinfo";
         ArrayList<BookModel> books = new ArrayList<>();
 
@@ -290,8 +312,8 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
 
         return books;
     }
-     
-     public void update(int id, BookModel data, List<String> fields) throws Exception {
+
+    public void update(int id, BookModel data, List<String> fields) throws Exception {
         if (fields.size() == 0) {
             throw new Exception("data_unchanged");
         }
@@ -300,16 +322,16 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
                 throw new Exception("book_name_exists");
             }
         }
-        
-        if(fields.size() == 1 && fields.contains("book_categories")) {
+
+        if (fields.size() == 1 && fields.contains("book_categories")) {
             System.out.println("return in Book DAO");
             return;
         }
-        
+
         StringBuilder query = new StringBuilder("UPDATE bookInfo SET ");
 
-         System.out.println(fields.size());
-        
+        System.out.println(fields.size());
+
         for (int i = 0; i < fields.size(); i++) {
             if (fields.get(i).equals("book_name")) {
                 query.append("book_name = ").append("\"").append(data.getName().strip()).append("\", ");
@@ -323,7 +345,7 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
                 continue;
             }
         }
-        
+
         query.setCharAt(query.lastIndexOf(","), ' ');
         query.append("WHERE book_id = " + id);
         String finalQuery = query.toString().strip();
@@ -346,8 +368,8 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
 
         System.out.println(finalQuery);
     }
-     
-      public boolean isBookNameContains(String bookName) {
+
+    public boolean isBookNameContains(String bookName) {
         String query = "SELECT * FROM bookInfo WHERE bookInfo.book_name LIKE " + "\"" + bookName + "\"";
         DB db = new DB();
         Connection con = db.getConnection();
@@ -363,7 +385,7 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
 
         return false;
     }
-    
+
     @Override
     public void update(Integer pk, BookModel data) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -372,7 +394,7 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
     @Override
     public void delete(Integer pk) {
         String query = "DELETE FROM bookInfo WHERE bookInfo.book_id = " + pk;
-        
+
         DB db = new DB();
         Connection con = db.getConnection();
         try {
@@ -384,7 +406,7 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
             st.executeUpdate(query);
         } catch (SQLException ex) {
             Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }finally {
+        } finally {
             db.closeConnection(con);
         }
     }

@@ -127,6 +127,30 @@ public class ChapterDAO extends ResultSetQuery implements DAOInterface<ChapterMo
         }
     }
 
+    public void insert(List<ChapterModel> chapters) {
+        String query = "INSERT INTO bookChapter (chapter_title, chapter_serial, chapter_document, book_id) VALUES";
+
+//        DB db = new DB();
+//        Connection con = db.getConnection();
+//        try {
+//            int lastestChap = this.getLastestChapterSerial(data.getBook_id());
+//            PreparedStatement pst = con.prepareStatement(query);
+//            pst.setString(1, data.getTitle());
+//            pst.setInt(2, data.getSerial());
+//            pst.setString(3, data.getDocument());
+//            pst.setInt(4, data.getBook_id());
+//
+//            if (data.getSerial() <= lastestChap) {
+//                this.updateChaperSerialWhenInsert(data.getSerial(), data.getBook_id());
+//            }
+//            pst.executeUpdate();
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ChapterDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        } finally {
+//            db.closeConnection(con);
+//        }
+    }
+    
     public void updateChaperSerialWhenInsert(int baseOnSerial, int bookId) {
         String query = "UPDATE bookChapter SET bookChapter.chapter_serial = bookChapter.chapter_serial + 1 WHERE bookChapter.book_id = " + bookId + " AND bookChapter.chapter_serial >= " + baseOnSerial;
         DB db = new DB();
