@@ -32,6 +32,11 @@ public class BookManagingPanel extends javax.swing.JPanel {
 
         jPanel6 = new javax.swing.JPanel();
         lbBookManager = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtKeyWords = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        btnSort = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listBook = new javax.swing.JPanel();
         btnAddBook = new javax.swing.JButton();
@@ -41,6 +46,8 @@ public class BookManagingPanel extends javax.swing.JPanel {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel6.setPreferredSize(new java.awt.Dimension(1016, 698));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
         lbBookManager.setBackground(new java.awt.Color(0, 204, 102));
         lbBookManager.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -49,9 +56,63 @@ public class BookManagingPanel extends javax.swing.JPanel {
         lbBookManager.setText("BOOKS");
         lbBookManager.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbBookManager.setOpaque(true);
+        lbBookManager.setPreferredSize(new java.awt.Dimension(1016, 40));
+        jPanel6.add(lbBookManager);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Search bar");
+
+        txtKeyWords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtKeyWordsActionPerformed(evt);
+            }
+        });
+
+        btnSearch.setBackground(new java.awt.Color(0, 204, 102));
+        btnSearch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearch.setText("Search");
+
+        btnSort.setBackground(new java.awt.Color(0, 204, 102));
+        btnSort.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSort.setForeground(new java.awt.Color(255, 255, 255));
+        btnSort.setText("Sort");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtKeyWords, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSearch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSort)
+                .addContainerGap(129, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtKeyWords, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSort))
+                .addContainerGap())
+        );
+
+        jPanel6.add(jPanel3);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1004, 538));
 
         listBook.setBackground(new java.awt.Color(255, 255, 255));
         listBook.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 20, 0, 20));
@@ -59,48 +120,31 @@ public class BookManagingPanel extends javax.swing.JPanel {
         listBook.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
         jScrollPane1.setViewportView(listBook);
 
+        jPanel6.add(jScrollPane1);
+
         btnAddBook.setBackground(new java.awt.Color(0, 204, 102));
         btnAddBook.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnAddBook.setForeground(new java.awt.Color(255, 255, 255));
         btnAddBook.setText("Thêm sách");
         btnAddBook.setOpaque(true);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbBookManager, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(0, 754, Short.MAX_VALUE)
-                        .addComponent(btnAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(lbBookManager, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
+        btnAddBook.setPreferredSize(new java.awt.Dimension(230, 32));
+        jPanel6.add(btnAddBook);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtKeyWordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKeyWordsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtKeyWordsActionPerformed
 
     public JPanel getListBook() {
         return listBook;
@@ -117,9 +161,14 @@ public class BookManagingPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddBook;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnSort;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbBookManager;
     private javax.swing.JPanel listBook;
+    private javax.swing.JTextField txtKeyWords;
     // End of variables declaration//GEN-END:variables
 }

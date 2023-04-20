@@ -237,4 +237,10 @@ public class BookInforController {
     public void backToPrevious() {
         this.mainView.setMainPanel(previousPanel);
     }
+
+    public BookInforPanel getBookInforPanel() {
+        return bookInforPanel;
+    }
+    
+    
 }

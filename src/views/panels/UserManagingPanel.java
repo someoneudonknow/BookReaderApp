@@ -4,6 +4,7 @@
  */
 package views.panels;
 
+import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
 /**
@@ -17,7 +18,7 @@ public class UserManagingPanel extends javax.swing.JPanel {
      */
     public UserManagingPanel() {
         initComponents();
-        this.jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
     }
 
     /**
@@ -30,7 +31,12 @@ public class UserManagingPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel6 = new javax.swing.JPanel();
-        lbBookManager = new javax.swing.JLabel();
+        lbUserManager = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtKeyWords = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        btnSort = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listUser = new javax.swing.JPanel();
 
@@ -39,54 +45,97 @@ public class UserManagingPanel extends javax.swing.JPanel {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel6.setPreferredSize(new java.awt.Dimension(1016, 698));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
-        lbBookManager.setBackground(new java.awt.Color(0, 204, 102));
-        lbBookManager.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lbBookManager.setForeground(new java.awt.Color(255, 255, 255));
-        lbBookManager.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbBookManager.setText("ACCOUNTS");
-        lbBookManager.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lbBookManager.setOpaque(true);
+        lbUserManager.setBackground(new java.awt.Color(0, 204, 102));
+        lbUserManager.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbUserManager.setForeground(new java.awt.Color(255, 255, 255));
+        lbUserManager.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbUserManager.setText("ACCOUNTS");
+        lbUserManager.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbUserManager.setOpaque(true);
+        lbUserManager.setPreferredSize(new java.awt.Dimension(1016, 40));
+        jPanel6.add(lbUserManager);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Search bar");
+
+        txtKeyWords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtKeyWordsActionPerformed(evt);
+            }
+        });
+
+        btnSearch.setBackground(new java.awt.Color(0, 204, 102));
+        btnSearch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearch.setText("Search");
+
+        btnSort.setBackground(new java.awt.Color(0, 204, 102));
+        btnSort.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSort.setForeground(new java.awt.Color(255, 255, 255));
+        btnSort.setText("Sort");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtKeyWords, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSearch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnSort)
+                .addContainerGap(129, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtKeyWords, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSort))
+                .addContainerGap())
+        );
+
+        jPanel6.add(jPanel3);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1004, 580));
 
         listUser.setBackground(new java.awt.Color(255, 255, 255));
         listUser.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 20, 0, 20));
-        listUser.setPreferredSize(new java.awt.Dimension(999, 0));
+        listUser.setPreferredSize(new java.awt.Dimension(990, 10));
         listUser.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
         jScrollPane1.setViewportView(listUser);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbBookManager, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(lbBookManager, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-        );
+        jPanel6.add(jScrollPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtKeyWordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKeyWordsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtKeyWordsActionPerformed
 
     public JPanel getListUser() {
         return listUser;
@@ -95,12 +144,17 @@ public class UserManagingPanel extends javax.swing.JPanel {
     public void setListUser(JPanel listUser) {
         this.listUser = listUser;
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnSort;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbBookManager;
+    private javax.swing.JLabel lbUserManager;
     private javax.swing.JPanel listUser;
+    private javax.swing.JTextField txtKeyWords;
     // End of variables declaration//GEN-END:variables
 }
