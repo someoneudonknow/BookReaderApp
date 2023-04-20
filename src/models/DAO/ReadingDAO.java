@@ -109,8 +109,8 @@ public class ReadingDAO extends ResultSetQuery implements DAOInterface<ReadingMo
             Logger.getLogger(SavedDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-     public void deleteByChapterId(int chapterId) {
+    
+    public void deleteByChapterId(int chapterId) {
         String query = "DELETE FROM project1.bookReading WHERE bookReading.chapter_id = " + chapterId;
         DB db = new DB();
         Connection con = db.getConnection();

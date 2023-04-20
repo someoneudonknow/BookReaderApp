@@ -53,7 +53,6 @@ public class BookItemController {
                     es.printStackTrace();
                 }
             }
-
         });
     }
 
@@ -86,7 +85,6 @@ public class BookItemController {
         JPanel parent = (JPanel) this.bookItem.getParent();
         try {
             ReadingDAO.getInstance().deleteReadHistory(bookItem.getBookModels().getId(), this.mainView.getUserModels().getId());
-
         } catch (SQLException ex) {
             Logger.getLogger(BookItemController.class.getName()).log(Level.SEVERE, null, ex);
         }

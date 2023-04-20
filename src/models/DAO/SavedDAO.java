@@ -4,6 +4,7 @@
  */
 package models.DAO;
 
+import database.DB;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,7 +15,8 @@ import models.SavedModel;
 import models.entityPK.SavedPK;
 import models.interfaces.DAOInterface;
 import utils.ResultSetQuery;
-
+import java.sql.Connection;
+import java.sql.Statement;
 /**
  *
  * @author trang
@@ -87,6 +89,21 @@ public class SavedDAO extends ResultSetQuery implements DAOInterface<SavedModel,
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public void deleteByBookId(int bookId) {
+        String query = "DELETE FROM bookSaved WHERE book_id = " + bookId;
+        
+        DB db = new DB();
+        Connection con = db.getConnection();
+        try {
+            Statement st = con.createStatement();
+            st.executeUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(SavedDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            db.closeConnection(con);
+        }
+    }
+    
     @Override
     public void delete(SavedPK pk) {
         ResultSet rs = null;

@@ -102,7 +102,7 @@ public class ChapterDAO extends ResultSetQuery implements DAOInterface<ChapterMo
 
         return chapterList;
     }
-@Override
+    @Override
     public void insert(ChapterModel data) {
         String query = "INSERT INTO bookChapter (chapter_title, chapter_serial, chapter_document, book_id) VALUES(?,?,?,?)";
 
@@ -144,8 +144,29 @@ public class ChapterDAO extends ResultSetQuery implements DAOInterface<ChapterMo
 
     @Override
     public void delete(Integer id) {
+        
     }
-
+    
+    public void deleteAllChapterFromOneBook(int bookId) {
+        String query = "DELETE FROM bookChapter WHERE bookChapter.book_id = " + bookId;
+        
+        DB db = new DB();
+        Connection con = db.getConnection();
+        try {
+            ArrayList<ChapterModel> chapters = this.getAllChapterFromBook(bookId);
+            for(ChapterModel i: chapters) {
+                ReadingDAO.getInstance().deleteByChapterId(i.getId());
+            }
+            
+            Statement st = con.createStatement();
+            st.executeUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(ChapterDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            db.closeConnection(con);
+        }
+    }
+    
     public void deleteChapterAndUpdateSerials(int chapId, int bookId, int chapSerial) {
         String query = "DELETE FROM project1.bookchapter WHERE bookchapter.chapter_id = " + chapId + " AND bookchapter.book_id = " + bookId;
         DB db = new DB();

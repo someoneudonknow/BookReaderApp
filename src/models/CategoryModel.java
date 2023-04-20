@@ -55,6 +55,4 @@ public class CategoryModel {
         }
         return Objects.equals(this.name, other.name);
     }
-    
-    
 }

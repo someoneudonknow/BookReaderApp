@@ -302,33 +302,38 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
                 throw new Exception("book_name_exists");
             }
         }
-
+        
+        if(fields.size() == 1 && fields.contains("book_categories")) {
+            System.out.println("return in Book DAO");
+            return;
+        }
+        
         StringBuilder query = new StringBuilder("UPDATE bookInfo SET ");
 
+         System.out.println(fields.size());
+        
         for (int i = 0; i < fields.size(); i++) {
             if (fields.get(i).equals("book_name")) {
-                query.append("book_name = ").append("\"").append(data.getName().strip()).append("\"");
+                query.append("book_name = ").append("\"").append(data.getName().strip()).append("\", ");
             } else if (fields.get(i).equals("book_author")) {
-                query.append("book_author = ").append("\"").append(data.getAuthor().strip()).append("\"");
+                query.append("book_author = ").append("\"").append(data.getAuthor().strip()).append("\", ");
             } else if (fields.get(i).equals("book_cover")) {
-                query.append("book_cover = ?");
+                query.append("book_cover = ?, ");
             } else if (fields.get(i).equals("book_description")) {
-                query.append("book_description = ").append("\"").append(data.getDescription().strip()).append("\"");
+                query.append("book_description = ").append("\"").append(data.getDescription().strip()).append("\", ");
             } else {
                 continue;
             }
-
-            if (i >= 0 && i < fields.size() - 1) {
-                query.append(" , ");
-            }
         }
-
-        query.append(" WHERE book_id = \"" + id + "\"");
+        
+        query.setCharAt(query.lastIndexOf(","), ' ');
+        query.append("WHERE book_id = " + id);
+        String finalQuery = query.toString().strip();
         DB db = new DB();
         Connection con = db.getConnection();
 
         try {
-            PreparedStatement pst = con.prepareStatement(query.toString());
+            PreparedStatement pst = con.prepareStatement(finalQuery);
 
             if (fields.contains("book_cover")) {
                 pst.setBlob(1, data.getCover());
@@ -341,11 +346,11 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
             db.closeConnection(con);
         }
 
-        System.out.println(query.toString());
+        System.out.println(finalQuery);
     }
-
-    public boolean isBookNameContains(String bookName) {
-        String query = "SELECT * FROM bookInfo WHERE bookInfo.book_name LIKE " + bookName;
+     
+      public boolean isBookNameContains(String bookName) {
+        String query = "SELECT * FROM bookInfo WHERE bookInfo.book_name LIKE " + "\"" + bookName + "\"";
         DB db = new DB();
         Connection con = db.getConnection();
         try {
@@ -368,7 +373,22 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
 
     @Override
     public void delete(Integer pk) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String query = "DELETE FROM bookInfo WHERE bookInfo.book_id = " + pk;
+        
+        DB db = new DB();
+        Connection con = db.getConnection();
+        try {
+            Statement st = con.createStatement();
+            ChapterDAO.getInstance().deleteAllChapterFromOneBook(pk);
+            ReviewDAO.getInstance().deleteByBookId(pk);
+            SavedDAO.getInstance().deleteByBookId(pk);
+            HaveCategoryDAO.getInstance().deleteAllCategoriesOfOneBook(pk);
+            st.executeUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            db.closeConnection(con);
+        }
     }
 
     @Override
