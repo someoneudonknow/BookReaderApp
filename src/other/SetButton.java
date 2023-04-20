@@ -9,10 +9,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 
-/**
- *
- * @author ADMIN
- */
 public class SetButton {
     
     public static class SetBtnBack extends MouseAdapter{
