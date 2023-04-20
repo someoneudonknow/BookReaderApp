@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import other.SetButton;
 
 /**
  *
@@ -41,12 +42,14 @@ public class AllBookPanel extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnBack.setBackground(new java.awt.Color(0, 204, 102));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnBack.setText("Back");
+        btnBack.setOpaque(true);
         btnBack.setPreferredSize(new java.awt.Dimension(40, 40));
-        jPanel6.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        jPanel6.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         lbNewUpdate.setBackground(new java.awt.Color(0, 204, 102));
         lbNewUpdate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -120,6 +123,7 @@ public class AllBookPanel extends javax.swing.JPanel {
     }
 
     public void onBtnBack(MouseAdapter action) {
+        this.btnBack.addMouseListener(new SetButton.SetBtnBack(btnBack));
         this.btnBack.addMouseListener(action);
     }
 

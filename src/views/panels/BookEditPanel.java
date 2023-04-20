@@ -6,10 +6,12 @@ package views.panels;
 
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import other.SetButton;
 
 /**
  *
@@ -71,11 +73,13 @@ public class BookEditPanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnBack.setBackground(new java.awt.Color(255, 255, 255));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnBack.setText("Back");
+        btnBack.setOpaque(true);
         btnBack.setPreferredSize(new java.awt.Dimension(40, 40));
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         imgCover.setBackground(new java.awt.Color(255, 255, 255));
         imgCover.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -337,6 +341,19 @@ public class BookEditPanel extends javax.swing.JPanel {
         return listComment;
     }
 
+    public JButton getBtnAddChapter() {
+        return btnAddChapter;
+    }
+
+    public JButton getBtnAddComment() {
+        return btnAddComment;
+    }
+
+    public JLabel getBtnBack() {
+        return btnBack;
+    }
+
+    
     public void onBtnSave(ActionListener action) {
         this.btnSave.addActionListener(action);
     }
@@ -350,6 +367,7 @@ public class BookEditPanel extends javax.swing.JPanel {
     }
     
     public void onBtnBack(MouseAdapter action) {
+        this.btnBack.addMouseListener(new SetButton.SetBtnBackB(btnBack));
         this.btnBack.addMouseListener(action);
     }
     

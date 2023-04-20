@@ -175,8 +175,10 @@ public class ReadingController {
 
     public void backToPrevious() throws SQLException {
         previousPanel.repaint();
-        BookInforPanel inforPanel = (BookInforPanel) previousPanel;
-        inforPanel.getTxtView().setText("" + BookDAO.getInstance().getView(currentChapter.getBook_id()));
+        if (previousPanel instanceof BookInforPanel){
+            BookInforPanel inforPanel = (BookInforPanel) previousPanel;
+            inforPanel.getTxtView().setText("" + BookDAO.getInstance().getView(currentChapter.getBook_id()));
+        }    
         this.mainView.setMainPanel(previousPanel);
     }
 }

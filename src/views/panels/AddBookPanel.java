@@ -4,6 +4,7 @@
  */
 package views.panels;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import models.UserModel;
+import other.SetButton;
 import views.items.CategoryItem;
 
 public class AddBookPanel extends javax.swing.JPanel {
@@ -54,20 +56,23 @@ public class AddBookPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1013, 698));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnBack.setBackground(new java.awt.Color(0, 204, 102));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnBack.setText("Back");
+        btnBack.setOpaque(true);
         btnBack.setPreferredSize(new java.awt.Dimension(40, 40));
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 102));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("NEW BOOK");
+        jLabel1.setAlignmentY(0.0F);
         jLabel1.setOpaque(true);
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, 1011, 40));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1011, 40));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -252,6 +257,7 @@ public class AddBookPanel extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 47, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    
     public JPanel getListCategory() {
         return listCategory;
     }
@@ -286,6 +292,10 @@ public class AddBookPanel extends javax.swing.JPanel {
     public JButton getBtnNext() {
         return btnNext;
     }
+
+    public JLabel getBtnBack() {
+        return btnBack;
+    }
     
     public void onBtnNext(ActionListener action) {
         this.btnNext.addActionListener(action);
@@ -296,6 +306,7 @@ public class AddBookPanel extends javax.swing.JPanel {
     }
 
     public void onBtnBack(MouseAdapter action) {
+        this.btnBack.addMouseListener(new SetButton.SetBtnBack(this.btnBack));
         this.btnBack.addMouseListener(action);
     }
 

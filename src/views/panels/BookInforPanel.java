@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import other.SetButton;
 
 /**
  *
@@ -435,6 +436,12 @@ public class BookInforPanel extends javax.swing.JPanel {
     public JLabel getTxtReadRecently() {
         return txtReadRecently;
     }
+
+    public JLabel getBtnBack() {
+        return btnBack;
+    }
+    
+    
     
     public void onBtnFirst(ActionListener action) {
         this.btnFirst.addActionListener(action);
@@ -453,6 +460,7 @@ public class BookInforPanel extends javax.swing.JPanel {
     }
     
     public void onBtnBack(MouseAdapter action) {
+        this.btnBack.addMouseListener(new SetButton.SetBtnBackB(btnBack));
         this.btnBack.addMouseListener(action);
     }
 

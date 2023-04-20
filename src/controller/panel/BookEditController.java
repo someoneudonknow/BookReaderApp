@@ -82,6 +82,7 @@ public class BookEditController {
             public void mouseClicked(MouseEvent e) {
                 backToPrevious();
             }
+            
         });
     }
 
