@@ -180,7 +180,7 @@ public class SetDataToList {
         chapterList = ChapterDAO.getInstance().getAllChapterFromBook(book_id);
 
         if (chapterList.size() == 0) {
-            panel.add(new Label("The book hasn't had any chapter"));
+            panel.add(new Label("This book hasn't had any chapter"));
             panel.revalidate();
             panel.repaint();
             return; 
@@ -209,6 +209,13 @@ public class SetDataToList {
         ArrayList<ChapterItem> items = new ArrayList<>();
         panel.removeAll();
 
+         if (chapters.size() == 0 || chapters == null) {
+            panel.add(new Label("This book hasn't had any chapter"));
+            panel.revalidate();
+            panel.repaint();
+            return; 
+        }
+        
         for (ChapterModel chapter : chapters) {
             ChapterItem a = null;
             try {
@@ -222,10 +229,6 @@ public class SetDataToList {
 
         for (ChapterItem i : items) {
             panel.add(i);
-        }
-
-        if (chapters.size() == 0) {
-            panel.add(new Label("The book hasn't had any chapter"));
         }
 
         panel.revalidate();
@@ -397,5 +400,4 @@ public class SetDataToList {
     public void setReviewList(ArrayList<ReviewModel> reviewList) {
         this.reviewList = reviewList;
     }
-
 }

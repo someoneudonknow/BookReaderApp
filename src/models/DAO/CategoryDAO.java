@@ -15,10 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-/**
- *
- * @author trang
- */
+
 public class CategoryDAO implements DAOInterface<CategoryModel, Integer>   {
 
      public static CategoryDAO getInstance() {
