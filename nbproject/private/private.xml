@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Java/BookReaderApp/src/views/panels/AddChapterPanel.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/view/AddInforChapterController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/panel/AddChapterController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/item/BookItemManagerController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/panel/AddBookController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/panel/BookEditController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/other/SetDataToList.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/DAO/HaveCategoryDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/database/DB.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/HaveCategoryModel.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/DAO/BookDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/panel/SearchPanelController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/views/panels/SearchPanel.java</file>
         </group>
     </open-files>
 </project-private>

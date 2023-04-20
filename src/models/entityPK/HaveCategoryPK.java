@@ -16,6 +16,11 @@ public class HaveCategoryPK {
         this.category_id = category_id;
         this.book_id = book_id;
     }
+
+    public HaveCategoryPK() {
+    }
+    
+    
     
     public int getCategory_id() {
         return category_id;

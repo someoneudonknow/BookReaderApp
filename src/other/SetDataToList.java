@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import models.BookModel;
 import models.CategoryModel;
 import models.UserModel;
@@ -56,6 +57,7 @@ public class SetDataToList {
     }
 
     public void setBookItemList(JPanel panel, String option, JPanel parent) throws SQLException {
+        
         ArrayList<BookItem> items = new ArrayList<>();
         ArrayList<BookModel> books = new ArrayList<>();
         if (option.equals("full")) {
@@ -75,6 +77,32 @@ public class SetDataToList {
         for (BookItem i : items) {
             panel.add(i);
         }
+        panel.revalidate();
+        panel.repaint();
+    }
+
+    public void SetSearchDataToList(JPanel panel, JPanel parent, String name, String type, String sort, ArrayList<CategoryItem> categoryItem) {
+        ArrayList<BookModel> books = new ArrayList<>();
+        ArrayList<BookItem> items = new ArrayList<>();
+        try {
+            books = BookDAO.getInstance().getDataAvailable(sort, type, name, categoryItem);
+        } catch (SQLException ex) {
+            Logger.getLogger(SetDataToList.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (books.size() > 0) {
+            for (BookModel i : books) {
+                BookItem a = new BookItem(i);
+                new BookItemController(a, this.mainView, "search", parent);
+                System.out.println(a.getBookModels().getName());
+                items.add(a);
+            }
+
+            for (BookItem i : items) {
+                panel.add(i);
+            }
+        }else
+            JOptionPane.showMessageDialog(null, "Can not find book with input search");
+
         panel.revalidate();
         panel.repaint();
     }
@@ -174,7 +202,7 @@ public class SetDataToList {
         for (ChapterItem i : items) {
             panel.add(i);
         }
-        
+
         if (chapters.size() == 0) {
             panel.add(new Label("The book hasn't had any chapter"));
         }
