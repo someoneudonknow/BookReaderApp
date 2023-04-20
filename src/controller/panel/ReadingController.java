@@ -20,11 +20,13 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.html.HTMLDocument;
 import models.ChapterModel;
+import models.DAO.BookDAO;
 import models.DAO.ChapterDAO;
 import models.DAO.ReadingDAO;
 import models.entityPK.ReadingPK;
 import views.panels.ReadingPanel;
 import views.MainView;
+import views.panels.BookInforPanel;
 
 /**
  *
@@ -60,7 +62,11 @@ public class ReadingController {
         this.readingPanel.onBtnBack(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                backToPrevious();
+                try {
+                    backToPrevious();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
         });
@@ -167,8 +173,10 @@ public class ReadingController {
         return doc;
     }
 
-    public void backToPrevious() {
+    public void backToPrevious() throws SQLException {
         previousPanel.repaint();
+        BookInforPanel inforPanel = (BookInforPanel) previousPanel;
+        inforPanel.getTxtView().setText("" + BookDAO.getInstance().getView(currentChapter.getBook_id()));
         this.mainView.setMainPanel(previousPanel);
     }
 }

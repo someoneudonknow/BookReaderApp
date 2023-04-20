@@ -52,10 +52,11 @@ public class ChapterItem extends javax.swing.JPanel {
         lbChapter.setBackground(new java.awt.Color(255, 255, 255));
         lbChapter.setText("jLabel1");
         lbChapter.setAlignmentY(0.0F);
-        lbChapter.setPreferredSize(new java.awt.Dimension(920, 50));
+        lbChapter.setPreferredSize(new java.awt.Dimension(800, 50));
         add(lbChapter);
 
         txtDate.setText("jLabel1");
+        txtDate.setPreferredSize(new java.awt.Dimension(90, 16));
         add(txtDate);
 
         btnDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

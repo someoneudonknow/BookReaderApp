@@ -3,12 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Java/BookReaderApp/src/views/panels/AddChapterPanel.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/view/AddInforChapterController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/panel/AddChapterController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/item/BookItemManagerController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/panel/AddBookController.java</file>
-            <file>file:/F:/Java/BookReaderApp/src/controller/panel/BookEditController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/MainView.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/UserManagingPanel.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/items/UserItemManager.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/controller/item/BookItemController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/controller/panel/ReadingController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/HistoryPanel.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/MainPanel.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/items/ChapterItem.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/controller/panel/BookInforController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/BookManagingPanel.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/controller/item/BookItemManagerController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/models/DAO/BookDAO.java</file>
         </group>
     </open-files>
 </project-private>
