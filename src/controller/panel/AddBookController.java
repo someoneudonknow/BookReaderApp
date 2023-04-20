@@ -4,6 +4,7 @@
  */
 package controller.panel;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Blob;
@@ -37,6 +38,7 @@ public class AddBookController {
     public AddBookController(AddBookPanel bookPanel, MainView mainView, BookManagingPanel previousPanel) {
         this.bookPanel = bookPanel;
         this.mainView = mainView;
+        this.previousPanel = previousPanel;
         this.setCategoryItemList();
 
         this.bookPanel.onBtnNext(e -> {
@@ -59,6 +61,7 @@ public class AddBookController {
         this.bookPanel.onBtnBack(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                bookPanel.getBtnBack().setBackground(Color.red);
                 backToPrevious();
             }
         });
