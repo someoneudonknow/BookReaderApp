@@ -13,6 +13,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JTextField;
 import javax.swing.text.html.HTMLDocument;
 import other.CustomScrollBar;
+import other.SetButton;
 
 /**
  *
@@ -78,6 +79,7 @@ public class ReadingPanel extends javax.swing.JPanel {
     }
     
     public void onBtnBack(MouseAdapter action) {
+        this.btnBack.addMouseListener(new SetButton.SetBtnBackB(btnBack));
         this.btnBack.addMouseListener(action);
     }
 
@@ -123,6 +125,7 @@ public class ReadingPanel extends javax.swing.JPanel {
         boxChapter.setMaximumRowCount(5);
         boxChapter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8" }));
 
+        btnBack.setBackground(new java.awt.Color(255, 255, 255));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setText("Back");
 

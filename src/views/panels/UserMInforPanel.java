@@ -12,6 +12,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import other.SetButton;
 
 /**
  *
@@ -52,12 +53,13 @@ public class UserMInforPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1013, 698));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnBack.setBackground(new java.awt.Color(0, 204, 102));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnBack.setText("Back");
         btnBack.setPreferredSize(new java.awt.Dimension(40, 40));
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(0, 204, 102));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -65,7 +67,7 @@ public class UserMInforPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INFORMATION");
         jLabel1.setOpaque(true);
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 1, 1011, 40));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1011, 40));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -167,6 +169,7 @@ public class UserMInforPanel extends javax.swing.JPanel {
     }
     
     public void onBtnBack(MouseAdapter action) {
+        this.btnBack.addMouseListener(new SetButton.SetBtnBack(btnBack));
         this.btnBack.addMouseListener(action);
     }
     
