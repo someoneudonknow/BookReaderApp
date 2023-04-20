@@ -9,8 +9,10 @@ import views.items.BookItemManager;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import models.BookModel;
+import models.DAO.BookDAO;
 import other.SetDataToList;
 import views.panels.BookEditPanel;
 import views.MainView;
@@ -20,34 +22,34 @@ import views.MainView;
  * @author ADMIN
  */
 public class BookItemManagerController {
+
     private BookItemManager bookItem;
     private MainView mainView;
     private BookModel currentBook;
-    
+
     public BookItemManagerController(BookItemManager bookItem, MainView mainView, BookModel book) {
         this.bookItem = bookItem;
         this.mainView = mainView;
         this.currentBook = book;
-        
+
         SetDataToList setData = new SetDataToList(mainView);
         this.bookItem.onBtnEdit(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 changeInforPanel();
             }
-            
+
         });
-        
+
         this.bookItem.onBtnDelete(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 deleteThisItem();
             }
-            
         });
     }
-    
-    public void changeInforPanel(){
+
+    public void changeInforPanel() {
         try {
             BookEditPanel bookEditPanel = new BookEditPanel();
             new BookEditController(bookEditPanel, mainView, this.currentBook);
@@ -57,13 +59,19 @@ public class BookItemManagerController {
         }
     }
 
-    public void deleteThisItem(){
-        JPanel parent = (JPanel) this.bookItem.getParent();
-        parent.remove(this.bookItem);
-        parent.setPreferredSize(new Dimension(0,parent.getComponentCount()*66));
-        parent.revalidate();
-        parent.repaint();
+    public void deleteThisItem() {
+        int x = JOptionPane.showConfirmDialog(mainView, "Are you sure you want to delete this book, all data related to it will be deleted!", "Delete book", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (x == 0) {
+            BookDAO.getInstance().delete(this.currentBook.getId());
+            
+            JPanel parent = (JPanel) this.bookItem.getParent();
+            parent.remove(this.bookItem);
+            parent.setPreferredSize(new Dimension(0, parent.getComponentCount() * 66));
+            parent.revalidate();
+            parent.repaint();
+        }
     }
+
     public BookItemManager getBookItem() {
         return bookItem;
     }
@@ -79,5 +87,4 @@ public class BookItemManagerController {
     public void setMainView(MainView mainView) {
         this.mainView = mainView;
     }
-    
 }

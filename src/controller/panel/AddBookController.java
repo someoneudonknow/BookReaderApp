@@ -61,7 +61,6 @@ public class AddBookController {
             public void mouseClicked(MouseEvent e) {
                 backToPrevious();
             }
-
         });
     }
 
@@ -84,10 +83,6 @@ public class AddBookController {
             if (item.getjCheckBox1().isSelected()) {
                 categoryList.add(item.getCategoryModels());
             }
-        }
-
-        for (CategoryModel i : categoryList) {
-            System.out.println(i.getName());
         }
 
         return categoryList;

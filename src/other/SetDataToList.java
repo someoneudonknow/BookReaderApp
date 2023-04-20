@@ -113,6 +113,22 @@ public class SetDataToList {
         panel.repaint();
     }
 
+//    public void setAndResetBookManagerList(JPanel panel) {
+//        List<BookItemManager> itemManager = new ArrayList<>();
+//        List<BookModel> books = BookDAO.getInstance().getAll();
+//        panel.removeAll();
+//        for (BookModel b : books) {
+//            BookItemManager a = new BookItemManager(b);
+//            new BookItemManagerController(a, this.mainView, b);
+//            itemManager.add(a);
+//        }
+//
+//        for (BookItemManager i : itemManager) {
+//            panel.add(i);
+//        }
+//        panel.revalidate();
+//        panel.repaint();
+//    }
     public void setUserItemList(JPanel panel, List<UserModel> users) {
         ArrayList<UserItemManager> items = new ArrayList<>();
 
@@ -135,6 +151,13 @@ public class SetDataToList {
         ArrayList<ChapterModel> chapterList = new ArrayList<>();
         chapterList = ChapterDAO.getInstance().getAllChapterFromBook(book_id);
 
+        if (chapterList.size() == 0) {
+            panel.add(new Label("The book hasn't had any chapter"));
+            panel.revalidate();
+            panel.repaint();
+            return; 
+        }
+        
         for (ChapterModel chapter : chapterList) {
             ChapterItem a = null;
             try {
@@ -149,9 +172,7 @@ public class SetDataToList {
         for (ChapterItem i : items) {
             panel.add(i);
         }
-        if (chapterList.size() == 0) {
-            panel.add(new Label("The book hasn't had any chapter"));
-        }
+        
         panel.revalidate();
         panel.repaint();
     }
@@ -174,7 +195,7 @@ public class SetDataToList {
         for (ChapterItem i : items) {
             panel.add(i);
         }
-        
+
         if (chapters.size() == 0) {
             panel.add(new Label("The book hasn't had any chapter"));
         }

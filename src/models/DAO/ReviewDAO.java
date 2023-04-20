@@ -17,6 +17,7 @@ import utils.ResultSetQuery;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.Statement;
 
 public class ReviewDAO extends ResultSetQuery implements DAOInterface<ReviewModel, ReviewPK> {
 
@@ -126,6 +127,21 @@ public class ReviewDAO extends ResultSetQuery implements DAOInterface<ReviewMode
         } catch (SQLException ex) {
             Logger.getLogger(ReviewDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+            db.closeConnection(con);
+        }
+    }
+    
+    public void deleteByBookId(int bookId) {
+        String query = "DELETE FROM bookReview WHERE bookReview.book_id = " + bookId;
+        
+        DB db = new DB();
+        Connection con = db.getConnection();
+        try {
+            Statement st = con.createStatement();
+            st.executeUpdate(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(ReviewDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
             db.closeConnection(con);
         }
     }

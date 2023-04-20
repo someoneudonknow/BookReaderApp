@@ -47,22 +47,22 @@ public class ChapterItem extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(32767, 40));
         setPreferredSize(new java.awt.Dimension(980, 50));
-        setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbChapter.setBackground(new java.awt.Color(255, 255, 255));
         lbChapter.setText("jLabel1");
         lbChapter.setAlignmentY(0.0F);
         lbChapter.setPreferredSize(new java.awt.Dimension(920, 50));
-        add(lbChapter);
+        add(lbChapter, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 810, -1));
 
         txtDate.setText("jLabel1");
-        add(txtDate);
+        add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 90, 40));
 
         btnDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete_icon.png"))); // NOI18N
         btnDelete.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         btnDelete.setPreferredSize(new java.awt.Dimension(50, 48));
-        add(btnDelete);
+        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
     
     public ChapterModel getChapterModels() {

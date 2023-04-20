@@ -18,7 +18,7 @@ public class UserModel {
     private boolean isManager;
     private int managerId;
     
-    private UserModel(int id1, String userName1, String phoneNumber1, String password1, Blob avatar1) {}
+    private UserModel() {}
 
     public UserModel(int id, String userName, String password, String phoneNumber, Blob avatar, boolean isManager, int managerId) {
         this.id = id;

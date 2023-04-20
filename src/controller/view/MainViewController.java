@@ -107,7 +107,7 @@ public class MainViewController {
         });
 
         this.mainView.onBtnLogOut(e -> {
-            int choice = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn đăng xuất?");
+            int choice = JOptionPane.showConfirmDialog(this.mainView, "Are you sure you want to sign out?", "Sign out", JOptionPane.YES_NO_OPTION);
             if (choice == 0) {
                 this.mainView.dispose();
                 LoginForm loginForm = new LoginForm();

@@ -26,6 +26,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import models.BookModel;
 import models.CategoryModel;
 import models.DAO.BookDAO;
+import models.DAO.CategoryDAO;
+import models.DAO.HaveCategoryDAO;
 import models.DAO.UserDAO;
 import other.Converter;
 import other.SetDataToList;
@@ -41,12 +43,12 @@ import views.panels.BookManagingPanel;
  * @author ADMIN
  */
 public class BookEditController {
-
     private BookEditPanel bookEditPanel;
     private MainView mainView;
     private BookModel currentBook;
 
     private List<CategoryModel> currentBookCategories = new ArrayList<>();
+    private List<CategoryModel> oldBookCategories = new ArrayList<>();
     private boolean isCoverChanged = false;
     private boolean isCategoriesChanged = false;
 
@@ -56,7 +58,7 @@ public class BookEditController {
         this.currentBook = book;
         List<CategoryModel> cateListFromCurrentBook = BookDAO.getInstance().getCurrentBookCategories(this.currentBook.getId());
         this.currentBookCategories.addAll(cateListFromCurrentBook);
-
+        this.oldBookCategories.addAll(cateListFromCurrentBook);
         initUI();
 
         this.bookEditPanel.onBtnAddChapter(e -> {
@@ -145,19 +147,25 @@ public class BookEditController {
         String bookDesc = this.bookEditPanel.getTxtDiscription().getText();
         Blob bookCover = Converter.convertImageToBlob((ImageIcon) this.bookEditPanel.getImgCover().getIcon());
         BookDAO bookDAO = new BookDAO();
-        BookModel editedBook = new BookModel(bookName, bookAuthor, bookCover, bookDesc, managerId);
+        BookModel editedBook = new BookModel(this.currentBook.getId(), bookName, bookAuthor, bookCover, bookDesc, managerId);
 
         try {
             bookDAO.update(this.currentBook.getId(), editedBook, this.getChangedField());
-            JOptionPane.showMessageDialog(this.mainView, "Lưu thành công");
+            if (this.isCategoriesChanged) {
+                HaveCategoryDAO.getInstance().updateChangedCategoriesOfBook(this.currentBook.getId(), this.currentBookCategories);
+                this.oldBookCategories = this.currentBookCategories;
+            }
+            
+            JOptionPane.showMessageDialog(this.mainView, "Saved data");
+            
+            this.currentBook = editedBook;
+            this.isCoverChanged = false;
+            this.isCategoriesChanged = false;
         } catch (Exception ex) {
             if (ex.getMessage().equals("data_unchanged")) {
-                int x = JOptionPane.showConfirmDialog(this.mainView, "Thông tin chưa được thay đổi, bạn vẫn muốn lưu chứ?");
-                if (x == 0) {
-                    JOptionPane.showMessageDialog(this.mainView, "Lưu thành công");
-                }
+                JOptionPane.showMessageDialog(this.mainView, "The data hasn't changed, do you still wanna save it?");
             } else if (ex.getMessage().equals("book_name_exists")) {
-                JOptionPane.showMessageDialog(this.mainView, "Tên sách đã tồn tại!");
+                JOptionPane.showMessageDialog(this.mainView, "Book's name already exists!");
             }
         }
     }
@@ -178,7 +186,7 @@ public class BookEditController {
                 this.bookEditPanel.getImgCover().setIcon(new ImageIcon(resizedImage));
                 this.isCoverChanged = true;
             } else {
-                JOptionPane.showMessageDialog(this.bookEditPanel, "Sai định dạng ảnh!");
+                JOptionPane.showMessageDialog(this.bookEditPanel, "Wrong image format!");
             }
         }
     }
@@ -190,11 +198,10 @@ public class BookEditController {
         String author = this.bookEditPanel.getTxtAuthor().getText();
         String desc = this.bookEditPanel.getTxtDiscription().getText();
 
-        boolean isBookNameChanged = !this.currentBook.getName().equals(bookName);
-        boolean isAuthorChanged = !this.currentBook.getName().equals(author);
-        boolean isDescChanged = !this.currentBook.getName().equals(desc);
-//        boolean isCategoriesChanged = 
-        
+        boolean isBookNameChanged = !this.currentBook.getName().contentEquals(bookName);
+        boolean isAuthorChanged = !this.currentBook.getAuthor().contentEquals(author);
+        boolean isDescChanged = !this.currentBook.getDescription().contentEquals(desc);
+
         if (isBookNameChanged) {
             changedFields.add("book_name");
         }
@@ -209,6 +216,10 @@ public class BookEditController {
 
         if (this.isCoverChanged) {
             changedFields.add("book_cover");
+        }
+
+        if (this.isCategoriesChanged) {
+            changedFields.add("book_categories");
         }
 
         return changedFields;
@@ -228,7 +239,8 @@ public class BookEditController {
             } else {
                 isValid = true;
                 changeCategory.getCateErrorMessage().setText("");
-                this.isCategoriesChanged = true;
+                boolean isCategoriesChanged = !(result.containsAll(this.oldBookCategories) && this.oldBookCategories.containsAll(result));
+                this.isCategoriesChanged = isCategoriesChanged;
             }
 
             if (isValid) {

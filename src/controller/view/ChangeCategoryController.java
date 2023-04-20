@@ -32,8 +32,7 @@ public class ChangeCategoryController {
             this.changeCategory.setVisible(false);
             this.changeCategory.dispose();
         });
-        System.out.println("run cate");
-
+        
         this.changeCategory.start();
     }
 
@@ -45,10 +44,6 @@ public class ChangeCategoryController {
             if (item.getjCheckBox1().isSelected()) {
                 categoryList.add(item.getCategoryModels());
             }
-        }
-
-        for (CategoryModel i : categoryList) {
-            System.out.println(i.getName());
         }
 
         return categoryList;
