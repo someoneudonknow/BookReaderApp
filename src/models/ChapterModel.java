@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -111,4 +112,32 @@ public class ChapterModel {
         chapter.setChapter_view(rs.getInt("chapter_view"));
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ChapterModel other = (ChapterModel) obj;
+        if (this.serial != other.serial) {
+            return false;
+        }
+        if (this.book_id != other.book_id) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.document, other.document)) {
+            return false;
+        }
+        return Objects.equals(this.updateTime, other.updateTime);
+    }
+
+    
 }

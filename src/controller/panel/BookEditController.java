@@ -132,7 +132,6 @@ public class BookEditController {
 
     public void AddChapter() {
         AddChapterPanel chapterPanel = new AddChapterPanel();
-
         try {
             new AddChapterController(chapterPanel, mainView, currentBook, this.bookEditPanel);
         } catch (SQLException ex) {

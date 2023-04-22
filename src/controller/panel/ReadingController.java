@@ -100,7 +100,33 @@ public class ReadingController {
 
         this.currentChapter = chapter;
         this.readingPanel.getBoxChapter().repaint();
+    }
+    public void setAddChapterDetails(ChapterModel chapter, ArrayList<ChapterModel> listChapter) throws SQLException, BadLocationException {
+        int currentBookID = chapter.getBook_id();
 
+        String content = chapter.getDocument();
+        HTMLDocument doc = new HTMLDocument();
+        try {
+            doc.insertString(0, content, null);
+        } catch (BadLocationException ex) {
+            ex.printStackTrace();
+        }
+
+//        ArrayList<ChapterModel> listChapter = ChapterDAO.getInstance().getAllChapterFromBook(currentBookID);
+//        ArrayList<String> listChapterName = new ArrayList<>();
+//        for (ChapterModel c : listChapter) {
+//            listChapterName.add("Chương " + c.getSerial() + ": " + c.getTitle());
+//        }
+//        this.readingPanel.getBoxChapter().setModel(new javax.swing.DefaultComboBoxModel<>(listChapter.toArray(new String[0])));
+//        String currentChapterName = listChapter.get(chapter.getSerial() - 1);
+//        this.readingPanel.getBoxChapter().setSelectedItem(currentChapterName);
+
+        doc = this.setDefaultView(doc);
+        this.readingPanel.getjEditorPane1().setDocument(doc);
+        this.readingPanel.repaint();
+
+        this.currentChapter = chapter;
+        this.readingPanel.getBoxChapter().repaint();
     }
 
     public void onBtnLeftRight(String option) {
@@ -168,7 +194,7 @@ public class ReadingController {
 
     public HTMLDocument setDefaultView(HTMLDocument doc) {
         MutableAttributeSet set = new SimpleAttributeSet();
-        StyleConstants.setAlignment(set, StyleConstants.ALIGN_JUSTIFIED);
+        StyleConstants.setAlignment(set, StyleConstants.ALIGN_LEFT);
         doc.setParagraphAttributes(0, doc.getLength(), set, false);
         return doc;
     }

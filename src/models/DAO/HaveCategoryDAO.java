@@ -16,6 +16,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import models.CategoryModel;
 import models.HaveCategoryModel;
 import models.entityPK.HaveCategoryPK;
 import models.interfaces.DAOInterface;

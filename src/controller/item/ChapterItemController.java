@@ -9,22 +9,24 @@ import views.items.ChapterItem;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import models.ChapterModel;
 import models.DAO.ChapterDAO;
+import other.SetDataToList;
 import views.panels.BookEditPanel;
 import views.panels.ReadingPanel;
 import views.MainView;
+import views.panels.AddChapterPanel;
 
-/**
- *
- * @author ADMIN
- */
 public class ChapterItemController {
 
     private ChapterItem chapterItem;
     private MainView mainView;
+    private BookEditPanel parent;
 
     public ChapterItemController(JPanel parent, ChapterItem chapterItem, MainView mainView) {
         this.chapterItem = chapterItem;
@@ -33,34 +35,37 @@ public class ChapterItemController {
 
         if (!(parent instanceof BookEditPanel)) {
             this.chapterItem.getBtnDelete().setVisible(false);
+        } else {
+            this.parent = (BookEditPanel) parent;
         }
+
         this.chapterItem.onBtnDeleteClick(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 DeleteThisChapter();
             }
-
         });
         this.chapterItem.onLbChapterClick(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 changeToReadingPanel(parent);
             }
-
         });
     }
 
     public void DeleteThisChapter() {
-        int x = JOptionPane.showConfirmDialog(mainView, "Are you sure want to delete this chapter ?");
+        int x = JOptionPane.showConfirmDialog(mainView, "Are you sure want to delete this chapter ?", "Delete chapter", JOptionPane.YES_NO_OPTION);
         if (x == 0) {
             ChapterDAO ctDAO = new ChapterDAO();
             ChapterModel currentChapter = this.chapterItem.getChapterModels();
             ctDAO.deleteChapterAndUpdateSerials(currentChapter.getId(), currentChapter.getBook_id(), currentChapter.getSerial());
-            JPanel parent = (JPanel) this.chapterItem.getParent();
-            parent.remove(this.chapterItem);
-            parent.setPreferredSize(new Dimension(0, parent.getComponentCount() * 40));
-            parent.revalidate();
-            parent.repaint();
+            SetDataToList setData = new SetDataToList(mainView);
+            try {
+                this.parent.getListChapter().removeAll();
+                setData.setChapterList(this.parent, this.parent.getListChapter(), currentChapter.getBook_id());
+            } catch (SQLException ex) {
+                Logger.getLogger(ChapterItemController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 

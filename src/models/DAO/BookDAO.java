@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 import models.BookModel;
 import models.CategoryModel;
 import models.ChapterModel;
+import models.UserModel;
 import models.interfaces.DAOInterface;
 import utils.ResultSetQuery;
 import views.items.BookItem;
@@ -232,6 +233,7 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
 
     @Override
     public void insert(BookModel data) {
+        UserModel manager = UserDAO.getInstance().getManagerInfo();
         String query = "INSERT INTO bookInfo(book_name, book_author, book_cover, book_description, manager_id) VALUES (?, ?, ?, ?, ?)";
         DB db = new DB();
         Connection con = db.getConnection();
@@ -240,8 +242,8 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
             pst.setString(1, data.getName());
             pst.setString(2, data.getAuthor());
             pst.setBlob(3, data.getCover());
-            pst.setBlob(4, data.getCover());
-            pst.setInt(5, data.getId());
+            pst.setString(4, data.getDescription());
+            pst.setInt(5, manager.getId());
 
             pst.executeUpdate();
         } catch (SQLException ex) {
@@ -251,10 +253,48 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
         }
     }
 
-    public void insert(BookModel data, List<CategoryModel> bookCategories, List<ChapterModel> chapters) {
-        this.insert(data);
-        HaveCategoryDAO.getInstance().insert(data.getId(), bookCategories);
-        
+    public Integer insertAndGetId(BookModel data) {
+        UserModel manager = UserDAO.getInstance().getManagerInfo();
+        String query = "INSERT INTO bookInfo(book_name, book_author, book_cover, book_description, manager_id) VALUES (?, ?, ?, ?, ?)";
+        int id = 0;
+        DB db = new DB();
+        Connection con = db.getConnection();
+        try {
+            PreparedStatement pst = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            pst.setString(1, data.getName());
+            pst.setString(2, data.getAuthor());
+            pst.setBlob(3, data.getCover());
+            pst.setString(4, data.getDescription());
+            pst.setInt(5, manager.getId());
+
+            int affectedRows = pst.executeUpdate();
+
+            if (affectedRows > 0) {
+                try (ResultSet rs = pst.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        id = rs.getInt(1);
+                    }
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.closeConnection(con);
+        }
+
+        return id;
+    }
+
+    public void insert(BookModel data, List<CategoryModel> bookCategories, List<ChapterModel> chapters) throws Exception {
+        if (this.isBookNameContains(data.getName())) {
+            throw new Exception("book_name_exists");
+        }
+
+        int newBookId = this.insertAndGetId(data);
+        HaveCategoryDAO.getInstance().insert(newBookId, bookCategories);
+        ChapterDAO.getInstance().insert(newBookId, chapters);
     }
 
     @Override
@@ -332,8 +372,6 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
 
         StringBuilder query = new StringBuilder("UPDATE bookInfo SET ");
 
-        System.out.println(fields.size());
-
         for (int i = 0; i < fields.size(); i++) {
             if (fields.get(i).equals("book_name")) {
                 query.append("book_name = ").append("\"").append(data.getName().strip()).append("\", ");
@@ -367,8 +405,6 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
         } finally {
             db.closeConnection(con);
         }
-
-        System.out.println(finalQuery);
     }
 
     public boolean isBookNameContains(String bookName) {
@@ -423,28 +459,28 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
         String query = "";
         ArrayList<BookModel> result = new ArrayList<>();
         ArrayList<Object> queryField = new ArrayList<>();
-        if(type.equals("Title")){
+        if (type.equals("Title")) {
             query = "SELECT bi.* FROM project1.bookinfo AS bi INNER JOIN project1.havecategory ON bi.book_id = havecategory.book_id "
-                + "WHERE bi.book_name LIKE '%" + name + "%'";
-        }else if(type.equals("Author")){
+                    + "WHERE bi.book_name LIKE '%" + name + "%'";
+        } else if (type.equals("Author")) {
             query = "SELECT bi.* FROM project1.bookinfo AS bi INNER JOIN project1.havecategory ON bi.book_id = havecategory.book_id "
-                + "WHERE bi.book_author LIKE '%" + name + "%'";
+                    + "WHERE bi.book_author LIKE '%" + name + "%'";
         }
-        
+
         int size = categoryItem.size();
-        if(size != 0){
-            for(int i = 0;i < size;i++){
+        if (size != 0) {
+            for (int i = 0; i < size; i++) {
                 query = query + "AND havecategory.category_id = " + categoryItem.get(i).getCategoryModels().getId();
             }
         }
         query = query + " GROUP BY bi.book_id ";
-        
-        if(sort.equals("A->Z")){
+
+        if (sort.equals("A->Z")) {
             query = query + " ORDER BY bi.book_name ASC";
-        }else if(sort.equals("Z->A")){
+        } else if (sort.equals("Z->A")) {
             query = query + " ORDER BY bi.book_name  DESC";
         }
-        
+
         try {
             rs = this.executeQuery(query, queryField);
         } catch (SQLException ex) {

@@ -14,6 +14,7 @@ import java.io.File;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -22,6 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import models.BookModel;
 import models.CategoryModel;
+import models.ChapterModel;
 import models.DAO.CategoryDAO;
 import models.DAO.UserDAO;
 import models.UserModel;
@@ -40,6 +42,10 @@ public class AddBookController {
     private MainView mainView;
     private BookManagingPanel previousPanel;
 
+    private AddChapterPanel addChapterPanel;
+    private LinkedList<ChapterModel> currentChaps;
+    private AddChapterReviewController ctrc;
+    
     public AddBookController(AddBookPanel bookPanel, MainView mainView, BookManagingPanel previousPanel) {
         this.bookPanel = bookPanel;
         this.mainView = mainView;
@@ -71,14 +77,22 @@ public class AddBookController {
             Blob cover = Converter.convertImageToBlob((ImageIcon) this.bookPanel.getImageHolder().getIcon());
             UserModel manager = UserDAO.getInstance().getManagerInfo();
             this.bookPanel.getCateErrMess().setText("");
+
             BookModel result = new BookModel(bookName, author, cover, desc, manager.getId());
+
             AddChapterPanel addChapterPanel = new AddChapterPanel();
-            try {
-                new AddChapterController(addChapterPanel, mainView, result, this.bookPanel);
-            } catch (SQLException ex) {
-                Logger.getLogger(AddBookController.class.getName()).log(Level.SEVERE, null, ex);
+
+            if (this.addChapterPanel == null) {
+                this.addChapterPanel = addChapterPanel;
+                try {
+                    this.ctrc = new AddChapterReviewController(this.addChapterPanel, mainView, result, this.categoryResult(),this.bookPanel);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddBookController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            this.mainView.setMainPanel(addChapterPanel);
+            this.ctrc.setCurrentBook(result);
+            this.ctrc.setCategories(this.categoryResult());
+            this.mainView.setMainPanel(this.addChapterPanel);
         }
     }
 
@@ -149,7 +163,7 @@ public class AddBookController {
         this.bookPanel.setListCategory(model);
     }
 
-    public ArrayList<CategoryModel> categoryResult() {
+    private ArrayList<CategoryModel> categoryResult() {
         ArrayList<CategoryModel> categoryList = new ArrayList<>();
 
         for (int i = 0; i < this.bookPanel.getListCategory().getComponentCount(); i++) {
