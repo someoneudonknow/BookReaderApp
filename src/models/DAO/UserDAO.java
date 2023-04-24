@@ -305,6 +305,28 @@ public class UserDAO implements DAOInterface<UserModel, Integer> {
 
     @Override
     public ArrayList<UserModel> search(String keyword) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<UserModel> listUser = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM project1.userinfo WHERE userinfo.user_name LIKE '%" + keyword + "%' OR userinfo.user_phoneNumber LIKE '%" + keyword + "%'";
+            DB db = new DB();
+            Connection con = db.getConnection();
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("user_id");
+                String username = rs.getString("user_name");
+                String userPass = rs.getString("user_password");
+                String userPhoneNumber = rs.getString("user_phoneNumber");
+                Blob userAvatar = (Blob) rs.getBlob("user_avatar");
+                boolean isManager = rs.getBoolean("is_manager");
+                int managerId = rs.getInt("manager_id");
+                UserModel temp = new UserModel(id, username, userPass, userPhoneNumber, userAvatar, isManager, managerId);
+                listUser.add(temp);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listUser;
+        
     }
 }

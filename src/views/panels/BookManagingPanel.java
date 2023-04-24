@@ -6,6 +6,7 @@ package views.panels;
 
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -146,6 +147,15 @@ public class BookManagingPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtKeyWordsActionPerformed
 
+    public JTextField getTxtKeyWords() {
+        return txtKeyWords;
+    }
+
+    public void setTxtKeyWords(JTextField txtKeyWords) {
+        this.txtKeyWords = txtKeyWords;
+    }
+
+    
     public JPanel getListBook() {
         return listBook;
     }
@@ -158,7 +168,11 @@ public class BookManagingPanel extends javax.swing.JPanel {
         this.btnAddBook.addActionListener(action);
     }
     
-
+    public void onBtnSearch(ActionListener action) {
+        this.btnSearch.addActionListener(action);
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddBook;
     private javax.swing.JButton btnSearch;

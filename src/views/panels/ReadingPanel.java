@@ -5,12 +5,23 @@
 package views.panels;
 
 
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Insets;
+import java.awt.LayoutManager;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JTextField;
+import javax.swing.text.MutableAttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
 import javax.swing.text.html.HTMLDocument;
 import other.CustomScrollBar;
 import other.SetButton;
@@ -24,18 +35,53 @@ public class ReadingPanel extends javax.swing.JPanel {
     /**
      * Creates new form ReadingPanel
      */
-    public ReadingPanel() {
+    public ReadingPanel() throws FileNotFoundException, IOException {
         initComponents();
         jEditorPane1.setContentType("text/html");
         jScrollPane1.getVerticalScrollBar().setUI(new CustomScrollBar());
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Arial", "Times New Roman"}));
-        jTextField2.setText("15");
-        jTextField3.setText("20");
-        Insets insets = new Insets(0, 20, 0, 20);
-        jEditorPane1.setMargin(insets); 
         jEditorPane1.setEditable(false);
         HTMLDocument doc = new HTMLDocument();
-        
+    
+        File file = new File("C:\\Users\\ADMIN\\Desktop\\BookReaderApp\\src\\other\\text.txt");
+        BufferedReader br = null;
+        FileReader fr = null;
+        String re = ""; 
+                
+        fr = new FileReader(file);
+        br = new BufferedReader(fr);
+        re = br.readLine();
+                
+        if(re == null){
+            this.getjEditorPane1().putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
+            jComboBox1.setSelectedItem("Times New Roman");
+            jTextField2.setText("15");
+            jTextField3.setText("20");
+            Insets insets = new Insets(0, 20, 0, 20);
+            jEditorPane1.setMargin(insets);
+            this.getjEditorPane1().setFont(new Font((String) this.getjComboBox1().getSelectedItem(), Font.PLAIN, Integer.parseInt(this.getjTextField2().getText())));
+            MutableAttributeSet set = new SimpleAttributeSet();
+//            StyleConstants.setAlignment(set, StyleConstants.ALIGN_JUSTIFIED);
+            doc.setParagraphAttributes(0, doc.getLength(), set, false);
+            this.getjEditorPane1().setDocument(doc);
+            
+        }else{
+            this.getjEditorPane1().putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
+            String[] result = re.split(",");
+            int paddingNum = Integer.parseInt(result[0]); 
+            int sizeNum = Integer.parseInt(result[1]);
+            String fontStyle = result[2];
+            jComboBox1.setSelectedItem(fontStyle);
+            jTextField2.setText("" + sizeNum);
+            jTextField3.setText("" + paddingNum);
+            Insets insets = new Insets(0, paddingNum, 0, paddingNum);
+            jEditorPane1.setMargin(insets);
+            this.getjEditorPane1().setFont(new Font(fontStyle, Font.PLAIN, sizeNum));
+            MutableAttributeSet set = new SimpleAttributeSet();
+            doc.setParagraphAttributes(0, doc.getLength(), set, false);
+            this.getjEditorPane1().setDocument(doc);
+        }
+   
     }
 
     public javax.swing.JComboBox<String> getBoxChapter() {
@@ -82,6 +128,13 @@ public class ReadingPanel extends javax.swing.JPanel {
         this.btnBack.addMouseListener(new SetButton.SetBtnBackB(btnBack));
         this.btnBack.addMouseListener(action);
     }
+
+
+    public void setjEditorPane1(JEditorPane jEditorPane1) {
+        this.jEditorPane1 = jEditorPane1;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

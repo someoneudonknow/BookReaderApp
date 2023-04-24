@@ -126,9 +126,12 @@ public class SetDataToList {
 //        panel.revalidate();
 //        panel.repaint();
 //    }
-    public void setBookManagerList(JPanel panel, ArrayList<BookModel> books) {
+    public void setBookManagerList(JPanel panel, ArrayList<BookModel> books, boolean option, String keyword) {
         List<BookItemManager> itemManager = new ArrayList<>();
-        books = BookDAO.getInstance().getAll();
+        if(option)
+            books = BookDAO.getInstance().getAll();
+        else 
+            books = BookDAO.getInstance().search(keyword);
 
         for (BookModel b : books) {
             BookItemManager a = new BookItemManager(b);
@@ -142,6 +145,7 @@ public class SetDataToList {
         panel.revalidate();
         panel.repaint();
     }
+    
 
 //    public void setAndResetBookManagerList(JPanel panel) {
 //        List<BookItemManager> itemManager = new ArrayList<>();

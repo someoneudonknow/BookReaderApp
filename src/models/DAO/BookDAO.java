@@ -451,7 +451,25 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
 
     @Override
     public ArrayList<BookModel> search(String keyword) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ResultSet rs = null;
+        String query = "SELECT * FROM project1.bookinfo WHERE bookinfo.book_name LIKE '%" + keyword + "%' ORDER BY bookinfo.book_name ASC";
+        ArrayList<BookModel> books = new ArrayList<>();
+        ArrayList<Object> queryField = new ArrayList<>();
+        try {
+            rs = this.executeQuery(query, queryField);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            while (rs.next()) {
+                BookModel temp = new BookModel();
+                BookModel.populateBookModel(rs, temp);
+                books.add(temp);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return books;
     }
 
     public ArrayList<BookModel> getDataAvailable(String sort, String type, String name, ArrayList<CategoryItem> categoryItem) throws SQLException {

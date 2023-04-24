@@ -130,7 +130,7 @@ public class BookInforController {
         }
     }
 
-    public void changeToChapter(ChapterModel changedChapter) throws SQLException, BadLocationException {
+    public void changeToChapter(ChapterModel changedChapter) throws SQLException, BadLocationException, IOException {
 
         ReadingPanel newReadingPanel = new ReadingPanel();
         ReadingController reading = new ReadingController(newReadingPanel, mainView, changedChapter, this.bookInforPanel);
@@ -188,9 +188,17 @@ public class BookInforController {
 
     public void setFirstLastChapterBtn(String option) throws SQLException, BadLocationException {
         if (option.equals("first")) {
-            changeToChapter(BookDAO.getInstance().getFirstLastChapter(this.currentBook.getId(), "first"));
+            try {
+                changeToChapter(BookDAO.getInstance().getFirstLastChapter(this.currentBook.getId(), "first"));
+            } catch (IOException ex) {
+                Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else if (option.equals("last")) {
-            changeToChapter(BookDAO.getInstance().getFirstLastChapter(this.currentBook.getId(), "last"));
+            try {
+                changeToChapter(BookDAO.getInstance().getFirstLastChapter(this.currentBook.getId(), "last"));
+            } catch (IOException ex) {
+                Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
