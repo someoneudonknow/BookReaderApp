@@ -5,7 +5,9 @@
 package views.panels;
 
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -144,6 +146,16 @@ public class UserManagingPanel extends javax.swing.JPanel {
     public void setListUser(JPanel listUser) {
         this.listUser = listUser;
     }
+
+    public JTextField getTxtKeyWords() {
+        return txtKeyWords;
+    }
+
+    public void onBtnSearch(ActionListener action) {
+        this.btnSearch.addActionListener(action);
+    }
+    
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

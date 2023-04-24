@@ -11,6 +11,8 @@ import views.items.CategoryItem;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import models.BookModel;
 import models.CategoryModel;
 import models.DAO.BookDAO;

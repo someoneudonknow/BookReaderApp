@@ -3,18 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/DAO/ChapterDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/panel/HistoryController.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/other/SetDataToList.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/panel/SearchPanelController.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/views/ChangeCategory.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/panel/AddBookController.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/BookModel.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/DAO/CategoryDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/views/panels/AddBookPanel.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/views/panels/SearchPanel.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/DAO/BookDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/view/ChangeCategoryController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/views/panels/UserManagingPanel.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/views/panels/ReadingPanel.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/models/DAO/UserDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/controller/panel/BookManagingController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/controller/panel/ReadingController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/models/DAO/BookDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/models/DAO/HaveCategoryDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/controller/panel/SearchPanelController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/other/SetDataToList.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/controller/panel/UserManagingController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/views/panels/BookManagingPanel.java</file>
         </group>
     </open-files>
 </project-private>
