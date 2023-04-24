@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import models.CategoryModel;
 import models.ChapterModel;
 import models.interfaces.DAOInterface;
 import utils.ResultSetQuery;
@@ -41,7 +42,6 @@ public class ChapterDAO extends ResultSetQuery implements DAOInterface<ChapterMo
             ChapterModel.populateChapterModel(rs, selectedChapter);
         }
         return selectedChapter;
-
     }
 
     public ChapterModel getPreivousNextChapter(ChapterModel currentChapter, String option) throws SQLException {
@@ -102,6 +102,7 @@ public class ChapterDAO extends ResultSetQuery implements DAOInterface<ChapterMo
 
         return chapterList;
     }
+
     @Override
     public void insert(ChapterModel data) {
         String query = "INSERT INTO bookChapter (chapter_title, chapter_serial, chapter_document, book_id) VALUES(?,?,?,?)";
@@ -126,29 +127,60 @@ public class ChapterDAO extends ResultSetQuery implements DAOInterface<ChapterMo
             db.closeConnection(con);
         }
     }
+    
+    public void insert(int bookId, ChapterModel data) {
+        String query = "INSERT INTO bookChapter (chapter_title, chapter_serial, chapter_document, book_id) VALUES(?,?,?,?)";
 
-    public void insert(List<ChapterModel> chapters) {
-        String query = "INSERT INTO bookChapter (chapter_title, chapter_serial, chapter_document, book_id) VALUES";
+        DB db = new DB();
+        Connection con = db.getConnection();
+        try {
+            int lastestChap = this.getLastestChapterSerial(data.getBook_id());
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, data.getTitle());
+            pst.setInt(2, data.getSerial());
+            pst.setString(3, data.getDocument());
+            pst.setInt(4, bookId);
 
-//        DB db = new DB();
-//        Connection con = db.getConnection();
-//        try {
-//            int lastestChap = this.getLastestChapterSerial(data.getBook_id());
-//            PreparedStatement pst = con.prepareStatement(query);
-//            pst.setString(1, data.getTitle());
-//            pst.setInt(2, data.getSerial());
-//            pst.setString(3, data.getDocument());
-//            pst.setInt(4, data.getBook_id());
-//
-//            if (data.getSerial() <= lastestChap) {
-//                this.updateChaperSerialWhenInsert(data.getSerial(), data.getBook_id());
-//            }
-//            pst.executeUpdate();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(ChapterDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            db.closeConnection(con);
-//        }
+            if (data.getSerial() <= lastestChap) {
+                this.updateChaperSerialWhenInsert(data.getSerial(), data.getBook_id());
+            }
+            pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ChapterDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.closeConnection(con);
+        }
+    }
+
+    public void insert(int bookId, List<ChapterModel> chapters) {
+        StringBuilder query = new StringBuilder("INSERT INTO bookChapter (chapter_title, chapter_serial, chapter_document, book_id) VALUES ");
+
+        for (ChapterModel i : chapters) {
+            query.append("('")
+                    .append(i.getTitle())
+                    .append("'")
+                    .append(", ")
+                    .append(i.getSerial())
+                    .append(", '")
+                    .append(i.getDocument())
+                    .append("'")
+                    .append(", ")
+                    .append(bookId)
+                    .append("), ");
+        }
+        query.setCharAt(query.lastIndexOf(","), ' ');
+        String editedQuery = query.toString().strip();
+        DB db = new DB();
+        Connection con = db.getConnection();
+
+        try {
+            Statement st = con.createStatement();
+            st.executeUpdate(editedQuery);
+        } catch (SQLException ex) {
+            Logger.getLogger(HaveCategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.closeConnection(con);
+        }
     }
     
     public void updateChaperSerialWhenInsert(int baseOnSerial, int bookId) {
@@ -168,29 +200,29 @@ public class ChapterDAO extends ResultSetQuery implements DAOInterface<ChapterMo
 
     @Override
     public void delete(Integer id) {
-        
+
     }
-    
+
     public void deleteAllChapterFromOneBook(int bookId) {
         String query = "DELETE FROM bookChapter WHERE bookChapter.book_id = " + bookId;
-        
+
         DB db = new DB();
         Connection con = db.getConnection();
         try {
             ArrayList<ChapterModel> chapters = this.getAllChapterFromBook(bookId);
-            for(ChapterModel i: chapters) {
+            for (ChapterModel i : chapters) {
                 ReadingDAO.getInstance().deleteByChapterId(i.getId());
             }
-            
+
             Statement st = con.createStatement();
             st.executeUpdate(query);
         } catch (SQLException ex) {
             Logger.getLogger(ChapterDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }finally {
+        } finally {
             db.closeConnection(con);
         }
     }
-    
+
     public void deleteChapterAndUpdateSerials(int chapId, int bookId, int chapSerial) {
         String query = "DELETE FROM project1.bookchapter WHERE bookchapter.chapter_id = " + chapId + " AND bookchapter.book_id = " + bookId;
         DB db = new DB();

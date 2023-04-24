@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package models.DAO;
 
 import database.DB;
@@ -17,10 +13,6 @@ import models.entityPK.ReadingPK;
 import models.interfaces.DAOInterface;
 import utils.ResultSetQuery;
 
-/**
- *
- * @author trang
- */
 public class ReadingDAO extends ResultSetQuery implements DAOInterface<ReadingModel, ReadingPK> {
 
     public static ReadingDAO getInstance() {
@@ -163,5 +155,4 @@ public class ReadingDAO extends ResultSetQuery implements DAOInterface<ReadingMo
     public ArrayList<ReadingModel> search(String keyword) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
 }

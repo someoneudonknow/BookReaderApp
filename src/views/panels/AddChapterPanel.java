@@ -39,7 +39,7 @@ public class AddChapterPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         listChapter = new javax.swing.JPanel();
         btnAdd = new javax.swing.JButton();
-        btnConfirm = new javax.swing.JButton();
+        confirmBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1013, 698));
@@ -72,7 +72,7 @@ public class AddChapterPanel extends javax.swing.JPanel {
                 btnCancelActionPerformed(evt);
             }
         });
-        jPanel6.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 620, 200, 40));
+        jPanel6.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 620, 150, 40));
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setPreferredSize(new java.awt.Dimension(52, 2));
@@ -92,10 +92,15 @@ public class AddChapterPanel extends javax.swing.JPanel {
                 btnAddActionPerformed(evt);
             }
         });
-        jPanel6.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, 200, 40));
+        jPanel6.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, 150, 40));
 
-        btnConfirm.setText("Confirm");
-        jPanel6.add(btnConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 620, 200, 40));
+        confirmBtn.setText("Confirm");
+        confirmBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmBtnActionPerformed(evt);
+            }
+        });
+        jPanel6.add(confirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 620, 150, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -117,6 +122,10 @@ public class AddChapterPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddActionPerformed
 
+    private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmBtnActionPerformed
+
     public JButton getBtnCancel() {
         return btnCancel;
     }
@@ -137,12 +146,20 @@ public class AddChapterPanel extends javax.swing.JPanel {
     public void onBtnCancel(ActionListener action) {
         this.btnCancel.addActionListener(action);
     }
+    
+    public void onConfirmBtnClicked(ActionListener action) {
+        this.confirmBtn.addActionListener(action);
+    }
+
+    public JButton getConfirmBtn() {
+        return confirmBtn;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JLabel btnBack;
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnConfirm;
+    private javax.swing.JButton confirmBtn;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbAddChapter;

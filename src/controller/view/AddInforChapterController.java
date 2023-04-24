@@ -21,16 +21,12 @@ import other.Rules;
 import other.Validate;
 import views.AddInforChapter;
 
-/**
- *
- * @author ADMIN
- */
 public class AddInforChapterController {
 
     private AddInforChapter inforChapter;
     private int currentBookId;
     private String docReadFromFile;
-
+    
     public AddInforChapterController(AddInforChapter inforChapter, int book_id) {
         this.inforChapter = inforChapter;
         this.currentBookId = book_id;
@@ -55,22 +51,7 @@ public class AddInforChapterController {
     }
 
     public ChapterModel getData() {
-        if (!this.isValid()) {
-            return null;
-        }
-        int chapSerial;
-        if (this.inforChapter.getAutoUpdateBtn().isSelected()) {
-            int lastestChap = ChapterDAO.getInstance().getLastestChapterSerial(this.currentBookId);
-
-            if (lastestChap > 0) {
-                chapSerial = lastestChap + 1;
-            } else {
-                chapSerial = 1;
-            }
-        } else {
-            chapSerial = Integer.parseInt(this.inforChapter.getTxtSerial().getText());
-        }
-        return new ChapterModel(this.inforChapter.getTxtTitle().getText(), chapSerial, this.docReadFromFile, this.currentBookId);
+        return new ChapterModel(this.inforChapter.getTxtTitle().getText(), -1, this.docReadFromFile, this.currentBookId);
     }
 
     private void handleAddFile() {
@@ -96,17 +77,17 @@ public class AddInforChapterController {
         }
     }
 
-    private boolean isValid() {
+    public boolean isValid(int lastestChap) {
         String title = this.inforChapter.getTxtTitle().getText();
         String serial = this.inforChapter.getTxtSerial().getText();
         String doc = this.docReadFromFile;
-        int lastestChap = ChapterDAO.getInstance().getLastestChapterSerial(this.currentBookId);
 
         Rules[] titleRules = {new Rules("Please enter this field", Rules.IS_REQUIRED)};
 
         Rules[] serialRules = {new Rules("Please enter this field", Rules.IS_REQUIRED),
             new Rules("This field must be a number", Rules.IS_NUMBER), 
-            new Rules("Value must be lower than " + (lastestChap + 2), Rules.IS_NUMBER_LOWER_THAN, (lastestChap + 2))};
+            new Rules("Value must be lower than " + (lastestChap + 2), Rules.IS_NUMBER_LOWER_THAN, (lastestChap + 2)),
+            new Rules("Value must be greater than 0", Rules.IS_NUMBER_GREATER_THAN, 0)};
 
         Rules[] docRules = {new Rules("Please choose a document", Rules.IS_REQUIRED)};
 

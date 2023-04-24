@@ -43,7 +43,9 @@ public class AddChapterController {
         this.mainView = mainView;
         this.bookModel = bookModel;
         this.previousPanel = previousPanel;
-        
+
+        this.chapterPanel.getConfirmBtn().setVisible(false);
+
         initUI();
 
         this.chapterPanel.onBtnAdd(e -> {
@@ -56,22 +58,13 @@ public class AddChapterController {
                 backToPrevious();
             }
         });
-        
+
         this.chapterPanel.onBtnCancel(e -> {
             backToPrevious();
         });
     }
 
     private void initUI() {
-//        
-//                SetDataToList setData = new SetDataToList(mainView);
-//        int currentID = this.bookModel.getId();
-//        setData.setChapterList(this.chapterPanel, this.chapterPanel.getListChapter(), currentID);
-//
-//        //Set lại size cho panel chứa list
-//        JPanel panel = this.chapterPanel.getListChapter();
-//        panel.setPreferredSize(new Dimension(0, panel.getComponentCount() * 40));
-        
         SetDataToList setData = new SetDataToList(mainView);
         int currentID = this.bookModel.getId();
         ArrayList<ChapterModel> chapterList = new ArrayList<>();
@@ -79,7 +72,7 @@ public class AddChapterController {
         try {
             chapterList = ChapterDAO.getInstance().getAllChapterFromBook(currentID);
             this.currentChapterList = chapterList;
-            setData.setChapterList(this.chapterPanel, this.chapterPanel.getListChapter(), currentID, chapterList);
+            setData.setChapterList(this.chapterPanel, this.chapterPanel.getListChapter(), chapterList);
         } catch (SQLException ex) {
             Logger.getLogger(AddChapterController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -88,17 +81,19 @@ public class AddChapterController {
         panel.setPreferredSize(new Dimension(0, panel.getComponentCount() * 40));
     }
 
-     private void startAddFrame() {
+    private void startAddFrame() {
         AddInforChapter inforChapter = new AddInforChapter();
         AddInforChapterController addChapController = new AddInforChapterController(inforChapter, this.bookModel.getId());
 
         inforChapter.onBtnConfirm(e -> {
-            ChapterModel newChap = addChapController.getData();
-            if (newChap != null) {
-                this.newChapterList.add(newChap);
-                this.currentChapterList.add(newChap);
+            int lastestChap = ChapterDAO.getInstance().getLastestChapterSerial(this.bookModel.getId());
+            if (addChapController.isValid(lastestChap)) {
+                ChapterModel newChap = addChapController.getData();
+                ChapterModel chapAfterUpdated = updateChapterSerial(newChap, inforChapter);
+                this.newChapterList.add(chapAfterUpdated);
+                this.currentChapterList.add(chapAfterUpdated);
                 ChapterDAO ctd = new ChapterDAO();
-                ctd.insert(newChap);
+                ctd.insert(chapAfterUpdated);
                 SetDataToList setData = new SetDataToList(mainView);
                 try {
                     this.chapterPanel.getListChapter().removeAll();
@@ -108,6 +103,26 @@ public class AddChapterController {
                 inforChapter.dispose();
             }
         });
+    }
+
+    private ChapterModel updateChapterSerial(ChapterModel currentChap, AddInforChapter inforChapter) {
+        int chapSerial;
+
+        if (inforChapter.getAutoUpdateBtn().isSelected()) {
+            int lastestChap = ChapterDAO.getInstance().getLastestChapterSerial(this.bookModel.getId());
+
+            if (lastestChap > 0) {
+                chapSerial = lastestChap + 1;
+            } else {
+                chapSerial = 1;
+            }
+        } else {
+            chapSerial = Integer.parseInt(inforChapter.getTxtSerial().getText());
+        }
+
+        currentChap.setSerial(chapSerial);
+
+        return currentChap;
     }
 
     public void backToPrevious() {

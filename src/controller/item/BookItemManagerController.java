@@ -55,7 +55,7 @@ public class BookItemManagerController {
             new BookEditController(bookEditPanel, mainView, this.currentBook);
             getMainView().setMainPanel(bookEditPanel);
         } catch (Exception es) {
-            System.out.println("Khong co mainView");
+            System.out.println("BookItemManagerController");
         }
     }
 

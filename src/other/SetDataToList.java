@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import models.BookModel;
@@ -57,7 +58,7 @@ public class SetDataToList {
     }
 
     public void setBookItemList(JPanel panel, String option, JPanel parent) throws SQLException {
-        
+
         ArrayList<BookItem> items = new ArrayList<>();
         ArrayList<BookModel> books = new ArrayList<>();
         if (option.equals("full")) {
@@ -100,8 +101,9 @@ public class SetDataToList {
             for (BookItem i : items) {
                 panel.add(i);
             }
-        }else
+        } else {
             JOptionPane.showMessageDialog(null, "Can not find book with input search");
+        }
 
         panel.revalidate();
         panel.repaint();
@@ -187,9 +189,9 @@ public class SetDataToList {
             panel.add(new Label("This book hasn't had any chapter"));
             panel.revalidate();
             panel.repaint();
-            return; 
+            return;
         }
-        
+
         for (ChapterModel chapter : chapterList) {
             ChapterItem a = null;
             try {
@@ -204,22 +206,22 @@ public class SetDataToList {
         for (ChapterItem i : items) {
             panel.add(i);
         }
-        
+
         panel.revalidate();
         panel.repaint();
     }
 
-    public void setChapterList(JPanel parent, JPanel panel, int book_id, List<ChapterModel> chapters) {
+    public void setChapterList(JPanel parent, JPanel panel, List<ChapterModel> chapters) {
         ArrayList<ChapterItem> items = new ArrayList<>();
         panel.removeAll();
 
-         if (chapters.size() == 0 || chapters == null) {
+        if (chapters.size() == 0 || chapters == null) {
             panel.add(new Label("This book hasn't had any chapter"));
             panel.revalidate();
             panel.repaint();
-            return; 
+            return;
         }
-        
+
         for (ChapterModel chapter : chapters) {
             ChapterItem a = null;
             try {
@@ -243,6 +245,12 @@ public class SetDataToList {
         panel.removeAll();
         ArrayList<CommentItem> items = new ArrayList<>();
         ArrayList<ReviewModel> reviewList = ReviewDAO.getInstance().getAllReviewFromBook(book_id);
+
+        if (reviewList.size() == 0) {
+            panel.add(new JLabel("No comments"));
+            panel.revalidate();
+            panel.repaint();
+        }
 
         for (ReviewModel review : reviewList) {
             CommentItem a = new CommentItem(review);

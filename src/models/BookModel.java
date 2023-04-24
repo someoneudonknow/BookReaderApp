@@ -118,4 +118,10 @@ public class BookModel {
         book.setManager_id(rs.getInt("manager_id"));
     }
 
+    @Override
+    public String toString() {
+        return "BookModel{" + "id=" + id + ", name=" + name + ", author=" + author + ", cover=" + cover + ", description=" + description + ", manager_id=" + manager_id + '}';
+    }
+    
+    
 }
