@@ -13,19 +13,19 @@ import models.BookModel;
 import models.DAO.BookDAO;
 import other.SetDataToList;
 import views.panels.AddBookPanel;
-import views.panels.BookManagingPanel;
+import views.panels.BooksPanel;
 import views.MainView;
 
 /**
  *
  * @author ADMIN
  */
-public class BookManagingController {
+public class BooksController {
 
-    private BookManagingPanel bookPanel;
+    private BooksPanel bookPanel;
     private MainView mainView;
 
-    public BookManagingController(BookManagingPanel bookPanel, MainView mainView) {
+    public BooksController(BooksPanel bookPanel, MainView mainView) {
         this.bookPanel = bookPanel;
         this.mainView = mainView;
         initUI();

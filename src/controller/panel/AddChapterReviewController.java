@@ -31,7 +31,7 @@ import views.AddInforChapter;
 import views.MainView;
 import views.items.ChapterItem;
 import views.panels.AddChapterPanel;
-import views.panels.BookManagingPanel;
+import views.panels.BooksPanel;
 
 public class AddChapterReviewController {
 
@@ -80,8 +80,8 @@ public class AddChapterReviewController {
         try {
             BookDAO.getInstance().insert(this.bookModel, this.bookCategories, this.newChapterList);
             JOptionPane.showMessageDialog(this.mainView, "Add book successfully!");
-            BookManagingPanel panel1 = new BookManagingPanel();
-            new BookManagingController(panel1, this.mainView);
+            BooksPanel panel1 = new BooksPanel();
+            new BooksController(panel1, this.mainView);
             this.mainView.setMainPanel(panel1);
         } catch (Exception ex) {
             if (ex.getMessage().equals("book_name_exists")) {
@@ -106,7 +106,11 @@ public class AddChapterReviewController {
                 ChapterModel updatedChapter = this.updateChapSerial(newChap, inforChapter);
                 updateChapSerialWhenInsert(updatedChapter.getSerial());
                 this.newChapterList.add(updatedChapter.getSerial() - 1, updatedChapter);
-                this.setChapterList(this.newChapterList);
+                try {
+                    this.setChapterList(this.newChapterList);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddChapterReviewController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 inforChapter.dispose();
             }
         });
@@ -151,7 +155,7 @@ public class AddChapterReviewController {
         this.mainView.setMainPanel((JPanel) previousPanel);
     }
 
-    private void setChapterList(List<ChapterModel> chapters) {
+    private void setChapterList(List<ChapterModel> chapters) throws SQLException {
         ArrayList<ChapterItem> items = new ArrayList<>();
         this.chapterPanel.getListChapter().removeAll();
 
@@ -175,7 +179,11 @@ public class AddChapterReviewController {
             a.onBtnDeleteClick(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    handleDeleteChapter(currentChapItem, chapter);
+                    try {
+                        handleDeleteChapter(currentChapItem, chapter);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(AddChapterReviewController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             });
             items.add(a);
@@ -189,7 +197,7 @@ public class AddChapterReviewController {
         this.chapterPanel.getListChapter().repaint();
     }
 
-    private void handleDeleteChapter(ChapterItem chapterItem, ChapterModel chapter) {
+    private void handleDeleteChapter(ChapterItem chapterItem, ChapterModel chapter) throws SQLException {
         int x = JOptionPane.showConfirmDialog(mainView, "Are you sure want to delete this chapter ?", "Delete chapter", JOptionPane.YES_NO_OPTION);
         if (x == 0) {
             this.updateChapSerialWhenDeleted(chapter.getSerial());

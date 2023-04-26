@@ -4,7 +4,7 @@
  */
 package views.panels;
 
-import views.items.BookItem;
+import views.items.Book;
 import views.items.CategoryItem;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -63,9 +63,9 @@ public class SearchPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1013, 698));
+        setPreferredSize(new java.awt.Dimension(1272, 698));
 
-        jLabel1.setBackground(new java.awt.Color(0, 204, 102));
+        jLabel1.setBackground(new java.awt.Color(146, 154, 171));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -79,6 +79,11 @@ public class SearchPanel extends javax.swing.JPanel {
 
         boxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Title", "Author" }));
         boxType.setOpaque(true);
+        boxType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxTypeActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setText("Enter keywords");
@@ -91,7 +96,7 @@ public class SearchPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtKeyword)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1071, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(boxType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -118,7 +123,7 @@ public class SearchPanel extends javax.swing.JPanel {
         listCategory.setBackground(new java.awt.Color(255, 255, 255));
         listCategory.setAlignmentX(1.0F);
         listCategory.setAlignmentY(10.0F);
-        listCategory.setLayout(new java.awt.GridLayout(-1, 5, 10, 0));
+        listCategory.setLayout(new java.awt.GridLayout(-1, 6, 10, 0));
         jScrollPane2.setViewportView(listCategory);
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -152,7 +157,7 @@ public class SearchPanel extends javax.swing.JPanel {
 
         listResult.setBackground(new java.awt.Color(255, 255, 255));
         listResult.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 25, 10, 10));
-        listResult.setLayout(new java.awt.GridLayout(1, 5, 10, 0));
+        listResult.setLayout(new java.awt.GridLayout(-1, 6, 10, 0));
         jScrollPane1.setViewportView(listResult);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -168,7 +173,7 @@ public class SearchPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        btnSearch.setBackground(new java.awt.Color(0, 204, 102));
+        btnSearch.setBackground(new java.awt.Color(240, 173, 78));
         btnSearch.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnSearch.setForeground(new java.awt.Color(255, 255, 255));
         btnSearch.setText("Search");
@@ -201,7 +206,7 @@ public class SearchPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -213,14 +218,14 @@ public class SearchPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -239,6 +244,10 @@ public class SearchPanel extends javax.swing.JPanel {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void boxTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxTypeActionPerformed
 
     public JComboBox<String> getBoxType() {
         return boxType;
@@ -281,8 +290,8 @@ public class SearchPanel extends javax.swing.JPanel {
         return listResult;
     }
 
-    public void setListResult(ArrayList<BookItem> items) {
-        for (BookItem i:items) {
+    public void setListResult(ArrayList<Book> items) {
+        for (Book i:items) {
             this.listCategory.add(i);
         }
         this.listCategory.repaint();

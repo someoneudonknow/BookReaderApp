@@ -169,7 +169,7 @@ public class BookInforController {
         this.setBook(this.currentBook);
         ResultSet checkSaved = SavedDAO.getInstance().checkPK(new SavedPK(this.mainView.getUserModels().getId(), this.currentBook.getId()));
         if (checkSaved.next()) {
-            this.bookInforPanel.getBtnSave().setText("Xóa khỏi thư viện");
+            this.bookInforPanel.getBtnSave().setText("Remove from library");
         }
         SetDataToList setData = new SetDataToList(mainView);
         int currentID = this.currentBook.getId();
@@ -205,10 +205,10 @@ public class BookInforController {
     public void handleSavedBook() {
         SavedModel saved = new SavedModel(mainView.getUserModels().getId(), currentBook.getId());
         SavedDAO.getInstance().savedEvent(saved);
-        if (this.bookInforPanel.getBtnSave().getText().equals("Xóa khỏi thư viện")) {
-            this.bookInforPanel.getBtnSave().setText("Thêm vào thư viện");
+        if (this.bookInforPanel.getBtnSave().getText().equals("Remove from library")) {
+            this.bookInforPanel.getBtnSave().setText("Add to library");
         } else {
-            this.bookInforPanel.getBtnSave().setText("Xóa khỏi thư viện");
+            this.bookInforPanel.getBtnSave().setText("Remove from library");
 
         }
         this.mainView.repaint();

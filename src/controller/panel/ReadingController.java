@@ -193,6 +193,7 @@ public class ReadingController {
         this.readingPanel.getjEditorPane1().setDocument(doc);
 
         File file = new File("C:\\Users\\ADMIN\\Desktop\\BookReaderApp\\src\\other\\text.txt");
+        
         BufferedWriter bw = null;
         FileWriter fw = null;
 

@@ -69,6 +69,7 @@ public class BookEditPanel extends javax.swing.JPanel {
         listComment = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1272, 780));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -124,7 +125,7 @@ public class BookEditPanel extends javax.swing.JPanel {
         txtCategorys.setText("jLabel10");
         jPanel1.add(txtCategorys, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 91, 468, 33));
 
-        btnChangeCover.setBackground(new java.awt.Color(0, 204, 102));
+        btnChangeCover.setBackground(new java.awt.Color(240, 173, 78));
         btnChangeCover.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnChangeCover.setForeground(new java.awt.Color(255, 255, 255));
         btnChangeCover.setText("Change cover");
@@ -139,7 +140,7 @@ public class BookEditPanel extends javax.swing.JPanel {
         txtAuthor.setText("author");
         jPanel1.add(txtAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 51, 225, 34));
 
-        btnAddChapter.setBackground(new java.awt.Color(0, 204, 102));
+        btnAddChapter.setBackground(new java.awt.Color(240, 173, 78));
         btnAddChapter.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAddChapter.setForeground(new java.awt.Color(255, 255, 255));
         btnAddChapter.setText("Add chapter");
@@ -151,14 +152,14 @@ public class BookEditPanel extends javax.swing.JPanel {
         });
         jPanel1.add(btnAddChapter, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 256, -1, -1));
 
-        btnChangerCate.setBackground(new java.awt.Color(0, 204, 102));
+        btnChangerCate.setBackground(new java.awt.Color(240, 173, 78));
         btnChangerCate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnChangerCate.setForeground(new java.awt.Color(255, 255, 255));
         btnChangerCate.setText("Change categories");
         btnChangerCate.setPreferredSize(new java.awt.Dimension(160, 37));
         jPanel1.add(btnChangerCate, new org.netbeans.lib.awtextra.AbsoluteConstraints(573, 256, -1, -1));
 
-        btnSave.setBackground(new java.awt.Color(0, 204, 102));
+        btnSave.setBackground(new java.awt.Color(240, 173, 78));
         btnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("Save");
@@ -168,7 +169,7 @@ public class BookEditPanel extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel12.setBackground(new java.awt.Color(0, 204, 102));
+        jLabel12.setBackground(new java.awt.Color(0, 0, 0));
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -207,7 +208,7 @@ public class BookEditPanel extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel11.setBackground(new java.awt.Color(0, 204, 102));
+        jLabel11.setBackground(new java.awt.Color(0, 0, 0));
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -218,7 +219,7 @@ public class BookEditPanel extends javax.swing.JPanel {
 
         txtComment.setText("jTextField1");
 
-        btnAddComment.setBackground(new java.awt.Color(204, 0, 51));
+        btnAddComment.setBackground(new java.awt.Color(240, 173, 78));
         btnAddComment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAddComment.setForeground(new java.awt.Color(255, 255, 255));
         btnAddComment.setText("Gửi");
@@ -234,7 +235,7 @@ public class BookEditPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 897, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1156, Short.MAX_VALUE)
                     .addComponent(txtComment))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAddComment)
@@ -277,8 +278,8 @@ public class BookEditPanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -367,7 +368,7 @@ public class BookEditPanel extends javax.swing.JPanel {
     }
     
     public void onBtnBack(MouseAdapter action) {
-        this.btnBack.addMouseListener(new SetButton.SetBtnBackB(btnBack));
+        this.btnBack.addMouseListener(new SetButton.SetLabelEffectB(btnBack));
         this.btnBack.addMouseListener(action);
     }
     

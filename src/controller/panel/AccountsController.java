@@ -11,19 +11,19 @@ import javax.swing.event.DocumentListener;
 import models.DAO.UserDAO;
 import models.UserModel;
 import other.SetDataToList;
-import views.panels.UserManagingPanel;
+import views.panels.AccountsPanel;
 import views.MainView;
 
 /**
  *
  * @author ADMIN
  */
-public class UserManagingController {
+public class AccountsController {
 
-    private UserManagingPanel userPanel;
+    private AccountsPanel userPanel;
     private MainView mainView;
 
-    public UserManagingController(UserManagingPanel userPanel, MainView mainView) {
+    public AccountsController(AccountsPanel userPanel, MainView mainView) {
         this.userPanel = userPanel;
         this.mainView = mainView;
         this.initData();

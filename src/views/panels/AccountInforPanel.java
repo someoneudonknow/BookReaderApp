@@ -18,12 +18,12 @@ import other.SetButton;
  *
  * @author ADMIN
  */
-public class UserMInforPanel extends javax.swing.JPanel {
+public class AccountInforPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form InforPanel
      */
-    public UserMInforPanel() {
+    public AccountInforPanel() {
         initComponents();
     }
 
@@ -50,24 +50,25 @@ public class UserMInforPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        setPreferredSize(new java.awt.Dimension(1013, 698));
+        setPreferredSize(new java.awt.Dimension(1272, 698));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnBack.setBackground(new java.awt.Color(0, 204, 102));
+        btnBack.setBackground(new java.awt.Color(146, 154, 171));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnBack.setText("Back");
-        btnBack.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnBack.setOpaque(true);
+        btnBack.setPreferredSize(new java.awt.Dimension(50, 50));
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLabel1.setBackground(new java.awt.Color(0, 204, 102));
+        jLabel1.setBackground(new java.awt.Color(146, 154, 171));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INFORMATION");
         jLabel1.setOpaque(true);
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1011, 40));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1272, 50));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -146,10 +147,10 @@ public class UserMInforPanel extends javax.swing.JPanel {
                         .addComponent(password)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 85, -1, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     public JLabel getImageHolder() {
@@ -169,7 +170,7 @@ public class UserMInforPanel extends javax.swing.JPanel {
     }
     
     public void onBtnBack(MouseAdapter action) {
-        this.btnBack.addMouseListener(new SetButton.SetBtnBack(btnBack));
+        this.btnBack.addMouseListener(new SetButton.SetLabelEffect(btnBack));
         this.btnBack.addMouseListener(action);
     }
     

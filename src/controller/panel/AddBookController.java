@@ -34,19 +34,19 @@ import views.MainView;
 import views.items.CategoryItem;
 import views.panels.AddBookPanel;
 import views.panels.AddChapterPanel;
-import views.panels.BookManagingPanel;
+import views.panels.BooksPanel;
 
 public class AddBookController {
 
     private AddBookPanel bookPanel;
     private MainView mainView;
-    private BookManagingPanel previousPanel;
+    private BooksPanel previousPanel;
 
     private AddChapterPanel addChapterPanel;
     private LinkedList<ChapterModel> currentChaps;
     private AddChapterReviewController ctrc;
     
-    public AddBookController(AddBookPanel bookPanel, MainView mainView, BookManagingPanel previousPanel) {
+    public AddBookController(AddBookPanel bookPanel, MainView mainView, BooksPanel previousPanel) {
         this.bookPanel = bookPanel;
         this.mainView = mainView;
         this.previousPanel = previousPanel;

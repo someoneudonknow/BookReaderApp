@@ -45,6 +45,9 @@ public class ChangeCategory extends javax.swing.JFrame {
         jLabel4.setText("Categories");
         jLabel4.setOpaque(true);
 
+        btnCancel.setBackground(new java.awt.Color(0, 0, 0));
+        btnCancel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnCancel.setForeground(new java.awt.Color(255, 255, 255));
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -52,6 +55,9 @@ public class ChangeCategory extends javax.swing.JFrame {
             }
         });
 
+        btnConfirm.setBackground(new java.awt.Color(0, 0, 0));
+        btnConfirm.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnConfirm.setForeground(new java.awt.Color(255, 255, 255));
         btnConfirm.setText("Confirm");
         btnConfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,6 +67,9 @@ public class ChangeCategory extends javax.swing.JFrame {
 
         cateErrorMessage.setForeground(new java.awt.Color(204, 0, 51));
 
+        resetBtn.setBackground(new java.awt.Color(0, 0, 0));
+        resetBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        resetBtn.setForeground(new java.awt.Color(255, 255, 255));
         resetBtn.setText("Reset");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

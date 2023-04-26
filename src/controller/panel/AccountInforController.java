@@ -9,15 +9,15 @@ import java.awt.event.MouseEvent;
 import models.UserModel;
 import other.Converter;
 import views.MainView;
-import views.panels.UserMInforPanel;
-import views.panels.UserManagingPanel;
+import views.panels.AccountInforPanel;
+import views.panels.AccountsPanel;
 
-public class UserInformationController {
-    private UserMInforPanel infoPanel;
+public class AccountInforController {
+    private AccountInforPanel infoPanel;
     private UserModel currentUser;
     private MainView mainView;
     
-    public UserInformationController(UserMInforPanel infoPanel, UserModel user, MainView mainView) {
+    public AccountInforController(AccountInforPanel infoPanel, UserModel user, MainView mainView) {
         this.infoPanel = infoPanel;
         this.currentUser = user;
         this.mainView = mainView;
@@ -40,8 +40,8 @@ public class UserInformationController {
     }
     
     public void backToPrevious() {
-        UserManagingPanel userPanel = new UserManagingPanel();
-            new UserManagingController(userPanel, this.mainView);
+        AccountsPanel userPanel = new AccountsPanel();
+            new AccountsController(userPanel, this.mainView);
             this.mainView.setMainPanel(userPanel);
     }
 }

@@ -1,5 +1,7 @@
 package views;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.ButtonGroup;
@@ -12,6 +14,8 @@ import javax.swing.JTextField;
 public class RegisterForm extends javax.swing.JFrame {
     public RegisterForm() {
         initComponents();
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/icon_app.jpg"));  
+        this.setIconImage(icon);
     }
     
     @SuppressWarnings("unchecked")
@@ -46,15 +50,18 @@ public class RegisterForm extends javax.swing.JFrame {
         photoErrorMessage = new javax.swing.JLabel();
         showPasswordBtn = new javax.swing.JCheckBox();
         showPasswordConfirmBtn = new javax.swing.JCheckBox();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Sign up");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 23, 739, 54));
 
-        registerBtn.setBackground(new java.awt.Color(204, 0, 51));
-        registerBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        registerBtn.setBackground(new java.awt.Color(0, 0, 0));
+        registerBtn.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         registerBtn.setForeground(new java.awt.Color(255, 255, 255));
         registerBtn.setText("Register");
         registerBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -62,204 +69,130 @@ public class RegisterForm extends javax.swing.JFrame {
                 registerBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(registerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 670, 739, 44));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         passwordConfirm.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         passwordConfirm.setText("Password Confirm");
+        jPanel1.add(passwordConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 329, 524, -1));
 
         passwordConfirmErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel1.add(passwordConfirmErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 429, 524, -1));
 
         loginLink.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         loginLink.setForeground(new java.awt.Color(0, 0, 255));
         loginLink.setText("Login");
         loginLink.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(loginLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 435, 60, -1));
 
         genderErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel1.add(genderErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 217, 522, -1));
 
         passwordInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel1.add(passwordInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 249, 522, 42));
 
         phoneNumberInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel1.add(phoneNumberInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 110, 522, 42));
 
         userNameInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel1.add(userNameInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 32, 524, 42));
 
         photo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         photo.setText("Avatar");
+        jPanel1.add(photo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 46, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Already have an account?");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 435, -1, -1));
 
+        maleRadioBtn.setBackground(new java.awt.Color(255, 255, 255));
         genderGroup.add(maleRadioBtn);
         maleRadioBtn.setText("Male");
+        maleRadioBtn.setOpaque(true);
+        jPanel1.add(maleRadioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 190, 98, -1));
 
         passwordErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel1.add(passwordErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 323, 524, -1));
 
         passwordConfirmInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel1.add(passwordConfirmInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 355, 524, 42));
 
         imageHolder.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         imageHolder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imageHolder.setText("photo");
         imageHolder.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(imageHolder, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 165, 191));
 
         password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         password.setLabelFor(passwordInput);
         password.setText("Password");
+        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 223, 522, -1));
 
+        femaleRadioBtn.setBackground(new java.awt.Color(255, 255, 255));
         genderGroup.add(femaleRadioBtn);
         femaleRadioBtn.setText("Female");
+        femaleRadioBtn.setOpaque(true);
+        jPanel1.add(femaleRadioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 98, -1));
 
         phoneNumberErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel1.add(phoneNumberErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 158, 522, -1));
 
         genders.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         genders.setLabelFor(genders);
         genders.setText("Gender");
+        jPanel1.add(genders, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 164, 522, -1));
 
         userNameErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel1.add(userNameErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 80, 522, -1));
 
+        chooseFileBtn.setBackground(new java.awt.Color(240, 173, 78));
+        chooseFileBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        chooseFileBtn.setForeground(new java.awt.Color(255, 255, 255));
         chooseFileBtn.setText("Brown File");
         chooseFileBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(chooseFileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 270, 109, 35));
 
         phoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         phoneNumber.setLabelFor(phoneNumberInput);
         phoneNumber.setText("Phone number");
+        jPanel1.add(phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 86, 522, -1));
 
         userName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         userName.setLabelFor(userNameInput);
         userName.setText("User name");
+        jPanel1.add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 524, -1));
 
         photoErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
+        jPanel1.add(photoErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, 165, -1));
 
+        showPasswordBtn.setBackground(new java.awt.Color(255, 255, 255));
         showPasswordBtn.setText("Show password");
+        showPasswordBtn.setOpaque(true);
+        jPanel1.add(showPasswordBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 297, 524, -1));
 
+        showPasswordConfirmBtn.setBackground(new java.awt.Color(255, 255, 255));
         showPasswordConfirmBtn.setText("Show password");
+        showPasswordConfirmBtn.setOpaque(true);
+        jPanel1.add(showPasswordConfirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 403, 524, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(showPasswordBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(passwordErrorMessage, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(passwordConfirmErrorMessage, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(showPasswordConfirmBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(maleRadioBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(femaleRadioBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(loginLink, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(passwordConfirmInput, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(userNameInput, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(passwordConfirm, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
-                                .addComponent(userName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(phoneNumberInput, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(phoneNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
-                        .addComponent(userNameErrorMessage, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(genders, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
-                        .addComponent(phoneNumberErrorMessage, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(password, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
-                        .addComponent(genderErrorMessage, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(photo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chooseFileBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(imageHolder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(photoErrorMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 89, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 799, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(userName)
-                    .addComponent(photo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(chooseFileBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(imageHolder, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(photoErrorMessage))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(userNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(userNameErrorMessage)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(phoneNumber)
-                        .addGap(4, 4, 4)
-                        .addComponent(phoneNumberInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(phoneNumberErrorMessage)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(genders)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(femaleRadioBtn)
-                            .addComponent(maleRadioBtn))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(genderErrorMessage)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(password)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(passwordInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(showPasswordBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passwordErrorMessage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passwordConfirm)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(passwordConfirmInput, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(showPasswordConfirmBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(passwordConfirmErrorMessage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(loginLink))
-                .addContainerGap())
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 744, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(38, 38, 38))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(registerBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(30, 30, 30))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
-                .addComponent(registerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
-        );
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 799, 744));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -370,7 +303,7 @@ public class RegisterForm extends javax.swing.JFrame {
             pack();
             setLocationRelativeTo(null);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
-            setTitle("Sign up");
+            setTitle("Wibu Forever (hay gì gì đó)");
             setVisible(true);
         });
     }
@@ -385,6 +318,7 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel loginLink;
     private javax.swing.JRadioButton maleRadioBtn;
     private javax.swing.JLabel password;

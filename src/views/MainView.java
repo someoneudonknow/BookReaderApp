@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -51,112 +52,52 @@ public class MainView extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lbAvatar = new javax.swing.JLabel();
         lbUsername = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        btnMain = new javax.swing.JButton();
-        btnInFor = new javax.swing.JButton();
-        btnLibrary = new javax.swing.JButton();
-        btnHistory = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
-        btnBookManager = new javax.swing.JButton();
-        btnUserManager = new javax.swing.JButton();
-        btnLogOut = new javax.swing.JButton();
+        groupBtn = new javax.swing.JPanel();
         mainPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 255, 255));
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(300, 800));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(250, 800));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setPreferredSize(new java.awt.Dimension(200, 200));
 
         lbAvatar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbAvatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/avatar_default.jpg"))); // NOI18N
-        lbAvatar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbAvatar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 5));
         lbAvatar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbAvatar.setPreferredSize(new java.awt.Dimension(157, 157));
         jPanel2.add(lbAvatar);
 
+        lbUsername.setBackground(new java.awt.Color(0, 0, 0));
+        lbUsername.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbUsername.setForeground(new java.awt.Color(255, 255, 255));
         lbUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbUsername.setText("username");
+        lbUsername.setOpaque(true);
+        lbUsername.setPreferredSize(new java.awt.Dimension(150, 20));
         jPanel2.add(lbUsername);
 
         jPanel1.add(jPanel2);
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setPreferredSize(new java.awt.Dimension(280, 389));
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
-
-        btnMain.setBackground(new java.awt.Color(0, 204, 102));
-        btnMain.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnMain.setForeground(new java.awt.Color(255, 255, 255));
-        btnMain.setText("HOME");
-        btnMain.setPreferredSize(new java.awt.Dimension(200, 43));
-        jPanel4.add(btnMain);
-
-        btnInFor.setBackground(new java.awt.Color(0, 204, 102));
-        btnInFor.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnInFor.setForeground(new java.awt.Color(255, 255, 255));
-        btnInFor.setText("INFORMATION");
-        btnInFor.setPreferredSize(new java.awt.Dimension(200, 43));
-        jPanel4.add(btnInFor);
-
-        btnLibrary.setBackground(new java.awt.Color(0, 204, 102));
-        btnLibrary.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnLibrary.setForeground(new java.awt.Color(255, 255, 255));
-        btnLibrary.setText("LIBRARY");
-        btnLibrary.setPreferredSize(new java.awt.Dimension(200, 43));
-        jPanel4.add(btnLibrary);
-
-        btnHistory.setBackground(new java.awt.Color(0, 204, 102));
-        btnHistory.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnHistory.setForeground(new java.awt.Color(255, 255, 255));
-        btnHistory.setText("HISTORY");
-        btnHistory.setPreferredSize(new java.awt.Dimension(200, 43));
-        jPanel4.add(btnHistory);
-
-        btnSearch.setBackground(new java.awt.Color(0, 204, 102));
-        btnSearch.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearch.setText("ADVANCED SEARCH");
-        btnSearch.setPreferredSize(new java.awt.Dimension(200, 43));
-        jPanel4.add(btnSearch);
-
-        btnBookManager.setBackground(new java.awt.Color(0, 204, 102));
-        btnBookManager.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnBookManager.setForeground(new java.awt.Color(255, 255, 255));
-        btnBookManager.setText("BOOKS");
-        btnBookManager.setPreferredSize(new java.awt.Dimension(200, 43));
-        jPanel4.add(btnBookManager);
-
-        btnUserManager.setBackground(new java.awt.Color(0, 204, 102));
-        btnUserManager.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnUserManager.setForeground(new java.awt.Color(255, 255, 255));
-        btnUserManager.setText("ACCOUNTS");
-        btnUserManager.setPreferredSize(new java.awt.Dimension(200, 43));
-        jPanel4.add(btnUserManager);
-
-        jPanel1.add(jPanel4);
-
-        btnLogOut.setBackground(new java.awt.Color(204, 0, 51));
-        btnLogOut.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnLogOut.setForeground(new java.awt.Color(255, 255, 255));
-        btnLogOut.setText("LOG OUT");
-        btnLogOut.setBorder(null);
-        btnLogOut.setBorderPainted(false);
-        btnLogOut.setOpaque(true);
-        btnLogOut.setPreferredSize(new java.awt.Dimension(143, 43));
-        jPanel1.add(btnLogOut);
+        groupBtn.setBackground(new java.awt.Color(0, 0, 0));
+        groupBtn.setPreferredSize(new java.awt.Dimension(250, 400));
+        groupBtn.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+        jPanel1.add(groupBtn);
 
         jPanel7.add(jPanel1);
 
         mainPanel.setBackground(new java.awt.Color(255, 255, 255));
-        mainPanel.setPreferredSize(new java.awt.Dimension(1200, 800));
+        mainPanel.setAlignmentX(0.0F);
+        mainPanel.setAlignmentY(0.0F);
+        mainPanel.setPreferredSize(new java.awt.Dimension(1272, 800));
+        mainPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
         jPanel7.add(mainPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -180,30 +121,6 @@ public class MainView extends javax.swing.JFrame {
         return userModels;
     }
 
-    public JButton getBtnHistory() {
-        return btnHistory;
-    }
-
-    public JButton getBtnInFor() {
-        return btnInFor;
-    }
-
-    public JButton getBtnLibrary() {
-        return btnLibrary;
-    }
-
-    public JButton getBtnLogOut() {
-        return btnLogOut;
-    }
-
-    public JButton getBtnMain() {
-        return btnMain;
-    }
-
-    public JButton getBtnSearch() {
-        return btnSearch;
-    }
-
     public JPanel getjPanel3() {
         return mainPanel;
     }
@@ -223,13 +140,11 @@ public class MainView extends javax.swing.JFrame {
         return lbUsername;
     }
 
-    public JButton getBtnBookManager() {
-        return btnBookManager;
+    public JPanel getGroupBtn() {
+        return groupBtn;
     }
-
-    public JButton getBtnUserManager() {
-        return btnUserManager;
-    }
+    
+    
 
     /**
      * @param args the command line arguments
@@ -245,50 +160,12 @@ public class MainView extends javax.swing.JFrame {
     }
 
     //Event
-    public void onBtnInfor(ActionListener action) {
-        this.btnInFor.addActionListener(action);
-    }
-    
-    public void onBtnHistory(ActionListener action) {
-        this.btnHistory.addActionListener(action);
-    }
-    
-    public void onBtnSearch(ActionListener action) {
-        this.btnSearch.addActionListener(action);
-    }
-    
-    public void onBtnLibrary(ActionListener action) {
-        this.btnLibrary.addActionListener(action);
-    }
 
-    public void onBtnMain(ActionListener action) {
-        this.btnMain.addActionListener(action);
-    }
-    
-    public void onBtnLogOut(ActionListener action) {
-        this.btnLogOut.addActionListener(action);
-    }
-    
-    public void onBtnBookManager(ActionListener action) {
-        this.btnBookManager.addActionListener(action);
-    }
-    
-    public void onBtnUserManager(ActionListener action) {
-        this.btnUserManager.addActionListener(action);
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBookManager;
-    private javax.swing.JButton btnHistory;
-    private javax.swing.JButton btnInFor;
-    private javax.swing.JButton btnLibrary;
-    private javax.swing.JButton btnLogOut;
-    private javax.swing.JButton btnMain;
-    private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnUserManager;
+    private javax.swing.JPanel groupBtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JLabel lbAvatar;
     private javax.swing.JLabel lbUsername;

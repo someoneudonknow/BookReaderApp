@@ -6,7 +6,7 @@ package controller.panel;
 
 import java.sql.SQLException;
 import java.time.Clock;
-import views.items.BookItem;
+import views.items.Book;
 import views.items.CategoryItem;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -23,14 +23,14 @@ import other.SetDataToList;
 import views.panels.SearchPanel;
 import views.MainView;
 
-public class SearchPanelController {
+public class SearchController {
     SearchPanel searchPanel;
     MainView mainView;
     ArrayList<CategoryModel> categoryList;
     ArrayList<HaveCategoryModel> haveCategoryList;
     ArrayList<BookModel> bookList;
 
-    public SearchPanelController(SearchPanel searchPanel, MainView mainView) {
+    public SearchController(SearchPanel searchPanel, MainView mainView) {
         this.searchPanel = searchPanel;
         this.mainView = mainView;
         this.setCategoryItemList();
@@ -39,12 +39,12 @@ public class SearchPanelController {
                 //                searchResult();
                 getDataAndFind();
             } catch (SQLException ex) {
-                Logger.getLogger(SearchPanelController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(SearchController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
 
-    public SearchPanelController(SearchPanel searchPanel, MainView mainView, ArrayList<CategoryModel> categoryList, ArrayList<HaveCategoryModel> haveCategoryList, ArrayList<BookModel> bookList) {
+    public SearchController(SearchPanel searchPanel, MainView mainView, ArrayList<CategoryModel> categoryList, ArrayList<HaveCategoryModel> haveCategoryList, ArrayList<BookModel> bookList) {
         this.searchPanel = searchPanel;
         this.mainView = mainView;
         this.categoryList = categoryList;
@@ -54,7 +54,7 @@ public class SearchPanelController {
             try {
                 searchResult();
             } catch (SQLException ex) {
-                Logger.getLogger(SearchPanelController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(SearchController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
@@ -104,9 +104,9 @@ public class SearchPanelController {
        ArrayList<BookModel> temp = BookDAO.getInstance().getDataAvailable(sort, type, name, categoryList);
        
        //convert from BookModel to BookItem
-       ArrayList<BookItem> result = new ArrayList<BookItem>();
+       ArrayList<Book> result = new ArrayList<Book>();
        for(int i = 0;i < temp.size(); i++){
-           result.add(i, new BookItem(temp.get(i)));
+           result.add(i, new Book(temp.get(i)));
        }
   
        
@@ -118,13 +118,13 @@ public class SearchPanelController {
         setData.SetSearchDataToList(searchPanel.getListResult(), this.searchPanel, name, type, sort, categoryList);
     }
     public void getBookItemListResult(String keyword, int type, ArrayList<CategoryModel> categoryList) throws SQLException {
-        ArrayList<BookItem> listResult = new ArrayList<>();
+        ArrayList<Book> listResult = new ArrayList<>();
         
         try {
             for (BookModel i:bookList) {
             if (checkKeyword(keyword, type)){
                 if (checkCategory(i.getId(), categoryList))
-                    listResult.add(new BookItem(i));
+                    listResult.add(new Book(i));
                 }
             }
         } catch (Exception e) {

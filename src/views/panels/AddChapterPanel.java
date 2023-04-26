@@ -42,37 +42,42 @@ public class AddChapterPanel extends javax.swing.JPanel {
         confirmBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1013, 698));
+        setPreferredSize(new java.awt.Dimension(1272, 698));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel6.setPreferredSize(new java.awt.Dimension(1272, 660));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnBack.setBackground(new java.awt.Color(0, 204, 102));
+        btnBack.setBackground(new java.awt.Color(146, 154, 171));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnBack.setText("Back");
-        btnBack.setPreferredSize(new java.awt.Dimension(40, 40));
+        btnBack.setOpaque(true);
+        btnBack.setPreferredSize(new java.awt.Dimension(50, 50));
         jPanel6.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        lbAddChapter.setBackground(new java.awt.Color(0, 204, 102));
+        lbAddChapter.setBackground(new java.awt.Color(146, 154, 171));
         lbAddChapter.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbAddChapter.setForeground(new java.awt.Color(255, 255, 255));
         lbAddChapter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbAddChapter.setText("NEW CHAPTER");
         lbAddChapter.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbAddChapter.setOpaque(true);
-        jPanel6.add(lbAddChapter, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1011, 40));
+        jPanel6.add(lbAddChapter, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 50));
 
-        btnCancel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCancel.setBackground(new java.awt.Color(0, 0, 0));
+        btnCancel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnCancel.setForeground(new java.awt.Color(255, 255, 255));
         btnCancel.setText("Cancel");
+        btnCancel.setOpaque(true);
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
             }
         });
-        jPanel6.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 620, 150, 40));
+        jPanel6.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 630, 200, 40));
 
         jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane2.setPreferredSize(new java.awt.Dimension(52, 2));
@@ -81,26 +86,33 @@ public class AddChapterPanel extends javax.swing.JPanel {
         listChapter.setLayout(new javax.swing.BoxLayout(listChapter, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane2.setViewportView(listChapter);
 
-        jPanel6.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 47, 999, 544));
+        jPanel6.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 1250, 544));
 
-        btnAdd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnAdd.setBackground(new java.awt.Color(0, 0, 0));
+        btnAdd.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("Add new chapter");
         btnAdd.setMaximumSize(new java.awt.Dimension(100, 50));
         btnAdd.setMinimumSize(new java.awt.Dimension(100, 50));
+        btnAdd.setOpaque(true);
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
             }
         });
-        jPanel6.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, 150, 40));
+        jPanel6.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 630, 200, 40));
 
+        confirmBtn.setBackground(new java.awt.Color(0, 0, 0));
+        confirmBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        confirmBtn.setForeground(new java.awt.Color(255, 255, 255));
         confirmBtn.setText("Confirm");
+        confirmBtn.setOpaque(true);
         confirmBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmBtnActionPerformed(evt);
             }
         });
-        jPanel6.add(confirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 620, 150, 40));
+        jPanel6.add(confirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 630, 200, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -139,7 +151,7 @@ public class AddChapterPanel extends javax.swing.JPanel {
     }
 
     public void onBtnBack(MouseAdapter action) {
-        this.btnBack.addMouseListener(new SetButton.SetBtnBack(btnBack));
+        this.btnBack.addMouseListener(new SetButton.SetLabelEffect(btnBack));
         this.btnBack.addMouseListener(action);
     }
 

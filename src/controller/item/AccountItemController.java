@@ -4,20 +4,20 @@
  */
 package controller.item;
 
-import controller.panel.UserInformationController;
+import controller.panel.AccountInforController;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import views.items.UserItemManager;
+import views.items.AccountItem;
 import models.UserModel;
-import views.panels.UserMInforPanel;
+import views.panels.AccountInforPanel;
 import views.MainView;
 
-public class UserItemController {
-    private UserItemManager userItem;
+public class AccountItemController {
+    private AccountItem userItem;
     private MainView mainView;
     private UserModel userModels;
 
-    public UserItemController(UserItemManager userItem, MainView mainView, UserModel currentUser) {
+    public AccountItemController(AccountItem userItem, MainView mainView, UserModel currentUser) {
         this.userItem = userItem;
         this.mainView = mainView;
         this.userModels = currentUser;
@@ -33,8 +33,8 @@ public class UserItemController {
     
     public void changeInforPanel(){
         try {
-            UserMInforPanel userInfor = new UserMInforPanel();
-            new UserInformationController(userInfor, this.userModels, this.mainView);
+            AccountInforPanel userInfor = new AccountInforPanel();
+            new AccountInforController(userInfor, this.userModels, this.mainView);
             this.mainView.setMainPanel(userInfor);
         } catch (Exception es) {
             System.out.println("Khong co mainView");

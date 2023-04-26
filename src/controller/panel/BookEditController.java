@@ -36,7 +36,7 @@ import views.panels.AddChapterPanel;
 import views.panels.BookEditPanel;
 import views.panels.BookInforPanel;
 import views.MainView;
-import views.panels.BookManagingPanel;
+import views.panels.BooksPanel;
 
 /**
  *
@@ -124,10 +124,10 @@ public class BookEditController {
         }
 
         JPanel panel = this.bookEditPanel.getListChapter();
-        panel.setPreferredSize(new Dimension(0, panel.getComponentCount() * 40));
+        panel.setPreferredSize(new Dimension(0, panel.getComponentCount() * 50));
 
         JPanel panel1 = this.bookEditPanel.getListComment();
-        panel1.setPreferredSize(new Dimension(0, panel1.getComponentCount() * 40));
+        panel1.setPreferredSize(new Dimension(0, panel1.getComponentCount() * 50));
     }
 
     public void AddChapter() {
@@ -264,8 +264,8 @@ public class BookEditController {
     }
 
     public void backToPrevious() {
-        BookManagingPanel previousPanel = new BookManagingPanel();
-        new BookManagingController(previousPanel, mainView);
+        BooksPanel previousPanel = new BooksPanel();
+        new BooksController(previousPanel, mainView);
         this.mainView.setMainPanel(previousPanel);
     }
 }
