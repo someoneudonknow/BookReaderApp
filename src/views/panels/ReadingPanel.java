@@ -42,17 +42,17 @@ public class ReadingPanel extends javax.swing.JPanel {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Arial", "Times New Roman"}));
         jEditorPane1.setEditable(false);
         HTMLDocument doc = new HTMLDocument();
-    
+        
+        
         File file = new File("C:\\Users\\ADMIN\\Desktop\\BookReaderApp\\src\\other\\text.txt");
         BufferedReader br = null;
         FileReader fr = null;
-        String re = ""; 
-                
-        fr = new FileReader(file);
-        br = new BufferedReader(fr);
-        re = br.readLine();
-                
-        if(re == null){
+        String re = "";
+
+        if (!file.exists()) {
+
+            boolean temp = file.createNewFile();
+            System.out.println(temp);
             this.getjEditorPane1().putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
             jComboBox1.setSelectedItem("Times New Roman");
             jTextField2.setText("15");
@@ -61,14 +61,18 @@ public class ReadingPanel extends javax.swing.JPanel {
             jEditorPane1.setMargin(insets);
             this.getjEditorPane1().setFont(new Font((String) this.getjComboBox1().getSelectedItem(), Font.PLAIN, Integer.parseInt(this.getjTextField2().getText())));
             MutableAttributeSet set = new SimpleAttributeSet();
-//            StyleConstants.setAlignment(set, StyleConstants.ALIGN_JUSTIFIED);
+            StyleConstants.setAlignment(set, StyleConstants.ALIGN_JUSTIFIED);
             doc.setParagraphAttributes(0, doc.getLength(), set, false);
             this.getjEditorPane1().setDocument(doc);
-            
-        }else{
+        } else {
+
+            fr = new FileReader(file);
+            br = new BufferedReader(fr);
+            re = br.readLine();
+
             this.getjEditorPane1().putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
             String[] result = re.split(",");
-            int paddingNum = Integer.parseInt(result[0]); 
+            int paddingNum = Integer.parseInt(result[0]);
             int sizeNum = Integer.parseInt(result[1]);
             String fontStyle = result[2];
             jComboBox1.setSelectedItem(fontStyle);
@@ -81,7 +85,6 @@ public class ReadingPanel extends javax.swing.JPanel {
             doc.setParagraphAttributes(0, doc.getLength(), set, false);
             this.getjEditorPane1().setDocument(doc);
         }
-   
     }
 
     public javax.swing.JComboBox<String> getBoxChapter() {
