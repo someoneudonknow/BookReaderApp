@@ -1,12 +1,13 @@
 package controller.view;
 
-import controller.panel.BookManagingController;
+import controller.item.ButtonViewController;
+import controller.panel.BooksController;
 import controller.panel.MainPanelController;
-import controller.panel.SearchPanelController;
+import controller.panel.SearchController;
 import controller.panel.HistoryController;
-import controller.panel.InforPanelController;
+import controller.panel.InforController;
 import controller.panel.LibraryController;
-import controller.panel.UserManagingController;
+import controller.panel.AccountsController;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
@@ -17,17 +18,19 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import models.UserModel;
 import other.Converter;
+import other.SetButton;
 import views.panels.AllBookPanel;
-import views.panels.BookManagingPanel;
+import views.panels.BooksPanel;
 import views.panels.HistoryPanel;
 import views.panels.InforPanel;
 import views.LoginForm;
 import views.panels.MainPanel;
 import views.MainView;
+import views.items.ButtonItem;
 import views.panels.SearchPanel;
 import views.panels.LibraryPanel;
 import views.panels.ReadingPanel;
-import views.panels.UserManagingPanel;
+import views.panels.AccountsPanel;
 
 public class MainViewController {
 
@@ -36,84 +39,7 @@ public class MainViewController {
     public MainViewController(MainView mainView) {
         this.mainView = mainView;
         this.mainView.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        MainPanel panel = new MainPanel();
-        new MainPanelController(panel, this.mainView);
-        if (this.mainView.getUserModels().isIsManager() == true) {
-            this.mainView.getBtnHistory().setVisible(false);
-            this.mainView.getBtnLibrary().setVisible(false);
-            this.mainView.getBtnMain().setVisible(false);
-            this.mainView.getBtnSearch().setVisible(false);
-
-            BookManagingPanel panel1 = new BookManagingPanel();
-            new BookManagingController(panel1, this.mainView);
-            changePanel(panel1);
-        } else {
-            this.mainView.getBtnBookManager().setVisible(false);
-            this.mainView.getBtnUserManager().setVisible(false);
-
-            MainPanel panel1 = new MainPanel();
-            new MainPanelController(panel1, this.mainView);
-            changePanel(panel1);
-        }
-
-        this.mainView.onBtnInfor(e -> {
-            InforPanel currentUserInfo = new InforPanel();
-            new InforPanelController(currentUserInfo, this.mainView.getUserModels(), this.mainView);
-            changePanel(currentUserInfo);
-        });
-
-        this.mainView.onBtnMain(e -> {
-            MainPanel panel1 = new MainPanel();
-            new MainPanelController(panel1, this.mainView);
-            changePanel(panel1);
-        });
-
-        this.mainView.onBtnLibrary(e -> {
-            LibraryPanel libraryPanel = new LibraryPanel();
-            try {
-                new LibraryController(libraryPanel, mainView);
-            } catch (SQLException ex) {
-                Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            changePanel(libraryPanel);
-        });
-
-        this.mainView.onBtnHistory(e -> {
-            HistoryPanel historyPanel = new HistoryPanel();
-            try {
-                new HistoryController(historyPanel, mainView);
-            } catch (SQLException ex) {
-                Logger.getLogger(MainViewController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            changePanel(historyPanel);
-        });
-
-        this.mainView.onBtnSearch(e -> {
-            SearchPanel searchPanel = new SearchPanel();
-            new SearchPanelController(searchPanel, mainView);
-            changePanel(searchPanel);
-        });
-
-        this.mainView.onBtnBookManager(e -> {
-            BookManagingPanel panel1 = new BookManagingPanel();
-            new BookManagingController(panel1, this.mainView);
-            changePanel(panel1);
-        });
-
-        this.mainView.onBtnUserManager(e -> {
-            UserManagingPanel userPanel = new UserManagingPanel();
-            new UserManagingController(userPanel, this.mainView);
-            changePanel(userPanel);
-        });
-
-        this.mainView.onBtnLogOut(e -> {
-            int choice = JOptionPane.showConfirmDialog(this.mainView, "Are you sure you want to sign out?", "Sign out", JOptionPane.YES_NO_OPTION);
-            if (choice == 0) {
-                this.mainView.dispose();
-                LoginForm loginForm = new LoginForm();
-                new LoginController(loginForm);
-            }
-        });
+        setButton();
         this.initUI();
         this.mainView.start();
     }
@@ -130,5 +56,58 @@ public class MainViewController {
         }
         
         this.mainView.getLbUsername().setText(currentUser.getUserName());
+    }
+    
+    public void setButton(){
+        if(this.mainView.getUserModels().isIsManager()){
+            ButtonItem btnInfor = new ButtonItem("INFORMATION", null);
+            new ButtonViewController(btnInfor, mainView);
+            
+            BooksPanel bookManagingPanel = new BooksPanel();
+            new BooksController(bookManagingPanel, this.mainView);
+            ButtonItem btnBooks = new ButtonItem("BOOKS", bookManagingPanel);
+            new ButtonViewController(btnBooks, mainView);
+
+            ButtonItem btnAccounts = new ButtonItem("ACCOUNTS", null);
+            new ButtonViewController(btnAccounts, mainView);
+            
+            this.mainView.getGroupBtn().add(btnInfor);
+            this.mainView.getGroupBtn().add(btnBooks);
+            this.mainView.getGroupBtn().add(btnAccounts);
+        
+            this.mainView.setMainPanel(bookManagingPanel);
+        }
+        else{
+            MainPanel panel1 = new MainPanel();
+            new MainPanelController(panel1, this.mainView);
+            ButtonItem btnMain = new ButtonItem("HOME", panel1);
+            new ButtonViewController(btnMain, mainView);
+
+            ButtonItem btnInfor = new ButtonItem("INFORMATION", null);
+            new ButtonViewController(btnInfor, mainView);
+
+            ButtonItem btnLibrary = new ButtonItem("LIBRARY", null);
+            new ButtonViewController(btnLibrary, mainView);
+
+            ButtonItem btnHistory = new ButtonItem("HISTORY", null);
+            new ButtonViewController(btnHistory, mainView);            
+
+            ButtonItem btnSearch = new ButtonItem("ADVANCED SEARCH", null);
+            new ButtonViewController(btnSearch, mainView);
+            
+            this.mainView.getGroupBtn().add(btnMain);
+            this.mainView.getGroupBtn().add(btnInfor);
+            this.mainView.getGroupBtn().add(btnLibrary);
+            this.mainView.getGroupBtn().add(btnHistory);
+            this.mainView.getGroupBtn().add(btnSearch);
+            
+            this.mainView.setMainPanel(panel1);
+        }
+        
+        ButtonItem btnLogout = new ButtonItem("LOG OUT", null);
+        new ButtonViewController(btnLogout, mainView);
+                    
+        this.mainView.getGroupBtn().add(btnLogout);
+        
     }
 }

@@ -4,11 +4,11 @@
  */
 package other;
 
+import controller.item.BookController;
 import controller.item.BookItemController;
-import controller.item.BookItemManagerController;
 import controller.item.ChapterItemController;
 import controller.item.CommentItemController;
-import controller.item.UserItemController;
+import controller.item.AccountItemController;
 import java.awt.Label;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -22,12 +22,12 @@ import javax.swing.JOptionPane;
 import models.BookModel;
 import models.CategoryModel;
 import models.UserModel;
+import views.items.Book;
 import views.items.BookItem;
-import views.items.BookItemManager;
 import views.items.CategoryItem;
 import views.items.ChapterItem;
 import views.items.CommentItem;
-import views.items.UserItemManager;
+import views.items.AccountItem;
 import javax.swing.JPanel;
 import models.ChapterModel;
 import models.DAO.BookDAO;
@@ -36,7 +36,7 @@ import models.DAO.ReviewDAO;
 import models.DAO.UserDAO;
 import models.ReviewModel;
 import models.SavedModel;
-import views.panels.UserManagingPanel;
+import views.panels.AccountsPanel;
 import views.MainView;
 
 /**
@@ -59,7 +59,7 @@ public class SetDataToList {
 
     public void setBookItemList(JPanel panel, String option, JPanel parent) throws SQLException {
 
-        ArrayList<BookItem> items = new ArrayList<>();
+        ArrayList<Book> items = new ArrayList<>();
         ArrayList<BookModel> books = new ArrayList<>();
         if (option.equals("full")) {
             books = BookDAO.getInstance().getOption(option);
@@ -70,12 +70,12 @@ public class SetDataToList {
         }
 
         for (BookModel book : books) {
-            BookItem a = new BookItem(book);
-            new BookItemController(a, this.mainView, option, parent);
+            Book a = new Book(book);
+            new BookController(a, this.mainView, option, parent);
             items.add(a);
         }
 
-        for (BookItem i : items) {
+        for (Book i : items) {
             panel.add(i);
         }
         panel.revalidate();
@@ -84,7 +84,7 @@ public class SetDataToList {
 
     public void SetSearchDataToList(JPanel panel, JPanel parent, String name, String type, String sort, ArrayList<CategoryItem> categoryItem) {
         ArrayList<BookModel> books = new ArrayList<>();
-        ArrayList<BookItem> items = new ArrayList<>();
+        ArrayList<Book> items = new ArrayList<>();
         try {
             books = BookDAO.getInstance().getDataAvailable(sort, type, name, categoryItem);
         } catch (SQLException ex) {
@@ -92,13 +92,13 @@ public class SetDataToList {
         }
         if (books.size() > 0) {
             for (BookModel i : books) {
-                BookItem a = new BookItem(i);
-                new BookItemController(a, this.mainView, "search", parent);
+                Book a = new Book(i);
+                new BookController(a, this.mainView, "search", parent);
                 System.out.println(a.getBookModels().getName());
                 items.add(a);
             }
 
-            for (BookItem i : items) {
+            for (Book i : items) {
                 panel.add(i);
             }
         } else {
@@ -127,19 +127,19 @@ public class SetDataToList {
 //        panel.repaint();
 //    }
     public void setBookManagerList(JPanel panel, ArrayList<BookModel> books, boolean option, String keyword) {
-        List<BookItemManager> itemManager = new ArrayList<>();
+        List<BookItem> itemManager = new ArrayList<>();
         if(option)
             books = BookDAO.getInstance().getAll();
         else 
             books = BookDAO.getInstance().search(keyword);
 
         for (BookModel b : books) {
-            BookItemManager a = new BookItemManager(b);
-            new BookItemManagerController(a, this.mainView, b);
+            BookItem a = new BookItem(b);
+            new BookItemController(a, this.mainView, b);
             itemManager.add(a);
         }
 
-        for (BookItemManager i : itemManager) {
+        for (BookItem i : itemManager) {
             panel.add(i);
         }
         panel.revalidate();
@@ -164,15 +164,15 @@ public class SetDataToList {
 //        panel.repaint();
 //    }
     public void setUserItemList(JPanel panel, List<UserModel> users) {
-        ArrayList<UserItemManager> items = new ArrayList<>();
+        ArrayList<AccountItem> items = new ArrayList<>();
 
         for (UserModel curr : users) {
-            UserItemManager a = new UserItemManager(curr);
-            new UserItemController(a, mainView, curr);
+            AccountItem a = new AccountItem(curr);
+            new AccountItemController(a, mainView, curr);
             items.add(a);
         }
 
-        for (UserItemManager i : items) {
+        for (AccountItem i : items) {
             panel.add(i);
         }
         panel.revalidate();
@@ -211,7 +211,7 @@ public class SetDataToList {
         panel.repaint();
     }
 
-    public void setChapterList(JPanel parent, JPanel panel, List<ChapterModel> chapters) {
+    public void setChapterList(JPanel parent, JPanel panel, List<ChapterModel> chapters) throws SQLException {
         ArrayList<ChapterItem> items = new ArrayList<>();
         panel.removeAll();
 
@@ -267,15 +267,15 @@ public class SetDataToList {
     //tạo list book cho mainView (truyền vào max 5 cuốn)
     public void setTop5View(JPanel panel, String option, JPanel parent) {
         try {
-            ArrayList<BookItem> items = new ArrayList<>();
+            ArrayList<Book> items = new ArrayList<>();
             ArrayList<BookModel> books = new ArrayList<>();
             books = BookDAO.getInstance().getOption(option);
             for (BookModel i : books) {
-                BookItem item = new BookItem(i);
-                new BookItemController(item, mainView, option, parent);
+                Book item = new Book(i);
+                new BookController(item, mainView, option, parent);
                 items.add(item);
             }
-            for (BookItem i : items) {
+            for (Book i : items) {
                 panel.add(i);
             }
         } catch (Exception e) {

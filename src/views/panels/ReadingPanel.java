@@ -125,7 +125,7 @@ public class ReadingPanel extends javax.swing.JPanel {
     }
     
     public void onBtnBack(MouseAdapter action) {
-        this.btnBack.addMouseListener(new SetButton.SetBtnBackB(btnBack));
+        this.btnBack.addMouseListener(new SetButton.SetLabelEffectB(btnBack));
         this.btnBack.addMouseListener(action);
     }
 
@@ -162,15 +162,16 @@ public class ReadingPanel extends javax.swing.JPanel {
         jTextField3 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1272, 735));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnPrevious.setBackground(new java.awt.Color(0, 204, 102));
+        btnPrevious.setBackground(new java.awt.Color(240, 173, 78));
         btnPrevious.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnPrevious.setForeground(new java.awt.Color(255, 255, 255));
         btnPrevious.setText("Previous");
 
-        btnNext.setBackground(new java.awt.Color(0, 204, 102));
+        btnNext.setBackground(new java.awt.Color(240, 173, 78));
         btnNext.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
         btnNext.setText("Next");
@@ -189,7 +190,7 @@ public class ReadingPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnPrevious)
-                .addGap(303, 303, 303)
+                .addGap(436, 436, 436)
                 .addComponent(btnBack)
                 .addGap(18, 18, 18)
                 .addComponent(boxChapter, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,6 +222,7 @@ public class ReadingPanel extends javax.swing.JPanel {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        jScrollPane1.setBorder(null);
         jScrollPane1.setViewportView(jEditorPane1);
 
         jLabel1.setText("Kiểu chữ");
@@ -245,7 +247,9 @@ public class ReadingPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 994, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
@@ -259,8 +263,8 @@ public class ReadingPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(44, 44, 44)))
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );

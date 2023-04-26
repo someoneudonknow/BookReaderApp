@@ -4,29 +4,26 @@
  */
 package views.items;
 
-import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.ListCellRenderer;
 import models.BookModel;
+import other.SetButton;
 
 /**
  *
  * @author ADMIN
  */
-public class BookItem extends javax.swing.JPanel {
+public class BookItem extends javax.swing.JPanel{
 
     /**
-     * Creates new form BookItem
+     * Creates new form BookItemManager
      */
-    private BookModel bookModels;
-    
-    public BookItem(BookModel bookModels) {
+    private BookModel bookItem;
+    public BookItem(BookModel bookItem) {
         initComponents();
-        this.bookModels = bookModels;
+        this.bookItem = bookItem;
+        this.lbID.setText("" + this.bookItem.getId());
+        this.lbName.setText(this.bookItem.getName());
     }
 
     /**
@@ -38,73 +35,97 @@ public class BookItem extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnDelete = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        labelName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lbID = new javax.swing.JLabel();
+        lbName = new javax.swing.JLabel();
+        btnEdit = new javax.swing.JLabel();
+        btnDelete = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        setPreferredSize(new java.awt.Dimension(900, 66));
 
+        labelName.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        labelName.setText("Title");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        jLabel1.setText("ID");
+
+        lbID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbID.setText("jLabel2");
+
+        lbName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbName.setText("jLabel3");
+
+        btnEdit.setBackground(new java.awt.Color(255, 255, 255));
+        btnEdit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnEdit.setForeground(new java.awt.Color(51, 51, 255));
+        btnEdit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnEdit.setText("Edit");
+
+        btnDelete.setBackground(new java.awt.Color(255, 255, 255));
+        btnDelete.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(51, 51, 255));
         btnDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete_icon.png"))); // NOI18N
-        add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        btnDelete.setText("Delete");
 
-        jLabel2.setBackground(new java.awt.Color(0, 204, 204));
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("jLabel2");
-        jLabel2.setOpaque(true);
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 160, 30));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/book.jpg"))); // NOI18N
-        jLabel1.setAlignmentY(0.0F);
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 220));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbID, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelName, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
+                    .addComponent(lbName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(111, 111, 111)
+                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(labelName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbID)
+                    .addComponent(lbName))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
-    public BookModel getBookModels() {
-        return bookModels;
-    }
-
-    public void setBookModels(BookModel bookModels) {
-        this.bookModels = bookModels;
-    }
-
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
-
-    public void setjLabel1(JLabel jLabel1) {
-        this.jLabel1 = jLabel1;
-    }
-
-    public JLabel getjLabel2() {
-        return jLabel2;
-    }
-
-    public void setjLabel2(JLabel jLabel2) {
-        this.jLabel2 = jLabel2;
-    }
-
-    public JLabel getBtnDelete() {
-        return btnDelete;
-    }
-    
-    public void onItemClick(MouseAdapter action) {
-        this.jLabel1.addMouseListener(action);
-        this.jLabel2.addMouseListener(action);
-        this.addMouseListener(action);
+    public void onBtnEdit(MouseAdapter action) {
+        this.btnEdit.addMouseListener(new SetButton.SetLabelEffectB(this.btnEdit));
+        this.btnEdit.addMouseListener(action);
     }
     
     public void onBtnDelete(MouseAdapter action) {
+        this.btnDelete.addMouseListener(new SetButton.SetLabelEffectB(this.btnDelete));
         this.btnDelete.addMouseListener(action);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnDelete;
+    private javax.swing.JLabel btnEdit;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel labelName;
+    private javax.swing.JLabel lbID;
+    private javax.swing.JLabel lbName;
     // End of variables declaration//GEN-END:variables
 
 }

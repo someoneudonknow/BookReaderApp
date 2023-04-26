@@ -80,13 +80,16 @@ public class BookInforPanel extends javax.swing.JPanel {
         listComment = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1272, 825));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnBack.setBackground(new java.awt.Color(255, 255, 255));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnBack.setText("Back");
+        btnBack.setOpaque(true);
         btnBack.setPreferredSize(new java.awt.Dimension(40, 40));
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
@@ -141,7 +144,7 @@ public class BookInforPanel extends javax.swing.JPanel {
         txtCategorys.setText("jLabel10");
         jPanel1.add(txtCategorys, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 138, 492, 33));
 
-        btnFirst.setBackground(new java.awt.Color(0, 204, 102));
+        btnFirst.setBackground(new java.awt.Color(240, 173, 78));
         btnFirst.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnFirst.setForeground(new java.awt.Color(255, 255, 255));
         btnFirst.setText("First chapter");
@@ -151,21 +154,26 @@ public class BookInforPanel extends javax.swing.JPanel {
                 btnFirstActionPerformed(evt);
             }
         });
-        jPanel1.add(btnFirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, -1, -1));
+        jPanel1.add(btnFirst, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 210, -1));
 
-        btnLast.setBackground(new java.awt.Color(0, 204, 102));
+        btnLast.setBackground(new java.awt.Color(240, 173, 78));
         btnLast.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnLast.setForeground(new java.awt.Color(255, 255, 255));
         btnLast.setText("Last chapter");
         btnLast.setPreferredSize(new java.awt.Dimension(160, 37));
-        jPanel1.add(btnLast, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, -1, -1));
+        btnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLastActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLast, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 210, -1));
 
-        btnSave.setBackground(new java.awt.Color(0, 204, 102));
+        btnSave.setBackground(new java.awt.Color(240, 173, 78));
         btnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
         btnSave.setText("Add to library");
         btnSave.setPreferredSize(new java.awt.Dimension(170, 37));
-        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 300, -1, -1));
+        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, 210, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Views:");
@@ -194,7 +202,7 @@ public class BookInforPanel extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel12.setBackground(new java.awt.Color(0, 204, 102));
+        jLabel12.setBackground(new java.awt.Color(0, 0, 0));
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -234,7 +242,7 @@ public class BookInforPanel extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel11.setBackground(new java.awt.Color(0, 204, 102));
+        jLabel11.setBackground(new java.awt.Color(0, 0, 0));
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -245,7 +253,7 @@ public class BookInforPanel extends javax.swing.JPanel {
 
         txtComment.setText("jTextField1");
 
-        btnAddComment.setBackground(new java.awt.Color(0, 204, 102));
+        btnAddComment.setBackground(new java.awt.Color(240, 173, 78));
         btnAddComment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAddComment.setForeground(new java.awt.Color(255, 255, 255));
         btnAddComment.setText("Gửi");
@@ -352,6 +360,10 @@ public class BookInforPanel extends javax.swing.JPanel {
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFirstActionPerformed
+
+    private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLastActionPerformed
 
     public JButton getBtnFirst() {
         return btnFirst;
@@ -460,7 +472,7 @@ public class BookInforPanel extends javax.swing.JPanel {
     }
     
     public void onBtnBack(MouseAdapter action) {
-        this.btnBack.addMouseListener(new SetButton.SetBtnBackB(btnBack));
+        this.btnBack.addMouseListener(new SetButton.SetLabelEffectB(btnBack));
         this.btnBack.addMouseListener(action);
     }
 

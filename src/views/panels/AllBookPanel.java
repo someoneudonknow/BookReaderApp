@@ -39,52 +39,57 @@ public class AllBookPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         listAllBook = new javax.swing.JPanel();
 
+        setPreferredSize(new java.awt.Dimension(1272, 780));
+
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setPreferredSize(new java.awt.Dimension(1272, 780));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnBack.setBackground(new java.awt.Color(0, 204, 102));
+        btnBack.setBackground(new java.awt.Color(146, 154, 171));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnBack.setText("Back");
         btnBack.setOpaque(true);
         btnBack.setPreferredSize(new java.awt.Dimension(40, 40));
-        jPanel6.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel6.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, 50));
 
-        lbNewUpdate.setBackground(new java.awt.Color(0, 204, 102));
+        lbNewUpdate.setBackground(new java.awt.Color(146, 154, 171));
         lbNewUpdate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbNewUpdate.setForeground(new java.awt.Color(255, 255, 255));
         lbNewUpdate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbNewUpdate.setText("NEW UPDATE");
         lbNewUpdate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbNewUpdate.setOpaque(true);
-        jPanel6.add(lbNewUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1011, 40));
+        lbNewUpdate.setPreferredSize(new java.awt.Dimension(1272, 50));
+        jPanel6.add(lbNewUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 50));
 
+        jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setToolTipText("");
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         listAllBook.setBackground(new java.awt.Color(255, 255, 255));
-        listAllBook.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 25, 10, 10));
-        listAllBook.setLayout(new java.awt.GridLayout(-1, 5, 10, 20));
+        listAllBook.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 35, 10, 10));
+        listAllBook.setLayout(new java.awt.GridLayout(-1, 6, 10, 20));
         jScrollPane1.setViewportView(listAllBook);
 
-        jPanel6.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 46, 999, 666));
+        jPanel6.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 1250, 666));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1013, Short.MAX_VALUE)
+            .addGap(0, 1272, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(1, 1, 1)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1270, Short.MAX_VALUE)
                     .addGap(1, 1, 1)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 718, Short.MAX_VALUE)
+            .addGap(0, 780, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -123,7 +128,7 @@ public class AllBookPanel extends javax.swing.JPanel {
     }
 
     public void onBtnBack(MouseAdapter action) {
-        this.btnBack.addMouseListener(new SetButton.SetBtnBack(btnBack));
+        this.btnBack.addMouseListener(new SetButton.SetLabelEffect(btnBack));
         this.btnBack.addMouseListener(action);
     }
 

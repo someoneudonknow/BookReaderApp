@@ -23,7 +23,7 @@ import models.ChapterModel;
 import models.UserModel;
 import models.interfaces.DAOInterface;
 import utils.ResultSetQuery;
-import views.items.BookItem;
+import views.items.Book;
 import views.items.CategoryItem;
 
 /**
@@ -488,7 +488,7 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
         int size = categoryItem.size();
         if (size != 0) {
             for (int i = 0; i < size; i++) {
-                query = query + "AND havecategory.category_id = " + categoryItem.get(i).getCategoryModels().getId();
+                query = query + " AND havecategory.category_id = " + categoryItem.get(i).getCategoryModels().getId();
             }
         }
         query = query + " GROUP BY bi.book_id ";

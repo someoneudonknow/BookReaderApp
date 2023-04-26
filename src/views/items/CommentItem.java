@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import models.DAO.ReviewDAO;
 import models.ReviewModel;
 import models.entityPK.ReviewPK;
+import other.SetButton;
 import static utils.formatDate.formatDate;
 
 /**
@@ -55,24 +56,26 @@ public class CommentItem extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(32767, 40));
-        setPreferredSize(new java.awt.Dimension(980, 50));
+        setPreferredSize(new java.awt.Dimension(1252, 50));
         setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
         txtComment.setBackground(new java.awt.Color(255, 255, 255));
         txtComment.setText("jLabel1");
         txtComment.setAlignmentY(0.0F);
-        txtComment.setPreferredSize(new java.awt.Dimension(700, 50));
+        txtComment.setPreferredSize(new java.awt.Dimension(940, 50));
         add(txtComment);
 
         txtDate.setText("date");
         add(txtDate);
 
         txtRate.setText("jLabel1");
-        txtRate.setPreferredSize(new java.awt.Dimension(150, 50));
+        txtRate.setPreferredSize(new java.awt.Dimension(145, 50));
         add(txtRate);
 
+        btnDelete.setBackground(new java.awt.Color(255, 255, 255));
         btnDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete_icon.png"))); // NOI18N
+        btnDelete.setOpaque(true);
         btnDelete.setPreferredSize(new java.awt.Dimension(50, 48));
         add(btnDelete);
     }// </editor-fold>//GEN-END:initComponents
@@ -86,6 +89,7 @@ public class CommentItem extends javax.swing.JPanel {
     }
 
     public void onBtnDeleteClick(MouseAdapter action) {
+        this.btnDelete.addMouseListener(new SetButton.SetLabelEffectB(this.btnDelete));
         this.btnDelete.addMouseListener(action);
     }
 

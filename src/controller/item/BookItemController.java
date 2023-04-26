@@ -4,21 +4,18 @@
  */
 package controller.item;
 
-import controller.panel.BookInforController;
+import controller.panel.BookEditController;
 import views.items.BookItem;
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import models.BookModel;
-import models.DAO.ReadingDAO;
-import other.Converter;
-import views.panels.BookInforPanel;
-import views.panels.ReadingPanel;
+import models.DAO.BookDAO;
+import other.SetDataToList;
+import views.panels.BookEditPanel;
 import views.MainView;
-import views.panels.HistoryPanel;
 
 /**
  *
@@ -28,18 +25,18 @@ public class BookItemController {
 
     private BookItem bookItem;
     private MainView mainView;
-    private JPanel parentPanel;
+    private BookModel currentBook;
 
-    public BookItemController(BookItem bookItem, MainView mainView, String option, JPanel parentPanel) {
+    public BookItemController(BookItem bookItem, MainView mainView, BookModel book) {
         this.bookItem = bookItem;
         this.mainView = mainView;
-        this.parentPanel = parentPanel;
+        this.currentBook = book;
 
-        setDefaultView(option);
-        this.bookItem.onItemClick(new MouseAdapter() {
+        SetDataToList setData = new SetDataToList(mainView);
+        this.bookItem.onBtnEdit(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                changeToBookInfoPanel();
+                changeInforPanel();
             }
 
         });
@@ -47,13 +44,32 @@ public class BookItemController {
         this.bookItem.onBtnDelete(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                try {
-                    deleteThisItem();
-                } catch (Exception es) {
-                    es.printStackTrace();
-                }
+                deleteThisItem();
             }
         });
+    }
+
+    public void changeInforPanel() {
+        try {
+            BookEditPanel bookEditPanel = new BookEditPanel();
+            new BookEditController(bookEditPanel, mainView, this.currentBook);
+            getMainView().setMainPanel(bookEditPanel);
+        } catch (Exception es) {
+            System.out.println("BookItemManagerController");
+        }
+    }
+
+    public void deleteThisItem() {
+        int x = JOptionPane.showConfirmDialog(mainView, "Are you sure you want to delete this book, all data related to it will be deleted!", "Delete book", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if (x == 0) {
+            BookDAO.getInstance().delete(this.currentBook.getId());
+            
+            JPanel parent = (JPanel) this.bookItem.getParent();
+            parent.remove(this.bookItem);
+            parent.setPreferredSize(new Dimension(0, parent.getComponentCount() * 66));
+            parent.revalidate();
+            parent.repaint();
+        }
     }
 
     public BookItem getBookItem() {
@@ -70,37 +86,5 @@ public class BookItemController {
 
     public void setMainView(MainView mainView) {
         this.mainView = mainView;
-    }
-
-    public void setDefaultView(String option) {
-        BookModel currentBook = bookItem.getBookModels();
-        bookItem.getjLabel2().setText(currentBook.getName());
-        bookItem.getjLabel1().setIcon(Converter.convertBlobToImageIcon(currentBook.getCover()));
-        if (!(option.equals("history"))) {
-            this.bookItem.getBtnDelete().setVisible(false);
-        }
-    }
-
-    public void deleteThisItem() {
-        JPanel parent = (JPanel) this.bookItem.getParent();
-        try {
-            ReadingDAO.getInstance().deleteReadHistory(bookItem.getBookModels().getId(), this.mainView.getUserModels().getId());
-        } catch (SQLException ex) {
-            Logger.getLogger(BookItemController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        parent.remove(this.bookItem);
-        parent.revalidate();
-        parent.repaint();
-    }
-
-    public void changeToBookInfoPanel() {
-        try {
-            BookModel book = bookItem.getBookModels();
-            BookInforPanel bookInforPanel = new BookInforPanel();
-            new BookInforController(bookInforPanel, mainView, book, parentPanel);
-            getMainView().setMainPanel(bookInforPanel);
-        } catch (Exception es) {
-            es.printStackTrace();
-        }
     }
 }

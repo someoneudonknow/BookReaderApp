@@ -36,33 +36,33 @@ public class LibraryPanel extends javax.swing.JPanel {
         listLibrary = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1013, 698));
+        setPreferredSize(new java.awt.Dimension(1272, 780));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        lbLibrary.setBackground(new java.awt.Color(0, 204, 102));
+        lbLibrary.setBackground(new java.awt.Color(146, 154, 171));
         lbLibrary.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbLibrary.setForeground(new java.awt.Color(255, 255, 255));
         lbLibrary.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbLibrary.setText("LIBRARY");
+        lbLibrary.setAlignmentY(0.0F);
         lbLibrary.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbLibrary.setOpaque(true);
 
+        jScrollPane3.setBorder(null);
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         listLibrary.setBackground(new java.awt.Color(255, 255, 255));
-        listLibrary.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         listLibrary.setPreferredSize(new java.awt.Dimension(999, 100));
-        listLibrary.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 25, 25));
+        listLibrary.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 40, 40));
         jScrollPane3.setViewportView(listLibrary);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbLibrary, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
+            .addComponent(lbLibrary, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3)
@@ -71,9 +71,9 @@ public class LibraryPanel extends javax.swing.JPanel {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(lbLibrary, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbLibrary, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 644, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

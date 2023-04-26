@@ -38,12 +38,11 @@ public class HistoryPanel extends javax.swing.JPanel {
         btnDelete = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1013, 698));
+        setPreferredSize(new java.awt.Dimension(1270, 800));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        lbHistory.setBackground(new java.awt.Color(0, 204, 102));
+        lbHistory.setBackground(new java.awt.Color(146, 154, 171));
         lbHistory.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbHistory.setForeground(new java.awt.Color(255, 255, 255));
         lbHistory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -51,16 +50,20 @@ public class HistoryPanel extends javax.swing.JPanel {
         lbHistory.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbHistory.setOpaque(true);
 
+        jScrollPane3.setBorder(null);
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         listHistory.setBackground(new java.awt.Color(255, 255, 255));
-        listHistory.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         listHistory.setPreferredSize(new java.awt.Dimension(999, 100));
-        listHistory.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 25, 25));
+        listHistory.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 40, 40));
         jScrollPane3.setViewportView(listHistory);
 
+        btnDelete.setBackground(new java.awt.Color(240, 173, 78));
+        btnDelete.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Xóa tất cả");
+        btnDelete.setOpaque(true);
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -71,25 +74,25 @@ public class HistoryPanel extends javax.swing.JPanel {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbHistory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
+            .addComponent(lbHistory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1258, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnDelete)
-                .addGap(74, 74, 74))
+                .addGap(71, 71, 71))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(lbHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnDelete)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

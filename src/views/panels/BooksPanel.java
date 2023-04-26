@@ -12,12 +12,12 @@ import javax.swing.JTextField;
  *
  * @author ADMIN
  */
-public class BookManagingPanel extends javax.swing.JPanel {
+public class BooksPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form HistoryPanel
      */
-    public BookManagingPanel() {
+    public BooksPanel() {
         initComponents();
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
     }
@@ -43,21 +43,21 @@ public class BookManagingPanel extends javax.swing.JPanel {
         btnAddBook = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1013, 698));
+        setPreferredSize(new java.awt.Dimension(1272, 698));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel6.setPreferredSize(new java.awt.Dimension(1016, 698));
+        jPanel6.setPreferredSize(new java.awt.Dimension(1272, 698));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
-        lbBookManager.setBackground(new java.awt.Color(0, 204, 102));
+        lbBookManager.setBackground(new java.awt.Color(146, 154, 171));
         lbBookManager.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbBookManager.setForeground(new java.awt.Color(255, 255, 255));
         lbBookManager.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbBookManager.setText("BOOKS");
+        lbBookManager.setAlignmentY(0.0F);
         lbBookManager.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbBookManager.setOpaque(true);
-        lbBookManager.setPreferredSize(new java.awt.Dimension(1016, 40));
+        lbBookManager.setPreferredSize(new java.awt.Dimension(1272, 50));
         jPanel6.add(lbBookManager);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -72,12 +72,12 @@ public class BookManagingPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSearch.setBackground(new java.awt.Color(0, 204, 102));
+        btnSearch.setBackground(new java.awt.Color(240, 173, 78));
         btnSearch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSearch.setForeground(new java.awt.Color(255, 255, 255));
         btnSearch.setText("Search");
 
-        btnSort.setBackground(new java.awt.Color(0, 204, 102));
+        btnSort.setBackground(new java.awt.Color(240, 173, 78));
         btnSort.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSort.setForeground(new java.awt.Color(255, 255, 255));
         btnSort.setText("Sort");
@@ -111,9 +111,10 @@ public class BookManagingPanel extends javax.swing.JPanel {
 
         jPanel6.add(jPanel3);
 
+        jScrollPane1.setBorder(null);
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(1004, 538));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1262, 538));
 
         listBook.setBackground(new java.awt.Color(255, 255, 255));
         listBook.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 20, 0, 20));
@@ -123,7 +124,7 @@ public class BookManagingPanel extends javax.swing.JPanel {
 
         jPanel6.add(jScrollPane1);
 
-        btnAddBook.setBackground(new java.awt.Color(0, 204, 102));
+        btnAddBook.setBackground(new java.awt.Color(240, 173, 78));
         btnAddBook.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnAddBook.setForeground(new java.awt.Color(255, 255, 255));
         btnAddBook.setText("Thêm sách");
