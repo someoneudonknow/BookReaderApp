@@ -20,7 +20,7 @@ import models.UserModel;
 import other.SetButton;
 import views.items.CategoryItem;
 
-public class AddBookPanel extends javax.swing.JPanel {
+public class AddBookPanel extends ParentPanel {
     public AddBookPanel() {
         initComponents();
     }

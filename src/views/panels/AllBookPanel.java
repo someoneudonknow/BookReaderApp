@@ -14,7 +14,7 @@ import other.SetButton;
  *
  * @author ADMIN
  */
-public class AllBookPanel extends javax.swing.JPanel {
+public class AllBookPanel extends ParentPanel {
 
     /**
      * Creates new form AllBookPanel

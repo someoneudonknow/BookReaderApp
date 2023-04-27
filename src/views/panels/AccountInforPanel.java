@@ -14,12 +14,13 @@ import other.SetButton;
  *
  * @author ADMIN
  */
-public class AccountInforPanel extends javax.swing.JPanel {
+public class AccountInforPanel extends ParentPanel {
 
     /**
      * Creates new form InforPanel
      */
     public AccountInforPanel() {
+        this.name = "";
         initComponents();
     }
 

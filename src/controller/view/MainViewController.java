@@ -31,6 +31,7 @@ import views.panels.SearchPanel;
 import views.panels.LibraryPanel;
 import views.panels.ReadingPanel;
 import views.panels.AccountsPanel;
+import views.panels.ParentPanel;
 
 public class MainViewController {
 
@@ -44,7 +45,7 @@ public class MainViewController {
         this.mainView.start();
     }
 
-    public void changePanel(JPanel panel) {
+    public void changePanel(ParentPanel panel) {
         this.mainView.setMainPanel(panel);
     }
 

@@ -24,12 +24,13 @@ import other.SetDataToList;
  *
  * @author ADMIN
  */
-public class SearchPanel extends javax.swing.JPanel {
+public class SearchPanel extends ParentPanel {
 
     /**
      * Creates new form SearchPanel
      */
     public SearchPanel() {
+        this.name = "ADVANCED SEARCH";
         initComponents();
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);

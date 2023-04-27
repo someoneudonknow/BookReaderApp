@@ -14,7 +14,7 @@ import other.SetButton;
  *
  * @author ADMIN
  */
-public class AddChapterPanel extends javax.swing.JPanel {
+public class AddChapterPanel extends ParentPanel {
 
     /**
      * Creates new form HistoryPanel

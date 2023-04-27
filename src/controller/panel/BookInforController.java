@@ -32,6 +32,7 @@ import static utils.formatDate.formatDate;
 import views.panels.BookInforPanel;
 import views.panels.ReadingPanel;
 import views.MainView;
+import views.panels.ParentPanel;
 
 /**
  *
@@ -247,7 +248,7 @@ public class BookInforController {
     }
 
     public void backToPrevious() {
-        this.mainView.setMainPanel(previousPanel);
+        this.mainView.setMainPanel((ParentPanel)previousPanel);
     }
 
     public BookInforPanel getBookInforPanel() {

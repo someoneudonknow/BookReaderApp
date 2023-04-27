@@ -13,12 +13,13 @@ import javax.swing.JTextField;
  *
  * @author ADMIN
  */
-public class AccountsPanel extends javax.swing.JPanel {
+public class AccountsPanel extends ParentPanel {
 
     /**
      * Creates new form HistoryPanel
      */
     public AccountsPanel() {
+        this.name = "ACCOUNTS";
         initComponents();
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
     }

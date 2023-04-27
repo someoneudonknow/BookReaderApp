@@ -15,8 +15,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import models.UserModel;
 
-public class InforPanel extends javax.swing.JPanel {
+public class InforPanel extends ParentPanel {
     public InforPanel() {
+        this.name = "INFORMATION";
         initComponents();
     }
 

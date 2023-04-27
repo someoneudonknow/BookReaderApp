@@ -31,6 +31,7 @@ import models.entityPK.ReadingPK;
 import views.panels.ReadingPanel;
 import views.MainView;
 import views.panels.BookInforPanel;
+import views.panels.ParentPanel;
 
 public class ReadingController {
 
@@ -78,7 +79,8 @@ public class ReadingController {
     }
 
     private void handleReadFile() {
-        File file = new File("C:\\Users\\ADMIN\\Desktop\\BookReaderApp\\src\\other\\text.txt");
+//        File file = new File("C:\\Users\\ADMIN\\Desktop\\BookReaderApp\\src\\other\\text.txt");
+        File file = new File("src\\other\\text.txt");
         BufferedReader br = null;
         FileReader fr = null;
         String re = "";
@@ -275,6 +277,6 @@ public class ReadingController {
             BookInforPanel inforPanel = (BookInforPanel) previousPanel;
             inforPanel.getTxtView().setText("" + BookDAO.getInstance().getView(currentChapter.getBook_id()));
         }
-        this.mainView.setMainPanel(previousPanel);
+        this.mainView.setMainPanel((ParentPanel)previousPanel);
     }
 }
