@@ -44,7 +44,7 @@ public class AddInforChapter extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Serial");
 
-        btnConfirm.setBackground(new java.awt.Color(0, 0, 0));
+        btnConfirm.setBackground(new java.awt.Color(0, 153, 153));
         btnConfirm.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnConfirm.setForeground(new java.awt.Color(255, 255, 255));
         btnConfirm.setText("Confirm");
@@ -64,7 +64,7 @@ public class AddInforChapter extends javax.swing.JFrame {
         btnAddFile.setForeground(new java.awt.Color(255, 255, 255));
         btnAddFile.setText("Add FIle");
 
-        btnCancel.setBackground(new java.awt.Color(0, 0, 0));
+        btnCancel.setBackground(new java.awt.Color(0, 153, 153));
         btnCancel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnCancel.setForeground(new java.awt.Color(255, 255, 255));
         btnCancel.setText("Cancel");

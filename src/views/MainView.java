@@ -61,11 +61,10 @@ public class MainView extends javax.swing.JFrame {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
         jPanel1.setPreferredSize(new java.awt.Dimension(250, 800));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
         jPanel2.setPreferredSize(new java.awt.Dimension(200, 200));
 
         lbAvatar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -75,7 +74,7 @@ public class MainView extends javax.swing.JFrame {
         lbAvatar.setPreferredSize(new java.awt.Dimension(157, 157));
         jPanel2.add(lbAvatar);
 
-        lbUsername.setBackground(new java.awt.Color(0, 0, 0));
+        lbUsername.setBackground(new java.awt.Color(0, 153, 153));
         lbUsername.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbUsername.setForeground(new java.awt.Color(255, 255, 255));
         lbUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -86,7 +85,7 @@ public class MainView extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2);
 
-        groupBtn.setBackground(new java.awt.Color(0, 0, 0));
+        groupBtn.setBackground(new java.awt.Color(0, 153, 153));
         groupBtn.setPreferredSize(new java.awt.Dimension(250, 400));
         groupBtn.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
         jPanel1.add(groupBtn);

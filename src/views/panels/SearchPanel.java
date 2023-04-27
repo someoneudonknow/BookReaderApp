@@ -65,7 +65,7 @@ public class SearchPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1272, 698));
 
-        jLabel1.setBackground(new java.awt.Color(146, 154, 171));
+        jLabel1.setBackground(new java.awt.Color(0, 153, 153));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

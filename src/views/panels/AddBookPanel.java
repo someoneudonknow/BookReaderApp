@@ -61,7 +61,7 @@ public class AddBookPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1272, 698));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnBack.setBackground(new java.awt.Color(146, 154, 171));
+        btnBack.setBackground(new java.awt.Color(0, 153, 153));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -70,14 +70,14 @@ public class AddBookPanel extends javax.swing.JPanel {
         btnBack.setPreferredSize(new java.awt.Dimension(50, 50));
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLabel1.setBackground(new java.awt.Color(146, 154, 171));
+        jLabel1.setBackground(new java.awt.Color(0, 153, 153));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("NEW BOOK");
         jLabel1.setAlignmentY(0.0F);
         jLabel1.setOpaque(true);
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 50));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1272, 50));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -232,17 +232,17 @@ public class AddBookPanel extends javax.swing.JPanel {
         chooseFileBtn.setBackground(new java.awt.Color(240, 173, 78));
         chooseFileBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         chooseFileBtn.setForeground(new java.awt.Color(255, 255, 255));
-        chooseFileBtn.setText("choose file");
+        chooseFileBtn.setText("Choose file");
         chooseFileBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         chooseFileBtn.setOpaque(true);
 
-        btnCancel.setBackground(new java.awt.Color(0, 0, 0));
+        btnCancel.setBackground(new java.awt.Color(0, 153, 153));
         btnCancel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnCancel.setForeground(new java.awt.Color(255, 255, 255));
         btnCancel.setText("Cancel");
         btnCancel.setOpaque(true);
 
-        btnNext.setBackground(new java.awt.Color(0, 0, 0));
+        btnNext.setBackground(new java.awt.Color(0, 153, 153));
         btnNext.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnNext.setForeground(new java.awt.Color(255, 255, 255));
         btnNext.setText("Next");

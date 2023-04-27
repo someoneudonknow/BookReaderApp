@@ -49,7 +49,7 @@ public class AddChapterPanel extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(1272, 660));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnBack.setBackground(new java.awt.Color(146, 154, 171));
+        btnBack.setBackground(new java.awt.Color(0, 153, 153));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -58,7 +58,7 @@ public class AddChapterPanel extends javax.swing.JPanel {
         btnBack.setPreferredSize(new java.awt.Dimension(50, 50));
         jPanel6.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        lbAddChapter.setBackground(new java.awt.Color(146, 154, 171));
+        lbAddChapter.setBackground(new java.awt.Color(0, 153, 153));
         lbAddChapter.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbAddChapter.setForeground(new java.awt.Color(255, 255, 255));
         lbAddChapter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -67,7 +67,7 @@ public class AddChapterPanel extends javax.swing.JPanel {
         lbAddChapter.setOpaque(true);
         jPanel6.add(lbAddChapter, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 50));
 
-        btnCancel.setBackground(new java.awt.Color(0, 0, 0));
+        btnCancel.setBackground(new java.awt.Color(0, 153, 153));
         btnCancel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnCancel.setForeground(new java.awt.Color(255, 255, 255));
         btnCancel.setText("Cancel");
@@ -88,7 +88,7 @@ public class AddChapterPanel extends javax.swing.JPanel {
 
         jPanel6.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 1250, 544));
 
-        btnAdd.setBackground(new java.awt.Color(0, 0, 0));
+        btnAdd.setBackground(new java.awt.Color(0, 153, 153));
         btnAdd.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("Add new chapter");
@@ -102,7 +102,7 @@ public class AddChapterPanel extends javax.swing.JPanel {
         });
         jPanel6.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 630, 200, 40));
 
-        confirmBtn.setBackground(new java.awt.Color(0, 0, 0));
+        confirmBtn.setBackground(new java.awt.Color(0, 153, 153));
         confirmBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         confirmBtn.setForeground(new java.awt.Color(255, 255, 255));
         confirmBtn.setText("Confirm");

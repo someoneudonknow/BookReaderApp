@@ -60,7 +60,7 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel1.setText("Sign up");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 23, 739, 54));
 
-        registerBtn.setBackground(new java.awt.Color(0, 0, 0));
+        registerBtn.setBackground(new java.awt.Color(0, 153, 153));
         registerBtn.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         registerBtn.setForeground(new java.awt.Color(255, 255, 255));
         registerBtn.setText("Register");
