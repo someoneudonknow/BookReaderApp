@@ -12,12 +12,13 @@ import javax.swing.JPanel;
  *
  * @author ADMIN
  */
-public class HistoryPanel extends javax.swing.JPanel {
+public class HistoryPanel extends ParentPanel {
 
     /**
      * Creates new form HistoryPanel
      */
     public HistoryPanel() {
+        this.name = "HISTORY";
         initComponents();
         jScrollPane3.getVerticalScrollBar().setUnitIncrement(16);
     }

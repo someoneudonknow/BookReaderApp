@@ -16,6 +16,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import models.UserModel;
+import other.SetButton;
+import views.items.ButtonItem;
+import views.panels.InforPanel;
+import views.panels.ParentPanel;
 
 /**
  *
@@ -124,7 +128,12 @@ public class MainView extends javax.swing.JFrame {
         return mainPanel;
     }
 
-    public void setMainPanel(JPanel panel) {
+    public void setMainPanel(ParentPanel panel) {
+        for(int i = 0; i < this.groupBtn.getComponentCount(); i++){
+            ButtonItem a = (ButtonItem) this.groupBtn.getComponent(i);
+            SetButton.SetBtnMain j = (SetButton.SetBtnMain) a.getEvents();
+            j.setActiveWithPanel(panel.getName());
+        }
         this.mainPanel.removeAll();
         this.mainPanel.add(panel);  
         this.mainPanel.revalidate();

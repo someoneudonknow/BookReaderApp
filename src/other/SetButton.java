@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.plaf.basic.BasicOptionPaneUI;
+import javax.swing.JPanel;
 import views.LoginForm;
 import views.MainView;
 import views.items.ButtonItem;
@@ -90,19 +90,58 @@ public class SetButton {
     public static class SetBtnMain extends MouseAdapter{
         ButtonItem btnMain;
         MainView mainView;
-        String typePanel;
+        String namePanel;
         boolean isActive;
-
-        public SetBtnMain(ButtonItem btnMain, MainView mainView, String typePanel) {
+        JPanel typePanel;
+        
+        public SetBtnMain(ButtonItem btnMain, MainView mainView, String namePanel) {
             this.btnMain = btnMain;
             this.mainView = mainView;
-            this.typePanel = typePanel;
-            if(typePanel.equals("HOME") || typePanel.equals("BOOKS")){
+            this.namePanel = namePanel;
+            if(namePanel.equals("HOME") || namePanel.equals("BOOKS")){
                 btnMain.getButton().setBackground(new java.awt.Color(240,173,78));
                 btnMain.getButton().setForeground(new java.awt.Color(255,255,255));
                 isActive = true;
             }
             else isActive = false;
+            
+            switch (namePanel) {
+                
+                case "HOME":
+                    this.typePanel = new MainPanel();
+                    break;
+                    
+                case "INFORMATION":
+                    this.typePanel = new InforPanel();
+                    break;
+                    
+                case "LIBRARY":
+                    this.typePanel = new LibraryPanel();
+                    break;
+                    
+                case "HISTORY":
+                    this.typePanel = new HistoryPanel();
+                    break;
+                    
+                case "ADVANCED SEARCH":
+                    this.typePanel = new SearchPanel();
+                    break;
+                    
+                case "BOOKS":
+                    this.typePanel = new BooksPanel();
+                    break;
+                    
+                case "ACCOUNTS":
+                    this.typePanel = new AccountsPanel();
+                    break;
+                    
+                case "LOG OUT":
+                    this.typePanel = null;
+                    break;
+                    
+                default:
+                    throw new AssertionError();
+            }
         }
 
         @Override
@@ -122,7 +161,7 @@ public class SetButton {
         @Override
         public void mouseClicked(MouseEvent e) {
             if(!isActive){
-                if(!(typePanel.equals("LOG OUT"))){
+                if(!(namePanel.equals("LOG OUT"))){
                     btnMain.getButton().setBackground(new java.awt.Color(240,173,78));
                     btnMain.getButton().setForeground(new java.awt.Color(255,255,255));
                     isActive = true;
@@ -145,7 +184,7 @@ public class SetButton {
             }
         }
         public void changePanel() {
-            switch (typePanel) {
+            switch (namePanel) {
                 
                 case "HOME":
                     MainPanel panel1 = new MainPanel();
@@ -215,6 +254,20 @@ public class SetButton {
         public void setIsActive(boolean isActive) {
             this.isActive = isActive;
         }
- 
+        
+        public void setActiveWithPanel(String namePanel) {
+            if(this.namePanel.equals(namePanel)){
+                btnMain.getButton().setBackground(new java.awt.Color(240,173,78));
+                btnMain.getButton().setForeground(new java.awt.Color(255,255,255));
+                this.isActive = true;
+            }
+            else{
+                btnMain.getButton().setForeground(new java.awt.Color(255,255,255));
+                btnMain.getButton().setBackground(new java.awt.Color(0,153,153));
+                this.isActive = false;
+            }
+        }
+
+        
     }
 }

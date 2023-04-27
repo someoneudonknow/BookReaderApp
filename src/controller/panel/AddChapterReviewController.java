@@ -32,6 +32,7 @@ import views.MainView;
 import views.items.ChapterItem;
 import views.panels.AddChapterPanel;
 import views.panels.BooksPanel;
+import views.panels.ParentPanel;
 
 public class AddChapterReviewController {
 
@@ -152,7 +153,7 @@ public class AddChapterReviewController {
     }
 
     public void backToPrevious() {
-        this.mainView.setMainPanel((JPanel) previousPanel);
+        this.mainView.setMainPanel((ParentPanel) previousPanel);
     }
 
     private void setChapterList(List<ChapterModel> chapters) throws SQLException {

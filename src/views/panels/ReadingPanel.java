@@ -32,7 +32,7 @@ import other.SetButton;
  *
  * @author ADMIN
  */
-public class ReadingPanel extends javax.swing.JPanel {
+public class ReadingPanel extends ParentPanel {
 
     /**
      * Creates new form ReadingPanel

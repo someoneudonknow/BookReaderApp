@@ -17,7 +17,7 @@ import other.SetButton;
  *
  * @author ADMIN
  */
-public class BookInforPanel extends javax.swing.JPanel {
+public class BookInforPanel extends ParentPanel {
 
     private int currentID;
 

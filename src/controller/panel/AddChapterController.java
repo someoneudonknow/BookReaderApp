@@ -24,6 +24,7 @@ import views.AddInforChapter;
 import views.MainView;
 import views.panels.AddBookPanel;
 import views.panels.AddChapterPanel;
+import views.panels.ParentPanel;
 
 /**
  *
@@ -126,6 +127,6 @@ public class AddChapterController {
     }
 
     public void backToPrevious() {
-        this.mainView.setMainPanel((JPanel) previousPanel);
+        this.mainView.setMainPanel((ParentPanel) previousPanel);
     }
 }

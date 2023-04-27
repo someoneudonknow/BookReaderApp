@@ -21,12 +21,13 @@ import views.MainView;
  *
  * @author ADMIN
  */
-public class MainPanel extends javax.swing.JPanel {
+public class MainPanel extends ParentPanel {
 
     /**
      * Creates new form MainPanel
      */
     public MainPanel() {
+        this.name = "HOME";
         initComponents();
     }
 
