@@ -154,7 +154,11 @@ public class BookInforController {
         this.bookInforPanel.getTxtCategorys().setText(currentCategoryList);
         this.bookInforPanel.getTxtView().setText("" + BookDAO.getInstance().getView(currentID));
         String[] rating = (book.getRatingAverage(book.getId())).split(" ");
-        this.bookInforPanel.getTxtRate().setText("" + rating[0] + " sao" + " " + "(" + rating[1] + ")");
+        if (rating[0].equals("0") && rating[1].equals("0")) {
+            this.bookInforPanel.getTxtRate().setText("No rating");
+        } else {
+            this.bookInforPanel.getTxtRate().setText("" + rating[0] + " sao" + " " + "(" + rating[1] + ")");
+        }
         this.bookInforPanel.getImgCover().setIcon(Converter.convertBlobToImageIcon(currentBook.getCover()));
         String recentlyRead = BookDAO.getInstance().getReadRecently(currentID,
                 this.mainView.getUserModels().getId());
@@ -249,6 +253,5 @@ public class BookInforController {
     public BookInforPanel getBookInforPanel() {
         return bookInforPanel;
     }
-    
-    
+
 }

@@ -5,6 +5,7 @@
 package views.panels;
 
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -36,7 +37,6 @@ public class BooksPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtKeyWords = new javax.swing.JTextField();
-        btnSearch = new javax.swing.JButton();
         btnSort = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listBook = new javax.swing.JPanel();
@@ -72,15 +72,10 @@ public class BooksPanel extends javax.swing.JPanel {
             }
         });
 
-        btnSearch.setBackground(new java.awt.Color(240, 173, 78));
-        btnSearch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearch.setText("Search");
-
         btnSort.setBackground(new java.awt.Color(240, 173, 78));
         btnSort.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSort.setForeground(new java.awt.Color(255, 255, 255));
-        btnSort.setText("Sort");
+        btnSort.setText("A->Z");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -91,11 +86,9 @@ public class BooksPanel extends javax.swing.JPanel {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtKeyWords, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSearch)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSort)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +96,6 @@ public class BooksPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtKeyWords, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSort))
                 .addContainerGap())
@@ -169,14 +161,15 @@ public class BooksPanel extends javax.swing.JPanel {
         this.btnAddBook.addActionListener(action);
     }
     
-    public void onBtnSearch(ActionListener action) {
-        this.btnSearch.addActionListener(action);
+    public void onSortBtnClicked(ActionListener action) {
+        this.btnSort.addActionListener(action);
     }
     
-    
+    public JButton getBtnSort() {
+        return this.btnSort;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddBook;
-    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSort;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;

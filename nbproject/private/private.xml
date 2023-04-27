@@ -3,33 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/MainView.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/items/ButtonItem.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/BooksPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/controller/panel/BookInforController.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/ChangeCategory.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/AddBookPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/RegisterForm.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/SearchPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/MainPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/other/SetButton.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/AllBookPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/controller/view/LoginController.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/controller/panel/ReadingController.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/LoginForm.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/HistoryPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/InforPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/controller/panel/InforController.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/LibraryPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/BookEditPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/AddInforChapter.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/AddChapterPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/controller/panel/HistoryController.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/ReadingPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/other/text.txt</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/AccountsPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/BookInforPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl/BookReaderApp/src/views/panels/AccountInforPanel.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/other/SetDataToList.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/panel/AccountsController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/views/panels/BooksPanel.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/view/MainViewController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/entityPK/ReviewPK.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/item/BookController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/panel/BookInforController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/panel/ReadingController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/entityPK/SavedPK.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/panel/BooksController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/DAO/BookDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/BookModel.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/entityPK/ReadingPK.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/entityPK/HaveCategoryPK.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/views/panels/AccountsPanel.java</file>
         </group>
     </open-files>
 </project-private>
