@@ -35,6 +35,14 @@ public class SearchPanel extends javax.swing.JPanel {
         jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"A->Z", "Z->A"}));
     }
+    
+    public SearchPanel(String title) {
+        initComponents();
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
+        jScrollPane2.getVerticalScrollBar().setUnitIncrement(16);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"A->Z", "Z->A"}));
+        txtKeyword.setText(title);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -4,6 +4,7 @@
  */
 package controller.panel;
 
+import controller.item.ButtonViewController;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -13,6 +14,7 @@ import other.SetDataToList;
 import views.panels.AllBookPanel;
 import views.panels.MainPanel;
 import views.MainView;
+import views.items.ButtonItem;
 import views.panels.SearchPanel;
 
 /**
@@ -20,6 +22,7 @@ import views.panels.SearchPanel;
  * @author ADMIN
  */
 public class MainPanelController {
+
     private MainPanel mainPanel;
     private MainView mainView;
     private ArrayList<BookModel> bookModels;
@@ -29,11 +32,11 @@ public class MainPanelController {
         this.mainView = mainView;
         //this.bookModels = bookModels;
         SetDataToList setData = new SetDataToList(this.mainView);
-        
+
         // Xác định thêm vào panel nào
         setData.setTop5View(this.mainPanel.getListTopView(), "view", this.mainPanel);
         setData.setTop5View(this.mainPanel.getListNewUpdate(), "recently", this.mainPanel);
-        
+
         this.mainPanel.onBtnMore(e -> {
             try {
                 changeMorePanel();
@@ -41,10 +44,14 @@ public class MainPanelController {
                 Logger.getLogger(MainPanelController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        
+        this.mainPanel.onBtnSearch(e -> {
+            handleSearchButtonClicked();
+
+        });
     }
+
     // Xem thêm button
-    public void changeMorePanel() throws SQLException{
+    public void changeMorePanel() throws SQLException {
         this.mainView.remove(this.mainPanel);
         AllBookPanel allBookPanel = new AllBookPanel();
         new AllBookController(allBookPanel, mainView, this.mainPanel);
@@ -52,5 +59,12 @@ public class MainPanelController {
         this.mainView.revalidate();
         this.mainView.repaint();
     }
-    
+
+    public void handleSearchButtonClicked() {
+        String title = this.mainPanel.getTxtKeyWords().getText();
+        SearchPanel searchPanel = new SearchPanel(title);
+        new SearchController(searchPanel, mainView);
+        this.mainView.setMainPanel(searchPanel);
+    }
+
 }

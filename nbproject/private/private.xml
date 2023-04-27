@@ -3,21 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/other/SetDataToList.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/panel/AccountsController.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/views/panels/BooksPanel.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/view/MainViewController.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/entityPK/ReviewPK.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/item/BookController.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/panel/BookInforController.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/panel/ReadingController.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/entityPK/SavedPK.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/controller/panel/BooksController.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/DAO/BookDAO.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/BookModel.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/entityPK/ReadingPK.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/models/entityPK/HaveCategoryPK.java</file>
-            <file>file:/C:/Users/ADMIN/Desktop/New%20folder/BookReaderApp/src/views/panels/AccountsPanel.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/views/panels/SearchPanel.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/views/panels/ReadingPanel.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/views/MainView.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/controller/view/MainViewController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/controller/panel/ReadingController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/controller/panel/MainPanelController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/test/ReadingDocPanel.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/controller/panel/BookInforController.java</file>
+            <file>file:/C:/Users/ADMIN/Desktop/BookReaderApp/src/controller/panel/SearchController.java</file>
         </group>
     </open-files>
 </project-private>

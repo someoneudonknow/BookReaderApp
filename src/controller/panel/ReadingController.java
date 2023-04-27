@@ -44,6 +44,7 @@ public class ReadingController {
         this.mainView = mainView;
         this.currentChapter = currentChapter;
         this.previousPanel = previousPanel;
+        
 
         this.readingPanel.onBtnPrevious(e -> {
             this.onBtnLeftRight("previous");
@@ -93,11 +94,12 @@ public class ReadingController {
             }
             this.readingPanel.getjEditorPane1().putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
             this.readingPanel.getjComboBox1().setSelectedItem("Times New Roman");
-            this.readingPanel.getjTextField2().setText("15");
-            this.readingPanel.getjTextField3().setText("20");
+
+//            this.readingPanel.getFontsizeSpinner().setValue(20);
+//            this.readingPanel.getPaddingSpinner().setValue(20);
             Insets insets = new Insets(0, 20, 0, 20);
             this.readingPanel.getjEditorPane1().setMargin(insets);
-            this.readingPanel.getjEditorPane1().setFont(new Font((String) this.readingPanel.getjComboBox1().getSelectedItem(), Font.PLAIN, Integer.parseInt(this.readingPanel.getjTextField2().getText())));
+            this.readingPanel.getjEditorPane1().setFont(new Font((String) this.readingPanel.getjComboBox1().getSelectedItem(), Font.PLAIN, (int) this.readingPanel.getFontsizeSpinner().getValue()));
             MutableAttributeSet set = new SimpleAttributeSet();
             StyleConstants.setAlignment(set, StyleConstants.ALIGN_JUSTIFIED);
             doc.setParagraphAttributes(0, doc.getLength(), set, false);
@@ -120,8 +122,10 @@ public class ReadingController {
             int sizeNum = Integer.parseInt(result[1]);
             String fontStyle = result[2];
             this.readingPanel.getjComboBox1().setSelectedItem(fontStyle);
-            this.readingPanel.getjTextField2().setText("" + sizeNum);
-            this.readingPanel.getjTextField3().setText("" + paddingNum);
+//            this.readingPanel.getjTextField2().setText("" + sizeNum);
+//            this.readingPanel.getjTextField3().setText("" + paddingNum);
+            this.readingPanel.getFontsizeSpinner().setValue(sizeNum);
+            this.readingPanel.getPaddingSpinner().setValue(paddingNum);
             Insets insets = new Insets(0, paddingNum, 0, paddingNum);
             this.readingPanel.getjEditorPane1().setMargin(insets);
             this.readingPanel.getjEditorPane1().setFont(new Font(fontStyle, Font.PLAIN, sizeNum));
@@ -217,8 +221,12 @@ public class ReadingController {
     public void setReadingDoc(ChapterModel chapter) throws IOException {
         this.readingPanel.getjEditorPane1().putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
 
-        int paddingNum = Integer.parseInt(this.readingPanel.getjTextField3().getText());
-        int sizeNum = Integer.parseInt(this.readingPanel.getjTextField2().getText());
+//        int paddingNum = Integer.parseInt(this.readingPanel.getjTextField3().getText());
+//        int sizeNum = Integer.parseInt(this.readingPanel.getjTextField2().getText());
+
+          int sizeNum = (int) this.readingPanel.getFontsizeSpinner().getValue();
+          int paddingNum = (int) this.readingPanel.getPaddingSpinner().getValue();
+        
         Insets insets = new Insets(0, paddingNum, 0, paddingNum);
         this.readingPanel.getjEditorPane1().setMargin(insets);
 //        this.readingPanel.getjTextField2().setText("" + sizeNum);
@@ -237,10 +245,10 @@ public class ReadingController {
         FileWriter fw = null;
 
         String input = (String) this.readingPanel.getjComboBox1().getSelectedItem();
-        String fontSize = this.readingPanel.getjTextField2().getText();
-        String padding = this.readingPanel.getjTextField3().getText();
-//        String fontSize = this.readingPanel.getFontsizeSpinner().getValue() +"";
-//        String padding = this.readingPanel.getPaddingSpinner().getValue() + "";
+//        String fontSize = this.readingPanel.getjTextField2().getText();
+//        String padding = this.readingPanel.getjTextField3().getText();
+        String fontSize =""+ this.readingPanel.getFontsizeSpinner().getValue();
+        String padding = "" + this.readingPanel.getPaddingSpinner().getValue();
         String result = padding + "," + fontSize + "," + input;
         fw = new FileWriter(file);
         bw = new BufferedWriter(fw);

@@ -34,6 +34,7 @@ public class SearchController {
         this.searchPanel = searchPanel;
         this.mainView = mainView;
         this.setCategoryItemList();
+        this.searchFromHome();
         this.searchPanel.onBtnSearch(e ->{
             try {
                 //                searchResult();
@@ -50,9 +51,10 @@ public class SearchController {
         this.categoryList = categoryList;
         this.haveCategoryList = haveCategoryList;
         this.bookList = bookList;
+        this.searchFromHome();
         this.searchPanel.onBtnSearch(e ->{
             try {
-                searchResult();
+                getDataAndFind();
             } catch (SQLException ex) {
                 Logger.getLogger(SearchController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -93,7 +95,7 @@ public class SearchController {
         String sort = (String)this.searchPanel.getjComboBox1().getSelectedItem();
         String name = this.searchPanel.getTxtKeyword().getText().toLowerCase();
         ArrayList<CategoryItem> categoryList = new ArrayList<>();
-//       //get available data
+        //get available data
        for (int i = 0; i < this.searchPanel.getListCategory().getComponentCount(); i++) {
             CategoryItem item = (CategoryItem) this.searchPanel.getListCategory().getComponent(i);
             if (item.getjCheckBox1().isSelected())
@@ -110,11 +112,8 @@ public class SearchController {
        }
   
        
-       //Render data
-//       this.searchPanel.setListResult(result);
-       
+       //Render data       
         SetDataToList setData = new SetDataToList(this.mainView);
-        //            setData.setBookItemList(searchPanel.getListResult(), "full", searchPanel);
         setData.SetSearchDataToList(searchPanel.getListResult(), this.searchPanel, name, type, sort, categoryList);
     }
     public void getBookItemListResult(String keyword, int type, ArrayList<CategoryModel> categoryList) throws SQLException {
@@ -166,5 +165,17 @@ public class SearchController {
             }
         }
         return (total == 0)?true:false;
+    }
+    private void searchFromHome() {
+        if(!this.searchPanel.getTxtKeyword().getText().isBlank()){
+            try {
+                getDataAndFind();
+            } catch (SQLException ex) {
+                Logger.getLogger(SearchController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+            
+        return;
     }
 }
