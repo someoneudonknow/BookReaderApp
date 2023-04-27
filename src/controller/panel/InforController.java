@@ -39,7 +39,9 @@ public class InforController {
         this.mainView = mainView;
         this.initUI();
         this.isPasswordValueChanged = !this.currentUser.getPassword().equals(String.valueOf(infoPanel.getPasswordInput().getPassword()));
-
+        
+        setVisibleBtn(false);
+        
         this.infoPanel.onChooseFile(e -> {
             handleChooseFileBtnCLicked();
         });
@@ -130,8 +132,10 @@ public class InforController {
     }
 
     private void handleEditBtnClicked() {
+        
         String password = JOptionPane.showInputDialog("Nhập lại mật khẩu để chỉnh sửa!");
         if (password.equals(this.currentUser.getPassword())) {
+            setVisibleBtn(true);
             this.setEditable();
         } else {
             JOptionPane.showMessageDialog(infoPanel, "Sai mật khẩu");
@@ -197,6 +201,7 @@ public class InforController {
                 }
             }
         }
+        setVisibleBtn(false);
     }
 
     private void updateMainViewUI(UserModel user) {
@@ -208,6 +213,7 @@ public class InforController {
     private void handleCancelBtnClicked() {
         this.initUI();
         this.setUnEditable();
+        setVisibleBtn(false);
     }
 
     private void setUnEditable() {
@@ -283,5 +289,13 @@ public class InforController {
             return true;
         }
         return false;
+    }
+    
+    private void setVisibleBtn(boolean a){
+        this.infoPanel.getBtnSave().setVisible(a);
+        this.infoPanel.getBtnUndo().setVisible(a);
+        this.infoPanel.getChooseFileBtn().setVisible(a);
+        
+        this.infoPanel.getBtnEdit().setVisible(!a);
     }
 }

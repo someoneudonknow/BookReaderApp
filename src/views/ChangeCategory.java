@@ -45,7 +45,7 @@ public class ChangeCategory extends javax.swing.JFrame {
         jLabel4.setText("Categories");
         jLabel4.setOpaque(true);
 
-        btnCancel.setBackground(new java.awt.Color(0, 0, 0));
+        btnCancel.setBackground(new java.awt.Color(0, 153, 153));
         btnCancel.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnCancel.setForeground(new java.awt.Color(255, 255, 255));
         btnCancel.setText("Cancel");
@@ -55,7 +55,7 @@ public class ChangeCategory extends javax.swing.JFrame {
             }
         });
 
-        btnConfirm.setBackground(new java.awt.Color(0, 0, 0));
+        btnConfirm.setBackground(new java.awt.Color(0, 153, 153));
         btnConfirm.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnConfirm.setForeground(new java.awt.Color(255, 255, 255));
         btnConfirm.setText("Confirm");
@@ -67,7 +67,7 @@ public class ChangeCategory extends javax.swing.JFrame {
 
         cateErrorMessage.setForeground(new java.awt.Color(204, 0, 51));
 
-        resetBtn.setBackground(new java.awt.Color(0, 0, 0));
+        resetBtn.setBackground(new java.awt.Color(0, 153, 153));
         resetBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         resetBtn.setForeground(new java.awt.Color(255, 255, 255));
         resetBtn.setText("Reset");
