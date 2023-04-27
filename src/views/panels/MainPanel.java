@@ -348,6 +348,28 @@ public class MainPanel extends javax.swing.JPanel {
     public void onBtnMore(ActionListener action) {
         this.btnMore.addActionListener(action);
     }
+
+    public JButton getBtnSearch() {
+        return btnSearch;
+    }
+
+    public void setBtnSearch(JButton btnSearch) {
+        this.btnSearch = btnSearch;
+    }
+      public void onBtnSearch(ActionListener action) {
+        this.btnSearch.addActionListener(action);
+    }
+
+
+    public JTextField getTxtKeyWords() {
+        return txtKeyWords;
+    }
+
+    public void setTxtKeyWords(JTextField txtKeyWords) {
+        this.txtKeyWords = txtKeyWords;
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMore;
     private javax.swing.JButton btnSearch;

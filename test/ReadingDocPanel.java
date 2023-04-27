@@ -33,8 +33,8 @@ public class ReadingDocPanel extends javax.swing.JFrame {
         jEditorPane1.setContentType("text/html");
         jScrollPane1.getVerticalScrollBar().setUI(new CustomScrollBar());
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Arial", "Times New Roman"}));
-        jTextField2.setText("15");
-        jTextField3.setText("20");
+//        jTextField2.setText("15");
+//        jTextField3.setText("20");
         jEditorPane1.setFont(new Font("Arial", Font.PLAIN, 50));
         jEditorPane1.setEditable(false);
         String content = "dark dark heeh";
@@ -153,39 +153,39 @@ public class ReadingDocPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println("hehe");
-        int paddingNum = 0;
-        try {
-            String input = jTextField3.getText();
-            paddingNum = Integer.parseInt(input);
-        } catch (NumberFormatException e1) {
-            paddingNum = 20;
-        }
-        int sizeNum = 0;
-        try {
-            String input = jTextField2.getText();
-            sizeNum = Integer.parseInt(input);
-        } catch (NumberFormatException e1) {
-            sizeNum = 16;
-        }
-        Insets insets = new Insets(0, paddingNum, 0, paddingNum);
-        jEditorPane1.setMargin(insets);
-        String fontStyle = (String) jComboBox1.getSelectedItem();
-        jEditorPane1.setFont(new Font(fontStyle, Font.PLAIN, sizeNum));
-
-        String content = "dark dark heeh";
-
-        HTMLDocument doc = new HTMLDocument();
-        try {
-            doc.insertString(0, content, null);
-        } catch (BadLocationException ex) {
-            ex.printStackTrace();
-        }
-        MutableAttributeSet set = new SimpleAttributeSet();
-        StyleConstants.setAlignment(set, StyleConstants.ALIGN_JUSTIFIED);
-        doc.setParagraphAttributes(0, doc.getLength(), set, false);
-
-        jEditorPane1.setDocument(doc);
+//        System.out.println("hehe");
+//        int paddingNum = 0;
+//        try {
+//            String input = jTextField3.getText();
+//            paddingNum = Integer.parseInt(input);
+//        } catch (NumberFormatException e1) {
+//            paddingNum = 20;
+//        }
+//        int sizeNum = 0;
+//        try {
+//            String input = jTextField2.getText();
+//            sizeNum = Integer.parseInt(input);
+//        } catch (NumberFormatException e1) {
+//            sizeNum = 16;
+//        }
+//        Insets insets = new Insets(0, paddingNum, 0, paddingNum);
+//        jEditorPane1.setMargin(insets);
+//        String fontStyle = (String) jComboBox1.getSelectedItem();
+//        jEditorPane1.setFont(new Font(fontStyle, Font.PLAIN, sizeNum));
+//
+//        String content = "dark dark heeh";
+//
+//        HTMLDocument doc = new HTMLDocument();
+//        try {
+//            doc.insertString(0, content, null);
+//        } catch (BadLocationException ex) {
+//            ex.printStackTrace();
+//        }
+//        MutableAttributeSet set = new SimpleAttributeSet();
+//        StyleConstants.setAlignment(set, StyleConstants.ALIGN_JUSTIFIED);
+//        doc.setParagraphAttributes(0, doc.getLength(), set, false);
+//
+//        jEditorPane1.setDocument(doc);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

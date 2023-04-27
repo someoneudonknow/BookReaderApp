@@ -20,6 +20,7 @@ import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -42,18 +43,11 @@ public class ReadingPanel extends javax.swing.JPanel {
         jScrollPane1.getVerticalScrollBar().setUI(new CustomScrollBar());
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Arial", "Times New Roman"}));
         jEditorPane1.setEditable(false);
+        
     }
 
     public javax.swing.JComboBox<String> getBoxChapter() {
         return this.boxChapter;
-    }
-
-    public JTextField getjTextField2() {
-        return jTextField2;
-    }
-
-    public JTextField getjTextField3() {
-        return jTextField3;
     }
 
     public void onBtnPrevious(ActionListener action) {
@@ -126,10 +120,8 @@ public class ReadingPanel extends javax.swing.JPanel {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         fontsizeSpinner = new javax.swing.JSpinner();
-        jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         paddingSpinner = new javax.swing.JSpinner();
-        jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -231,20 +223,16 @@ public class ReadingPanel extends javax.swing.JPanel {
         jLabel3.setText("Kích cỡ chữ");
         jPanel3.add(jLabel3);
 
+        fontsizeSpinner.setModel(new javax.swing.SpinnerNumberModel(20, 1, 50, 5));
         fontsizeSpinner.setPreferredSize(new java.awt.Dimension(100, 22));
         jPanel3.add(fontsizeSpinner);
-
-        jTextField2.setText("jTextField2");
-        jPanel3.add(jTextField2);
 
         jLabel4.setText("Padding");
         jPanel3.add(jLabel4);
 
+        paddingSpinner.setModel(new javax.swing.SpinnerNumberModel(20, 1, 50, 5));
         paddingSpinner.setPreferredSize(new java.awt.Dimension(100, 22));
         jPanel3.add(paddingSpinner);
-
-        jTextField3.setText("jTextField2");
-        jPanel3.add(jTextField3);
 
         jButton1.setText("Áp dụng");
         jPanel3.add(jButton1);
@@ -269,8 +257,6 @@ public class ReadingPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JSpinner paddingSpinner;
     // End of variables declaration//GEN-END:variables
 }
