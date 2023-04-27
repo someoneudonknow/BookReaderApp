@@ -113,11 +113,12 @@ public class MainPanel extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        lbTopView.setBackground(new java.awt.Color(0, 0, 0));
+        lbTopView.setBackground(new java.awt.Color(0, 153, 153));
         lbTopView.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbTopView.setForeground(new java.awt.Color(255, 255, 255));
         lbTopView.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbTopView.setText("Top views");
+        lbTopView.setAlignmentY(0.0F);
         lbTopView.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbTopView.setOpaque(true);
 
@@ -151,7 +152,7 @@ public class MainPanel extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        lbNewUpdate.setBackground(new java.awt.Color(0, 0, 0));
+        lbNewUpdate.setBackground(new java.awt.Color(0, 153, 153));
         lbNewUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbNewUpdate.setForeground(new java.awt.Color(255, 255, 255));
         lbNewUpdate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

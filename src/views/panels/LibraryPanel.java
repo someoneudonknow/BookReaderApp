@@ -40,7 +40,7 @@ public class LibraryPanel extends javax.swing.JPanel {
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
-        lbLibrary.setBackground(new java.awt.Color(146, 154, 171));
+        lbLibrary.setBackground(new java.awt.Color(0, 153, 153));
         lbLibrary.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbLibrary.setForeground(new java.awt.Color(255, 255, 255));
         lbLibrary.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

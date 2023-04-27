@@ -113,6 +113,7 @@ public class ReadingController {
         this.currentChapter = chapter;
         this.readingPanel.getBoxChapter().repaint();
     }
+
     public void setAddChapterDetails(ChapterModel chapter, ArrayList<ChapterModel> listChapter) throws SQLException, BadLocationException {
         int currentBookID = chapter.getBook_id();
 
@@ -132,7 +133,6 @@ public class ReadingController {
 //        this.readingPanel.getBoxChapter().setModel(new javax.swing.DefaultComboBoxModel<>(listChapter.toArray(new String[0])));
 //        String currentChapterName = listChapter.get(chapter.getSerial() - 1);
 //        this.readingPanel.getBoxChapter().setSelectedItem(currentChapterName);
-
         doc = this.setDefaultView(doc);
         this.readingPanel.getjEditorPane1().setDocument(doc);
         this.readingPanel.repaint();
@@ -192,15 +192,16 @@ public class ReadingController {
         doc = this.setDefaultView(doc);
         this.readingPanel.getjEditorPane1().setDocument(doc);
 
-        File file = new File("C:\\Users\\ADMIN\\Desktop\\BookReaderApp\\src\\other\\text.txt");
-        
+        File file = new File("src/other/text.txt");
+
         BufferedWriter bw = null;
         FileWriter fw = null;
 
         String input = (String) this.readingPanel.getjComboBox1().getSelectedItem();
         String fontSize = this.readingPanel.getjTextField2().getText();
         String padding = this.readingPanel.getjTextField3().getText();
-
+//        String fontSize = this.readingPanel.getFontsizeSpinner().getValue() +"";
+//        String padding = this.readingPanel.getPaddingSpinner().getValue() + "";
         String result = padding + "," + fontSize + "," + input;
         fw = new FileWriter(file);
         bw = new BufferedWriter(fw);
