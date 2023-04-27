@@ -42,7 +42,7 @@ public class ButtonItem extends javax.swing.JPanel {
         setForeground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(250, 45));
 
-        button.setBackground(new java.awt.Color(0, 0, 0));
+        button.setBackground(new java.awt.Color(0, 153, 153));
         button.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         button.setForeground(new java.awt.Color(255, 255, 255));
         button.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

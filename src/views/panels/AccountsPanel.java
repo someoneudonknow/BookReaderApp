@@ -49,7 +49,7 @@ public class AccountsPanel extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(1272, 698));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
-        lbUserManager.setBackground(new java.awt.Color(146, 154, 171));
+        lbUserManager.setBackground(new java.awt.Color(0, 153, 153));
         lbUserManager.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbUserManager.setForeground(new java.awt.Color(255, 255, 255));
         lbUserManager.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

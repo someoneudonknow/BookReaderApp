@@ -13,14 +13,15 @@ import controller.panel.SearchController;
 import controller.panel.AccountsController;
 import controller.view.LoginController;
 import controller.view.MainViewController;
-import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.plaf.basic.BasicOptionPaneUI;
 import views.LoginForm;
 import views.MainView;
 import views.items.ButtonItem;
@@ -44,12 +45,12 @@ public class SetButton {
 
         @Override
         public void mouseExited(MouseEvent e) {
-            this.btnBack.setBackground(new java.awt.Color(146,154,171));
+            this.btnBack.setBackground(new java.awt.Color(0,153,153));
         }
 
         @Override
         public void mouseEntered(MouseEvent e) {
-            this.btnBack.setBackground(new java.awt.Color(102,102,102));
+            this.btnBack.setBackground(new java.awt.Color(0,102,102));
         }
     }
     
@@ -71,7 +72,21 @@ public class SetButton {
             this.btnBack.setBackground(new java.awt.Color(242,242,242));
         }
     }
+    
+    public static class SetBtnEffect extends MouseAdapter {
+        JButton button;
+
+        public SetBtnEffect(JButton button) {
+            this.button = button;
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            button.setBackground(new java.awt.Color(0,102,102));
+        }
         
+        
+    }
     public static class SetBtnMain extends MouseAdapter{
         ButtonItem btnMain;
         MainView mainView;
@@ -93,14 +108,14 @@ public class SetButton {
         @Override
         public void mouseExited(MouseEvent e) {
             if(!isActive){
-                this.btnMain.getButton().setBackground(new java.awt.Color(0,0,0));
+                this.btnMain.getButton().setBackground(new java.awt.Color(0,153,153));
             }
         }
 
         @Override
         public void mouseEntered(MouseEvent e) {
             if(!isActive){
-                this.btnMain.getButton().setBackground(new java.awt.Color(102,102,102));
+                this.btnMain.getButton().setBackground(new java.awt.Color(0,102,102));
             }
         }
 
@@ -123,7 +138,7 @@ public class SetButton {
                 ButtonItem btn = (ButtonItem) mainView.getGroupBtn().getComponent(i);
                 if(btn != btnMain) {
                     btn.getButton().setForeground(new java.awt.Color(255,255,255));
-                    btn.getButton().setBackground(new java.awt.Color(0,0,0));
+                    btn.getButton().setBackground(new java.awt.Color(0,153,153));
                     SetBtnMain events = (SetBtnMain) btn.getEvents();
                     events.setIsActive(false);
                 }

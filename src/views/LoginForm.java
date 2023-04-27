@@ -5,11 +5,13 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseListener;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+import other.SetButton;
 
 public class LoginForm extends javax.swing.JFrame {
     public LoginForm() {
@@ -61,7 +63,7 @@ public class LoginForm extends javax.swing.JFrame {
         passwordLabel.setText("Password");
         getContentPane().add(passwordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 164, 290, 24));
 
-        loginBtn.setBackground(new java.awt.Color(0, 0, 0));
+        loginBtn.setBackground(new java.awt.Color(0, 153, 153));
         loginBtn.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn.setText("Login");
@@ -127,6 +129,11 @@ public class LoginForm extends javax.swing.JFrame {
         return userNameInput;
     }
 
+    public JButton getLoginBtn() {
+        return loginBtn;
+    }
+
+    
     
     public void onLogin(ActionListener action) {
         this.loginBtn.addActionListener(action);
