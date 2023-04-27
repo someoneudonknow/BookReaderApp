@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controller.panel;
 
 import java.awt.Font;
@@ -36,10 +32,6 @@ import views.panels.ReadingPanel;
 import views.MainView;
 import views.panels.BookInforPanel;
 
-/**
- *
- * @author ADMIN
- */
 public class ReadingController {
 
     private ReadingPanel readingPanel;
@@ -84,7 +76,63 @@ public class ReadingController {
         });
     }
 
+    private void handleReadFile() {
+        File file = new File("C:\\Users\\ADMIN\\Desktop\\BookReaderApp\\src\\other\\text.txt");
+        BufferedReader br = null;
+        FileReader fr = null;
+        String re = "";
+        HTMLDocument doc = new HTMLDocument();
+
+        if (!file.exists()) {
+
+            boolean temp;
+            try {
+                temp = file.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.readingPanel.getjEditorPane1().putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
+            this.readingPanel.getjComboBox1().setSelectedItem("Times New Roman");
+            this.readingPanel.getjTextField2().setText("15");
+            this.readingPanel.getjTextField3().setText("20");
+            Insets insets = new Insets(0, 20, 0, 20);
+            this.readingPanel.getjEditorPane1().setMargin(insets);
+            this.readingPanel.getjEditorPane1().setFont(new Font((String) this.readingPanel.getjComboBox1().getSelectedItem(), Font.PLAIN, Integer.parseInt(this.readingPanel.getjTextField2().getText())));
+            MutableAttributeSet set = new SimpleAttributeSet();
+            StyleConstants.setAlignment(set, StyleConstants.ALIGN_JUSTIFIED);
+            doc.setParagraphAttributes(0, doc.getLength(), set, false);
+            this.readingPanel.getjEditorPane1().setDocument(doc);
+        } else {
+
+            try {
+                fr = new FileReader(file);
+                br = new BufferedReader(fr);
+                re = br.readLine();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            this.readingPanel.getjEditorPane1().putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
+            String[] result = re.split(",");
+            int paddingNum = Integer.parseInt(result[0]);
+            int sizeNum = Integer.parseInt(result[1]);
+            String fontStyle = result[2];
+            this.readingPanel.getjComboBox1().setSelectedItem(fontStyle);
+            this.readingPanel.getjTextField2().setText("" + sizeNum);
+            this.readingPanel.getjTextField3().setText("" + paddingNum);
+            Insets insets = new Insets(0, paddingNum, 0, paddingNum);
+            this.readingPanel.getjEditorPane1().setMargin(insets);
+            this.readingPanel.getjEditorPane1().setFont(new Font(fontStyle, Font.PLAIN, sizeNum));
+            MutableAttributeSet set = new SimpleAttributeSet();
+            doc.setParagraphAttributes(0, doc.getLength(), set, false);
+            this.readingPanel.getjEditorPane1().setDocument(doc);
+        }
+    }
+
     public void setChapterDetails(ChapterModel chapter) throws SQLException, BadLocationException {
+        handleReadFile();
         int currentBookID = chapter.getBook_id();
 
         String content = chapter.getDocument();
@@ -113,6 +161,7 @@ public class ReadingController {
         this.currentChapter = chapter;
         this.readingPanel.getBoxChapter().repaint();
     }
+
     public void setAddChapterDetails(ChapterModel chapter, ArrayList<ChapterModel> listChapter) throws SQLException, BadLocationException {
         int currentBookID = chapter.getBook_id();
 
@@ -123,16 +172,6 @@ public class ReadingController {
         } catch (BadLocationException ex) {
             ex.printStackTrace();
         }
-
-//        ArrayList<ChapterModel> listChapter = ChapterDAO.getInstance().getAllChapterFromBook(currentBookID);
-//        ArrayList<String> listChapterName = new ArrayList<>();
-//        for (ChapterModel c : listChapter) {
-//            listChapterName.add("Chương " + c.getSerial() + ": " + c.getTitle());
-//        }
-//        this.readingPanel.getBoxChapter().setModel(new javax.swing.DefaultComboBoxModel<>(listChapter.toArray(new String[0])));
-//        String currentChapterName = listChapter.get(chapter.getSerial() - 1);
-//        this.readingPanel.getBoxChapter().setSelectedItem(currentChapterName);
-
         doc = this.setDefaultView(doc);
         this.readingPanel.getjEditorPane1().setDocument(doc);
         this.readingPanel.repaint();
@@ -155,9 +194,7 @@ public class ReadingController {
             }
             this.setChapterDetails(chapter);
             this.currentChapter = chapter;
-        } catch (SQLException ex) {
-            Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (BadLocationException ex) {
+        } catch (SQLException | BadLocationException ex) {
             Logger.getLogger(ReadingController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -193,7 +230,7 @@ public class ReadingController {
         this.readingPanel.getjEditorPane1().setDocument(doc);
 
         File file = new File("C:\\Users\\ADMIN\\Desktop\\BookReaderApp\\src\\other\\text.txt");
-        
+
         BufferedWriter bw = null;
         FileWriter fw = null;
 

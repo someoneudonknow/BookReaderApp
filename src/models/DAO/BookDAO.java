@@ -208,9 +208,13 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
         ArrayList<Object> queryField = new ArrayList<>();
         queryField.add(currentBookID);
         rs = this.executeQuery(query, queryField);
+        
         while (rs.next()) {
             result = decimalFormat.format(Math.round(rs.getDouble("average_rating") * 10.0) / 10.0);
             result += " " + rs.getInt("numRate");
+        }
+        if(!rs.next()) {
+            result = "0 0";
         }
         return result;
     }

@@ -146,6 +146,23 @@ public class SetDataToList {
         panel.repaint();
     }
     
+    public void setBookManagerList(JPanel panel, ArrayList<BookModel> books) {
+        List<BookItem> itemManager = new ArrayList<>();
+
+        for (BookModel b : books) {
+            BookItem a = new BookItem(b);
+            new BookItemController(a, this.mainView, b);
+            itemManager.add(a);
+        }
+
+        for (BookItem i : itemManager) {
+            panel.add(i);
+        }
+        panel.revalidate();
+        panel.repaint();
+    }
+    
+    
 
 //    public void setAndResetBookManagerList(JPanel panel) {
 //        List<BookItemManager> itemManager = new ArrayList<>();
