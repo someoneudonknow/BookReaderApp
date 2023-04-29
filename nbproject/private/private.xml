@@ -3,31 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/controller/panel/AddChapterController.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/AllBookPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/other/SetButton.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/MainPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/database/DB.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/items/ButtonItem.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/AccountsPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/InforPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/controller/panel/ReadingController.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/HistoryPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/SwingApp.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/ParentPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/BookEditPanel.java</file>
             <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/BookInforPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/MainView.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/controller/panel/BookInforController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/AllBookPanel.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/MainPanel.java</file>
             <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/BooksPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/controller/view/MainViewController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/InforPanel.java</file>
             <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/SearchPanel.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/controller/view/AddInforChapterController.java</file>
             <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/LibraryPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/AddBookPanel.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/SwingApp.java</file>
             <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/AccountInforPanel.java</file>
             <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/ReadingPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/AddChapterPanel.java</file>
-            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/controller/panel/AddChapterReviewController.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/ParentPanel.java</file>
+            <file>file:/C:/Users/ADMIN/OneDrive/Máy%20tính/btl1/BookReaderApp/src/views/panels/NewJPanel.java</file>
         </group>
     </open-files>
 </project-private>
