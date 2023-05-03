@@ -162,7 +162,7 @@ public class MainView extends javax.swing.JFrame {
             pack();
             setLocationRelativeTo(null);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
-            setTitle("Wibu Forever (hay gì gì đó)");
+            setTitle("No books no life");
             setVisible(true);
         });
     }

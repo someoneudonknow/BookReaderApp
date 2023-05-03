@@ -257,7 +257,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="M&#x1edb;i c&#x1ead;p nh&#x1ead;t"/>
+                    <Property name="text" type="java.lang.String" value="New update"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>

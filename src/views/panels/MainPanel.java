@@ -159,7 +159,7 @@ public class MainPanel extends ParentPanel {
         lbNewUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbNewUpdate.setForeground(new java.awt.Color(255, 255, 255));
         lbNewUpdate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbNewUpdate.setText("Mới cập nhật");
+        lbNewUpdate.setText("New update");
         lbNewUpdate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbNewUpdate.setOpaque(true);
 

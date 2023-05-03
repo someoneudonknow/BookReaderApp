@@ -65,7 +65,7 @@ public class HistoryPanel extends ParentPanel {
         btnDelete.setBackground(new java.awt.Color(240, 173, 78));
         btnDelete.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
-        btnDelete.setText("Xóa tất cả");
+        btnDelete.setText("Delete all");
         btnDelete.setOpaque(true);
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

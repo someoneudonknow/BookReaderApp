@@ -192,6 +192,8 @@ public class AddBookPanel extends ParentPanel {
 
         jLabel5.setText("Desciption");
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         txtDescription.setColumns(20);
         txtDescription.setRows(5);
         jScrollPane1.setViewportView(txtDescription);

@@ -92,8 +92,8 @@ public class BookInforController {
     public boolean checkReview(ReviewPK pk) throws SQLException {
         ResultSet isExisted = ReviewDAO.getInstance().checkPK(new ReviewPK(pk.getUser_id(), pk.getBook_id()));
         if (isExisted.next()) {
-            this.bookInforPanel.getBtnAddComment().setText("Chỉnh sửa");
-            this.bookInforPanel.getjLabel1().setText("Đã từng đánh giá sách này, bạn có muốn chỉnh sửa ?");
+            this.bookInforPanel.getBtnAddComment().setText("Edit");
+            this.bookInforPanel.getjLabel1().setText("Already rated this book, do you want to edit? ?");
             this.bookInforPanel.getTxtComment().setText(isExisted.getString("user_comment"));
             this.bookInforPanel.getjComboBox1().setSelectedIndex(isExisted.getInt("user_rating") - 1);
             this.mainView.repaint();
@@ -107,17 +107,17 @@ public class BookInforController {
         newReview.setUser_id(mainView.getUserModels().getId());
         String comment = this.bookInforPanel.getTxtComment().getText();
         if (comment.length() <= 10) {
-            JOptionPane.showMessageDialog(null, "Bình luận phải lớn hơn hoặc bằng 10 ký tự");
+            JOptionPane.showMessageDialog(null, "Comment must be greater than or equal to 10 characters");
         } else {
             newReview.setComment(comment);
             int rating = this.bookInforPanel.getjComboBox1().getSelectedIndex();
             newReview.setRating(rating + 1);
             if (option.equals("insert")) {
                 ReviewDAO.getInstance().insert(newReview);
-                JOptionPane.showMessageDialog(null, "Đã đánh giá");
+                JOptionPane.showMessageDialog(null, "Evaluated successfully");
             } else if (option.equals("update")) {
                 ReviewDAO.getInstance().updateByModel(newReview);
-                JOptionPane.showMessageDialog(null, "Đã chính sửa");
+                JOptionPane.showMessageDialog(null, "Edited successfully");
             } else {
                 System.out.println("Your option ins't available");
             }
@@ -164,7 +164,7 @@ public class BookInforController {
         String recentlyRead = BookDAO.getInstance().getReadRecently(currentID,
                 this.mainView.getUserModels().getId());
         if (!recentlyRead.equals("")) {
-            this.bookInforPanel.getTxtReadRecently().setText("Chương " + recentlyRead);
+            this.bookInforPanel.getTxtReadRecently().setText("Chapter " + recentlyRead);
 
         }
     }
@@ -185,10 +185,10 @@ public class BookInforController {
         this.havingReview = havingReview;
         //Set lại size cho panel chứa list
         JPanel panel = this.bookInforPanel.getListChapter();
-        panel.setPreferredSize(new Dimension(0, panel.getComponentCount() * 40));
+        panel.setPreferredSize(new Dimension(0, panel.getComponentCount() * 50));
 
         JPanel panel1 = this.bookInforPanel.getListComment();
-        panel1.setPreferredSize(new Dimension(0, panel1.getComponentCount() * 40));
+        panel1.setPreferredSize(new Dimension(0, panel1.getComponentCount() * 50));
     }
 
     public void setFirstLastChapterBtn(String option) throws SQLException, BadLocationException {

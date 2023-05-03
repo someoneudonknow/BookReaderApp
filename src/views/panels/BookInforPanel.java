@@ -256,11 +256,16 @@ public class BookInforPanel extends ParentPanel {
         btnAddComment.setBackground(new java.awt.Color(240, 173, 78));
         btnAddComment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAddComment.setForeground(new java.awt.Color(255, 255, 255));
-        btnAddComment.setText("Gửi");
+        btnAddComment.setText("Send");
+        btnAddComment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddCommentActionPerformed(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel1.setText("Viết đánh giá của bạn");
+        jLabel1.setText("Write your comment");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -364,6 +369,10 @@ public class BookInforPanel extends ParentPanel {
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLastActionPerformed
+
+    private void btnAddCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCommentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddCommentActionPerformed
 
     public JButton getBtnFirst() {
         return btnFirst;

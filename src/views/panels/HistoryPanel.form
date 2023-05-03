@@ -136,7 +136,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="X&#xf3;a t&#x1ea5;t c&#x1ea3;"/>
+            <Property name="text" type="java.lang.String" value="Delete all"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
           <Events>

@@ -108,6 +108,7 @@ public class BookEditPanel extends ParentPanel {
         jScrollPane1.setBorder(null);
 
         txtDiscription.setColumns(20);
+        txtDiscription.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtDiscription.setLineWrap(true);
         txtDiscription.setRows(5);
         txtDiscription.setText("discription");
@@ -115,7 +116,7 @@ public class BookEditPanel extends ParentPanel {
         txtDiscription.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(txtDiscription);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 169, 778, 69));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 169, 1030, 69));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Categories:");
@@ -222,11 +223,11 @@ public class BookEditPanel extends ParentPanel {
         btnAddComment.setBackground(new java.awt.Color(240, 173, 78));
         btnAddComment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAddComment.setForeground(new java.awt.Color(255, 255, 255));
-        btnAddComment.setText("Gửi");
+        btnAddComment.setText("Send");
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel1.setText("Viết bình luận của bạn");
+        jLabel1.setText("Write your comment");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);

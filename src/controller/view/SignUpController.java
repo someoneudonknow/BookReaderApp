@@ -51,14 +51,14 @@ public class SignUpController {
         String password = String.valueOf(this.rgsForm.getPasswordInput().getPassword());
         String passwordConfirm = String.valueOf(this.rgsForm.getPasswordConfirmInput().getPassword());
 
-        Rules[] userNameRules = new Rules[]{new Rules("Vui lòng nhập tên đăng nhập!", Rules.IS_REQUIRED),
-            new Rules("Tên đăng nhập không được có khoảng trống!", Rules.IS_CONTAINS_WHITE_SPACE)};
-        Rules[] phoneNumberRules = new Rules[]{new Rules("Vui lòng nhập số điện thoại!", Rules.IS_REQUIRED),
-            new Rules("Định dạng số điện thoại không hợp lệ!", Rules.IS_PHONE_NUMBER)};
-        Rules[] passwordRules = new Rules[]{new Rules("Vui lòng nhập mật khẩu!", Rules.IS_REQUIRED),
-            new Rules("Mật khẩu phải lớn hơn 6 kí tự!", Rules.IS_MIN, 6)};
-        Rules[] passwordConfirmRules = new Rules[]{new Rules("Vui lòng xác nhận mật khẩu!", Rules.IS_REQUIRED),
-            new Rules("Xác nhận mật khẩu sai!", Rules.IS_PASSWORD_CONFIRM, password)};
+        Rules[] userNameRules = new Rules[]{new Rules("Please enter your username!", Rules.IS_REQUIRED),
+            new Rules("Username cannot have spaces!", Rules.IS_CONTAINS_WHITE_SPACE)};
+        Rules[] phoneNumberRules = new Rules[]{new Rules("Please enter your phone number!", Rules.IS_REQUIRED),
+            new Rules("Invalid phone number!", Rules.IS_PHONE_NUMBER)};
+        Rules[] passwordRules = new Rules[]{new Rules("Please enter your password!", Rules.IS_REQUIRED),
+            new Rules("Password must equal or greater than 6 characters!", Rules.IS_MIN, 6)};
+        Rules[] passwordConfirmRules = new Rules[]{new Rules("Please confirm your password!", Rules.IS_REQUIRED),
+            new Rules("Incorrect password!", Rules.IS_PASSWORD_CONFIRM, password)};
 
         Validate userNameValidate = new Validate(userName, userNameRules);
         Validate phoneNumberValidate = new Validate(phoneNumber, phoneNumberRules);
@@ -94,7 +94,7 @@ public class SignUpController {
             UserModel signUpUser = new UserModel(0, userName, password, phoneNumber, avatar, false, 1);
                
             if(!userDAO.insertNewUser(signUpUser)) {
-                JOptionPane.showMessageDialog(rgsForm, "Tài khoản đã tồn tại, có thể bạn muốn đăng nhập ?");
+                JOptionPane.showMessageDialog(rgsForm, "Account already existed. Do you want to log in ?");
                 this.resetForm();
             }else {
                 this.rgsForm.dispose();
@@ -119,7 +119,7 @@ public class SignUpController {
                 Image resizedImage = userImage.getImage().getScaledInstance(this.rgsForm.getImageHolder().getWidth(), this.rgsForm.getImageHolder().getHeight(), Image.SCALE_SMOOTH);
                 this.rgsForm.getImageHolder().setIcon(new ImageIcon(resizedImage));
             } else {
-                JOptionPane.showMessageDialog(this.rgsForm, "Sai định dạng ảnh!");
+                JOptionPane.showMessageDialog(this.rgsForm, "Wrong image format!");
             }
         }
     }

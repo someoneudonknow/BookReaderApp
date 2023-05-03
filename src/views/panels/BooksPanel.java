@@ -120,7 +120,7 @@ public class BooksPanel extends ParentPanel {
         btnAddBook.setBackground(new java.awt.Color(240, 173, 78));
         btnAddBook.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnAddBook.setForeground(new java.awt.Color(255, 255, 255));
-        btnAddBook.setText("Thêm sách");
+        btnAddBook.setText("New Book");
         btnAddBook.setOpaque(true);
         btnAddBook.setPreferredSize(new java.awt.Dimension(230, 32));
         jPanel6.add(btnAddBook);
