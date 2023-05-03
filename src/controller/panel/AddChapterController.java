@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,6 +25,7 @@ import views.AddInforChapter;
 import views.MainView;
 import views.panels.AddBookPanel;
 import views.panels.AddChapterPanel;
+import views.panels.BookEditPanel;
 import views.panels.ParentPanel;
 
 /**
@@ -127,6 +129,14 @@ public class AddChapterController {
     }
 
     public void backToPrevious() {
-        this.mainView.setMainPanel((ParentPanel) previousPanel);
+        BookEditPanel bkEdit = new BookEditPanel();
+        try {
+            new BookEditController(bkEdit, mainView, bookModel);
+        } catch (SQLException ex) {
+            Logger.getLogger(AddChapterController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(AddChapterController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.mainView.setMainPanel((ParentPanel) bkEdit);
     }
 }
