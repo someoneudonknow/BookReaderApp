@@ -152,7 +152,7 @@ public class ReadingController {
         ArrayList<ChapterModel> listChapter = ChapterDAO.getInstance().getAllChapterFromBook(currentBookID);
         ArrayList<String> listChapterName = new ArrayList<>();
         for (ChapterModel c : listChapter) {
-            listChapterName.add("Chương " + c.getSerial() + ": " + c.getTitle());
+            listChapterName.add("Chapter " + c.getSerial() + ": " + c.getTitle());
         }
         this.readingPanel.getBoxChapter().setModel(new javax.swing.DefaultComboBoxModel<>(listChapterName.toArray(new String[0])));
         String currentChapterName = listChapterName.get(chapter.getSerial() - 1);

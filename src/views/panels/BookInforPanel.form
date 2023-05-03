@@ -602,8 +602,11 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="G&#x1eed;i"/>
+                    <Property name="text" type="java.lang.String" value="Send"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddCommentActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel1">
                   <Properties>
@@ -613,7 +616,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="2"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Vi&#x1ebf;t &#x111;&#xe1;nh gi&#xe1; c&#x1ee7;a b&#x1ea1;n"/>
+                    <Property name="text" type="java.lang.String" value="Write your comment"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jComboBox1">

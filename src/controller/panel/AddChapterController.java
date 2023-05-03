@@ -81,7 +81,7 @@ public class AddChapterController {
         }
 
         JPanel panel = this.chapterPanel.getListChapter();
-        panel.setPreferredSize(new Dimension(0, panel.getComponentCount() * 40));
+        panel.setPreferredSize(new Dimension(0, panel.getComponentCount() * 50));
     }
 
     private void startAddFrame() {
@@ -104,8 +104,11 @@ public class AddChapterController {
                 } catch (SQLException ex) {
                 }
                 inforChapter.dispose();
+                JPanel panel = this.chapterPanel.getListChapter();
+                panel.setPreferredSize(new Dimension(0, panel.getComponentCount() * 50));
             }
         });
+        
     }
 
     private ChapterModel updateChapterSerial(ChapterModel currentChap, AddInforChapter inforChapter) {

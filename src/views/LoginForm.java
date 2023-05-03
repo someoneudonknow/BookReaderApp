@@ -152,7 +152,7 @@ public class LoginForm extends javax.swing.JFrame {
             pack();
             setLocationRelativeTo(null);
             setResizable(false);
-            setTitle("Wibu Forever (hay gì gì đó)");
+            setTitle("No books no life");
             setDefaultCloseOperation(EXIT_ON_CLOSE);
             setVisible(true);
         });
