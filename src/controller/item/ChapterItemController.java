@@ -6,7 +6,6 @@ package controller.item;
 
 import controller.panel.ReadingController;
 import views.items.ChapterItem;
-import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
@@ -20,7 +19,6 @@ import other.SetDataToList;
 import views.panels.BookEditPanel;
 import views.panels.ReadingPanel;
 import views.MainView;
-import views.panels.AddChapterPanel;
 
 public class ChapterItemController {
 

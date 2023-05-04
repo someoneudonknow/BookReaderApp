@@ -6,7 +6,6 @@ package models.DAO;
 
 import database.DB;
 import java.util.ArrayList;
-import java.util.List;
 import models.CategoryModel;
 import models.interfaces.DAOInterface;
 import java.sql.Connection;

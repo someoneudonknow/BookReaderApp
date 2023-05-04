@@ -201,7 +201,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ki&#x1ec3;u ch&#x1eef;"/>
+            <Property name="text" type="java.lang.String" value="Font style"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBox1">
@@ -221,7 +221,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="K&#xed;ch c&#x1ee1; ch&#x1eef;"/>
+            <Property name="text" type="java.lang.String" value="Font size"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="fontsizeSpinner">
@@ -251,8 +251,11 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#xc1;p d&#x1ee5;ng"/>
+            <Property name="text" type="java.lang.String" value="Apply"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
       <LayoutCode>

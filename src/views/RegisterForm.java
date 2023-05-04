@@ -22,27 +22,22 @@ public class RegisterForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        genderGroup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         registerBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         passwordConfirm = new javax.swing.JLabel();
         passwordConfirmErrorMessage = new javax.swing.JLabel();
         loginLink = new javax.swing.JLabel();
-        genderErrorMessage = new javax.swing.JLabel();
         passwordInput = new javax.swing.JPasswordField();
         phoneNumberInput = new javax.swing.JTextField();
         userNameInput = new javax.swing.JTextField();
         photo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        maleRadioBtn = new javax.swing.JRadioButton();
         passwordErrorMessage = new javax.swing.JLabel();
         passwordConfirmInput = new javax.swing.JPasswordField();
         imageHolder = new javax.swing.JLabel();
         password = new javax.swing.JLabel();
-        femaleRadioBtn = new javax.swing.JRadioButton();
         phoneNumberErrorMessage = new javax.swing.JLabel();
-        genders = new javax.swing.JLabel();
         userNameErrorMessage = new javax.swing.JLabel();
         chooseFileBtn = new javax.swing.JButton();
         phoneNumber = new javax.swing.JLabel();
@@ -76,10 +71,10 @@ public class RegisterForm extends javax.swing.JFrame {
 
         passwordConfirm.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         passwordConfirm.setText("Password Confirm");
-        jPanel1.add(passwordConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 329, 524, -1));
+        jPanel1.add(passwordConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 524, -1));
 
         passwordConfirmErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
-        jPanel1.add(passwordConfirmErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 429, 524, -1));
+        jPanel1.add(passwordConfirmErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 524, 20));
 
         loginLink.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         loginLink.setForeground(new java.awt.Color(0, 0, 255));
@@ -87,14 +82,11 @@ public class RegisterForm extends javax.swing.JFrame {
         loginLink.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(loginLink, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 435, 60, -1));
 
-        genderErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
-        jPanel1.add(genderErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 217, 522, -1));
-
         passwordInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(passwordInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 249, 522, 42));
+        jPanel1.add(passwordInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 522, 42));
 
         phoneNumberInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(phoneNumberInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 110, 522, 42));
+        jPanel1.add(phoneNumberInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 522, 42));
 
         userNameInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPanel1.add(userNameInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 32, 524, 42));
@@ -107,17 +99,11 @@ public class RegisterForm extends javax.swing.JFrame {
         jLabel2.setText("Already have an account?");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 435, -1, -1));
 
-        maleRadioBtn.setBackground(new java.awt.Color(255, 255, 255));
-        genderGroup.add(maleRadioBtn);
-        maleRadioBtn.setText("Male");
-        maleRadioBtn.setOpaque(true);
-        jPanel1.add(maleRadioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 190, 98, -1));
-
         passwordErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
-        jPanel1.add(passwordErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 323, 524, -1));
+        jPanel1.add(passwordErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 524, -1));
 
         passwordConfirmInput.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jPanel1.add(passwordConfirmInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 355, 524, 42));
+        jPanel1.add(passwordConfirmInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 524, 42));
 
         imageHolder.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         imageHolder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -128,24 +114,13 @@ public class RegisterForm extends javax.swing.JFrame {
         password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         password.setLabelFor(passwordInput);
         password.setText("Password");
-        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 223, 522, -1));
-
-        femaleRadioBtn.setBackground(new java.awt.Color(255, 255, 255));
-        genderGroup.add(femaleRadioBtn);
-        femaleRadioBtn.setText("Female");
-        femaleRadioBtn.setOpaque(true);
-        jPanel1.add(femaleRadioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, 98, -1));
+        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 522, -1));
 
         phoneNumberErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
-        jPanel1.add(phoneNumberErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 158, 522, -1));
-
-        genders.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        genders.setLabelFor(genders);
-        genders.setText("Gender");
-        jPanel1.add(genders, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 164, 522, -1));
+        jPanel1.add(phoneNumberErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 522, -1));
 
         userNameErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
-        jPanel1.add(userNameErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 80, 522, -1));
+        jPanel1.add(userNameErrorMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 522, -1));
 
         chooseFileBtn.setBackground(new java.awt.Color(240, 173, 78));
         chooseFileBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -157,7 +132,7 @@ public class RegisterForm extends javax.swing.JFrame {
         phoneNumber.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         phoneNumber.setLabelFor(phoneNumberInput);
         phoneNumber.setText("Phone number");
-        jPanel1.add(phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 86, 522, -1));
+        jPanel1.add(phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 522, -1));
 
         userName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         userName.setLabelFor(userNameInput);
@@ -170,12 +145,17 @@ public class RegisterForm extends javax.swing.JFrame {
         showPasswordBtn.setBackground(new java.awt.Color(255, 255, 255));
         showPasswordBtn.setText("Show password");
         showPasswordBtn.setOpaque(true);
-        jPanel1.add(showPasswordBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 297, 524, -1));
+        showPasswordBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPasswordBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(showPasswordBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 524, -1));
 
         showPasswordConfirmBtn.setBackground(new java.awt.Color(255, 255, 255));
         showPasswordConfirmBtn.setText("Show password");
         showPasswordConfirmBtn.setOpaque(true);
-        jPanel1.add(showPasswordConfirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 403, 524, -1));
+        jPanel1.add(showPasswordConfirmBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 524, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 89, -1, -1));
 
@@ -201,17 +181,14 @@ public class RegisterForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_registerBtnActionPerformed
 
+    private void showPasswordBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPasswordBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showPasswordBtnActionPerformed
+
     public JButton getChooseFileBtn() {
         return chooseFileBtn;
     }
 
-    public JLabel getGenderErrorMessage() {
-        return genderErrorMessage;
-    }
-
-    public ButtonGroup getGenderGroup() {
-        return genderGroup;
-    }
 
     public JLabel getImageHolder() {
         return imageHolder;
@@ -310,17 +287,12 @@ public class RegisterForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton chooseFileBtn;
-    private javax.swing.JRadioButton femaleRadioBtn;
-    private javax.swing.JLabel genderErrorMessage;
-    private javax.swing.ButtonGroup genderGroup;
-    private javax.swing.JLabel genders;
     private javax.swing.JLabel imageHolder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel loginLink;
-    private javax.swing.JRadioButton maleRadioBtn;
     private javax.swing.JLabel password;
     private javax.swing.JLabel passwordConfirm;
     private javax.swing.JLabel passwordConfirmErrorMessage;

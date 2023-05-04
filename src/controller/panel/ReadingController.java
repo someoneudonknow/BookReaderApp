@@ -11,7 +11,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -45,7 +44,6 @@ public class ReadingController {
         this.mainView = mainView;
         this.currentChapter = currentChapter;
         this.previousPanel = previousPanel;
-        
 
         this.readingPanel.onBtnPrevious(e -> {
             this.onBtnLeftRight("previous");
@@ -162,8 +160,8 @@ public class ReadingController {
 
         doc = this.setDefaultView(doc);
         this.readingPanel.getjEditorPane1().setDocument(doc);
+        this.readingPanel.getjScrollPane1().getVerticalScrollBar().setValue(0);
         this.readingPanel.repaint();
-
         this.currentChapter = chapter;
         this.readingPanel.getBoxChapter().repaint();
     }
@@ -225,10 +223,9 @@ public class ReadingController {
 
 //        int paddingNum = Integer.parseInt(this.readingPanel.getjTextField3().getText());
 //        int sizeNum = Integer.parseInt(this.readingPanel.getjTextField2().getText());
+        int sizeNum = (int) this.readingPanel.getFontsizeSpinner().getValue();
+        int paddingNum = (int) this.readingPanel.getPaddingSpinner().getValue();
 
-          int sizeNum = (int) this.readingPanel.getFontsizeSpinner().getValue();
-          int paddingNum = (int) this.readingPanel.getPaddingSpinner().getValue();
-        
         Insets insets = new Insets(0, paddingNum, 0, paddingNum);
         this.readingPanel.getjEditorPane1().setMargin(insets);
 //        this.readingPanel.getjTextField2().setText("" + sizeNum);
@@ -240,7 +237,6 @@ public class ReadingController {
         doc = this.setDefaultView(doc);
         this.readingPanel.getjEditorPane1().setDocument(doc);
 
-
         File file = new File("src/other/text.txt");
 
         BufferedWriter bw = null;
@@ -249,7 +245,7 @@ public class ReadingController {
         String input = (String) this.readingPanel.getjComboBox1().getSelectedItem();
 //        String fontSize = this.readingPanel.getjTextField2().getText();
 //        String padding = this.readingPanel.getjTextField3().getText();
-        String fontSize =""+ this.readingPanel.getFontsizeSpinner().getValue();
+        String fontSize = "" + this.readingPanel.getFontsizeSpinner().getValue();
         String padding = "" + this.readingPanel.getPaddingSpinner().getValue();
         String result = padding + "," + fontSize + "," + input;
         fw = new FileWriter(file);
@@ -277,6 +273,6 @@ public class ReadingController {
             BookInforPanel inforPanel = (BookInforPanel) previousPanel;
             inforPanel.getTxtView().setText("" + BookDAO.getInstance().getView(currentChapter.getBook_id()));
         }
-        this.mainView.setMainPanel((ParentPanel)previousPanel);
+        this.mainView.setMainPanel((ParentPanel) previousPanel);
     }
 }

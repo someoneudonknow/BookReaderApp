@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import other.SetButton;
 
@@ -26,7 +27,7 @@ public class BookInforPanel extends ParentPanel {
      */
     public BookInforPanel() {
         initComponents();
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 sao", "2 sao", "3 sao", "4 sao", "5 sao" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 star", "2 star", "3 star", "4 star", "5 star" }));
         jComboBox1.setSelectedIndex(4);
         txtComment.setText("");
         jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
@@ -52,7 +53,7 @@ public class BookInforPanel extends ParentPanel {
         txtRate = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtDiscription = new javax.swing.JLabel();
+        txtDiscription = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
         txtCategorys = new javax.swing.JLabel();
         btnFirst = new javax.swing.JButton();
@@ -127,11 +128,11 @@ public class BookInforPanel extends ParentPanel {
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(null);
 
-        txtDiscription.setBackground(new java.awt.Color(255, 255, 255));
+        txtDiscription.setColumns(20);
         txtDiscription.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtDiscription.setText("jLabel8");
-        txtDiscription.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        txtDiscription.setOpaque(true);
+        txtDiscription.setLineWrap(true);
+        txtDiscription.setRows(5);
+        txtDiscription.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtDiscription);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 765, 69));
@@ -196,7 +197,7 @@ public class BookInforPanel extends ParentPanel {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 117, 109, -1));
 
         txtReadRecently.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtReadRecently.setText("Bạn chưa đọc sách này");
+        txtReadRecently.setText("You haven't read this book");
         jPanel1.add(txtReadRecently, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 117, 170, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -246,12 +247,10 @@ public class BookInforPanel extends ParentPanel {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Comments");
+        jLabel11.setText("Reviews");
         jLabel11.setOpaque(true);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-
-        txtComment.setText("jTextField1");
 
         btnAddComment.setBackground(new java.awt.Color(240, 173, 78));
         btnAddComment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -336,7 +335,7 @@ public class BookInforPanel extends ParentPanel {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Comments", jPanel2);
+        jTabbedPane1.addTab("Review", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -410,7 +409,7 @@ public class BookInforPanel extends ParentPanel {
         return txtCategorys;
     }
 
-    public JLabel getTxtDiscription() {
+    public JTextArea getTxtDiscription() {
         return txtDiscription;
     }
 
@@ -516,7 +515,7 @@ public class BookInforPanel extends ParentPanel {
     private javax.swing.JLabel txtAuthor;
     private javax.swing.JLabel txtCategorys;
     private javax.swing.JTextField txtComment;
-    private javax.swing.JLabel txtDiscription;
+    private javax.swing.JTextArea txtDiscription;
     private javax.swing.JLabel txtName;
     private javax.swing.JLabel txtRate;
     private javax.swing.JLabel txtReadRecently;

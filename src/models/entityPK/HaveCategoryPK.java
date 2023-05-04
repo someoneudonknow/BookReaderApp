@@ -9,6 +9,7 @@ package models.entityPK;
  * @author trang
  */
 public class HaveCategoryPK {
+
     private int category_id;
     private int book_id;
 
@@ -19,9 +20,7 @@ public class HaveCategoryPK {
 
     public HaveCategoryPK() {
     }
-    
-    
-    
+
     public int getCategory_id() {
         return category_id;
     }
@@ -37,5 +36,5 @@ public class HaveCategoryPK {
     public void setBook_id(int book_id) {
         this.book_id = book_id;
     }
-    
+
 }

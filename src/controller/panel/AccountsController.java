@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import models.BookModel;
 import models.DAO.UserDAO;
 import models.UserModel;
 import other.SetDataToList;

@@ -26,7 +26,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import models.BookModel;
 import models.CategoryModel;
 import models.DAO.BookDAO;
-import models.DAO.CategoryDAO;
 import models.DAO.HaveCategoryDAO;
 import models.DAO.UserDAO;
 import other.Converter;
@@ -34,7 +33,6 @@ import other.SetDataToList;
 import views.ChangeCategory;
 import views.panels.AddChapterPanel;
 import views.panels.BookEditPanel;
-import views.panels.BookInforPanel;
 import views.MainView;
 import views.panels.BooksPanel;
 

@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import models.BookModel;
@@ -33,10 +32,8 @@ import models.ChapterModel;
 import models.DAO.BookDAO;
 import models.DAO.ChapterDAO;
 import models.DAO.ReviewDAO;
-import models.DAO.UserDAO;
 import models.ReviewModel;
 import models.SavedModel;
-import views.panels.AccountsPanel;
 import views.MainView;
 
 /**

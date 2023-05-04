@@ -5,8 +5,6 @@
 package models;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import models.entityPK.ReadingPK;
 
 /**

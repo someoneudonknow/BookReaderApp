@@ -23,7 +23,6 @@ import models.DAO.ChapterDAO;
 import other.SetDataToList;
 import views.AddInforChapter;
 import views.MainView;
-import views.panels.AddBookPanel;
 import views.panels.AddChapterPanel;
 import views.panels.BookEditPanel;
 import views.panels.ParentPanel;

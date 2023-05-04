@@ -1,7 +1,6 @@
 package models.interfaces;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public interface DAOInterface<T, PK> {
 

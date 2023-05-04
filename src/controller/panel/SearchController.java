@@ -5,19 +5,15 @@
 package controller.panel;
 
 import java.sql.SQLException;
-import java.time.Clock;
 import views.items.Book;
 import views.items.CategoryItem;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import models.BookModel;
 import models.CategoryModel;
 import models.DAO.BookDAO;
 import models.DAO.CategoryDAO;
-import models.DAO.HaveCategoryDAO;
 import models.HaveCategoryModel;
 import other.SetDataToList;
 import views.panels.SearchPanel;

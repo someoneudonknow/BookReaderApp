@@ -31,7 +31,7 @@ public class ChapterItem extends javax.swing.JPanel {
     public ChapterItem(ChapterModel chapterModels) throws SQLException, ParseException {
         initComponents();
         this.chapterModels = chapterModels;
-        this.lbChapter.setText("Chương " + chapterModels.getSerial() + " : " + chapterModels.getTitle());
+        this.lbChapter.setText("Chapter " + chapterModels.getSerial() + " : " + chapterModels.getTitle());
         String formatDate = formatDate("" + chapterModels.getUpdateTime());
         this.txtDate.setText(formatDate);
     }

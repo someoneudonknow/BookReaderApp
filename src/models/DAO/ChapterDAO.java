@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import models.CategoryModel;
 import models.ChapterModel;
 import models.interfaces.DAOInterface;
 import utils.ResultSetQuery;
