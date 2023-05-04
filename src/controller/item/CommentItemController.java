@@ -10,10 +10,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import models.BookModel;
 import models.DAO.ReviewDAO;
 import models.ReviewModel;
-import models.UserModel;
 import models.entityPK.ReviewPK;
 import views.panels.BookEditPanel;
 import views.MainView;
@@ -44,7 +42,7 @@ public class CommentItemController {
     }
 
     public void DeleteThisComment() {
-        int x = JOptionPane.showConfirmDialog(this.mainView, "Are you sure want to delete this comment?");
+        int x = JOptionPane.showConfirmDialog(this.mainView, "Are you sure want to delete this comment?", "", JOptionPane.YES_NO_OPTION);
         if (x == 0) {
             int userId = this.currentReviewModel.getUser_id();
             int bookId = this.currentReviewModel.getBook_id();

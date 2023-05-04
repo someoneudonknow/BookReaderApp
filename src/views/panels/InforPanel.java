@@ -48,8 +48,8 @@ public class InforPanel extends ParentPanel {
         chooseFileBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         btnEdit = new javax.swing.JButton();
-        btnUndo = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
+        btnUndo = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setAlignmentX(0.0F);
@@ -169,6 +169,12 @@ public class InforPanel extends ParentPanel {
         btnEdit.setText("Edit");
         jPanel2.add(btnEdit);
 
+        btnSave.setBackground(new java.awt.Color(240, 173, 78));
+        btnSave.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
+        btnSave.setText("Save");
+        jPanel2.add(btnSave);
+
         btnUndo.setBackground(new java.awt.Color(240, 173, 78));
         btnUndo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnUndo.setForeground(new java.awt.Color(255, 255, 255));
@@ -179,12 +185,6 @@ public class InforPanel extends ParentPanel {
             }
         });
         jPanel2.add(btnUndo);
-
-        btnSave.setBackground(new java.awt.Color(240, 173, 78));
-        btnSave.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnSave.setForeground(new java.awt.Color(255, 255, 255));
-        btnSave.setText("Save");
-        jPanel2.add(btnSave);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

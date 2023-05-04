@@ -93,7 +93,7 @@ public class BookInforController {
         ResultSet isExisted = ReviewDAO.getInstance().checkPK(new ReviewPK(pk.getUser_id(), pk.getBook_id()));
         if (isExisted.next()) {
             this.bookInforPanel.getBtnAddComment().setText("Edit");
-            this.bookInforPanel.getjLabel1().setText("Already rated this book, do you want to edit? ?");
+            this.bookInforPanel.getjLabel1().setText("Already rated this book, do you want to edit ?");
             this.bookInforPanel.getTxtComment().setText(isExisted.getString("user_comment"));
             this.bookInforPanel.getjComboBox1().setSelectedIndex(isExisted.getInt("user_rating") - 1);
             this.mainView.repaint();
@@ -106,8 +106,8 @@ public class BookInforController {
         newReview.setBook_id(currentBook.getId());
         newReview.setUser_id(mainView.getUserModels().getId());
         String comment = this.bookInforPanel.getTxtComment().getText();
-        if (comment.length() <= 10) {
-            JOptionPane.showMessageDialog(null, "Comment must be greater than or equal to 10 characters");
+        if (comment.length() >50) {
+            JOptionPane.showMessageDialog(null, "Comment must be less than or equal to 50 characters");
         } else {
             newReview.setComment(comment);
             int rating = this.bookInforPanel.getjComboBox1().getSelectedIndex();
@@ -158,7 +158,7 @@ public class BookInforController {
         if (rating[0].equals("0") && rating[1].equals("0")) {
             this.bookInforPanel.getTxtRate().setText("No rating");
         } else {
-            this.bookInforPanel.getTxtRate().setText("" + rating[0] + " sao" + " " + "(" + rating[1] + ")");
+            this.bookInforPanel.getTxtRate().setText("" + rating[0] + " star" + " " + "(" + rating[1] + ")");
         }
         this.bookInforPanel.getImgCover().setIcon(Converter.convertBlobToImageIcon(currentBook.getCover()));
         String recentlyRead = BookDAO.getInstance().getReadRecently(currentID,

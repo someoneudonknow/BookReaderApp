@@ -4,7 +4,6 @@
  */
 package controller.item;
 
-import java.awt.event.MouseAdapter;
 import other.SetButton;
 import views.MainView;
 import views.items.ButtonItem;

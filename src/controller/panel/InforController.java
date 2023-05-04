@@ -4,12 +4,8 @@ package controller.panel;
 import java.sql.Blob;
 import java.awt.Image;
 import java.io.File;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -39,9 +35,9 @@ public class InforController {
         this.mainView = mainView;
         this.initUI();
         this.isPasswordValueChanged = !this.currentUser.getPassword().equals(String.valueOf(infoPanel.getPasswordInput().getPassword()));
-        
+
         setVisibleBtn(false);
-        
+
         this.infoPanel.onChooseFile(e -> {
             handleChooseFileBtnCLicked();
         });
@@ -110,7 +106,7 @@ public class InforController {
                 Image resizedImage = userImage.getImage().getScaledInstance(this.infoPanel.getImageHolder().getWidth(), this.infoPanel.getImageHolder().getHeight(), Image.SCALE_SMOOTH);
                 this.infoPanel.getImageHolder().setIcon(new ImageIcon(resizedImage));
             } else {
-                JOptionPane.showMessageDialog(this.infoPanel, "Sai định dạng ảnh!");
+                JOptionPane.showMessageDialog(this.infoPanel, "Incorrect image format!");
             }
         }
     }
@@ -132,13 +128,15 @@ public class InforController {
     }
 
     private void handleEditBtnClicked() {
-        
-        String password = JOptionPane.showInputDialog("Nhập lại mật khẩu để chỉnh sửa!");
-        if (password.equals(this.currentUser.getPassword())) {
-            setVisibleBtn(true);
-            this.setEditable();
-        } else {
-            JOptionPane.showMessageDialog(infoPanel, "Sai mật khẩu");
+
+        String password = JOptionPane.showInputDialog("Confirm your password");
+        if (!(password == null)) {
+            if (password.equals(this.currentUser.getPassword())) {
+                setVisibleBtn(true);
+                this.setEditable();
+            } else {
+                JOptionPane.showMessageDialog(infoPanel, "Incorrect password");
+            }
         }
     }
 
@@ -183,30 +181,35 @@ public class InforController {
                     this.currentUser.getManagerId());
             try {
                 userDAO.update(this.currentUser.getId(), editedUser, changedField);
-                JOptionPane.showMessageDialog(infoPanel, "Lưu thành công");
+                JOptionPane.showMessageDialog(infoPanel, "Save successfully");
                 this.currentUser = editedUser;
                 this.updateMainViewUI(editedUser);
                 this.setUnEditable();
+                setVisibleBtn(false);
             } catch (Exception ex) {
                 if (ex.getMessage().equals("data_unchanged")) {
-                    int x = JOptionPane.showConfirmDialog(infoPanel, "Thông tin chưa được thay đổi, bạn vẫn muốn lưu chứ?");
+                    int x = JOptionPane.showConfirmDialog(infoPanel, "Your information haven't changed yet!. Do you want to save?", "", JOptionPane.YES_NO_OPTION);
                     if (x == 0) {
-                        JOptionPane.showMessageDialog(infoPanel, "Lưu thành công");
-                        this.setUnEditable();
+                        JOptionPane.showMessageDialog(infoPanel, "Save successfully");
                     }
+                     this.setUnEditable();
+                     setVisibleBtn(false);
                 } else if (ex.getMessage().equals("user_name_exists")) {
-                    JOptionPane.showMessageDialog(infoPanel, "Tên đăng nhập đã tồn tại!");
+                    JOptionPane.showMessageDialog(infoPanel, "Username has already existed!");
                 } else if (ex.getMessage().equals("user_phoneNumber_exists")) {
-                    JOptionPane.showMessageDialog(infoPanel, "Số điện thoại  đã tồn tại!");
+                    JOptionPane.showMessageDialog(infoPanel, "Phone number has already existed!");
                 }
             }
+            
         }
-        setVisibleBtn(false);
+//        
     }
 
     private void updateMainViewUI(UserModel user) {
         this.mainView.setUserModel(user);
-        this.mainView.getLbAvatar().setIcon(Converter.convertBlobToImageIcon(user.getAvatar()));
+        if(this.infoPanel.getImageHolder().getIcon() != null) {
+            this.mainView.getLbAvatar().setIcon(Converter.convertBlobToImageIcon(user.getAvatar()));
+        }
         this.mainView.getLbUsername().setText(user.getUserName());
     }
 
@@ -290,12 +293,12 @@ public class InforController {
         }
         return false;
     }
-    
-    private void setVisibleBtn(boolean a){
+
+    private void setVisibleBtn(boolean a) {
         this.infoPanel.getBtnSave().setVisible(a);
         this.infoPanel.getBtnUndo().setVisible(a);
         this.infoPanel.getChooseFileBtn().setVisible(a);
-        
+
         this.infoPanel.getBtnEdit().setVisible(!a);
     }
 }

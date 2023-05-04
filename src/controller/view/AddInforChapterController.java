@@ -4,19 +4,14 @@
  */
 package controller.view;
 
-import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import models.ChapterModel;
-import models.DAO.ChapterDAO;
 import other.Rules;
 import other.Validate;
 import views.AddInforChapter;

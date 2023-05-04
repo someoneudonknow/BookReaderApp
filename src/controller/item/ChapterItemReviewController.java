@@ -4,22 +4,13 @@
  */
 package controller.item;
 
-import controller.panel.ReadingController;
-import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import models.ChapterModel;
-import models.DAO.ChapterDAO;
 import views.MainView;
 import views.items.ChapterItem;
 import views.panels.AddChapterPanel;
-import views.panels.BookEditPanel;
-import views.panels.ReadingPanel;
 
 public class ChapterItemReviewController {
-    
+
     private ChapterItem chapterItem;
     private MainView mainView;
 
@@ -32,7 +23,7 @@ public class ChapterItemReviewController {
             this.chapterItem.getBtnDelete().setVisible(false);
         }
     }
-    
+
     public ChapterItem getChapterItem() {
         return chapterItem;
     }

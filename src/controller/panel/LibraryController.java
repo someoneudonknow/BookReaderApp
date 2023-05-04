@@ -6,9 +6,7 @@ package controller.panel;
 
 import java.awt.Dimension;
 import java.sql.SQLException;
-import javax.swing.JPanel;
 import other.SetDataToList;
-import views.panels.HistoryPanel;
 import views.panels.LibraryPanel;
 import views.MainView;
 

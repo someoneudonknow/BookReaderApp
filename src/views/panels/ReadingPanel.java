@@ -18,6 +18,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
@@ -95,6 +96,11 @@ public class ReadingPanel extends ParentPanel {
     public void setjEditorPane1(JEditorPane jEditorPane1) {
         this.jEditorPane1 = jEditorPane1;
     }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+    
     
     
 
@@ -214,13 +220,13 @@ public class ReadingPanel extends ParentPanel {
         flowLayout1.setAlignOnBaseline(true);
         jPanel3.setLayout(flowLayout1);
 
-        jLabel1.setText("Kiểu chữ");
+        jLabel1.setText("Font style");
         jPanel3.add(jLabel1);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel3.add(jComboBox1);
 
-        jLabel3.setText("Kích cỡ chữ");
+        jLabel3.setText("Font size");
         jPanel3.add(jLabel3);
 
         fontsizeSpinner.setModel(new javax.swing.SpinnerNumberModel(20, 1, 50, 5));
@@ -234,11 +240,20 @@ public class ReadingPanel extends ParentPanel {
         paddingSpinner.setPreferredSize(new java.awt.Dimension(100, 22));
         jPanel3.add(paddingSpinner);
 
-        jButton1.setText("Áp dụng");
+        jButton1.setText("Apply");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton1);
 
         add(jPanel3);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

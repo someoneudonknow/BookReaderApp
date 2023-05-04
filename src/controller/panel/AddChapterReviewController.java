@@ -4,11 +4,8 @@
  */
 package controller.panel;
 
-import controller.item.ChapterItemController;
 import controller.item.ChapterItemReviewController;
 import controller.view.AddInforChapterController;
-import java.awt.Dimension;
-import java.awt.Label;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
@@ -20,12 +17,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import models.BookModel;
 import models.CategoryModel;
 import models.ChapterModel;
 import models.DAO.BookDAO;
-import models.DAO.ChapterDAO;
 import other.SetDataToList;
 import views.AddInforChapter;
 import views.MainView;

@@ -16,9 +16,7 @@ import models.BookModel;
 import models.DAO.ReadingDAO;
 import other.Converter;
 import views.panels.BookInforPanel;
-import views.panels.ReadingPanel;
 import views.MainView;
-import views.panels.HistoryPanel;
 
 /**
  *

@@ -69,15 +69,13 @@ public class SignUpController {
         boolean isPhoneNumberValid = phoneNumberValidate.isValid();
         boolean isPasswordValid = passwordValidate.isValid();
         boolean isPasswordConfirmValid = passwordConfirmValidate.isValid();
-        boolean isGenderValid = (this.rgsForm.getGenderGroup().getSelection() != null);
 
         this.rgsForm.getUserNameErrorMessage().setText(userNameValidate.getErrorMessage());
         this.rgsForm.getPasswordErrorMessage().setText(passwordValidate.getErrorMessage());
         this.rgsForm.getPasswordConfirmErrorMessage().setText(passwordConfirmValidate.getErrorMessage());
         this.rgsForm.getPhoneNumberErrorMessage().setText(phoneNumberValidate.getErrorMessage());
-        this.rgsForm.getGenderErrorMessage().setText(isGenderValid ? "" : "Please choose your gender!");
 
-        if (isUserNameValid && isPhoneNumberValid && isPasswordValid && isPasswordConfirmValid && isGenderValid ) {
+        if (isUserNameValid && isPhoneNumberValid && isPasswordValid && isPasswordConfirmValid ) {
             return true;
         }
         return false;
