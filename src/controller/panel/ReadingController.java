@@ -137,9 +137,9 @@ public class ReadingController {
 
     public void setChapterDetails(ChapterModel chapter) throws SQLException, BadLocationException {
         handleReadFile();
-        int currentBookID = chapter.getBook_id();
-
-        String content = chapter.getDocument();
+        this.currentChapter = chapter;
+        int currentBookID = currentChapter.getBook_id();
+        String content = currentChapter.getDocument();
         HTMLDocument doc = new HTMLDocument();
         try {
             doc.insertString(0, content, null);
@@ -153,16 +153,16 @@ public class ReadingController {
             listChapterName.add("Chapter " + c.getSerial() + ": " + c.getTitle());
         }
         this.readingPanel.getBoxChapter().setModel(new javax.swing.DefaultComboBoxModel<>(listChapterName.toArray(new String[0])));
-        String currentChapterName = listChapterName.get(chapter.getSerial() - 1);
+        String currentChapterName = listChapterName.get(currentChapter.getSerial() - 1);
         this.readingPanel.getBoxChapter().setSelectedItem(currentChapterName);
-        ChapterDAO.getInstance().increaseView(chapter);
+        ChapterDAO.getInstance().increaseView(currentChapter);
         ReadingDAO.getInstance().readingEvent(new ReadingPK(mainView.getUserModels().getId(), currentChapter.getId()));
 
         doc = this.setDefaultView(doc);
         this.readingPanel.getjEditorPane1().setDocument(doc);
         this.readingPanel.getjScrollPane1().getVerticalScrollBar().setValue(0);
         this.readingPanel.repaint();
-        this.currentChapter = chapter;
+
         this.readingPanel.getBoxChapter().repaint();
     }
 
@@ -271,7 +271,10 @@ public class ReadingController {
         previousPanel.repaint();
         if (previousPanel instanceof BookInforPanel) {
             BookInforPanel inforPanel = (BookInforPanel) previousPanel;
-            inforPanel.getTxtView().setText("" + BookDAO.getInstance().getView(currentChapter.getBook_id()));
+            inforPanel.getTxtView().setText("" + BookDAO.getInstance().getView(this.currentChapter.getBook_id()));
+
+            String recentlyRead = BookDAO.getInstance().getReadRecently(currentChapter.getBook_id(), this.mainView.getUserModels().getId());
+            inforPanel.getTxtReadRecently().setText("Chapter  " + recentlyRead);
         }
         this.mainView.setMainPanel((ParentPanel) previousPanel);
     }

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.time.chrono.ThaiBuddhistEra;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -77,7 +78,13 @@ public class BookInforController {
             this.handleSavedBook();
         });
         this.bookInforPanel.onBtnAddComment(e -> {
-            this.handleComment();
+            try {
+                this.handleComment();
+            } catch (SQLException ex) {
+                Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
 
         this.bookInforPanel.onBtnBack(new MouseAdapter() {
@@ -85,7 +92,6 @@ public class BookInforController {
             public void mouseClicked(MouseEvent e) {
                 backToPrevious();
             }
-
         });
     }
 
@@ -102,11 +108,11 @@ public class BookInforController {
         return false;
     }
 
-    public void addOrUpdateNewReview(ReviewModel newReview, String option) throws ParseException {
+    public void addOrUpdateNewReview(ReviewModel newReview, String option) throws ParseException, SQLException, IOException {
         newReview.setBook_id(currentBook.getId());
         newReview.setUser_id(mainView.getUserModels().getId());
         String comment = this.bookInforPanel.getTxtComment().getText();
-        if (comment.length() >50) {
+        if (comment.length() > 50) {
             JOptionPane.showMessageDialog(null, "Comment must be less than or equal to 50 characters");
         } else {
             newReview.setComment(comment);
@@ -115,9 +121,11 @@ public class BookInforController {
             if (option.equals("insert")) {
                 ReviewDAO.getInstance().insert(newReview);
                 JOptionPane.showMessageDialog(null, "Evaluated successfully");
+                setBook(currentBook);
             } else if (option.equals("update")) {
                 ReviewDAO.getInstance().updateByModel(newReview);
                 JOptionPane.showMessageDialog(null, "Edited successfully");
+                setBook(currentBook);
             } else {
                 System.out.println("Your option ins't available");
             }
@@ -132,14 +140,18 @@ public class BookInforController {
     }
 
     public void changeToChapter(ChapterModel changedChapter) throws SQLException, BadLocationException, IOException {
-
+        try {
+            setBook(currentBook);
+        } catch (ParseException ex) {
+            Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         ReadingPanel newReadingPanel = new ReadingPanel();
         ReadingController reading = new ReadingController(newReadingPanel, mainView, changedChapter, this.bookInforPanel);
         reading.setChapterDetails(changedChapter);
         this.mainView.setMainPanel(newReadingPanel);
     }
 
-    public void setBook(BookModel book) throws IOException, SQLException, ParseException {
+    public void setBook(BookModel book) throws SQLException, ParseException {
         this.currentBook = book;
         int currentID = book.getId();
         this.bookInforPanel.getTxtName().setText(book.getName());
@@ -155,6 +167,7 @@ public class BookInforController {
         this.bookInforPanel.getTxtCategorys().setText(currentCategoryList);
         this.bookInforPanel.getTxtView().setText("" + BookDAO.getInstance().getView(currentID));
         String[] rating = (book.getRatingAverage(book.getId())).split(" ");
+        System.out.println(book.getRatingAverage(book.getId()));
         if (rating[0].equals("0") && rating[1].equals("0")) {
             this.bookInforPanel.getTxtRate().setText("No rating");
         } else {
@@ -169,7 +182,7 @@ public class BookInforController {
         }
     }
 
-    public void setBookDetails() throws IOException, SQLException, ParseException {
+    public void setBookDetails() throws SQLException, ParseException {
         this.bookInforPanel.repaint();
         this.setBook(this.currentBook);
         ResultSet checkSaved = SavedDAO.getInstance().checkPK(new SavedPK(this.mainView.getUserModels().getId(), this.currentBook.getId()));
@@ -205,6 +218,12 @@ public class BookInforController {
                 Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        try {
+            this.setBook(currentBook);
+        } catch (ParseException ex) {
+            Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     public void handleSavedBook() {
@@ -219,7 +238,7 @@ public class BookInforController {
         this.mainView.repaint();
     }
 
-    public void handleComment() {
+    public void handleComment() throws SQLException, IOException {
         ReviewModel newReview = new ReviewModel();
         if (this.havingReview) {
             try {
@@ -244,11 +263,12 @@ public class BookInforController {
         } catch (SQLException ex) {
             Logger.getLogger(BookInforController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.bookInforPanel.repaint();
 
     }
 
     public void backToPrevious() {
-        this.mainView.setMainPanel((ParentPanel)previousPanel);
+        this.mainView.setMainPanel((ParentPanel) previousPanel);
     }
 
     public BookInforPanel getBookInforPanel() {

@@ -478,7 +478,6 @@ public class BookInforPanel extends ParentPanel {
     public void onBtnAddComment(ActionListener action) {
         this.btnAddComment.addActionListener(action);
     }
-    
     public void onBtnBack(MouseAdapter action) {
         this.btnBack.addMouseListener(new SetButton.SetLabelEffectB(btnBack));
         this.btnBack.addMouseListener(action);

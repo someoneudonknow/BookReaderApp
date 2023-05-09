@@ -175,6 +175,19 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
         return categoryList;
     }
 
+    public BookModel getBookByID(int currentBookID) throws SQLException {
+        ResultSet rs = null;
+        String query = "SELECT * FROM project1.bookinfo WHERE book_id = ?;";
+        ArrayList<Object> queryField = new ArrayList<>();
+        queryField.add(currentBookID);
+        rs = this.executeQuery(query, queryField);
+        BookModel book = new BookModel();
+        while (rs.next()) {
+            BookModel.populateBookModel(rs, book);
+        }
+        return book;
+    }
+
     public List<CategoryModel> getCurrentBookCategories(int currentBookID) {
         String query = "SELECT cl.* FROM categorylist as cl INNER JOIN havecategory as hc ON cl.category_id = hc.category_id WHERE hc.book_id = " + currentBookID;
         List<CategoryModel> cateListResult = new LinkedList<>();
@@ -207,13 +220,11 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
         ArrayList<Object> queryField = new ArrayList<>();
         queryField.add(currentBookID);
         rs = this.executeQuery(query, queryField);
-        
+        result = "0 0";
         while (rs.next()) {
+            result = "";
             result = decimalFormat.format(Math.round(rs.getDouble("average_rating") * 10.0) / 10.0);
             result += " " + rs.getInt("numRate");
-        }
-        if(!rs.next()) {
-            result = "0 0";
         }
         return result;
     }
