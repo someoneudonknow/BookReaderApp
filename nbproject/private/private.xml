@@ -3,18 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/trang/OneDrive/Desktop/BookReaderApp/src/controller/panel/AddBookController.java</file>
-            <file>file:/C:/Users/trang/OneDrive/Desktop/BookReaderApp/src/models/BookModel.java</file>
-            <file>file:/C:/Users/trang/OneDrive/Desktop/BookReaderApp/src/controller/panel/ReadingController.java</file>
-            <file>file:/C:/Users/trang/OneDrive/Desktop/BookReaderApp/src/controller/panel/BooksController.java</file>
             <file>file:/C:/Users/trang/OneDrive/Desktop/BookReaderApp/src/models/DAO/BookDAO.java</file>
-            <file>file:/C:/Users/trang/OneDrive/Desktop/BookReaderApp/src/controller/panel/BookInforController.java</file>
-            <file>file:/C:/Users/trang/OneDrive/Desktop/BookReaderApp/src/views/panels/ReadingPanel.java</file>
-            <file>file:/C:/Users/trang/OneDrive/Desktop/BookReaderApp/src/views/items/BookItem.java</file>
-            <file>file:/C:/Users/trang/OneDrive/Desktop/BookReaderApp/src/views/panels/BookInforPanel.java</file>
-            <file>file:/C:/Users/trang/OneDrive/Desktop/BookReaderApp/src/controller/item/ChapterItemController.java</file>
-            <file>file:/C:/Users/trang/OneDrive/Desktop/BookReaderApp/src/views/items/Book.java</file>
-            <file>file:/C:/Users/trang/OneDrive/Desktop/BookReaderApp/src/models/ChapterModel.java</file>
+            <file>file:/C:/Users/trang/OneDrive/Desktop/BookReaderApp/src/utils/ResultSetQuery.java</file>
         </group>
     </open-files>
 </project-private>

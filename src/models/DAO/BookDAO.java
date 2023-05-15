@@ -62,12 +62,10 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
         ResultSet rs = null;
         ArrayList<BookModel> books = new ArrayList<>();
         ArrayList<Object> queryField = new ArrayList<>();
-        String query = "SELECT bi.*,MAX(last_read) FROM project1.bookreading AS br \n"
-                + "JOIN project1.bookchapter AS bc ON br.chapter_id = bc.chapter_id \n"
-                + "JOIN project1.bookinfo AS bi ON bc.book_id = bi.book_id\n"
-                + "GROUP BY br.user_id, bi.book_id HAVING user_id = ?  ORDER BY MAX(last_read) DESC ";
+        String query = "SELECT * FROM project1.readbookhistory WHERE user_id = ?;";
         queryField.add(currentUserID);
         rs = this.executeQuery(query, queryField);
+        System.out.println("hehe");
         while (rs.next()) {
             BookModel book = new BookModel();
             BookModel.populateBookModel(rs, book);
@@ -80,10 +78,11 @@ public class BookDAO extends ResultSetQuery implements DAOInterface<BookModel, I
         ResultSet rs = null;
         ArrayList<BookModel> books = new ArrayList<>();
         ArrayList<Object> queryField = new ArrayList<>();
-        String query = "SELECT MAX(bc.chapter_serial) AS read_recently FROM project1.bookreading AS br \n"
-                + "JOIN project1.bookchapter AS bc ON br.chapter_id = bc.chapter_id\n"
-                + "GROUP BY book_id,user_id\n"
-                + "HAVING bc.book_id = ? AND br.user_id = ?";
+//        String query = "SELECT MAX(bc.chapter_serial) AS read_recently FROM project1.bookreading AS br \n"
+//                + "JOIN project1.bookchapter AS bc ON br.chapter_id = bc.chapter_id\n"
+//                + "GROUP BY book_id,user_id\n"
+//                + "HAVING bc.book_id = ? AND br.user_id = ?";
+        String query = "CALL project1.readRecently(?, ?)";
         queryField.add(book_id);
         queryField.add(user_id);
         rs = this.executeQuery(query, queryField);
