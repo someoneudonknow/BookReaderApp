@@ -61,8 +61,6 @@ CREATE TABLE IF NOT EXISTS bookReading(
     PRIMARY KEY(user_id,chapter_id),
 	FOREIGN KEY (user_id) REFERENCES userInfo(user_id) ,
     FOREIGN KEY (chapter_id) REFERENCES bookchapter(chapter_id) 
-    -- lưu id của chapter vì khi đọc là sẽ đọc cái chapter đó 
-    -- và từ id_chapter sẽ suy ra được đầu sách nào
 );
 CREATE TABLE IF NOT EXISTS bookSaved(
 	user_id INT(10) NOT NULL,
@@ -72,6 +70,7 @@ CREATE TABLE IF NOT EXISTS bookSaved(
 	FOREIGN KEY (user_id) REFERENCES userInfo(user_id) ,
     FOREIGN KEY (book_id) REFERENCES bookInfo(book_id) 
 );
+ALTER TABLE userInfo MODIFY manager_id INT(10) NOT NULL;
 -- DROP TABLE userInfo;
 -- DROP TABLE bookInfo;
 -- DROP TABLE categoryList;
