@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS bookSaved(
 	FOREIGN KEY (user_id) REFERENCES userInfo(user_id) ,
     FOREIGN KEY (book_id) REFERENCES bookInfo(book_id) 
 );
-ALTER TABLE userInfo MODIFY manager_id INT(10) NOT NULL;
+ALTER TABLE userInfo MODIFY manager_id INT(10) NOT NULL DEFAULT 1;
 -- DROP TABLE userInfo;
 -- DROP TABLE bookInfo;
 -- DROP TABLE categoryList;
