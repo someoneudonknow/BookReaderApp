@@ -4,12 +4,12 @@
 
 
 insert into userInfo (user_name, user_avatar, user_password, user_phoneNumber,is_manager, manager_id)
-values ('admin', null, '111111','0123456789', true, null);
+values ('admin', null, '111111','0123456789', true, 1);
 -- User
 insert into userInfo (user_name, user_avatar, user_password, user_phoneNumber)
 values ('talahy1',LOAD_FILE('E:\\wallpaper\\4.jpg'), 'talahy1','0123456788');
 insert into userInfo (user_name, user_avatar, user_password, user_phoneNumber)
-values ('tu', null, '111111','0123456787');
+values ('tu', null, '111111','012345678711');
 insert into userInfo (user_name, user_avatar, user_password, user_phoneNumber)
 values ('talahy3', null, '123456789','0123456786');
 insert into userInfo (user_name, user_avatar, user_password, user_phoneNumber)
@@ -103,6 +103,10 @@ insert into bookChapter (chapter_title, chapter_update, chapter_serial, chapter_
 values ('Test',NOW(), 1, 'Test', 6);
 insert into bookChapter (chapter_title, chapter_update, chapter_serial, chapter_document,book_id) 
 values ('Test',NOW(), 2, 'Test', 6);
+insert into bookChapter (chapter_title, chapter_update, chapter_serial, chapter_document,book_id) 
+values ('Test',NOW(), 3, 'Test', 6);
+insert into bookChapter (chapter_title, chapter_update, chapter_serial, chapter_document,book_id) 
+values ('Test',NOW(), 4, 'Test', 6);
 -- Book Reading
 insert into bookReading (last_read,user_id, chapter_id) 
 values (null, 2, 1);
@@ -148,6 +152,10 @@ insert into bookReview (user_id,book_id, user_comment, user_rating)
 values (5, 6, 'Rat la tuyet', 5);
 insert into bookReview (user_id,book_id, user_comment, user_rating) 
 values (5, 4, 'hehe', 5);
+insert into bookReview (user_id,book_id, user_comment,review_date, user_rating) 
+values (1, 4, 'Truyen hay lam cac ban oi','2023-05-19', 4);
+-- insert into bookReview (user_id,book_id, user_comment,review_date, user_rating) 
+-- values (1, 5, 'Truyen hay lam cac ban oi',CURDATE(), 4);
 -- Book Saved
 insert into bookSaved (user_id,book_id) values (1,1);
 insert into bookSaved (user_id,book_id) values (1,2);
