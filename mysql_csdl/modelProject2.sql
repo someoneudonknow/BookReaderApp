@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS bookReview (
     user_id INT(10) NOT NULL,
     book_id INT(10) NOT NULL,
     user_comment TEXT,
-    review_date DATETIME DEFAULT NOW() CHECK(last_read >= SYSDATE()),
+    review_date DATETIME DEFAULT NOW() CHECK(review_date >= SYSDATE()),
     user_rating TINYINT UNSIGNED CHECK (user_rating >= 1 AND user_rating <= 5),
     PRIMARY KEY (user_id , book_id),
     FOREIGN KEY (user_id)
